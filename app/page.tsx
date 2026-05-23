@@ -578,7 +578,7 @@ export default function HomePage() {
           <div className="text-center group">
             <div className="overflow-hidden rounded-[8px]">
               <img
-                src="/images/kathmandu.jpg"
+                src="/location.png"
                 alt="Kathmandu"
                 className="w-full block transition duration-500 group-hover:scale-105"
               />
@@ -608,7 +608,7 @@ export default function HomePage() {
           <div className="text-center group">
             <div className="overflow-hidden rounded-[8px]">
               <img
-                src="/images/okhaldhunga.jpg"
+                src="/location.png"
                 alt="Okhaldhunga"
                 className="w-full block transition duration-500 group-hover:scale-105"
               />
@@ -638,7 +638,7 @@ export default function HomePage() {
           <div className="text-center group">
             <div className="overflow-hidden rounded-[8px]">
               <img
-                src="/images/nuwakot.jpg"
+                src="/location.png"
                 alt="Nuwakot"
                 className="w-full block transition duration-500 group-hover:scale-105"
               />
@@ -682,9 +682,12 @@ export default function HomePage() {
           </div>
 
           <div>
-            <button className="bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[14px] font-medium px-8 py-3 rounded-md shadow-md transition">
+            <Link
+              href="/work-with-us"
+              className="inline-flex items-center justify-center bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[14px] font-medium px-8 py-3 rounded-md shadow-md transition"
+            >
               View all
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -1207,7 +1210,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      
+
       <LatestNews />
       <Aricles />
       {/* Volunteer Program Section */}
@@ -1434,7 +1437,6 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-        
       </section>
       {/* Contact Section */}
       <section className="w-full flex justify-center py-12 px-4 bg-white">

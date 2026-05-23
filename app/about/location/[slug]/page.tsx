@@ -1,49 +1,32 @@
-// app/staff/[slug]/page.tsx
-
 import { notFound } from "next/navigation";
 import VolunteerProgram from "@/app/components/Volunteer-program";
 import LatestNews from "@/app/components/news";
-import Articles from "@/app/components/articles";
+import Aricles from "@/app/components/articles";
 
-/* =========================================================
-   STAFF DATA
-========================================================= */
+type LocationItem = {
+  slug: string;
+  name: string;
+  overview: string;
+};
 
-const STAFF = [
+const LOCATIONS: LocationItem[] = [
   {
-    slug: "bhupendra-ghimire",
-    name: "Bhupendra Ghimire",
-    nickname: "Bhupi",
-    country: "Nepal",
-    role: "President",
-    education: "Master in Education",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop",
-    bio: "Bhupendra Ghimire leads the organization with a focus on education, community development, and long-term impact.",
+    slug: "kathmandu",
+    name: "Kathmandu",
+    overview:
+      "Transform communities by providing access and care services and improve quality of life through innovative projects for over two years.",
   },
-
   {
-    slug: "dinesh-khatiwoda",
-    name: "Dinesh Khatiwoda",
-    nickname: "",
-    country: "Nepal",
-    role: "Volunteer Manager",
-    education: "Master in Education",
-    image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop",
-    bio: "Dinesh manages volunteer placements and ensures smooth coordination between volunteers and local partners.",
+    slug: "okhaldhunga",
+    name: "Okhaldhunga",
+    overview:
+      "Okhaldhunga district is located 250 km east from Kathmandu. During project activities, more than 1500+ participants and engaged with over 900 key workers helping improve livelihoods.",
   },
-
   {
-    slug: "bimal-acharya",
-    name: "Bimal Acharya",
-    nickname: "",
-    country: "Nepal",
-    role: "Program Manager",
-    education: "Master’s degree in social science",
-    image:
-      "https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=1200&auto=format&fit=crop",
-    bio: "Bimal oversees program delivery, monitoring, and improvement across VIN’s community initiatives.",
+    slug: "nuwakot",
+    name: "Nuwakot",
+    overview:
+      "Nuwakot is located 75 km northwest from Kathmandu and serves through development and social initiatives to support local communities.",
   },
 ];
 
@@ -51,314 +34,270 @@ const STAFF = [
    PAGE
 ========================================================= */
 
-export default async function StaffSlugPage({
+export default async function LocationSlugPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  /* =========================================
-     NEXT JS DYNAMIC PARAM FIX
-  ========================================= */
-
   const { slug } = await params;
 
-  /* =========================================
-     FIND STAFF
-  ========================================= */
+  const location = LOCATIONS.find((item) => item.slug === slug);
 
-  const staff = STAFF.find((item) => item.slug === slug);
-
-  if (!staff) {
+  if (!location) {
     notFound();
   }
 
   return (
-    <main className="w-full bg-white py-10 px-4 sm:px-6 lg:px-2">
-      <section className=" mx-auto grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10">
-        <div>
-          {/* PROFILE */}
+    <main className=" min-h-screen bg-white ">
+      <section className="relative w-full h-[320px] overflow-hidden">
+        {/* BACKGROUND IMAGE */}
+        <img
+          src="/location.png"
+          alt="Kathmandu"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
-          <div className="flex flex-col md:flex-row gap-8 mb-10">
-            {/* IMAGE */}
+        {/* DARK OVERLAY */}
+        <div className="absolute inset-0 bg-black/45" />
 
-            <div className="w-[180px] h-[180px] rounded-xl overflow-hidden border border-gray-200 flex-shrink-0">
+        {/* CONTENT */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+          <h1 className="text-white text-[42px] md:text-[40px] font-medium leading-none mb-3">
+            Kathmandu
+          </h1>
+
+          <p className="text-white text-[16px] md:text-[22px] font-normal">
+            Tarkeshwor Municipality
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-[#F8FAFC] px-6 sm:px-8 py-10 border border-[#dfe3e8] rounded-[8px] mx-auto mt-10 max-w-7xl">
+        <div className="mb-8">
+          <h2 className="text-[30px] font-medium text-[#1f2a44] mb-3">
+            About Tarkeshwor Municipality
+          </h2>
+
+          <p className="text-[14px] leading-[26px] text-[#5f6675] mb-2">
+            Tarkeshwor municipality is in the northwest part of Kathmandu
+            District. The municipality is named after a popular Tarkeshwor
+            temple in the area. The municipality was formed by merging former
+            village development committees.
+          </p>
+
+          <p className="text-[14px] leading-[26px] text-[#5f6675] mb-2">
+            The municipality covers an area of 54.95 sq km with a population of
+            151,227. The municipality is divided into 11 wards and is bordered
+            by Shivapuri Nagarjun National Park.
+          </p>
+
+          <p className="text-[14px] leading-[26px] text-[#5f6675]">
+            The head office of the municipality is located in Dharmasthali.
+          </p>
+        </div>
+
+        {/* =====================================================
+      TOP IMAGES
+  ===================================================== */}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10 pr-10">
+          {[1, 2, 3].map((item) => (
+            <div
+              key={item}
+              className="h-[170px] rounded-[6px] overflow-hidden border border-[#dfe3e8]"
+            >
               <img
-                src={staff.image}
-                alt={staff.name}
+                src="/location.png"
+                alt="Municipality"
                 className="w-full h-full object-cover"
               />
             </div>
+          ))}
+        </div>
 
-            {/* INFO */}
+        {/* =====================================================
+      GEOGRAPHY
+  ===================================================== */}
 
-            <div className="flex-1">
-              <h1 className="text-3xl md:text-4xl font-semibold text-[#1f2a44] mb-3">
-                {staff.name}
+        <div className="mb-8">
+          <h3 className="text-[30px] font-medium text-[#1f2a44] mb-3">
+            Geography of Tarakeshwar Municipality
+          </h3>
 
-                {staff.nickname && (
-                  <span className="text-lg text-gray-500 font-normal ml-2">
-                    ({staff.nickname})
-                  </span>
-                )}
-              </h1>
+          <p className="text-[14px] leading-[26px] text-[#5f6675] mb-2">
+            The municipality covers an area of 54.95 sq km with a population of
+            151,227. It includes different wards and settlements with beautiful
+            natural surroundings.
+          </p>
 
-              <p className="text-lg font-medium text-[#1f2a44] mb-2">
-                {staff.role}
-              </p>
+          <p className="text-[14px] leading-[26px] text-[#5f6675]">
+            The municipality is popular due to its natural beauty and religious
+            significance.
+          </p>
+        </div>
 
-              <p className="text-sm text-gray-500 mb-1">{staff.education}</p>
+        {/* =====================================================
+      NATIVE PRODUCTS
+  ===================================================== */}
 
-              <p className="text-sm text-gray-500 mb-6">{staff.country}</p>
+        <div className="mb-8">
+          <h3 className="text-[30px] font-medium text-[#1f2a44] mb-3">
+            Native of Tarkeshwar Municipality
+          </h3>
 
-              {/* SOCIAL */}
+          <p className="text-[14px] leading-[26px] text-[#5f6675] mb-2">
+            The main occupations include agriculture, local business, and
+            service industries. Many residents are engaged in small-scale
+            production and community-based enterprises.
+          </p>
 
-              <div>
-                <h3 className="text-base font-semibold text-[#1f2a44] mb-4">
-                  Social Media
-                </h3>
+          <p className="text-[14px] leading-[26px] text-[#5f6675]">
+            Various infrastructure projects and tourism-related development
+            programs are being carried out to support economic growth in the
+            region.
+          </p>
+        </div>
 
-                <div className="flex items-center gap-4">
-                  <button className="w-10 h-10 rounded-full bg-[#25D366] text-white">
-                    W
-                  </button>
+        {/* =====================================================
+      WHAT WE DO
+  ===================================================== */}
 
-                  <button className="w-10 h-10 rounded-full bg-[#1877F2] text-white">
-                    F
-                  </button>
+        <div className="mb-10">
+          <h3 className="text-[30px] font-medium text-[#1f2a44] mb-3">
+            What do we do at Tarakeshwar Municipality?
+          </h3>
 
-                  <button className="w-10 h-10 rounded-full bg-black text-white">
-                    X
-                  </button>
+          <p className="text-[14px] leading-[26px] text-[#5f6675]">
+            We focus on community empowerment through education, health
+            services, environmental conservation, and infrastructure development
+            while promoting sustainable local growth.
+          </p>
+        </div>
 
-                  <button className="w-10 h-10 rounded-full bg-pink-500 text-white">
-                    I
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* =====================================================
+      MORE IMAGES
+  ===================================================== */}
 
-          {/* =====================================================
-              TABS
-          ===================================================== */}
+        <div className="mb-12">
+          <h3 className="text-[30px] font-medium text-[#1f2a44] mb-5">
+            More Images
+          </h3>
 
-          <div className="flex flex-wrap gap-3 border-b border-gray-200 pb-5 mb-10">
-            <button className="px-6 h-11 rounded-md bg-[#2A3495] text-white text-sm">
-              Background
-            </button>
-
-            {[
-              "Responsibilities",
-              "Experiences",
-              "Education",
-              "Skills",
-              "Professional Affiliations",
-            ].map((tab) => (
-              <button
-                key={tab}
-                className="px-6 h-11 rounded-md border border-gray-200 bg-gray-50 text-sm text-gray-600 hover:bg-white transition"
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[1, 2, 3, 4, 5, 6].map((item) => (
+              <div
+                key={item}
+                className="h-[160px] rounded-[6px] overflow-hidden border border-[#dfe3e8]"
               >
-                {tab}
-              </button>
+                <img
+                  src="/location.png"
+                  alt="Municipality"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             ))}
-          </div>
-
-          {/* =====================================================
-              CONTENT
-          ===================================================== */}
-
-          <div className="space-y-10">
-            <div>
-              <h2 className="text-xl font-semibold text-[#1f2a44] mb-4">
-                About
-              </h2>
-
-              <p className="text-[15px] leading-8 text-gray-600">{staff.bio}</p>
-            </div>
-
-            <div>
-              <h2 className="text-xl font-semibold text-[#1f2a44] mb-4">
-                Experience and Expertise
-              </h2>
-
-              <p className="text-[15px] leading-8 text-gray-600">
-                {staff.name} has extensive experience working with community
-                development initiatives, leadership programs, and volunteer
-                management activities across different regions.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-xl font-semibold text-[#1f2a44] mb-4">
-                Contribution to VIN
-              </h2>
-
-              <p className="text-[15px] leading-8 text-gray-600">
-                Through dedication and leadership, {staff.name} continues to
-                contribute significantly toward VIN’s mission of empowering
-                communities and supporting sustainable development.
-              </p>
-            </div>
           </div>
         </div>
 
         {/* =====================================================
-            RIGHT SIDEBAR
-        ===================================================== */}
+      CONTACT FORM
+  ===================================================== */}
 
-        <aside>
-          <div className="border border-gray-200 rounded-xl overflow-hidden bg-[#fafbfc]">
-            {/* HEADER */}
+        <div className="mb-12">
+          <h3 className="text-[30px] font-medium text-[#1f2a44] mb-5">
+            Ask a Question?
+          </h3>
 
-            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 bg-[#f5f7fa]">
-              <h3 className="text-xl font-semibold text-[#1f2a44]">
-                What People Say
-              </h3>
+          <form className="w-full">
+            {/* TOP ROW */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-5">
+              {/* NAME */}
+              <div>
+                <label className="block text-[15px] font-medium text-black mb-2">
+                  Enter Name
+                </label>
 
-              <button className="text-sm text-gray-400 hover:text-[#2A3495]">
-                See all
-              </button>
+                <input
+                  type="text"
+                  placeholder="e.g. Sweekar"
+                  className="w-full h-[52px] rounded-[6px] border border-[#E2E8F0] bg-[#F1F2FB] px-4 text-[14px] text-[#1f2a44] outline-none placeholder:text-[#94A3B8]"
+                />
+              </div>
+
+              {/* EMAIL */}
+              <div>
+                <label className="block text-[15px] font-medium text-black mb-2">
+                  Enter Name
+                </label>
+
+                <input
+                  type="email"
+                  placeholder="e.g. Sweekar"
+                  className="w-full h-[52px] rounded-[6px] border border-[#E2E8F0] bg-[#F1F2FB] px-4 text-[14px] text-[#1f2a44] outline-none placeholder:text-[#94A3B8]"
+                />
+              </div>
             </div>
 
-            {/* TESTIMONIALS */}
+            {/* SUBJECT */}
+            <div className="mb-5">
+              <label className="block text-[15px] font-medium text-black mb-2">
+                Subject
+              </label>
 
-            <div className="divide-y divide-gray-200">
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="p-5 hover:bg-white transition-all">
-                  <div className="flex gap-4">
-                    <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                      <img
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop"
-                        alt="Reviewer"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-
-                    <div>
-                      <div className="flex items-center justify-between gap-4 mb-2">
-                        <div>
-                          <h4 className="text-sm font-semibold text-[#1f2a44]">
-                            Charles Richardson
-                          </h4>
-
-                          <p className="text-xs text-gray-400">
-                            Product Designer
-                          </p>
-                        </div>
-
-                        <div className="text-yellow-500 text-xs">★★★★★</div>
-                      </div>
-                      <p className="text-sm leading-6 text-gray-600">
-                        They approached each shift with professionalism and
-                        enthusiasm, often going above and beyond.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </aside>
-      </section>
-
-      {/* =====================================================
-          INTERVIEW + ARTICLES WRAPPER
-          ALIGNED WITH LEFT COLUMN
-      ===================================================== */}
-
-      <div className=" mx-auto lg:pr-[360px]">
-        <section className="py-12">
-          <div className="bg-[#f8f9fc] border border-[#e9edf5] rounded-xl p-6">
-            {/* HEADING */}
-
-            <div className="mb-8">
-              <h2 className="text-3xl font-semibold text-[#1f2a44] mb-2">
-                Interview Videos
-              </h2>
-
-              <p className="text-sm text-gray-500">
-                Listen to volunteer stories from people who chose to make a
-                difference with VIN.
-              </p>
+              <input
+                type="text"
+                placeholder="Related Subject"
+                className="w-full h-[52px] rounded-[6px] border border-[#E2E8F0] bg-[#F1F2FB] px-4 text-[14px] text-[#1f2a44] outline-none placeholder:text-[#94A3B8]"
+              />
             </div>
 
-            {/* VIDEO CARDS */}
+            {/* MESSAGE */}
+            <div>
+              <label className="block text-[15px] font-medium text-black mb-2">
+                Message
+              </label>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="group cursor-pointer">
-                  {/* IMAGE */}
-
-                  <div className="relative h-[200px] rounded-xl overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
-                      alt="Interview"
-                      className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                    />
-                  </div>
-
-                 {/* CONTENT */}
-
-                  <div className="mt-4">
-                    <h3 className="text-[15px] font-medium leading-6 text-[#1f2a44] group-hover:text-[#2A3495]">
-                      Improved Teaching Quality Key to Nepal’s Overall
-                      Development
-                    </h3>
-                  </div>
-                </div>
-              ))}
+              <textarea
+                rows={6}
+                placeholder="Type your messages here"
+                className="w-full rounded-[6px] border border-[#E2E8F0] bg-[#F1F2FB] p-4 text-[14px] text-[#1f2a44] outline-none resize-none placeholder:text-[#94A3B8]"
+              />
             </div>
-          </div>
-        </section>
+          </form>
+        </div>
 
         {/* =====================================================
-            ARTICLES
-        ===================================================== */}
+      SHARE SECTION
+  ===================================================== */}
 
-        <section className="pb-10">
-          <div className="bg-[#f8f9fc] border border-[#e9edf5] rounded-xl p-6">
-            {/* HEADING */}
+        <div className="flex flex-col items-center justify-center pt-4">
+          <p className="text-[16px] font-medium text-[#1f2a44] mb-4">
+            Share Via
+          </p>
 
-            <div className="mb-8">
-              <h2 className="text-3xl font-semibold text-[#1f2a44] mb-2">
-                Articles
-              </h2>
-
-              <p className="text-sm text-gray-500">
-                Read insightful stories from people who chose to make a
-                difference with VIN.
-              </p>
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-[#25D366] text-white flex items-center justify-center text-[13px]">
+              W
             </div>
 
-            {/* ARTICLE CARDS */}
+            <div className="w-8 h-8 rounded-full bg-[#1877F2] text-white flex items-center justify-center text-[13px]">
+              F
+            </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="group cursor-pointer">
-                  {/* IMAGE */}
+            <div className="w-8 h-8 rounded-full bg-[#0A66C2] text-white flex items-center justify-center text-[13px]">
+              in
+            </div>
 
-                  <div className="h-[200px] rounded-xl overflow-hidden">
-                    <img
-                      src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
-                      alt="Article"
-                      className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                    />
-                  </div>
+            <div className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-[13px]">
+              X
+            </div>
 
-                  {/* CONTENT */}
-
-                  <div className="mt-4">
-                    <h3 className="text-[15px] font-medium leading-6 text-[#1f2a44] group-hover:text-[#2A3495]">
-                      Improved Teaching Quality Key to Nepal’s Overall
-                      Development
-                    </h3>
-                  </div>
-                </div>
-              ))}
+            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white flex items-center justify-center text-[13px]">
+              ◎
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
       {/*Volunteer program section*/}
       <section className="w-full  py-12 px-4 md:px-8">
         <div className=" mx-auto flex items-center justify-between gap-6 flex-wrap">
@@ -381,9 +320,8 @@ export default async function StaffSlugPage({
             View All
           </button>
         </div>
-        <VolunteerProgram />
       </section>
-
+      <VolunteerProgram />
       {/*Becoming part section*/}
       <section className="w-full bg-[#f3f3f3] py-10 px-4">
         <div
@@ -421,7 +359,300 @@ export default async function StaffSlugPage({
           </div>
         </div>
       </section>
+      {/*Volunteer program section*/}
+      <section className="w-full  py-12 px-4 md:px-8">
+        <div className=" mx-auto flex items-center justify-between gap-6 flex-wrap">
+          {/* Left Content */}
+          <div>
+            <h2 className="text-[38px] leading-tight font-medium text-[#1F2A44]">
+              Our Volunteering programs
+            </h2>
 
+            <p className="mt-4 max-w-3xl text-[18px] leading-[32px] text-[#4B5563]">
+              Our programs are designed to empower communities through
+              education, skill development, and inclusive support, creating
+              opportunities that help individuals grow, thrive, and lead
+              meaningful change.
+            </p>
+          </div>
+
+          {/* Button */}
+          <button className="bg-[#2A3495] text-white px-8 py-3 rounded-md text-sm font-medium shadow-md hover:bg-[#1f2875] transition">
+            View All
+          </button>
+        </div>
+      </section>
+
+      <VolunteerProgram />
+      {/*our team section*/}
+      <section className="w-full  py-20 px-4 md:px-8">
+        <div className=" mx-auto">
+          {/* Header */}
+          <div className="flex items-start justify-between flex-wrap gap-4">
+            <div>
+              <h2 className="text-[38px] font-medium text-[#1F2A44] leading-tight">
+                Our Team Members
+              </h2>
+
+              <p className="mt-2 text-[#6B7280] text-[15px]">
+                Listen to heartfelt stories from people who choose to make a
+                difference with us.
+              </p>
+            </div>
+
+            <button className="bg-[#2A3495] hover:bg-[#1f2875] transition text-white text-sm font-medium px-6 py-3 rounded-md shadow-md">
+              View all members
+            </button>
+          </div>
+
+          {/* Team Cards */}
+          <div className="relative mt-12">
+            {/* Left Arrow */}
+            <button className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md">
+              &#10094;
+            </button>
+
+            {/* Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Card 1 */}
+              <div className="bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
+                <div className="rounded-[10px] overflow-hidden">
+                  <img
+                    src="/images/member1.png"
+                    alt="Bhupendra Ghimire"
+                    className="w-full h-[200px] object-cover"
+                  />
+                </div>
+
+                <div className="mt-4">
+                  <h3 className="text-[18px] font-[400] text-[#1F2937]">
+                    Bhupendra Ghimire
+                  </h3>
+
+                  <p className="text-[14px] text-[#4B5563] mt-1">President</p>
+
+                  <p className="text-[13px] text-[#9CA3AF] mt-1">
+                    Master's In Education
+                  </p>
+
+                  <button className="mt-5 w-full border border-[#2A3495] text-[#2A3495] py-2 rounded-md text-sm font-medium hover:bg-[#2A3495] hover:text-white transition">
+                    View profile
+                  </button>
+                </div>
+              </div>
+
+              {/* Card 2 */}
+              <div className="bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
+                <div className="rounded-[10px] overflow-hidden">
+                  <img
+                    src="/images/member2.png"
+                    alt="Dinesh Khatiwada"
+                    className="w-full h-[200px] object-cover"
+                  />
+                </div>
+
+                <div className="mt-4">
+                  <h3 className="text-[18px] font-semibold text-[#1F2937]">
+                    Dinesh Khatiwada
+                  </h3>
+
+                  <p className="text-[14px] text-[#4B5563] mt-1">
+                    Volunteer Manager
+                  </p>
+
+                  <p className="text-[13px] text-[#9CA3AF] mt-1">
+                    Master's In Education
+                  </p>
+
+                  <button className="mt-5 w-full border border-[#2A3495] text-[#2A3495] py-2 rounded-md text-sm font-medium hover:bg-[#2A3495] hover:text-white transition">
+                    View profile
+                  </button>
+                </div>
+              </div>
+
+              {/* Card 3 */}
+              <div className="bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
+                <div className="rounded-[10px] overflow-hidden">
+                  <img
+                    src="/images/member3.png"
+                    alt="Tula Dhwoj Khatiwada"
+                    className="w-full h-[200px] object-cover"
+                  />
+                </div>
+
+                <div className="mt-4">
+                  <h3 className="text-[18px] font-semibold text-[#1F2937]">
+                    Tula Dhwoj Khatiwada
+                  </h3>
+
+                  <p className="text-[14px] text-[#4B5563] mt-1">
+                    Program Manager
+                  </p>
+
+                  <p className="text-[13px] text-[#9CA3AF] mt-1">
+                    Master's In Education
+                  </p>
+
+                  <button className="mt-5 w-full border border-[#2A3495] text-[#2A3495] py-2 rounded-md text-sm font-medium hover:bg-[#2A3495] hover:text-white transition">
+                    View profile
+                  </button>
+                </div>
+              </div>
+
+              {/* Card 4 */}
+              <div className="bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
+                <div className="rounded-[10px] overflow-hidden">
+                  <img
+                    src="/images/member4.png"
+                    alt="Surendra Joshi"
+                    className="w-full h-[200px] object-cover"
+                  />
+                </div>
+
+                <div className="mt-4">
+                  <h3 className="text-[18px] font-semibold text-[#1F2937]">
+                    Surendra Joshi
+                  </h3>
+
+                  <p className="text-[14px] text-[#4B5563] mt-1">
+                    IT Consultant
+                  </p>
+
+                  <p className="text-[13px] text-[#9CA3AF] mt-1">
+                    Master's In Education
+                  </p>
+
+                  <button className="mt-5 w-full border border-[#2A3495] text-[#2A3495] py-2 rounded-md text-sm font-medium hover:bg-[#2A3495] hover:text-white transition">
+                    View profile
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Arrow */}
+            <button className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md">
+              &#10095;
+            </button>
+          </div>
+        </div>
+      </section>
+      {/* Map and Cards Section */}
+      <section className="py-20 text-center">
+        {/* Top Content */}
+        <div>
+          <h2 className="text-[32px] md:text-[40px] font-medium text-[#222] mb-4">
+            Where we work
+          </h2>
+
+          <p className="max-w-[760px] mx-auto text-[14px] md:text-[15px] leading-7 text-[#666]">
+            We place volunteers in communities to support local effort,
+            empowering residents to evolve positive change and improve quality
+            of life through collaboration on meaningful projects.
+          </p>
+        </div>
+
+        {/* Map */}
+        <div className="pt-12 pb-16 flex justify-center">
+          <img
+            src="/images/nepal-map.png"
+            alt="Nepal Map"
+            className="object-contain"
+          />
+        </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
+          {/* Card 1 */}
+          <div className="text-center group">
+            <div className="overflow-hidden rounded-[8px]">
+              <img
+                src="/location.png"
+                alt="Kathmandu"
+                className="w-full block transition duration-500 group-hover:scale-105"
+              />
+            </div>
+
+            <div className="pt-5">
+              <h3 className="text-[22px] font-medium text-[#222] mb-3">
+                Kathmandu
+              </h3>
+
+              <p className="text-[14px] leading-7 text-[#666] mb-4">
+                Transform communities by providing access and care services and
+                improve quality of life through innovative projects for over two
+                years.
+              </p>
+
+              <a
+                href="/"
+                className="text-[16px] text-black pb-[2px] hover:opacity-70 transition"
+              >
+                Read More..
+              </a>
+            </div>
+          </div>
+
+          {/* Card 2 */}
+          <div className="text-center group">
+            <div className="overflow-hidden rounded-[8px]">
+              <img
+                src="/location.png"
+                alt="Okhaldhunga"
+                className="w-full block transition duration-500 group-hover:scale-105"
+              />
+            </div>
+
+            <div className="pt-5">
+              <h3 className="text-[22px] font-medium text-[#222] mb-3">
+                Okhaldhunga
+              </h3>
+
+              <p className="text-[14px] leading-7 text-[#666] mb-4">
+                Okhaldhunga district is located 250 km east from Kathmandu.
+                During project activities, more than 1500+ participants and
+                engaged with over 900 key workers helping improve livelihoods.
+              </p>
+
+              <a
+                href="/"
+                className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
+              >
+                Read More..
+              </a>
+            </div>
+          </div>
+
+          {/* Card 3 */}
+          <div className="text-center group">
+            <div className="overflow-hidden rounded-[8px]">
+              <img
+                src="/location.png"
+                alt="Nuwakot"
+                className="w-full block transition duration-500 group-hover:scale-105"
+              />
+            </div>
+
+            <div className="pt-5">
+              <h3 className="text-[22px] font-medium text-[#222] mb-3">
+                Nuwakot
+              </h3>
+
+              <p className="text-[14px] leading-7 text-[#666] mb-4">
+                Nuwakot is located 75 km northwest from Kathmandu and serves
+                through development and social initiatives to support local
+                communities.
+              </p>
+
+              <a
+                href="/"
+                className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
+              >
+                Read More..
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* Choose Impact Section */}
       <section className="py-16">
         {/* Top Heading */}
@@ -606,6 +837,7 @@ export default async function StaffSlugPage({
           </div>
         </div>
       </section>
+      {/* Volunteer Reviews Section */}
       <section className="w-full  py-14 md:py-20">
         <div className="mx-auto  px-4 sm:px-6 lg:px-8">
           {/* Top Heading */}
@@ -866,123 +1098,6 @@ export default async function StaffSlugPage({
           </div>
         </div>
       </section>
-      {/* Map and Cards Section */}
-      <section className="py-20 text-center">
-        {/* Top Content */}
-        <div>
-          <h2 className="text-[32px] md:text-[40px] font-medium text-[#222] mb-4">
-            Where we work
-          </h2>
-
-          <p className="max-w-[760px] mx-auto text-[14px] md:text-[15px] leading-7 text-[#666]">
-            We place volunteers in communities to support local effort,
-            empowering residents to evolve positive change and improve quality
-            of life through collaboration on meaningful projects.
-          </p>
-        </div>
-
-        {/* Map */}
-        <div className="pt-12 pb-16 flex justify-center">
-          <img
-            src="/images/nepal-map.png"
-            alt="Nepal Map"
-            className="object-contain"
-          />
-        </div>
-
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
-          {/* Card 1 */}
-          <div className="text-center group">
-            <div className="overflow-hidden rounded-[8px]">
-              <img
-                src="/images/kathmandu.jpg"
-                alt="Kathmandu"
-                className="w-full block transition duration-500 group-hover:scale-105"
-              />
-            </div>
-
-            <div className="pt-5">
-              <h3 className="text-[22px] font-medium text-[#222] mb-3">
-                Kathmandu
-              </h3>
-
-              <p className="text-[14px] leading-7 text-[#666] mb-4">
-                Transform communities by providing access and care services and
-                improve quality of life through innovative projects for over two
-                years.
-              </p>
-
-              <a
-                href="/"
-                className="text-[16px] text-black pb-[2px] hover:opacity-70 transition"
-              >
-                Read More..
-              </a>
-            </div>
-          </div>
-
-          {/* Card 2 */}
-          <div className="text-center group">
-            <div className="overflow-hidden rounded-[8px]">
-              <img
-                src="/images/okhaldhunga.jpg"
-                alt="Okhaldhunga"
-                className="w-full block transition duration-500 group-hover:scale-105"
-              />
-            </div>
-
-            <div className="pt-5">
-              <h3 className="text-[22px] font-medium text-[#222] mb-3">
-                Okhaldhunga
-              </h3>
-
-              <p className="text-[14px] leading-7 text-[#666] mb-4">
-                Okhaldhunga district is located 250 km east from Kathmandu.
-                During project activities, more than 1500+ participants and
-                engaged with over 900 key workers helping improve livelihoods.
-              </p>
-
-              <a
-                href="/"
-                className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
-              >
-                Read More..
-              </a>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="text-center group">
-            <div className="overflow-hidden rounded-[8px]">
-              <img
-                src="/images/nuwakot.jpg"
-                alt="Nuwakot"
-                className="w-full block transition duration-500 group-hover:scale-105"
-              />
-            </div>
-
-            <div className="pt-5">
-              <h3 className="text-[22px] font-medium text-[#222] mb-3">
-                Nuwakot
-              </h3>
-
-              <p className="text-[14px] leading-7 text-[#666] mb-4">
-                Nuwakot is located 75 km northwest from Kathmandu and serves
-                through development and social initiatives to support local
-                communities.
-              </p>
-
-              <a
-                href="/"
-                className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
-              >
-                Read More..
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
       {/*Explore Nepal section*/}
       <section className="relative overflow-hidden bg-[#00B1F333] mb-10 py-16 md:py-24">
         {/* Top Wave */}
@@ -1080,6 +1195,9 @@ export default async function StaffSlugPage({
           </div>
         </div>
       </section>
+
+      <LatestNews />
+      <Aricles />
       {/* Volunteer Program Section */}
       <section className="relative w-full overflow-hidden rounded-sm  pt-10 pb-16 md:pb-24 pt-16">
         {/* Background Image */}
@@ -1135,8 +1253,6 @@ export default async function StaffSlugPage({
           </div>
         </div>
       </section>
-      <LatestNews />
-      <Articles />
     </main>
   );
-}  
+}

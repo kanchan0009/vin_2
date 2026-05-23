@@ -15,6 +15,7 @@ const navItems = [
       { href: "/about/our-approach", label: "Our Approach" },
       { href: "/about/staff", label: "Staff" },
       { href: "/about/organization", label: "Organization" },
+      { href: "/about/location", label: "Where-we-work" },
     ],
   },
   {
