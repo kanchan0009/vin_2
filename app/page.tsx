@@ -1386,9 +1386,12 @@ export default function HomePage() {
             </p>
           </div>
 
-          <button className="bg-[#2E3192] hover:bg-[#26287d] transition-all text-white text-[16px] font-medium px-6 py-3 rounded-md shadow-sm">
+          <Link
+            href="/volunteering"
+            className="bg-[#2E3192] hover:bg-[#26287d] transition-all text-white text-[16px] font-medium px-6 py-3 rounded-md shadow-sm inline-flex items-center justify-center"
+          >
             View Volunteers
-          </button>
+          </Link>
         </div>
 
         {/* Cards */}

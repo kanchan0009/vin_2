@@ -5,19 +5,19 @@ import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 const cards = [
   {
-    image: "/images/women-card.png",
+    image: "/hero.png",
     title: "Domestic Violence Prevention Volunteer Program in Nepal",
     description:
       "Are you seeking volunteer opportunities in domestic violence prevention that empower you to create lasting change ...",
   },
   {
-    image: "/images/women-card.png",
+    image: "/hero.png",
     title: "Domestic Violence Prevention Volunteer Program in Nepal",
     description:
       "Are you seeking volunteer opportunities in domestic violence prevention that empower you to create lasting change ...",
   },
   {
-    image: "/images/women-card.png",
+    image: "/hero.png",
     title: "Domestic Violence Prevention Volunteer Program in Nepal",
     description:
       "Are you seeking volunteer opportunities in domestic violence prevention that empower you to create lasting change ...",
@@ -55,15 +55,15 @@ const programTopics = [
 export default function WomenEmpowermentSection() {
   return (
     <>
-      <section className="w-full max-w-[1355px] mx-auto bg-[#F1F2FB] rounded-[10px] shadow-lg border border-[#D9DDEA] box-border relative overflow-hidden py-10">
+      <section className="w-full  mx-auto bg-[#F1F2FB] rounded-[10px] shadow-lg border border-[#D9DDEA] box-border relative overflow-hidden py-10">
         {/* Top Header */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
           <div>
-            <h2 className="text-[#2D3448] text-[22px] md:text-[40px] leading-tight font-serif font-normal">
+            <h2 className="text-[#2D3448] text-[18px] md:text-[40px] leading-tight font-serif font-normal">
               Women’s Empowerment
             </h2>
 
-            <p className="mt-4 max-w-5xl text-[#5D6475] text-[14px] md:text-[16px] leading-[1.9]">
+            <p className="mt-2 max-w-5xl text-[#5D6475] text-[14px] md:text-[16px] leading-[1.9]">
               Our Women’s Empowerment program provides skills, mentorship, and
               resources to help women gain confidence, achieve independence, and
               create lasting impact in their lives and communities.
@@ -71,7 +71,7 @@ export default function WomenEmpowermentSection() {
           </div>
 
           {/* Explore Link */}
-          <button className="flex items-center gap-2 text-[#2F3C97] text-[13px] font-semibold whitespace-nowrap mt-1">
+          <button className="flex items-center gap-2 text-[#2F3C97] text-[16px] font-semibold whitespace-nowrap mt-1">
             Explore All Projects
             <ArrowRight size={15} />
           </button>
@@ -109,22 +109,22 @@ export default function WomenEmpowermentSection() {
                 {/* Content */}
                 <div className="p-4">
                   {/* Tags */}
-                  <div className="flex items-center gap-3 text-[11px] text-[#7B8191]">
-                    <span className="bg-white shadow-md border-1 border-[#F2F4FA] px-2 py-2 rounded-[20px]">
+                  <div className="flex items-center gap-3 text-[11px] text-black">
+                      <span className="bg-white shadow-md border-1 border-[#F2F4FA] px-2 py-2 rounded-[20px]">
                         3-6 <span className="text-[#7B8191]">hours/day </span>
                       </span>
                       <span className="bg-white shadow-md border-1 border-[#F2F4FA] px-2 py-2 rounded-[20px]">
-                        2-40 <span className="text-[#d1d2d5]">weeks </span>
+                        2-40 <span className="text-[#7B8191]">weeks </span>
                       </span>
-                  </div>
+                    </div>
 
                   {/* Title */}
-                  <h3 className="mt-4 text-[#2D3448] text-[20px] leading-[1.35] font-medium">
+                  <h3 className="mt-4 text-[#2D3448] text-[18px] leading-[1.35] font-medium">
                     {card.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="mt-3 text-[#6B7280] text-[14px] leading-[1.8]">
+                  <p className="mt-3 text-[#6B7280] text-[12px] leading-[1.8]">
                     {card.description}
                   </p>
 
@@ -153,17 +153,17 @@ export default function WomenEmpowermentSection() {
           {/* Top Header */}
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
-              <h2 className="text-[#2D3448] text-[22px] md:text-[40px] leading-tight font-serif font-normal">
+              <h2 className="text-[#2D3448] text-[18px] md:text-[40px] leading-tight font-serif font-normal">
                 {topic.title}
               </h2>
 
-              <p className="mt-4 max-w-5xl text-[#5D6475] text-[14px] md:text-[16px] leading-[1.9]">
+              <p className="mt-2 max-w-5xl text-[#5D6475] text-[14px] md:text-[16px] leading-[1.9]">
                 {topic.description}
               </p>
             </div>
 
             {/* Explore Link */}
-            <button className="flex items-center gap-2 text-[#2F3C97] text-[13px] font-semibold whitespace-nowrap mt-1">
+            <button className="flex items-center gap-2 text-[#2F3C97] text-[16px] font-semibold whitespace-nowrap mt-1">
               Explore All Projects
               <ArrowRight size={15} />
             </button>
@@ -203,15 +203,15 @@ export default function WomenEmpowermentSection() {
                         3-6 <span className="text-[#7B8191]">hours/day </span>
                       </span>
                       <span className="bg-white shadow-md border-1 border-[#F2F4FA] px-2 py-2 rounded-[20px]">
-                        2-40 <span className="text-[#d1d2d5]">weeks </span>
+                        2-40 <span className="text-[#7B8191]">weeks </span>
                       </span>
                     </div>
 
-                    <h3 className="mt-4 text-[#2D3448] text-[20px] leading-[1.35] font-medium">
+                    <h3 className="mt-4 text-[#2D3448] text-[18px] leading-[1.35] font-medium">
                       {card.title}
                     </h3>
 
-                    <p className="mt-3 text-[#6B7280] text-[14px] leading-[1.8]">
+                    <p className="mt-3 text-[#6B7280] text-[12px] leading-[1.8]">
                       {card.description}
                     </p>
 

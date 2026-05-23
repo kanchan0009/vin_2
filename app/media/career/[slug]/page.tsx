@@ -53,7 +53,6 @@ export default function JobDetailsPage() {
   return (
     <section className="w-full bg-white py-6 px-5 md:px-8">
       <div className="max-w-7xl mx-auto">
-        
         {/* =====================================================
             TOP IMAGE
         ===================================================== */}
@@ -75,7 +74,6 @@ export default function JobDetailsPage() {
 
           {/* META */}
           <div className="mt-3 space-y-[3px]">
-            
             <div className="flex items-center gap-1 text-[14px] text-[#6B7280]">
               <span>◉</span>
               <p>Okhaldhunga, Nepal</p>
@@ -98,17 +96,18 @@ export default function JobDetailsPage() {
           </div>
 
           {/* BUTTON */}
-          
-          <button className="mt-4 w-[190px] h-[32px] bg-[#2E3192] hover:bg-[#23267a] transition-all duration-300 rounded-[3px] text-white text-[16px] font-medium">
-            Become Volunteer
-          </button>
+
+          <Link href="/applyNow">
+            <button className="mt-4 w-[190px] h-[32px] bg-[#2E3192] hover:bg-[#23267a] transition-all duration-300 rounded-[3px] text-white text-[16px] font-medium">
+              Become Volunteer
+            </button>
+          </Link>
         </div>
 
         {/* =====================================================
             JOB DESCRIPTION
         ===================================================== */}
         <div className="mt-7">
-          
           <h2 className="text-[18px] font-semibold text-[#1F2A44] uppercase">
             Job Description
           </h2>
@@ -143,7 +142,6 @@ export default function JobDetailsPage() {
             </h3>
 
             <ul className="mt-3 space-y-1 text-[14px] leading-[18px] text-[#6B7280] list-disc pl-5">
-              
               <li>
                 Assist in developing communication campaigns for social impact
                 projects and nonprofit initiatives.
@@ -205,10 +203,7 @@ export default function JobDetailsPage() {
             </h3>
 
             <ul className="mt-3 space-y-1 text-[14px] leading-[18px] text-[#6B7280] list-disc pl-5">
-              
-              <li>
-                Strong written and verbal communication skills.
-              </li>
+              <li>Strong written and verbal communication skills.</li>
 
               <li>
                 Passion for social impact, nonprofit work, and community
@@ -250,7 +245,6 @@ export default function JobDetailsPage() {
             </h3>
 
             <ul className="mt-3 space-y-1 text-[14px] leading-[18px] text-[#6B7280] list-disc pl-5">
-              
               <li>
                 Gain practical nonprofit communication and marketing experience.
               </li>
@@ -260,8 +254,8 @@ export default function JobDetailsPage() {
               </li>
 
               <li>
-                Work with an international nonprofit organization and experienced
-                mentors.
+                Work with an international nonprofit organization and
+                experienced mentors.
               </li>
 
               <li>
@@ -310,7 +304,6 @@ export default function JobDetailsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-7">
             {jobs.map((job) => (
               <div key={job.id}>
-                
                 {/* IMAGE */}
                 <div className="h-[170px] rounded-[4px] overflow-hidden bg-[#EEF2F7]">
                   <img
@@ -322,14 +315,12 @@ export default function JobDetailsPage() {
 
                 {/* CONTENT */}
                 <div className="pt-4">
-                  
                   <h3 className="text-[22px] font-medium text-[#1F2A44] leading-[30px]">
                     {job.title}
                   </h3>
 
                   {/* META */}
                   <div className="mt-3 space-y-[4px]">
-                    
                     <div className="flex items-center gap-2 text-[13px] text-[#6B7280]">
                       <span>◉</span>
                       <p>{job.location}</p>
@@ -353,7 +344,6 @@ export default function JobDetailsPage() {
 
                   {/* BUTTONS */}
                   <div className="mt-5 flex items-center gap-3">
-                    
                     <button className="flex-1 h-[40px] bg-[#2E3192] hover:bg-[#23267a] transition-all duration-300 rounded-[3px] text-white text-[12px] font-medium">
                       Become Volunteer
                     </button>
@@ -370,7 +360,6 @@ export default function JobDetailsPage() {
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

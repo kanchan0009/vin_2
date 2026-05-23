@@ -1,4 +1,5 @@
 "use client";
+import { HeartHandshake, MessageCircleMore } from "lucide-react";
 import Articles from "@/app/components/articles";
 import LatestNews from "@/app/components/news";
 import Link from "next/link";
@@ -219,50 +220,55 @@ export default function TeamMembersPage() {
           </div>
         </div>
       </div>
-      {/*CTA SECTION*/}
-      <section className="relative left-1/2 right-1/2 max-w-full -translate-x-1/2 overflow-hidden bg-gradient-to-r from-[#3B45D1] via-[#3A49DC] to-[#25339B] py-14  mt-20 text-center">
-        {/* Background Decorative Pattern */}
+
+      {/* CTA SECTION */}
+      <section className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden bg-gradient-to-r from-[#3B45D1] via-[#3A49DC] to-[#25339B] py-16 mt-20">
+        {/* Background Pattern */}
         <div className="absolute inset-0 opacity-[0.08]">
           <div className="absolute inset-0 bg-[radial-gradient(circle,_white_1px,_transparent_1px)] bg-[length:80px_80px]" />
         </div>
 
+        {/* Glow Effects */}
+        <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-white/10 blur-3xl rounded-full" />
+        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#6C7BFF]/20 blur-3xl rounded-full" />
+
         {/* Content */}
-        <div className="relative z-10 px-4">
+        <div className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-8 text-center">
           {/* Heading */}
-          <h2 className="text-white text-[38px] md:text-[52px] font-medium leading-[1.2] mb-5">
-            Become a part of the Change
-          </h2>
+          <h3 className="text-white text-[36px] md:text-[54px] font-semibold leading-[1.15] tracking-[-1px]">
+            Become a Part of the Change
+          </h3>
 
           {/* Description */}
-          <p className="max-w-[620px] mx-auto text-white/90 text-[18px] leading-[32px] font-normal mb-10">
-            Every action you take helps build a future where women lead and
-            communities thrive.
+          <p className="max-w-[700px] mx-auto mt-5 text-white/85 text-[17px] md:text-[19px] leading-[34px]">
+            Every action you take helps build a future where women lead,
+            communities grow stronger, and lasting impact begins.
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-5">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
             {/* Apply Button */}
-            <button className="h-[54px] px-10 rounded-[6px] bg-[#2D348E] hover:bg-[#222977] transition-all duration-300 text-white text-[16px] font-medium shadow-md">
+            <button className="h-[56px] px-10 rounded-xl bg-[#242B82] hover:bg-[#1B2168] transition-all duration-300 text-white text-[16px] font-medium shadow-xl hover:scale-[1.03]">
               Apply for Volunteer
             </button>
 
             {/* Donate Button */}
-            <button className="h-[54px] px-10 rounded-[6px] bg-[#F5A300] hover:bg-[#dd9400] transition-all duration-300 text-white text-[16px] font-medium shadow-md flex items-center gap-2">
-              <span>◎</span>
+            <button className="h-[56px] px-10 rounded-xl bg-[#F5A300] hover:bg-[#E19300] transition-all duration-300 text-white text-[16px] font-medium shadow-xl hover:scale-[1.03] flex items-center gap-3">
+              <HeartHandshake size={20} />
               Donate Now
             </button>
 
-            {/* Whatsapp Button */}
-            <button className="h-[54px] px-10 rounded-[6px] bg-[#2ED15B] hover:bg-[#24ba4f] transition-all duration-300 text-white text-[16px] font-medium shadow-md flex items-center gap-2">
-              <span>◉</span>
-              Chat on Whatsapp
+            {/* WhatsApp Button */}
+            <button className="h-[56px] px-10 rounded-xl bg-[#25D366] hover:bg-[#1FBA57] transition-all duration-300 text-white text-[16px] font-medium shadow-xl hover:scale-[1.03] flex items-center gap-3">
+              <MessageCircleMore size={20} />
+              Chat on WhatsApp
             </button>
           </div>
         </div>
       </section>
       {/* Programs Section */}
-      <section className="w-full bg-[#F1F5F9] py-16 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto">
+      <section className="w-full w-screen bg-[#F1F5F9] py-16">
+        <div className="   max-w-none !px-0 !mx-0">
           {/* Header */}
           <div className="flex items-start justify-between mb-10">
             {/* Left Content */}
@@ -384,7 +390,7 @@ export default function TeamMembersPage() {
           <div className="text-center group">
             <div className="overflow-hidden rounded-[8px]">
               <img
-                src="/images/kathmandu.jpg"
+                src="/location.png"
                 alt="Kathmandu"
                 className="w-full block transition duration-500 group-hover:scale-105"
               />
@@ -414,7 +420,7 @@ export default function TeamMembersPage() {
           <div className="text-center group">
             <div className="overflow-hidden rounded-[8px]">
               <img
-                src="/images/okhaldhunga.jpg"
+                src="/location.png"
                 alt="Okhaldhunga"
                 className="w-full block transition duration-500 group-hover:scale-105"
               />
@@ -444,7 +450,7 @@ export default function TeamMembersPage() {
           <div className="text-center group">
             <div className="overflow-hidden rounded-[8px]">
               <img
-                src="/images/nuwakot.jpg"
+                src="/location.png"
                 alt="Nuwakot"
                 className="w-full block transition duration-500 group-hover:scale-105"
               />
@@ -1069,7 +1075,6 @@ export default function TeamMembersPage() {
           </div>
         </div>
       </section>
-      
       {/* Volunteers Section */}
       <section className="w-full bg-gradient-to-b from-[#FFFFFF] to-[#CCEFFD] py-10 px-6 md:px-10">
         {/* Header */}

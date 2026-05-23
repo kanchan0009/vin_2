@@ -1,5 +1,4 @@
-// app/staff/[slug]/page.tsx
-
+import { Heading3, Star } from "lucide-react";
 import { notFound } from "next/navigation";
 import VolunteerProgram from "@/app/components/Volunteer-program";
 import LatestNews from "@/app/components/news";
@@ -167,19 +166,19 @@ export default async function StaffSlugPage({
               CONTENT
           ===================================================== */}
 
-          <div className="space-y-10">
+          <div className="space-y-6">
             <div>
-              <h2 className="text-xl font-semibold text-[#1f2a44] mb-4">
+              <h3 className="text-[20px] font-medium text-[#1f2a44] mb-4">
                 About
-              </h2>
+              </h3>
 
               <p className="text-[15px] leading-8 text-gray-600">{staff.bio}</p>
             </div>
 
             <div>
-              <h2 className="text-xl font-semibold text-[#1f2a44] mb-4">
+              <h3 className="text-[20px] font-medium text-[#1f2a44] mb-4">
                 Experience and Expertise
-              </h2>
+              </h3>
 
               <p className="text-[15px] leading-8 text-gray-600">
                 {staff.name} has extensive experience working with community
@@ -189,9 +188,9 @@ export default async function StaffSlugPage({
             </div>
 
             <div>
-              <h2 className="text-xl font-semibold text-[#1f2a44] mb-4">
+              <h3 className="text-[20px] font-medium text-[#1f2a44] mb-4">
                 Contribution to VIN
-              </h2>
+              </h3>
 
               <p className="text-[15px] leading-8 text-gray-600">
                 Through dedication and leadership, {staff.name} continues to
@@ -205,60 +204,84 @@ export default async function StaffSlugPage({
         {/* =====================================================
             RIGHT SIDEBAR
         ===================================================== */}
+        {/* TESTIMONIALS */}
+        <div className="rounded-2xl border border-[#D9DFEA] bg-[#F8FAFC] overflow-hidden px-6 py-5">
+          {/* Heading */}
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-[19px] font-medium text-[#1F2A44]">
+              What People say about
+              <br/> {staff.name.split(" ")[0]}
+            </h2>
+          </div>
 
-        <aside>
-          <div className="border border-gray-200 rounded-xl overflow-hidden bg-[#fafbfc]">
-            {/* HEADER */}
-
-            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 bg-[#f5f7fa]">
-              <h3 className="text-xl font-semibold text-[#1f2a44]">
-                What People Say
-              </h3>
-
-              <button className="text-sm text-gray-400 hover:text-[#2A3495]">
-                See all
-              </button>
-            </div>
-
-            {/* TESTIMONIALS */}
-
-            <div className="divide-y divide-gray-200">
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="p-5 hover:bg-white transition-all">
+          {/* Cards */}
+          <div className="space-y-5">
+            {[
+              {
+                name: "Charles Richardson",
+                role: "Product Designer",
+                image:
+                  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop",
+              },
+              {
+                name: "Sophia Miller",
+                role: "Volunteer Mentor",
+                image:
+                  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop",
+              },
+              {
+                name: "James Anderson",
+                role: "Community Leader",
+                image:
+                  "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="rounded-2xl border border-[#E2E8F0] bg-[#ffffff] p-6 transition-all duration-300 hover:shadow-lg hover:border-[#CBD5E1]"
+              >
+                {/* Top */}
+                <div className="flex items-start justify-between gap-4">
                   <div className="flex gap-4">
-                    <div className="w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                      <img
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop"
-                        alt="Reviewer"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-14 h-10 rounded-full object-cover border-2 border-white shadow-sm"
+                    />
 
                     <div>
-                      <div className="flex items-center justify-between gap-4 mb-2">
-                        <div>
-                          <h4 className="text-sm font-semibold text-[#1f2a44]">
-                            Charles Richardson
-                          </h4>
+                      <h3 className="text-[16px] font-medium text-[#1F2A44] leading-none">
+                        {item.name}
+                      </h3>
 
-                          <p className="text-xs text-gray-400">
-                            Product Designer
-                          </p>
-                        </div>
-
-                        <div className="text-yellow-500 text-xs">★★★★★</div>
-                      </div>
-                      <p className="text-sm leading-6 text-gray-600">
-                        They approached each shift with professionalism and
-                        enthusiasm, often going above and beyond.
-                      </p>
+                      <p className=" text-[12px] text-[#6B7280]">{item.role}</p>
                     </div>
                   </div>
+
+                  {/* Rating */}
+                  <div className="flex gap-1 mt-1">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star
+                        key={star}
+                        size={15}
+                        className="text-[#FFB400] fill-[#FFB400]"
+                      />
+                    ))}
+                  </div>
                 </div>
-              ))}
-            </div>
+
+                {/* Text */}
+                <p className="mt-5 text-[12px] leading-4 text-[#5B6475]">
+                  They approached each shift with professionalism and
+                  enthusiasm, often going above expectations to ensure projects
+                  were completed smoothly. Their attention to detail and
+                  willingness to assist wherever needed greatly contributed to
+                  the success of our programs.
+                </p>
+              </div>
+            ))}
           </div>
-        </aside>
+        </div>
       </section>
 
       {/* =====================================================
@@ -297,7 +320,7 @@ export default async function StaffSlugPage({
                     />
                   </div>
 
-                 {/* CONTENT */}
+                  {/* CONTENT */}
 
                   <div className="mt-4">
                     <h3 className="text-[15px] font-medium leading-6 text-[#1f2a44] group-hover:text-[#2A3495]">
@@ -1139,4 +1162,4 @@ export default async function StaffSlugPage({
       <Articles />
     </main>
   );
-}  
+}

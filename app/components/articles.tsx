@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const news = [
@@ -32,10 +32,8 @@ const news = [
 export default function LatestNews() {
   return (
     <section className="w-full py-12 px-4 sm:px-6 lg:px-7 relative overflow-hidden">
-      
       {/* Header */}
       <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between mb-8">
-        
         <div className="w-full">
           <h2 className="text-[30px] sm:text-[36px] lg:text-[40px] font-medium text-[#1d1d1d] leading-tight mb-3">
             Latest Articles
@@ -43,20 +41,19 @@ export default function LatestNews() {
 
           <p className="max-w-[760px] text-[14px] sm:text-[15px] lg:text-[16px] leading-[24px] text-[#5d5d5d]">
             Stay updated with our latest Articles, featuring the most recent
-            updates, events, and developments. Get insights and information
-            that keep you informed and connected with our community and
-            initiatives.
+            updates, events, and developments. Get insights and information that
+            keep you informed and connected with our community and initiatives.
           </p>
         </div>
-
-        <button className="w-fit rounded-md bg-[#1F2B6C] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#3340d0]">
-              View all
-            </button>
+        <Link href="/festivals">
+          <button className="w-fit rounded-md bg-[#1F2B6C] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#3340d0]">
+            View all Festivals
+          </button>
+        </Link>
       </div>
 
       {/* Slider */}
       <div className="relative">
-        
         {/* Left Arrow */}
         <button className="hidden lg:flex absolute left-[-12px] top-[42%] z-20 h-10 w-10 rounded-full bg-white shadow-md border border-gray-200 items-center justify-center">
           <ChevronLeft size={20} className="text-[#666]" />
@@ -69,7 +66,6 @@ export default function LatestNews() {
               key={item.id}
               className="group border border-[#e5e7eb] rounded-sm overflow-hidden p-4 hover:shadow-md transition-all duration-300 bg-white"
             >
-              
               {/* Image */}
               <div className="relative overflow-hidden rounded-sm">
                 <img
