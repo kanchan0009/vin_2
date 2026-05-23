@@ -43,7 +43,7 @@ const navItems = [
     ],
   },
   { href: "/fees", label: "Fees" },
-  { href: "/blogs", label: "Blogs" },
+  { href: "/media/blogs", label: "Blogs" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
   {
