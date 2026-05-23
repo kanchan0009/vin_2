@@ -221,6 +221,63 @@ export default function VolunteerProfilePage() {
           </div>
         </div>
       </section>
+      <section className="w-full bg-[#F1F5F9] py-16 px-6 md:px-10">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="flex items-start justify-between mb-10">
+            {/* Left Content */}
+            <div>
+              <h2 className="text-[32px] font-semibold text-[#1f2a44] leading-none mb-3">
+                Programs you May Like
+              </h2>
+
+              <p className="text-[14px] leading-[26px] text-[#6b7280] max-w-[620px]">
+                Discover meaningful volunteer opportunities that align with your
+                passion and skills while creating a lasting impact in Nepalese
+                communities.
+              </p>
+            </div>
+
+            {/* Explore Link */}
+            <button className="flex items-center gap-2 text-[14px] font-medium text-[#1f2a44] hover:text-[#2A3495] transition-all">
+              Explore All Programs
+              <span className="text-[18px]">→</span>
+            </button>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <div
+                key={index}
+                className="relative overflow-hidden rounded-md border border-[#e5e7eb] shadow-sm hover:shadow-md transition-all bg-white"
+              >
+                {/* Full Image */}
+                <div className="relative h-[260px]">
+                  <img
+                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
+                    alt="Program"
+                    className="w-full h-full object-cover"
+                  />
+
+                  {/* Dark Overlay */}
+                  <div className="absolute inset-0 bg-black/20" />
+
+                  {/* Overlapping Content */}
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="bg-white rounded-md px-4 py-3 shadow-md border border-[#e5e7eb]">
+                      <h3 className="text-[15px] leading-[22px] font-semibold text-center text-[#1f2a44]">
+                        Domestic Violence Prevention Volunteer Program in Nepal
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
     </main>
   );
 }

@@ -6,21 +6,22 @@ import Articles from "../components/articles";
 
 export default function ProgrammePage() {
   return (
-    <main className="min-h-screen bg-zinc-50">
-      {/* Hero Section */}
-      <section className="w-full h-[500px] overflow-hidden">
-        <img
-          src="/hero.jpg"
-          alt="Hero"
-          className="w-full h-full object-cover"
-        />
-      </section>
+    <main className="min-h-screen  bg-white">
+      
+      {/* Top Image */}
+        <div className="w-full relative left-1/2 right-1/2 w-full -translate-x-1/2 overflow-hidden">
+          <img
+            src="/hero.png"
+            alt="Women's Empowerment"
+            className="w-full h-[220px] sm:h-[320px] md:h-[420px] object-cover"
+          />
+        </div>
 
       {/* Programs Section */}
       <section className="w-full px-6 md:px-12 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
         {/* Left Content */}
         <div>
-          <h2 className="text-[42px] font-semibold text-[#1f2a44] leading-none mb-4">
+          <h2 className="text-[38px] font-medium text-[#1f2a44] leading-none mb-4">
             Our Volunteering programs
           </h2>
 
@@ -99,12 +100,12 @@ export default function ProgrammePage() {
         </div>
       </section>
       {/*our team section*/}
-      <section className="w-full bg-[#f5f5f5] py-16 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="w-full  py-20 px-4 md:px-8">
+        <div className=" mx-auto">
           {/* Header */}
           <div className="flex items-start justify-between flex-wrap gap-4">
             <div>
-              <h2 className="text-[42px] font-semibold text-[#1F2A44] leading-tight">
+              <h2 className="text-[38px] font-medium text-[#1F2A44] leading-tight">
                 Our Team Members
               </h2>
 
@@ -134,12 +135,12 @@ export default function ProgrammePage() {
                   <img
                     src="/images/member1.png"
                     alt="Bhupendra Ghimire"
-                    className="w-full h-[300px] object-cover"
+                    className="w-full h-[200px] object-cover"
                   />
                 </div>
 
                 <div className="mt-4">
-                  <h3 className="text-[18px] font-semibold text-[#1F2937]">
+                  <h3 className="text-[18px] font-[400] text-[#1F2937]">
                     Bhupendra Ghimire
                   </h3>
 
@@ -161,7 +162,7 @@ export default function ProgrammePage() {
                   <img
                     src="/images/member2.png"
                     alt="Dinesh Khatiwada"
-                    className="w-full h-[300px] object-cover"
+                    className="w-full h-[200px] object-cover"
                   />
                 </div>
 
@@ -190,7 +191,7 @@ export default function ProgrammePage() {
                   <img
                     src="/images/member3.png"
                     alt="Tula Dhwoj Khatiwada"
-                    className="w-full h-[300px] object-cover"
+                    className="w-full h-[200px] object-cover"
                   />
                 </div>
 
@@ -219,7 +220,7 @@ export default function ProgrammePage() {
                   <img
                     src="/images/member4.png"
                     alt="Surendra Joshi"
-                    className="w-full h-[300px] object-cover"
+                    className="w-full h-[200px] object-cover"
                   />
                 </div>
 
@@ -299,9 +300,9 @@ export default function ProgrammePage() {
 
               <a
                 href="/"
-                className="text-[14px] text-black border-b border-black pb-[2px] hover:opacity-70 transition"
+                className="text-[16px] text-black pb-[2px] hover:opacity-70 transition"
               >
-                Read More
+                Read More..
               </a>
             </div>
           </div>
@@ -329,9 +330,9 @@ export default function ProgrammePage() {
 
               <a
                 href="/"
-                className="text-[14px] text-black border-b border-black pb-[2px] hover:opacity-70 transition"
+                className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
               >
-                Read More
+                Read More..
               </a>
             </div>
           </div>
@@ -359,14 +360,16 @@ export default function ProgrammePage() {
 
               <a
                 href="/"
-                className="text-[14px] text-black border-b border-black pb-[2px] hover:opacity-70 transition"
+                className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
               >
-                Read More
+                Read More..
               </a>
             </div>
           </div>
         </div>
       </section>
+      <LatestNews/>
+      <Articles/>
       {/* Choose Impact Section */}
       <section className="py-16">
         {/* Top Heading */}
@@ -551,12 +554,13 @@ export default function ProgrammePage() {
           </div>
         </div>
       </section>
-      <section className="w-full bg-[#f7f7f7] py-14 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Volunteer Reviews Section */}
+      <section className="w-full  py-14 md:py-20">
+        <div className="mx-auto  px-4 sm:px-6 lg:px-8">
           {/* Top Heading */}
           <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
             <div className="max-w-2xl">
-              <h2 className="text-3xl font-semibold tracking-tight text-[#1b1b1b] md:text-[38px]">
+              <h2 className="text-3xl font-medium tracking-tight text-[#1b1b1b] md:text-[38px]">
                 What Our Volunteers Say
               </h2>
 
@@ -568,7 +572,7 @@ export default function ProgrammePage() {
             </div>
 
             {/* Button */}
-            <button className="w-fit rounded-md bg-[#3f4ad8] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#3340d0]">
+            <button className="w-fit rounded-md bg-[#1F2B6C] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#3340d0]">
               View all
             </button>
           </div>
@@ -576,7 +580,7 @@ export default function ProgrammePage() {
           {/* Slider Area */}
           <div className="relative">
             {/* Left Arrow */}
-            <button className="absolute left-[-8px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex">
+            <button className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4 text-[#5f6b7a]"
@@ -596,7 +600,7 @@ export default function ProgrammePage() {
             {/* Cards */}
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
               {/* Card 1 */}
-              <div className="rounded-2xl border border-[#ececec] bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 <p className="text-[14px] leading-7 text-[#5d6470]">
                   "Volunteering with VN completely transformed the way I see
                   community development. The staff were incredibly supportive,
@@ -606,13 +610,13 @@ export default function ProgrammePage() {
 
                 <div className="mt-6 flex items-center gap-3">
                   <img
-                    src="/avatar1.png"
+                    src="/hero.png"
                     alt="User"
                     className="h-11 w-11 rounded-full object-cover"
                   />
 
                   <div>
-                    <h4 className="text-sm font-semibold text-[#111827]">
+                    <h4 className="text-sm font-medium text-[#111827]">
                       Baker Kumar Sah
                     </h4>
                     <p className="text-xs text-[#8b8b8b]">Nepal</p>
@@ -621,7 +625,7 @@ export default function ProgrammePage() {
               </div>
 
               {/* Card 2 */}
-              <div className="rounded-2xl border border-[#ececec] bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 <p className="text-[14px] leading-7 text-[#5d6470]">
                   "Volunteering with VN completely transformed the way I see
                   community development. The staff were incredibly supportive,
@@ -631,13 +635,13 @@ export default function ProgrammePage() {
 
                 <div className="mt-6 flex items-center gap-3">
                   <img
-                    src="/avatar1.png"
+                    src="/hero.png"
                     alt="User"
                     className="h-11 w-11 rounded-full object-cover"
                   />
 
                   <div>
-                    <h4 className="text-sm font-semibold text-[#111827]">
+                    <h4 className="text-sm font-medium text-[#111827]">
                       Baker Kumar Sah
                     </h4>
                     <p className="text-xs text-[#8b8b8b]">United States</p>
@@ -646,7 +650,7 @@ export default function ProgrammePage() {
               </div>
 
               {/* Card 3 */}
-              <div className="rounded-2xl border border-[#ececec] bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 <p className="text-[14px] leading-7 text-[#5d6470]">
                   "Volunteering with VN completely transformed the way I see
                   community development. The staff were incredibly supportive,
@@ -656,13 +660,13 @@ export default function ProgrammePage() {
 
                 <div className="mt-6 flex items-center gap-3">
                   <img
-                    src="/avatar1.png"
+                    src="/hero.png"
                     alt="User"
                     className="h-11 w-11 rounded-full object-cover"
                   />
 
                   <div>
-                    <h4 className="text-sm font-semibold text-[#111827]">
+                    <h4 className="text-sm font-medium text-[#111827]">
                       Baker Kumar Sah
                     </h4>
                     <p className="text-xs text-[#8b8b8b]">Georgia</p>
@@ -672,7 +676,7 @@ export default function ProgrammePage() {
             </div>
 
             {/* Right Arrow */}
-            <button className="absolute right-[-8px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex">
+            <button className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4 text-[#5f6b7a]"
@@ -692,12 +696,12 @@ export default function ProgrammePage() {
         </div>
       </section>
       {/*Trust Us section*/}
-      <section className="w-full bg-[#f5f5f5] py-14 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="w-full  py-14 md:py-20">
+        <div className="mx-auto  px-4 sm:px-6 lg:px-8">
           {/* Top Heading */}
           <div className="mb-8 flex items-start justify-between">
             <div className="max-w-3xl">
-              <h2 className="text-3xl font-semibold tracking-tight text-[#1b1b1b] md:text-[38px]">
+              <h2 className="text-3xl font-medium tracking-tight text-[#1b1b1b] md:text-[38px]">
                 Watch Why People Trust Us
               </h2>
 
@@ -812,7 +816,7 @@ export default function ProgrammePage() {
         </div>
       </section>
       {/*Explore Nepal section*/}
-      <section className="relative overflow-hidden bg-[#00B1F333] py-16 md:py-24">
+      <section className="relative overflow-hidden bg-[#00B1F333] mb-10 py-16 md:py-24">
         {/* Top Wave */}
         <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
           <svg
@@ -845,12 +849,12 @@ export default function ProgrammePage() {
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Top Content */}
-          <div className="grid gap-10 md:grid-cols-2 md:items-start">
+          <div className="grid gap-20 md:grid-cols-2 md:items-start">
             {/* Left */}
             <div>
               <p className="text-[18px] text-[#5b6770]">Explore Nepal</p>
 
-              <h2 className="mt-3 max-w-md text-[36px] font-medium leading-tight text-[#374151] md:text-[52px]">
+              <h2 className="mt-3 max-w-md text-[36px] font-medium leading-tight text-[#374151] md:text-[38px]">
                 Where Every Journey
                 <br />
                 Has a Purpose
@@ -858,12 +862,12 @@ export default function ProgrammePage() {
             </div>
 
             {/* Right */}
-            <div className="max-w-xl pt-2">
-              <p className="text-[15px] leading-7 text-[#374151]">
-                <span className="font-semibold">Explore Nepal</span> — a land
-                where snow-capped mountains meet ancient temples, and kindness
-                flows through every village path. This is a country of simple
-                living, deep spirituality, and warm community bonds.
+            <div className="max-w-xl pt-8">
+              <p className="text-[15px]  font-[400] leading-7 text-[#374151]">
+                Explore Nepal — a land where snow-capped mountains meet ancient
+                temples, and kindness flows through every village path. This is
+                a country of simple living, deep spirituality, and warm
+                community bonds.
               </p>
             </div>
           </div>
@@ -873,7 +877,7 @@ export default function ProgrammePage() {
             {/* Image 1 */}
             <div className="overflow-hidden rounded-[22px]">
               <img
-                src="/nepal1.jpg"
+                src="/hero.png"
                 alt="Nepal Trekking"
                 className="h-[220px] w-full object-cover md:h-[420px]"
               />
@@ -882,7 +886,7 @@ export default function ProgrammePage() {
             {/* Image 2 */}
             <div className="overflow-hidden rounded-[22px]">
               <img
-                src="/nepal2.jpg"
+                src="/hero.png"
                 alt="River Rafting"
                 className="h-[220px] w-full object-cover md:h-[420px]"
               />
@@ -891,7 +895,7 @@ export default function ProgrammePage() {
             {/* Image 3 */}
             <div className="overflow-hidden rounded-[22px]">
               <img
-                src="/nepal3.jpg"
+                src="/hero.png"
                 alt="Temple"
                 className="h-[220px] w-full object-cover md:h-[420px]"
               />
@@ -900,7 +904,7 @@ export default function ProgrammePage() {
             {/* Image 4 */}
             <div className="overflow-hidden rounded-[22px]">
               <img
-                src="/nepal4.jpg"
+                src="/hero.png"
                 alt="Wildlife"
                 className="h-[220px] w-full object-cover md:h-[420px]"
               />
@@ -908,67 +912,68 @@ export default function ProgrammePage() {
           </div>
         </div>
       </section>
-      <LatestNews />
-      <Articles />
       {/* Volunteer Program Section */}
-      <section className="relative w-full h-[230px] overflow-hidden">
+      <section className="relative w-full overflow-hidden rounded-sm  pt-10 pb-16 md:pb-24 pt-16">
         {/* Background Image */}
         <img
-          src="/sponsor-banner.jpg"
-          alt="Sponsor a child"
+          src="/hero.png"
+          alt="Sponsor a Child"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-black/75" />
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
+        {/* Left Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
 
         {/* Content */}
-        <div className="relative z-10 h-full flex items-center px-8">
-          <div className="max-w-[420px] text-white">
-            <h2 className="text-[46px] font-semibold leading-[54px] mb-3">
+        <div className="relative z-10 flex items-center h-full px-10">
+          <div className=" text-white">
+            {/* Heading */}
+            <h2 className="text-[38px] leading-[60px] font-medium mb-4">
               Sponsor a Child, Change a Life
             </h2>
 
-            <p className="text-[13px] leading-[22px] text-gray-200 mb-4">
+            {/* Description */}
+            <p className="text-[14px] leading-[24px] text-gray-200 mb-6 max-w-[470px]">
               Your sponsorship provides education, healthcare, and essential
               support to children in Nepal who need it most. Give a child the
               opportunity to learn, grow, and build a brighter future.
             </p>
 
-            <ul className="space-y-2 mb-6">
-              <li className="flex items-center gap-2 text-[15px] font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-white" />
+            {/* List */}
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-center gap-3 text-[17px] font-medium">
+                <span className="w-2 h-2 rounded-full bg-white" />
                 Education & Learning
               </li>
 
-              <li className="flex items-center gap-2 text-[15px] font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-white" />
+              <li className="flex items-center gap-3 text-[17px] font-medium">
+                <span className="w-2 h-2 rounded-full bg-white" />
                 Health & Wellbeing
               </li>
 
-              <li className="flex items-center gap-2 text-[15px] font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-white" />
+              <li className="flex items-center gap-3 text-[17px] font-medium">
+                <span className="w-2 h-2 rounded-full bg-white" />
                 Empowerment & Opportunity
               </li>
             </ul>
 
-            <button className="bg-[#3b43d6] hover:bg-[#3138ba] transition-all text-white text-[13px] font-medium px-5 py-3 rounded-md shadow-lg">
+            {/* Button */}
+            <button className="bg-[#1F2B6C] hover:bg-[#1F2B6C] transition-all duration-300 text-white text-[14px] font-medium px-6 py-3 rounded-md shadow-lg">
               Help a child today!
             </button>
           </div>
         </div>
       </section>
-        {/* inquiry section */  }
-      
+      {/* Contact Section */}
       <section className="w-full flex justify-center py-12 px-4 bg-white">
-        <div className="w-full max-w-4xl bg-[#2A3495] rounded-md overflow-hidden px-8 py-7">
+        <div className="w-full max-w-4xl bg-[#2E3192] rounded-md overflow-hidden px-8 py-7">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             {/* Left Content */}
             <div className="text-white pt-2">
-              <h2 className="text-[38px] leading-[48px] font-semibold mb-4">
+              <h2 className="text-[34px] leading-[48px] fontmedium mb-4">
                 Ready to Start Your Journey?
               </h2>
 
@@ -1098,4 +1103,3 @@ export default function ProgrammePage() {
     </main>
   );
 }
-

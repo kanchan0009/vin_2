@@ -59,7 +59,7 @@ export default function WomenEmpowermentSection() {
         {/* Top Header */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
           <div>
-            <h2 className="text-[#2D3448] text-[28px] md:text-[40px] leading-tight font-serif font-normal">
+            <h2 className="text-[#2D3448] text-[22px] md:text-[40px] leading-tight font-serif font-normal">
               Women’s Empowerment
             </h2>
 
@@ -153,7 +153,7 @@ export default function WomenEmpowermentSection() {
           {/* Top Header */}
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
-              <h2 className="text-[#2D3448] text-[28px] md:text-[40px] leading-tight font-serif font-normal">
+              <h2 className="text-[#2D3448] text-[22px] md:text-[40px] leading-tight font-serif font-normal">
                 {topic.title}
               </h2>
 
