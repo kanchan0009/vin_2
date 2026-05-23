@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 const news = [
   {
     id: 1,
-    image: "/news1.jpg",
+    image: "/hero.png",
     title:
       "ECHAV Volunteers Inspire Learning and Creativity Among Children in Okhaldhunga",
     description:
@@ -13,7 +13,7 @@ const news = [
   },
   {
     id: 2,
-    image: "/news1.jpg",
+    image: "/hero.png",
     title:
       "ECHAV Volunteers Inspire Learning and Creativity Among Children in Okhaldhunga",
     description:
@@ -21,7 +21,7 @@ const news = [
   },
   {
     id: 3,
-    image: "/news1.jpg",
+    image: "/hero.png",
     title:
       "ECHAV Volunteers Inspire Learning and Creativity Among Children in Okhaldhunga",
     description:

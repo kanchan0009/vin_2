@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 const news = [
   {
     id: 1,
-    image: "/news1.jpg",
+    image: "/hero.png",
     title:
       "ECHAV Volunteers Inspire Learning and Creativity Among Children in Okhaldhunga",
     description:
@@ -13,7 +13,7 @@ const news = [
   },
   {
     id: 2,
-    image: "/news1.jpg",
+    image: "/hero.png",
     title:
       "ECHAV Volunteers Inspire Learning and Creativity Among Children in Okhaldhunga",
     description:
@@ -21,7 +21,7 @@ const news = [
   },
   {
     id: 3,
-    image: "/news1.jpg",
+    image: "/hero.png",
     title:
       "ECHAV Volunteers Inspire Learning and Creativity Among Children in Okhaldhunga",
     description:
@@ -40,7 +40,7 @@ export default function LatestNews() {
           </h2>
 
           <p className="max-w-[760px] text-[16px] leading-[24px] text-[#5d5d5d]">
-            Stay updated with our latest News, featuring the most recent
+            Stay updated with our latest Articles, featuring the most recent
             updates, events, and developments. Get insights and information
             that keep you informed and connected with our community and
             initiatives.

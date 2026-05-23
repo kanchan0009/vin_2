@@ -67,7 +67,7 @@ export default function HomePage() {
           {/* Buttons */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             {/* Primary Button */}
-            <Link href="/our-story">
+            <Link href="/about/our-story">
               <button className="bg-[#2F3C97] hover:bg-[#25307d] transition-all duration-300 text-white text-[14px] font-medium px-10 py-3 rounded-[4px] shadow-md">
                 Our Story
               </button>
@@ -211,7 +211,7 @@ export default function HomePage() {
 
         {/* Button */}
         <div className="flex justify-center">
-          <Link href="/our-approach">
+          <Link href="/about/our-approach">
             <button className="mt-8 bg-[#2F3C97] hover:bg-[#25307d] transition-all duration-300 text-white text-[14px] font-medium px-8 py-3 rounded-[4px] shadow-md">
               Read More
             </button>
@@ -904,7 +904,7 @@ export default function HomePage() {
 
                 <div className="mt-6 flex items-center gap-3">
                   <img
-                    src="/avatar1.png"
+                    src="/hero.png"
                     alt="User"
                     className="h-11 w-11 rounded-full object-cover"
                   />
@@ -929,7 +929,7 @@ export default function HomePage() {
 
                 <div className="mt-6 flex items-center gap-3">
                   <img
-                    src="/avatar1.png"
+                    src="/hero.png"
                     alt="User"
                     className="h-11 w-11 rounded-full object-cover"
                   />
@@ -954,7 +954,7 @@ export default function HomePage() {
 
                 <div className="mt-6 flex items-center gap-3">
                   <img
-                    src="/avatar1.png"
+                    src="/hero.png"
                     alt="User"
                     className="h-11 w-11 rounded-full object-cover"
                   />
@@ -1171,7 +1171,7 @@ export default function HomePage() {
             {/* Image 1 */}
             <div className="overflow-hidden rounded-[22px]">
               <img
-                src="/nepal1.jpg"
+                src="/hero.png"
                 alt="Nepal Trekking"
                 className="h-[220px] w-full object-cover md:h-[420px]"
               />
@@ -1180,7 +1180,7 @@ export default function HomePage() {
             {/* Image 2 */}
             <div className="overflow-hidden rounded-[22px]">
               <img
-                src="/nepal2.jpg"
+                src="/hero.png"
                 alt="River Rafting"
                 className="h-[220px] w-full object-cover md:h-[420px]"
               />
@@ -1189,7 +1189,7 @@ export default function HomePage() {
             {/* Image 3 */}
             <div className="overflow-hidden rounded-[22px]">
               <img
-                src="/nepal3.jpg"
+                src="/hero.png"
                 alt="Temple"
                 className="h-[220px] w-full object-cover md:h-[420px]"
               />
@@ -1198,7 +1198,7 @@ export default function HomePage() {
             {/* Image 4 */}
             <div className="overflow-hidden rounded-[22px]">
               <img
-                src="/nepal4.jpg"
+                src="/hero.png"
                 alt="Wildlife"
                 className="h-[220px] w-full object-cover md:h-[420px]"
               />
@@ -1212,7 +1212,7 @@ export default function HomePage() {
       <section className="relative w-full overflow-hidden rounded-sm  pt-10 pb-16 md:pb-24 pt-16">
         {/* Background Image */}
         <img
-          src="/sponsor-banner.jpg"
+          src="/hero.png"
           alt="Sponsor a Child"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -1288,7 +1288,7 @@ export default function HomePage() {
           {/* Image 1 */}
           <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
             <img
-              src="/gallery/gallery-1.jpg"
+              src="/hero.png"
               alt="gallery"
               className="w-full h-[200px] object-cover"
             />
@@ -1297,7 +1297,7 @@ export default function HomePage() {
           {/* Image 2 */}
           <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
             <img
-              src="/gallery/gallery-2.jpg"
+              src="/hero.png"
               alt="gallery"
               className="w-full h-[200px] object-cover"
             />
@@ -1306,7 +1306,7 @@ export default function HomePage() {
           {/* Image 3 */}
           <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
             <img
-              src="/gallery/gallery-3.jpg"
+              src="/hero.png"
               alt="gallery"
               className="w-full h-[200px] object-cover"
             />
@@ -1315,7 +1315,7 @@ export default function HomePage() {
           {/* Image 4 */}
           <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
             <img
-              src="/gallery/gallery-4.jpg"
+              src="/hero.png"
               alt="gallery"
               className="w-full h-[200px] object-cover"
             />
@@ -1324,7 +1324,7 @@ export default function HomePage() {
           {/* Image 5 */}
           <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
             <img
-              src="/gallery/gallery-5.jpg"
+              src="/hero.png"
               alt="gallery"
               className="w-full h-[200px] object-cover"
             />
@@ -1333,7 +1333,7 @@ export default function HomePage() {
           {/* Image 6 */}
           <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
             <img
-              src="/gallery/gallery-6.jpg"
+              src="/hero.png"
               alt="gallery"
               className="w-full h-[200px] object-cover"
             />
@@ -1342,7 +1342,7 @@ export default function HomePage() {
           {/* Image 7 */}
           <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
             <img
-              src="/gallery/gallery-4.jpg"
+              src="/hero.png"
               alt="gallery"
               className="w-full h-[200px] object-cover"
             />
@@ -1351,7 +1351,7 @@ export default function HomePage() {
           {/* Image 8 */}
           <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
             <img
-              src="/gallery/gallery-5.jpg"
+              src="/hero.png"
               alt="gallery"
               className="w-full h-[200px] object-cover"
             />
@@ -1360,7 +1360,7 @@ export default function HomePage() {
           {/* Image 9 */}
           <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
             <img
-              src="/gallery/gallery-6.jpg"
+              src="/hero.png"
               alt="gallery"
               className="w-full h-[200px] object-cover"
             />
@@ -1393,7 +1393,7 @@ export default function HomePage() {
               {/* Image Card */}
               <div className="w-[350px] overflow-hidden rounded-md shadow-md border border-gray-200 bg-white">
                 <img
-                  src="/volunteer.jpg"
+                  src="/hero.png"
                   alt="Volunteer"
                   className="w-full h-[200px] object-cover"
                 />
