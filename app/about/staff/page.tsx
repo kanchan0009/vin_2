@@ -208,7 +208,7 @@ export default function TeamMembersPage() {
                   </p>
 
                   <Link
-                    href={`/staff/${member.slug}`}
+                    href={`/about/staff/${member.slug}`}
                     className="mt-4 w-full h-[40px] rounded-[10px] border border-[#2A3495] text-[#2A3495] text-[15px] font-medium hover:bg-[#2A3495] hover:text-white transition-all duration-300 flex items-center justify-center"
                   >
                     View Profile
