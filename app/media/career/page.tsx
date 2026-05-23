@@ -135,7 +135,7 @@ export default function CareersPage() {
                   </button>
 
                   <Link
-                    href={`/career/${job.slug}`}
+                    href={`/media/career/${job.slug}`}
                     className="flex-1 h-[42px] inline-flex items-center justify-center border border-[#2E3192] hover:bg-[#2E3192] hover:text-white transition-all duration-300 rounded-[4px] text-[#2E3192] text-[13px] font-medium"
                   >
                     Read More

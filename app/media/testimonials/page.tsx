@@ -134,7 +134,7 @@ export default function TestimonialsPage() {
 
                   {/* Button */}
                   <Link
-                    href={`/testimonial/${item.slug}`}
+                    href={`/media/testimonials/${item.slug}`}
                     className="w-full h-[40px] inline-flex items-center justify-center rounded-[6px] bg-[#2F3C97] hover:bg-[#25307d] transition-all text-white text-[13px] font-medium"
                   >
                     Read More

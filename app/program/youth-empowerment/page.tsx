@@ -35,13 +35,13 @@ export default function WomenEducationProgramPage() {
         <span className="w-1 h-1 rounded-full bg-white/70" />
 
         <span className="text-white text-[16px] font-medium">
-          Women’s Empowerment
+          Youth Empowerment
         </span>
       </div>
 
       {/* Heading */}
       <h1 className="text-white text-[20px] md:text-[30px] leading-[32px] font-medium mb-4">
-        Women&apos;s Education Volunteer in Nepal:
+        Youth Empowerment Volunteer in Nepal:
         <br />
         Teach, Mentor, and Transform Lives
       </h1>

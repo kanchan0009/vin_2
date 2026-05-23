@@ -76,28 +76,29 @@ export default function JobDetailsPage() {
           {/* META */}
           <div className="mt-3 space-y-[3px]">
             
-            <div className="flex items-center gap-1 text-[16px] text-[#6B7280]">
+            <div className="flex items-center gap-1 text-[14px] text-[#6B7280]">
               <span>◉</span>
               <p>Okhaldhunga, Nepal</p>
             </div>
 
-            <div className="flex items-center gap-1 text-[16px] text-[#6B7280]">
+            <div className="flex items-center gap-1 text-[14px] text-[#6B7280]">
               <span>◎</span>
               <p>Bachelor in Computer Application</p>
             </div>
 
-            <div className="flex items-center gap-1 text-[16px] text-[#6B7280]">
+            <div className="flex items-center gap-1 text-[14px] text-[#6B7280]">
               <span>◈</span>
               <p>$6,000 to 75,000/Month</p>
             </div>
 
-            <div className="flex items-center gap-1 text-[16px] text-[#6B7280]">
+            <div className="flex items-center gap-1 text-[14px] text-[#6B7280]">
               <span>◌</span>
               <p>Apply Before : 2025-02-14</p>
             </div>
           </div>
 
           {/* BUTTON */}
+          
           <button className="mt-4 w-[190px] h-[32px] bg-[#2E3192] hover:bg-[#23267a] transition-all duration-300 rounded-[3px] text-white text-[16px] font-medium">
             Become Volunteer
           </button>
@@ -117,7 +118,7 @@ export default function JobDetailsPage() {
             real impact?
           </p>
 
-          <p className="mt-2 text-[16px] leading-[18px] text-[#374151]">
+          <p className="mt-2 text-[14px] leading-[18px] text-[#6B7280]">
             If you are creative, detail-oriented, and passionate about helping
             organizations and communities grow, this opportunity will allow you
             to gain hands-on experience in content creation, digital marketing,
@@ -125,7 +126,7 @@ export default function JobDetailsPage() {
             dedicated nonprofit organization in Nepal.
           </p>
 
-          <p className="mt-2 text-[16px] leading-[18px] text-[#374151]">
+          <p className="mt-2 text-[14px] leading-[18px] text-[#6B7280]">
             Volunteers Initiative Nepal (ViN) is seeking energetic and
             enthusiastic volunteers and interns to support our communication and
             outreach activities. This role provides valuable practical exposure
@@ -141,7 +142,7 @@ export default function JobDetailsPage() {
               What You’ll Do for VIN
             </h3>
 
-            <ul className="mt-3 space-y-1 text-[16px] leading-[18px] text-[#374151] list-disc pl-5">
+            <ul className="mt-3 space-y-1 text-[14px] leading-[18px] text-[#6B7280] list-disc pl-5">
               
               <li>
                 Assist in developing communication campaigns for social impact
@@ -203,7 +204,7 @@ export default function JobDetailsPage() {
               Who We’re Looking For
             </h3>
 
-            <ul className="mt-3 space-y-1 text-[16px] leading-[18px] text-[#374151] list-disc pl-5">
+            <ul className="mt-3 space-y-1 text-[14px] leading-[18px] text-[#6B7280] list-disc pl-5">
               
               <li>
                 Strong written and verbal communication skills.
@@ -248,7 +249,7 @@ export default function JobDetailsPage() {
               Benefits of Joining VIN
             </h3>
 
-            <ul className="mt-3 space-y-1 text-[16px] leading-[18px] text-[#374151] list-disc pl-5">
+            <ul className="mt-3 space-y-1 text-[14px] leading-[18px] text-[#6B7280] list-disc pl-5">
               
               <li>
                 Gain practical nonprofit communication and marketing experience.
@@ -287,7 +288,7 @@ export default function JobDetailsPage() {
               Application Process
             </h3>
 
-            <p className="mt-3 text-[16px] leading-[18px] text-[#374151]">
+            <p className="mt-3 text-[14px] leading-[18px] text-[#6B7280]">
               Interested applicants should submit their updated resume along
               with a short motivation letter explaining why they would like to
               join Volunteers Initiative Nepal (ViN) and how their skills can

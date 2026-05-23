@@ -1,5 +1,3 @@
-"use client";
-
 import { notFound } from "next/navigation";
 
 /* =========================================================
@@ -106,13 +104,15 @@ const TESTIMONIALS: Testimonial[] = [
    PAGE
 ========================================================= */
 
-export default function TestimonialDetailsPage({
+export default async function TestimonialDetailsPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
+
   const testimonial = TESTIMONIALS.find(
-    (item) => item.slug === params.slug
+    (item) => item.slug === slug
   );
 
   if (!testimonial) {
@@ -133,8 +133,8 @@ export default function TestimonialDetailsPage({
   ];
 
   return (
-    <main className="w-full min-h-screen bg-[#F5F6F8] px-6 py-6">
-      <div className="max-w-[1400px] mx-auto">
+    <main className="w-full min-h-screen bg-[#F5F6F8] px-4 sm:px-6 py-6">
+      <div className="max-w-[1400px] mt-10 mx-auto">
         
         {/* MAIN GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_310px] gap-10">
@@ -143,7 +143,7 @@ export default function TestimonialDetailsPage({
           <div>
             
             {/* PROFILE SECTION */}
-            <div className="flex flex-col md:flex-row gap-6 mb-8">
+            <div className="flex flex-col sm:flex-row gap-6 mb-8">
               
               {/* IMAGE */}
               <div className="w-[130px] h-[130px] rounded-[6px] overflow-hidden bg-[#D9D9D9] flex-shrink-0">
@@ -156,7 +156,7 @@ export default function TestimonialDetailsPage({
 
               {/* INFO */}
               <div>
-                <h1 className="text-[22px] font-semibold text-[#1F2A44] mb-2">
+                <h1 className="text-[24px] font-semibold text-[#1F2A44] mb-2">
                   {testimonial.name}
                 </h1>
 
@@ -183,11 +183,11 @@ export default function TestimonialDetailsPage({
 
             {/* EXPERIENCE */}
             <div>
-              <h2 className="text-[18px] font-semibold text-[#1F2A44] mb-4">
+              <h2 className="text-[20px] font-semibold text-[#1F2A44] mb-4">
                 Volunteering experience
               </h2>
 
-              <div className="space-y-5 text-[13px] leading-[26px] text-[#4B5563]">
+              <div className="space-y-5 text-[14px] leading-[28px] text-[#4B5563]">
                 {testimonial.experience.map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
                 ))}
