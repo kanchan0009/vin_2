@@ -55,7 +55,7 @@ const programTopics = [
 export default function WomenEmpowermentSection() {
   return (
     <>
-      <section className="w-full  mx-auto bg-[#F1F2FB] rounded-[10px] shadow-lg border border-[#D9DDEA] box-border relative overflow-hidden py-10">
+      <section className="w-full max-w-[1370px] mx-auto bg-[#F1F2FB] rounded-[10px] shadow-lg border border-[#D9DDEA] box-border relative overflow-hidden py-10">
         {/* Top Header */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
           <div>
@@ -148,7 +148,7 @@ export default function WomenEmpowermentSection() {
       {programTopics.map((topic, index) => (
         <section
           key={index}
-          className="w-full max-w-[1355px] mx-auto bg-[#F1F2FB] rounded-[10px] shadow-lg border border-[#D9DDEA] box-border relative overflow-hidden py-10 mt-10"
+          className="w-full max-w-[1370px] mx-auto bg-[#F1F2FB] rounded-[10px] shadow-lg border border-[#D9DDEA] box-border relative overflow-hidden py-10 mt-10"
         >
           {/* Top Header */}
           <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">

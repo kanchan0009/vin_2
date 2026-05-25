@@ -2,6 +2,7 @@
 
 import LatestNews from "@/app/components/news";
 import Articles from "@/app/components/articles";
+import {Star} from "lucide-react";
 
 export default function OrganizationalStructurePage() {
   const testimonials = [1, 2, 3];
@@ -23,7 +24,7 @@ export default function OrganizationalStructurePage() {
 
   return (
     <main className="w-full bg-white py-14 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-[1fr_350px] gap-3">
+      <div className=" mx-auto grid grid-cols-1 xl:grid-cols-[1fr_350px] gap-3">
         {/* =========================================
             LEFT CONTENT
         ========================================= */}
@@ -262,59 +263,80 @@ export default function OrganizationalStructurePage() {
             RIGHT SIDEBAR
         ========================================= */}
         <div className="space-y-8">
-          {/* Testimonials */}
-          <div className="border border-[#e5e7eb] rounded-md overflow-hidden bg-[#fafbfc]">
-            <div className="flex items-center justify-between px-5 py-4 border-b border-[#e5e7eb] bg-[#f5f7fa]">
-              <h3 className="text-[22px] font-semibold text-[#1f2a44]">
-                Testimonials
-              </h3>
+          <div className="rounded-[14px] border border-[#D9DFEA] bg-white p-5">
+                <div className="mb-5 flex items-center justify-between">
+                  <h3 className="text-[30px] font-medium text-[#1D2433] font-serif">
+                    Testimonials
+                  </h3>
+                </div>
 
-              <button className="text-[12px] font-medium text-[#9ca3af] hover:text-[#2A3495]">
-                see all
-              </button>
-            </div>
+                <div className="space-y-5">
+                  {[
+                    {
+                      name: "Charles Richardson",
+                      role: "Product Designer",
+                      image:
+                        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop",
+                    },
+                    {
+                      name: "Sophia Miller",
+                      role: "Volunteer Mentor",
+                      image:
+                        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop",
+                    },
+                    {
+                      name: "James Anderson",
+                      role: "Community Leader",
+                      image:
+                        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop",
+                    },
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="rounded-2xl border border-[#E2E8F0] bg-[#ffffff] p-6 transition-all duration-300 hover:shadow-lg hover:border-[#CBD5E1]"
+                    >
+                      {/* Top */}
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex gap-4">
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-14 h-10 rounded-full object-cover border-2 border-white shadow-sm"
+                          />
 
-            <div className="divide-y divide-[#e5e7eb]">
-              {testimonials.map((item) => (
-                <div key={item} className="p-5 hover:bg-white transition-all">
-                  <div className="flex items-start gap-4">
-                    <div className="w-[48px] h-[48px] rounded-full overflow-hidden flex-shrink-0">
-                      <img
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop"
-                        alt="Volunteer"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                          <div>
+                            <h3 className="text-[16px] font-medium text-[#1F2A44] leading-none">
+                              {item.name}
+                            </h3>
 
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between gap-3 mb-1">
-                        <div>
-                          <h4 className="text-[15px] font-semibold text-[#1f2a44] leading-none mb-1">
-                            Charles Richardson
-                          </h4>
-
-                          <p className="text-[12px] text-[#9ca3af]">
-                            Product Designer
-                          </p>
+                            <p className=" text-[12px] text-[#6B7280]">
+                              {item.role}
+                            </p>
+                          </div>
                         </div>
 
-                        <div className="flex items-center gap-1 text-[#f9bb1f] text-[14px]">
-                          ★ ★ ★ ★ ★
+                        <div className="flex gap-1 mt-1">
+                          {[1, 2, 3, 4, 5].map((star) => (
+                            <Star
+                              key={star}
+                              size={15}
+                              className="text-[#FFB400] fill-[#FFB400]"
+                            />
+                          ))}
                         </div>
                       </div>
 
-                      <p className="text-[13px] leading-[24px] text-[#5b6478] mt-3">
+                      <p className="mt-5 text-[12px] leading-4 text-[#5B6475]">
                         They approached each shift with professionalism and
-                        enthusiasm, often going above and beyond to ensure our
-                        project’s complex questions were answered and daily
-                        inquiries total all answered.
+                        enthusiasm, often going above expectations to ensure
+                        projects were completed smoothly. Their attention to
+                        detail and willingness to assist wherever needed greatly
+                        contributed to the success of our programs.
                       </p>
                     </div>
-                  </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
 
           {/* Programs */}
           <div className="border border-[#e5e7eb] rounded-md overflow-hidden bg-[#fafbfc]">

@@ -182,7 +182,7 @@ export default function FAQPage() {
           <div className="max-w-[calc(100%-340px)]">
             
             {/* Heading */}
-            <h2 className="text-[42px] font-semibold text-[#1f2a44] leading-none mb-3">
+            <h2 className="text-[38px] font-medium text-[#1f2a44] leading-none mb-3">
               Frequently Asked Questions
             </h2>
 
