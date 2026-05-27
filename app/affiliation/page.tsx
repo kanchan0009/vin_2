@@ -1,4 +1,8 @@
+"use client";
+import { useRef } from "react";
+
 export default function AffiliationPage() {
+  const testimonialsRef = useRef<HTMLDivElement>(null);
   const partners = [
     {
       title: "SuD HAV",
@@ -327,18 +331,25 @@ export default function AffiliationPage() {
         </div>
 
         {/* Slider Section */}
-        <div className="relative">
+        <div className="relative group/test">
           {/* Left Arrow */}
-          <button className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-[38px] h-[38px] rounded-full bg-white shadow-md flex items-center justify-center text-[#2A3495] hover:bg-[#2A3495] hover:text-white transition-all">
+          <button 
+            onClick={() => testimonialsRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
+            className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-[38px] h-[38px] rounded-full bg-white shadow-md flex items-center justify-center text-[#2A3495] hover:bg-[#2A3495] hover:text-white transition-all opacity-0 group-hover/test:opacity-100 duration-300"
+          >
             ❮
           </button>
 
           {/* Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div 
+            ref={testimonialsRef}
+            className="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {testimonials.map((item, index) => (
               <div
                 key={index}
-                className="bg-[#ECEFF3] rounded-[10px] px-8 py-7 shadow-sm border border-[#e4e7ec]"
+                className="w-full md:w-[calc(33.333%-21.33px)] shrink-0 snap-start bg-[#ECEFF3] rounded-[10px] px-8 py-7 shadow-sm border border-[#e4e7ec]"
               >
                 {/* Quote */}
                 <p className="text-[14px] leading-[28px] text-[#5f6777] mb-8">
@@ -371,7 +382,10 @@ export default function AffiliationPage() {
           </div>
 
           {/* Right Arrow */}
-          <button className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-[38px] h-[38px] rounded-full bg-white shadow-md flex items-center justify-center text-[#2A3495] hover:bg-[#2A3495] hover:text-white transition-all">
+          <button 
+            onClick={() => testimonialsRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
+            className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-[38px] h-[38px] rounded-full bg-white shadow-md flex items-center justify-center text-[#2A3495] hover:bg-[#2A3495] hover:text-white transition-all opacity-0 group-hover/test:opacity-100 duration-300"
+          >
             ❯
           </button>
         </div>

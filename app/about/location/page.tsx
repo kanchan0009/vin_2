@@ -1,4 +1,5 @@
 "use client";
+import { useRef } from "react";
 
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
@@ -6,6 +7,11 @@ import LatestNews from "@/app/components/news";
 import Articles from "@/app/components/articles";
 
 export default function Location() {
+  const impactRef = useRef<HTMLDivElement>(null);
+  const volunteerRef = useRef<HTMLDivElement>(null);
+  const trustRef = useRef<HTMLDivElement>(null);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
+
   return (
     <main className="min-h-screen  bg-white">
       {/* Map and Cards Section */}
@@ -191,7 +197,11 @@ export default function Location() {
             </button>
 
             {/* Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div 
+            ref={impactRef}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
               {/* Card 1 */}
               <div className="bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
                 <div className="rounded-[10px] overflow-hidden">
@@ -451,18 +461,26 @@ export default function Location() {
         </div>
 
         {/* Cards */}
-        <div className="relative">
+        <div className="relative group/impact">
           {/* Left Arrow */}
-          <button className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition">
+          <button 
+            onClick={() => impactRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
+            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition opacity-0 group-hover/impact:opacity-100">
             ❮
           </button>
 
           {/* Right Arrow */}
-          <button className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition">
+          <button 
+            onClick={() => impactRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
+            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition opacity-0 group-hover/impact:opacity-100">
             ❯
           </button>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div 
+            ref={impactRef}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {/* Card 1 */}
             <div className="bg-white  ">
               <div className="overflow-hidden shadow-md border border-gray-200 group hover:shadow-2xl transition duration-500">
@@ -635,9 +653,11 @@ export default function Location() {
           </div>
 
           {/* Slider Area */}
-          <div className="relative">
+          <div className="relative group/vol">
             {/* Left Arrow */}
-            <button className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex">
+            <button 
+              onClick={() => volunteerRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
+              className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4 text-[#5f6b7a]"
@@ -655,9 +675,13 @@ export default function Location() {
             </button>
 
             {/* Cards */}
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div 
+              ref={volunteerRef}
+              className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
               {/* Card 1 */}
-              <div className="rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 <p className="text-[14px] leading-7 text-[#5d6470]">
                   "Volunteering with VN completely transformed the way I see
                   community development. The staff were incredibly supportive,
@@ -682,7 +706,7 @@ export default function Location() {
               </div>
 
               {/* Card 2 */}
-              <div className="rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 <p className="text-[14px] leading-7 text-[#5d6470]">
                   "Volunteering with VN completely transformed the way I see
                   community development. The staff were incredibly supportive,
@@ -707,7 +731,7 @@ export default function Location() {
               </div>
 
               {/* Card 3 */}
-              <div className="rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 <p className="text-[14px] leading-7 text-[#5d6470]">
                   "Volunteering with VN completely transformed the way I see
                   community development. The staff were incredibly supportive,
@@ -733,7 +757,9 @@ export default function Location() {
             </div>
 
             {/* Right Arrow */}
-            <button className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex">
+            <button 
+              onClick={() => volunteerRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
+              className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4 text-[#5f6b7a]"
@@ -772,7 +798,9 @@ export default function Location() {
 
             {/* Navigation Arrows */}
             <div className="hidden items-center gap-2 md:flex">
-              <button className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50">
+              <button 
+                onClick={() => trustRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 text-[#5f6b7a]"
@@ -789,7 +817,9 @@ export default function Location() {
                 </svg>
               </button>
 
-              <button className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50">
+              <button 
+                onClick={() => trustRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 text-[#5f6b7a]"

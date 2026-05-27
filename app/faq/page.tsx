@@ -45,7 +45,20 @@ const faqs = [
       "Yes, some programs connect education initiatives with women-led enterprise and community development projects.",
   },
 ];
-
+const programs = [
+    "Children’s Development Program",
+    "Youth Empowerment Program",
+    "Public Health & Medical Program",
+    "Environment Conservation Program",
+    "Disaster Risk Reduction (DRR) Program",
+    "Public health and medical care",
+    "Environment conservation",
+    "Teaching program",
+    "Management & Administration",
+    "Journalism",
+    "Public interest",
+    "WorkCamps",
+  ];
 export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState(0);
 
@@ -63,7 +76,7 @@ export default function FAQPage() {
           <div>
             
             {/* Heading */}
-            <h2 className="text-[42px] font-semibold text-[#1f2a44] mb-10">
+            <h2 className="text-[38px] font-medium text-[#1f2a44] mb-6">
               Question Categories
             </h2>
 

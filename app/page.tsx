@@ -1,48 +1,112 @@
 "use client";
+import { useState, useRef } from "react";
 import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import VolunteerProgram from "./components/Volunteer-program";
 import LatestNews from "./components/news";
 import Aricles from "./components/articles";
 
+const heroSlides = [
+  {
+    image: "/hero.png",
+    title: "Women’s Empowerment",
+    description: "We equip rural women with non-formal education, life skills, entrepreneurship support, microcredit access, and leadership training — helping them rise, earn, and live with confidence and dignity.",
+  },
+  {
+    image: "/trust-video.jpg",
+    title: "Children Development",
+    description: "Providing quality education and healthcare to children, ensuring they grow up in a safe, nurturing environment with equal opportunities for a brighter future.",
+  },
+  {
+    image: "/images/volunteer.jpg",
+    title: "Youth Empowerment",
+    description: "Empowering young people through skill development, vocational training, and leadership programs to become independent and active members of society.",
+  },
+  {
+    image: "/images/kids.png",
+    title: "Public Health",
+    description: "Enhancing community health through medical camps, hygiene education, and sustainable sanitation projects for a healthier tomorrow.",
+  },
+  {
+    image: "/images/donate.jpg",
+    title: "Community Development",
+    description: "Working hands-on with local communities to build infrastructure, support agriculture, and create sustainable livelihoods for everyone.",
+  }
+];
+
 export default function HomePage() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const teamRef = useRef<HTMLDivElement>(null);
+  const impactRef = useRef<HTMLDivElement>(null);
+  const volunteerRef = useRef<HTMLDivElement>(null);
+  const [trustSlide, setTrustSlide] = useState(0);
+
+  const trustVideos = [
+    { image: "/trust-video.jpg", name: "Peter Smith", description: "Listen to heartfelt stories from people who choose to make a difference with us." },
+    { image: "/images/volunteer.jpg", name: "Sarah Johnson", description: "Our experience with VIN has been truly life-changing. Highly recommend joining." }
+  ];
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+  const nextTrust = () => setTrustSlide((prev) => (prev + 1) % trustVideos.length);
+  const prevTrust = () => setTrustSlide((prev) => (prev === 0 ? trustVideos.length - 1 : prev - 1));
+
   return (
     <main className="min-h-screen bg-[#ffffff] text-zinc-950">
       {/*hero section*/}
       <section className="w-full  overflow-hidden">
         {/* Top Image */}
-        <div className="w-full relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden">
+        <div className="w-full relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden group">
           <img
-            src="/hero.png"
-            alt="Women's Empowerment"
-            className="w-full h-[220px] sm:h-[320px] md:h-[420px] object-cover"
+            src={heroSlides[currentSlide].image}
+            alt={heroSlides[currentSlide].title}
+            className="w-full h-[220px] sm:h-[320px] md:h-[420px] object-cover transition-all duration-500"
           />
+          
+          {/* Navigation Arrows */}
+          <button 
+            onClick={prevSlide}
+            className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-[#2F3C97] p-2 rounded-full shadow-md transition-opacity duration-300 z-10"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button 
+            onClick={nextSlide}
+            className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-[#2F3C97] p-2 rounded-full shadow-md transition-opacity duration-300 z-10"
+          >
+            <ChevronRight size={24} />
+          </button>
         </div>
 
         {/* Bottom Content */}
-        <div className="flex flex-col md:flex-row justify-between gap-6 px-6 md:px-10 py-6 md:py-8">
+        <div className="flex flex-col md:flex-row justify-between gap-6 px-6 md:px-10 py-6 md:py-8 min-h-[160px]">
           {/* Left Side */}
           <div className="flex-1">
-            <h2 className="text-[28px] md:text-[42px] leading-tight  text-[#2D3448]">
-              Women’s Empowerment
+            <h2 className="text-[28px] md:text-[42px] leading-tight  text-[#2D3448] transition-all duration-300">
+              {heroSlides[currentSlide].title}
             </h2>
 
             {/* Slider Dots */}
             <div className="flex items-center gap-2 mt-4">
-              <div className="w-8 h-[5px] rounded-full bg-[#2F3C97]"></div>
-              <div className="w-[6px] h-[6px] rounded-full bg-[#CFCFD4]"></div>
-              <div className="w-[6px] h-[6px] rounded-full bg-[#CFCFD4]"></div>
-              <div className="w-[6px] h-[6px] rounded-full bg-[#CFCFD4]"></div>
-              <div className="w-[6px] h-[6px] rounded-full bg-[#CFCFD4]"></div>
+              {heroSlides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`transition-all duration-300 rounded-full ${
+                    currentSlide === index
+                      ? "w-8 h-[5px] bg-[#2F3C97]"
+                      : "w-[6px] h-[6px] bg-[#CFCFD4]"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
           </div>
 
           {/* Right Side */}
           <div className="flex-1">
-            <p className="text-[#4A5568] text-[15px] md:text-[18px] leading-[1.8] font-normal">
-              We equip rural women with non-formal education, life skills,
-              entrepreneurship support, microcredit access, and leadership
-              training — helping them rise, earn, and live with confidence and
-              dignity.
+            <p className="text-[#4A5568] text-[15px] md:text-[18px] leading-[1.8] font-normal transition-all duration-300">
+              {heroSlides[currentSlide].description}
             </p>
           </div>
         </div>
@@ -418,131 +482,61 @@ export default function HomePage() {
           </div>
 
           {/* Team Cards */}
-          <div className="relative mt-12">
+          <div className="relative mt-12 group">
             {/* Left Arrow */}
-            <button className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md">
+            <button 
+              onClick={() => teamRef.current?.scrollBy({ left: -320, behavior: "smooth" })}
+              className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md hover:bg-[#1f2875] transition-colors"
+            >
               &#10094;
             </button>
 
-            {/* Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {/* Card 1 */}
-              <div className="bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
-                <div className="rounded-[10px] overflow-hidden">
-                  <img
-                    src="/images/member1.png"
-                    alt="Bhupendra Ghimire"
-                    className="w-full h-[200px] object-cover"
-                  />
+            {/* Cards Slider */}
+            <div 
+              ref={teamRef}
+              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {[
+                { name: "Bhupendra Ghimire", role: "President", degree: "Master's In Education", image: "/images/member1.png" },
+                { name: "Dinesh Khatiwada", role: "Volunteer Manager", degree: "Master's In Education", image: "/images/member2.png" },
+                { name: "Tula Dhwoj Khatiwada", role: "Program Manager", degree: "Master's In Education", image: "/images/member3.png" },
+                { name: "Surendra Joshi", role: "IT Consultant", degree: "Master's In Education", image: "/images/member4.png" },
+                { name: "Anita Thapa", role: "Field Coordinator", degree: "Bachelor's In Social Work", image: "/hero.png" }
+              ].map((member, idx) => (
+                <div key={idx} className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
+                  <div className="rounded-[10px] overflow-hidden">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-[200px] object-cover"
+                    />
+                  </div>
+
+                  <div className="mt-4">
+                    <h3 className="text-[18px] font-semibold text-[#1F2937]">
+                      {member.name}
+                    </h3>
+
+                    <p className="text-[14px] text-[#4B5563] mt-1">{member.role}</p>
+
+                    <p className="text-[13px] text-[#9CA3AF] mt-1">
+                      {member.degree}
+                    </p>
+
+                    <button className="mt-5 w-full border border-[#2A3495] text-[#2A3495] py-2 rounded-md text-sm font-medium hover:bg-[#2A3495] hover:text-white transition">
+                      View profile
+                    </button>
+                  </div>
                 </div>
-
-                <div className="mt-4">
-                  <h3 className="text-[18px] font-[400] text-[#1F2937]">
-                    Bhupendra Ghimire
-                  </h3>
-
-                  <p className="text-[14px] text-[#4B5563] mt-1">President</p>
-
-                  <p className="text-[13px] text-[#9CA3AF] mt-1">
-                    Master's In Education
-                  </p>
-
-                  <button className="mt-5 w-full border border-[#2A3495] text-[#2A3495] py-2 rounded-md text-sm font-medium hover:bg-[#2A3495] hover:text-white transition">
-                    View profile
-                  </button>
-                </div>
-              </div>
-
-              {/* Card 2 */}
-              <div className="bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
-                <div className="rounded-[10px] overflow-hidden">
-                  <img
-                    src="/images/member2.png"
-                    alt="Dinesh Khatiwada"
-                    className="w-full h-[200px] object-cover"
-                  />
-                </div>
-
-                <div className="mt-4">
-                  <h3 className="text-[18px] font-semibold text-[#1F2937]">
-                    Dinesh Khatiwada
-                  </h3>
-
-                  <p className="text-[14px] text-[#4B5563] mt-1">
-                    Volunteer Manager
-                  </p>
-
-                  <p className="text-[13px] text-[#9CA3AF] mt-1">
-                    Master's In Education
-                  </p>
-
-                  <button className="mt-5 w-full border border-[#2A3495] text-[#2A3495] py-2 rounded-md text-sm font-medium hover:bg-[#2A3495] hover:text-white transition">
-                    View profile
-                  </button>
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
-                <div className="rounded-[10px] overflow-hidden">
-                  <img
-                    src="/images/member3.png"
-                    alt="Tula Dhwoj Khatiwada"
-                    className="w-full h-[200px] object-cover"
-                  />
-                </div>
-
-                <div className="mt-4">
-                  <h3 className="text-[18px] font-semibold text-[#1F2937]">
-                    Tula Dhwoj Khatiwada
-                  </h3>
-
-                  <p className="text-[14px] text-[#4B5563] mt-1">
-                    Program Manager
-                  </p>
-
-                  <p className="text-[13px] text-[#9CA3AF] mt-1">
-                    Master's In Education
-                  </p>
-
-                  <button className="mt-5 w-full border border-[#2A3495] text-[#2A3495] py-2 rounded-md text-sm font-medium hover:bg-[#2A3495] hover:text-white transition">
-                    View profile
-                  </button>
-                </div>
-              </div>
-
-              {/* Card 4 */}
-              <div className="bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
-                <div className="rounded-[10px] overflow-hidden">
-                  <img
-                    src="/images/member4.png"
-                    alt="Surendra Joshi"
-                    className="w-full h-[200px] object-cover"
-                  />
-                </div>
-
-                <div className="mt-4">
-                  <h3 className="text-[18px] font-semibold text-[#1F2937]">
-                    Surendra Joshi
-                  </h3>
-
-                  <p className="text-[14px] text-[#4B5563] mt-1">
-                    IT Consultant
-                  </p>
-
-                  <p className="text-[13px] text-[#9CA3AF] mt-1">
-                    Master's In Education
-                  </p>
-
-                  <button className="mt-5 w-full border border-[#2A3495] text-[#2A3495] py-2 rounded-md text-sm font-medium hover:bg-[#2A3495] hover:text-white transition">
-                    View profile
-                  </button>
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* Right Arrow */}
-            <button className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md">
+            <button 
+              onClick={() => teamRef.current?.scrollBy({ left: 320, behavior: "smooth" })}
+              className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md hover:bg-[#1f2875] transition-colors"
+            >
               &#10095;
             </button>
           </div>
@@ -595,12 +589,12 @@ export default function HomePage() {
                 years.
               </p>
 
-              <a
+              <Link
                 href="/"
                 className="text-[16px] text-black pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -625,12 +619,12 @@ export default function HomePage() {
                 engaged with over 900 key workers helping improve livelihoods.
               </p>
 
-              <a
+              <Link
                 href="/"
                 className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -655,12 +649,12 @@ export default function HomePage() {
                 communities.
               </p>
 
-              <a
+              <Link
                 href="/"
                 className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -692,25 +686,35 @@ export default function HomePage() {
         </div>
 
         {/* Cards */}
-        <div className="relative">
+        <div className="relative group">
           {/* Left Arrow */}
-          <button className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition">
+          <button 
+            onClick={() => impactRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
+            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition"
+          >
             ❮
           </button>
 
           {/* Right Arrow */}
-          <button className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition">
+          <button 
+            onClick={() => impactRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
+            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition"
+          >
             ❯
           </button>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div 
+            ref={impactRef} 
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4" 
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {/* Card 1 */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group hover:shadow-2xl transition duration-500">
+            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
               <div className="overflow-hidden">
                 <img
                   src="/images/volunteer.jpg"
                   alt="Volunteer"
-                  className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
+                  className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
                 />
               </div>
 
@@ -722,12 +726,12 @@ export default function HomePage() {
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group hover:shadow-2xl transition duration-500">
+            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
               <div className="overflow-hidden">
                 <img
                   src="/images/donate.jpg"
                   alt="Donate"
-                  className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
+                  className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
                 />
               </div>
 
@@ -739,12 +743,12 @@ export default function HomePage() {
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group hover:shadow-2xl transition duration-500">
+            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
               <div className="overflow-hidden">
                 <img
                   src="/images/internship.jpg"
                   alt="Internship"
-                  className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
+                  className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
                 />
               </div>
 
@@ -756,12 +760,12 @@ export default function HomePage() {
             </div>
 
             {/* Card 4 */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group hover:shadow-2xl transition duration-500">
+            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
               <div className="overflow-hidden">
                 <img
                   src="/images/sponsor.jpg"
                   alt="Sponsor Child"
-                  className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
+                  className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
                 />
               </div>
 
@@ -876,9 +880,12 @@ export default function HomePage() {
           </div>
 
           {/* Slider Area */}
-          <div className="relative">
+          <div className="relative group/vol">
             {/* Left Arrow */}
-            <button className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex">
+            <button 
+              onClick={() => volunteerRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
+              className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex hover:bg-gray-100 transition"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4 text-[#5f6b7a]"
@@ -896,14 +903,18 @@ export default function HomePage() {
             </button>
 
             {/* Cards */}
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div 
+              ref={volunteerRef}
+              className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
               {/* Card 1 */}
-              <div className="rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 <p className="text-[14px] leading-7 text-[#5d6470]">
-                  "Volunteering with VN completely transformed the way I see
+                  &quot;Volunteering with VN completely transformed the way I see
                   community development. The staff were incredibly supportive,
                   and the projects truly made a real impact. I learned so much
-                  from fellow volunteers!"
+                  from fellow volunteers!&quot;
                 </p>
 
                 <div className="mt-6 flex items-center gap-3">
@@ -923,12 +934,12 @@ export default function HomePage() {
               </div>
 
               {/* Card 2 */}
-              <div className="rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 <p className="text-[14px] leading-7 text-[#5d6470]">
-                  "Volunteering with VN completely transformed the way I see
+                  &quot;Volunteering with VN completely transformed the way I see
                   community development. The staff were incredibly supportive,
                   and the projects truly made a real impact. I learned so much
-                  from fellow volunteers!"
+                  from fellow volunteers!&quot;
                 </p>
 
                 <div className="mt-6 flex items-center gap-3">
@@ -948,12 +959,12 @@ export default function HomePage() {
               </div>
 
               {/* Card 3 */}
-              <div className="rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 <p className="text-[14px] leading-7 text-[#5d6470]">
-                  "Volunteering with VN completely transformed the way I see
+                  &quot;Volunteering with VN completely transformed the way I see
                   community development. The staff were incredibly supportive,
                   and the projects truly made a real impact. I learned so much
-                  from fellow volunteers!"
+                  from fellow volunteers!&quot;
                 </p>
 
                 <div className="mt-6 flex items-center gap-3">
@@ -974,7 +985,10 @@ export default function HomePage() {
             </div>
 
             {/* Right Arrow */}
-            <button className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex">
+            <button 
+              onClick={() => volunteerRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
+              className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex hover:bg-gray-100 transition"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4 text-[#5f6b7a]"
@@ -1013,7 +1027,10 @@ export default function HomePage() {
 
             {/* Navigation Arrows */}
             <div className="hidden items-center gap-2 md:flex">
-              <button className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50">
+              <button 
+                onClick={prevTrust}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 text-[#5f6b7a]"
@@ -1030,7 +1047,10 @@ export default function HomePage() {
                 </svg>
               </button>
 
-              <button className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50">
+              <button 
+                onClick={nextTrust}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 text-[#5f6b7a]"
@@ -1050,12 +1070,12 @@ export default function HomePage() {
           </div>
 
           {/* Video Section */}
-          <div className="relative overflow-hidden rounded-2xl">
+          <div className="relative overflow-hidden rounded-2xl group transition-all duration-300">
             {/* Background Image */}
             <img
-              src="/trust-video.jpg"
+              src={trustVideos[trustSlide].image}
               alt="Trust Video"
-              className="h-[250px] w-full object-cover sm:h-[350px] md:h-[520px]"
+              className="h-[250px] w-full object-cover sm:h-[350px] md:h-[520px] transition-all duration-500"
             />
 
             {/* Dark Overlay */}
@@ -1078,13 +1098,12 @@ export default function HomePage() {
 
             {/* Bottom Left Text */}
             <div className="absolute bottom-6 left-6 z-10 max-w-sm text-white md:bottom-10 md:left-10">
-              <h3 className="text-2xl font-semibold md:text-[34px]">
-                Peter Smith
+              <h3 className="text-2xl font-semibold md:text-[34px] transition-all duration-300">
+                {trustVideos[trustSlide].name}
               </h3>
 
-              <p className="mt-2 text-sm leading-6 text-white/85 md:text-[15px]">
-                Listen to heartfelt stories from people who choose to make a
-                difference with us.
+              <p className="mt-2 text-sm leading-6 text-white/85 md:text-[15px] transition-all duration-300">
+                {trustVideos[trustSlide].description}
               </p>
             </div>
 
@@ -1447,7 +1466,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             {/* Left Content */}
             <div className="text-white pt-2">
-              <h2 className="text-[34px] leading-[48px] fontmedium mb-4">
+              <h2 className="text-[34px] leading-[48px] font-medium mb-4">
                 Ready to Start Your Journey?
               </h2>
 

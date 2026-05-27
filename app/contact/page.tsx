@@ -2,7 +2,7 @@ export default function ContactPage() {
   return (
     <main>
       <section className="w-full bg-white py-16 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10">
+        <div className=" mx-auto grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10">
           {/* Left Form Section */}
           <div>
             {/* Heading */}

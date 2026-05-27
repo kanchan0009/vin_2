@@ -905,25 +905,19 @@ export default function WomenEducationProgramPage() {
 
             {/* RIGHT SIDE */}
             <aside className="space-y-6">
-              {/* Program List */}
-              <div className="rounded-[14px] border border-[#E5E7EB] bg-white p-5">
-                <div className="space-y-1">
-                  {[
-                    "Youth Empowerment Program",
-                    "Public Health & Medical Program",
-                    "Environment Conservation Program",
-                    "Disaster Risk Reduction (DRR) Program",
-                    "Public health and medical care",
-                    "Environment conservation",
-                    "Teaching program",
-                    "Management & Administration",
-                    "Journalism",
-                    "Public Interest",
-                    "WorkCamps",
-                  ].map((item, index) => (
+              {/* Programs */}
+              <div className="border border-[#e5e7eb] rounded-md overflow-hidden bg-[#fafbfc]">
+                <div className="px-5 py-4 border-b border-[#e5e7eb] bg-[#f5f7fa]">
+                  <h2 className="text-[20px] font-medium text-[#1f2a44]">
+                    Other available Programs
+                  </h2>
+                </div>
+
+                <div className="divide-y divide-[#e5e7eb]">
+                  {programs.map((item, index) => (
                     <div
                       key={index}
-                      className="cursor-pointer border-b border-[#EEF1F5] py-4 text-[15px] font-medium text-[#667085] transition-all duration-200 hover:text-[#2F3D9E]"
+                      className="px-5 py-4 text-[15px] text-[#5b6478] hover:bg-white transition-all cursor-pointer"
                     >
                       {item}
                     </div>
@@ -1025,7 +1019,7 @@ export default function WomenEducationProgramPage() {
                   ))}
                 </div>
               </div>
-              
+              {/* Related Articles */}
                 <div className=" rounded-[24px] border border-[#D9DCE7] bg-[#F7F8FA] p-6">
                   {/* Heading */}
                   <h2 className="text-[28px] leading-[42px] text-[#1F2432] mb-8">

@@ -1,4 +1,5 @@
 "use client";
+import { useRef } from "react";
 
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 
@@ -30,6 +31,8 @@ const news = [
 ];
 
 export default function LatestNews() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   return (
     <section className="w-full py-10 px-4 sm:px-6 lg:px-7 relative overflow-hidden mb-10">
       
@@ -55,19 +58,26 @@ export default function LatestNews() {
       </div>
 
       {/* Slider */}
-      <div className="relative">
+      <div className="relative group/slider">
         
         {/* Left Arrow */}
-        <button className="hidden lg:flex absolute left-[-12px] top-[42%] z-20 h-10 w-10 rounded-full bg-white shadow-md border border-gray-200 items-center justify-center">
+        <button 
+          onClick={() => scrollRef.current?.scrollBy({ left: -340, behavior: 'smooth' })}
+          className="hidden lg:flex absolute left-[-12px] top-[42%] z-20 h-10 w-10 rounded-full bg-white shadow-md border border-gray-200 items-center justify-center hover:bg-gray-50 transition"
+        >
           <ChevronLeft size={20} className="text-[#666]" />
         </button>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div 
+          ref={scrollRef}
+          className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
           {news.map((item) => (
             <div
               key={item.id}
-              className="group border border-[#e5e7eb] rounded-sm overflow-hidden p-4 hover:shadow-md transition-all duration-300 bg-white"
+              className="w-full sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start group border border-[#e5e7eb] rounded-sm overflow-hidden p-4 hover:shadow-md transition-all duration-300 bg-white"
             >
               
               {/* Image */}
@@ -105,7 +115,10 @@ export default function LatestNews() {
         </div>
 
         {/* Right Arrow */}
-        <button className="hidden lg:flex absolute right-[-12px] top-[42%] z-20 h-10 w-10 rounded-full bg-white shadow-md border border-gray-200 items-center justify-center">
+        <button 
+          onClick={() => scrollRef.current?.scrollBy({ left: 340, behavior: 'smooth' })}
+          className="hidden lg:flex absolute right-[-12px] top-[42%] z-20 h-10 w-10 rounded-full bg-white shadow-md border border-gray-200 items-center justify-center hover:bg-gray-50 transition"
+        >
           <ChevronRight size={20} className="text-[#666]" />
         </button>
       </div>

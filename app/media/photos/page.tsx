@@ -122,31 +122,24 @@ export default function GalleryPage() {
               RIGHT SIDEBAR
           ===================================================== */}
           <div>
-            <div className="bg-white border border-[#E5E7EB] rounded-[10px] overflow-hidden">
-              
-              {/* Sidebar Header */}
-              <div className="px-5 py-4 border-b border-[#E5E7EB]">
-                <h2 className="text-[20px] font-medium text-[#1F2A44]">
-                  Our Available Programs
-                </h2>
-              </div>
+           <div className="border border-[#e5e7eb] rounded-md overflow-hidden bg-[#fafbfc]">
+                <div className="px-5 py-4 border-b border-[#e5e7eb] bg-[#f5f7fa]">
+                  <h2 className="text-[20px] font-medium text-[#1f2a44]">
+                    Other available Programs
+                  </h2>
+                </div>
 
-              {/* Sidebar List */}
-              <div>
-                {programs.map((program, index) => (
-                  <button
-                    key={index}
-                    className={`w-full text-left px-5 py-4 text-[13px] border-b border-[#EEF1F4] transition-all ${
-                      index === 0
-                        ? "bg-[#F8FAFC] text-[#2F3C97] font-medium"
-                        : "text-[#6B7280] hover:bg-[#F9FAFB]"
-                    }`}
-                  >
-                    {program}
-                  </button>
-                ))}
+                <div className="divide-y divide-[#e5e7eb]">
+                  {programs.map((item, index) => (
+                    <div
+                      key={index}
+                      className="px-5 py-4 text-[15px] text-[#5b6478] hover:bg-white transition-all cursor-pointer"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
           </div>
         </div>
       </div>

@@ -15,6 +15,20 @@ import {
   Landmark,
   Clock3,
 } from "lucide-react";
+const programs = [
+    "Children’s Development Program",
+    "Youth Empowerment Program",
+    "Public Health & Medical Program",
+    "Environment Conservation Program",
+    "Disaster Risk Reduction (DRR) Program",
+    "Public health and medical care",
+    "Environment conservation",
+    "Teaching program",
+    "Management & Administration",
+    "Journalism",
+    "Public interest",
+    "WorkCamps",
+  ];
 const stories = [
   {
     name: "Peter Smith",
@@ -511,49 +525,34 @@ export default function WomenEmpowermentHero() {
           SINGLE RIGHT SIDEBAR
       ========================================= */}
             <aside className="space-y-8">
-              {/* Programs */}
-              <div className="rounded-2xl border border-[#D9DFEA] bg-[#F8FAFC] overflow-hidden">
-                <div className="px-3 py-5 border-b border-[#E2E8F0]">
-                  <h3 className="text-[22px] font-medium text-[#1F2A44]">
+              
+              {/* Programs Sidebar */}
+              <div className="border border-[#e5e7eb] rounded-md overflow-hidden bg-[#fafbfc]">
+                <div className="px-5 py-4 border-b border-[#e5e7eb] bg-[#f5f7fa]">
+                  <h2 className="text-[20px] font-medium text-[#1f2a44]">
                     Other available Programs
-                  </h3>
-                </div>
-
-                <div>
-                  {[
-                    "Children’s Development Program",
-                    "Youth Empowerment Program",
-                    "Public Health & Medical Program",
-                    "Environment Conservation Program",
-                    "Disaster Risk Reduction (DRR) Program",
-                    "Public health and medical care",
-                    "Environment conservation",
-                    "Teaching program",
-                    "Management & Administration",
-                    "Journalism",
-                    "Public Interest",
-                    "WorkCamps",
-                  ].map((program, index) => (
-                    <button
-                      key={index}
-                      className="w-full text-left px-6 py-4 text-[13px] text-[#5B6475] border-b border-[#E2E8F0] hover:bg-white transition"
-                    >
-                      {program}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* TESTIMONIALS */}
-              <div className="rounded-2xl border border-[#D9DFEA] bg-[#F8FAFC] overflow-hidden px-6 py-5">
-                {/* Heading */}
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-[24px] font-medium text-[#1F2A44]">
-                    Testimonials
                   </h2>
                 </div>
 
-                {/* Cards */}
+                <div className="divide-y divide-[#e5e7eb]">
+                  {programs.map((item, index) => (
+                    <div
+                      key={index}
+                      className="px-5 py-4 text-[15px] text-[#5b6478] hover:bg-white transition-all cursor-pointer"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Testimonials */}
+              <div className="rounded-[14px] border border-[#D9DFEA] bg-white p-5">
+                <div className="mb-5 flex items-center justify-between">
+                  <h3 className="text-[28px] font-medium text-[#1D2433] font-serif">
+                    Testimonials
+                  </h3>
+                </div>
+
                 <div className="space-y-5">
                   {[
                     {
@@ -599,7 +598,6 @@ export default function WomenEmpowermentHero() {
                           </div>
                         </div>
 
-                        {/* Rating */}
                         <div className="flex gap-1 mt-1">
                           {[1, 2, 3, 4, 5].map((star) => (
                             <Star
@@ -611,7 +609,6 @@ export default function WomenEmpowermentHero() {
                         </div>
                       </div>
 
-                      {/* Text */}
                       <p className="mt-5 text-[12px] leading-4 text-[#5B6475]">
                         They approached each shift with professionalism and
                         enthusiasm, often going above expectations to ensure

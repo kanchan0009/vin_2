@@ -1,4 +1,18 @@
 export default function VolunteerProfilePage() {
+  const programs = [
+    "Children’s Development Program",
+    "Youth Empowerment Program",
+    "Public Health & Medical Program",
+    "Environment Conservation Program",
+    "Disaster Risk Reduction (DRR) Program",
+    "Public health and medical care",
+    "Environment conservation",
+    "Teaching program",
+    "Management & Administration",
+    "Journalism",
+    "Public interest",
+    "WorkCamps",
+  ];
   return (
     <main className="w-full bg-white py-14 px-6 md:px-10">
       <div className="max-w-6xl mx-auto">

@@ -1,7 +1,21 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Heading3, Star } from "lucide-react";
+const programs = [
+  "Children’s Development Program",
+  "Youth Empowerment Program",
+  "Public Health & Medical Program",
+  "Environment Conservation Program",
+  "Disaster Risk Reduction (DRR) Program",
+  "Public health and medical care",
+  "Environment conservation",
+  "Teaching program",
+  "Management & Administration",
+  "Journalism",
+  "Public interest",
+  "WorkCamps",
+];
 export default function VolunteersPage() {
   return (
     <main>
@@ -9,7 +23,7 @@ export default function VolunteersPage() {
           FULL PAGE SECTION
       ========================================= */}
       <section className="w-full bg-white py-16 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10">
+        <div className=" mx-auto grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10">
           {/* =====================================
               LEFT COLUMN
           ===================================== */}
@@ -26,7 +40,7 @@ export default function VolunteersPage() {
             </div>
 
             {/* Heading */}
-            <h2 className="text-[42px] font-semibold text-[#1f2a44] leading-[52px] mb-6">
+            <h2 className="text-[38px] font-medium text-[#1f2a44] leading-[52px] mb-6">
               National and International Volunteers in Nepal
             </h2>
 
@@ -53,16 +67,16 @@ export default function VolunteersPage() {
             </div>
 
             {/* Tabs */}
-            <div className="flex flex-wrap gap-3 mt-10 mb-16">
-              <button className="px-8 h-[48px] rounded-md bg-[#2A3495] text-white text-[15px] font-medium">
+            <div className="flex flex-wrap  mt-10 mb-16">
+              <button className="px-8 h-[48px]  bg-[#2A3495] text-white text-[15px] font-medium">
                 Current Volunteers
               </button>
 
-              <button className="px-8 h-[48px] rounded-md bg-[#f5f7fa] border border-[#e5e7eb] text-[#5b6478] text-[15px] font-medium hover:bg-white transition-all">
+              <button className="px-8 h-[48px]  bg-[#f5f7fa] border border-[#e5e7eb] text-[#5b6478] text-[15px] font-medium hover:bg-white transition-all">
                 Upcoming Volunteers
               </button>
 
-              <button className="px-8 h-[48px] rounded-md bg-[#f5f7fa] border border-[#e5e7eb] text-[#5b6478] text-[15px] font-medium hover:bg-white transition-all">
+              <button className="px-8 h-[48px]  bg-[#f5f7fa] border border-[#e5e7eb] text-[#5b6478] text-[15px] font-medium hover:bg-white transition-all">
                 Past Volunteers
               </button>
             </div>
@@ -70,12 +84,12 @@ export default function VolunteersPage() {
             {/* ================= INTERNATIONAL ================= */}
             <div className="mb-16">
               {/* Heading */}
-              <div className="flex items-center gap-3 mb-8">
-                <h2 className="text-[28px] font-semibold text-[#1f2a44]">
+              <div className="flex items-center gap-3 mb-4">
+                <h3 className="text-[28px] font-medium text-[#1f2a44]">
                   International
-                </h2>
+                </h3>
 
-                <span className="text-[18px] font-medium text-[#6b7280]">
+                <span className="text-[22px] font-medium text-[#6b7280]">
                   29
                 </span>
               </div>
@@ -145,12 +159,12 @@ export default function VolunteersPage() {
             {/* ================= NATIONAL ================= */}
             <div>
               {/* Heading */}
-              <div className="flex items-center gap-3 mb-8">
-                <h2 className="text-[28px] font-semibold text-[#1f2a44]">
+              <div className="flex items-center gap-3 mb-4">
+                <h3 className="text-[28px] font-medium text-[#1f2a44]">
                   National Volunteers
-                </h2>
+                </h3>
 
-                <span className="text-[18px] font-medium text-[#6b7280]">
+                <span className="text-[22px] font-medium text-[#6b7280]">
                   29
                 </span>
               </div>
@@ -243,22 +257,13 @@ export default function VolunteersPage() {
             {/* Programs Sidebar */}
             <div className="border border-[#e5e7eb] rounded-md overflow-hidden bg-[#fafbfc]">
               <div className="px-5 py-4 border-b border-[#e5e7eb] bg-[#f5f7fa]">
-                <h3 className="text-[22px] font-semibold text-[#1f2a44]">
-                  Our Available Programs
-                </h3>
+                <h2 className="text-[20px] font-medium text-[#1f2a44]">
+                  Other available Programs
+                </h2>
               </div>
 
               <div className="divide-y divide-[#e5e7eb]">
-                {[
-                  "Children’s Development Program",
-                  "Youth Empowerment Program",
-                  "Public Health & Medical Program",
-                  "Environment Conservation Program",
-                  "Disaster Risk Reduction (DRR) Program",
-                  "Teaching program",
-                  "Management & Administration",
-                  "Journalism",
-                ].map((item, index) => (
+                {programs.map((item, index) => (
                   <div
                     key={index}
                     className="px-5 py-4 text-[15px] text-[#5b6478] hover:bg-white transition-all cursor-pointer"
@@ -268,89 +273,127 @@ export default function VolunteersPage() {
                 ))}
               </div>
             </div>
-
             {/* Testimonials */}
-            <div className="border border-[#e5e7eb] rounded-md overflow-hidden bg-[#fafbfc]">
-              <div className="flex items-center justify-between px-5 py-4 border-b border-[#e5e7eb] bg-[#f5f7fa]">
-                <h3 className="text-[22px] font-semibold text-[#1f2a44]">
+            <div className="rounded-[14px] border border-[#D9DFEA] bg-white p-5">
+              <div className="mb-5 flex items-center justify-between">
+                <h3 className="text-[28px] font-medium text-[#1D2433] font-serif">
                   Testimonials
                 </h3>
-
-                <button className="text-[12px] font-medium text-[#9ca3af] hover:text-[#2A3495] transition-all">
-                  see all
-                </button>
               </div>
 
-              <div className="divide-y divide-[#e5e7eb]">
-                {[1, 2, 3].map((item) => (
-                  <div key={item} className="p-5 hover:bg-white transition-all">
-                    <div className="flex items-start gap-4">
-                      <div className="w-[48px] h-[48px] rounded-full overflow-hidden flex-shrink-0">
+              <div className="space-y-5">
+                {[
+                  {
+                    name: "Charles Richardson",
+                    role: "Product Designer",
+                    image:
+                      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop",
+                  },
+                  {
+                    name: "Sophia Miller",
+                    role: "Volunteer Mentor",
+                    image:
+                      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop",
+                  },
+                  {
+                    name: "James Anderson",
+                    role: "Community Leader",
+                    image:
+                      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop",
+                  },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="rounded-2xl border border-[#E2E8F0] bg-[#ffffff] p-6 transition-all duration-300 hover:shadow-lg hover:border-[#CBD5E1]"
+                  >
+                    {/* Top */}
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex gap-4">
                         <img
-                          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop"
-                          alt="Volunteer"
-                          className="w-full h-full object-cover"
+                          src={item.image}
+                          alt={item.name}
+                          className="w-14 h-10 rounded-full object-cover border-2 border-white shadow-sm"
                         />
+
+                        <div>
+                          <h3 className="text-[16px] font-medium text-[#1F2A44] leading-none">
+                            {item.name}
+                          </h3>
+
+                          <p className=" text-[12px] text-[#6B7280]">
+                            {item.role}
+                          </p>
+                        </div>
                       </div>
 
-                      <div className="flex-1">
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <h4 className="text-[15px] font-semibold text-[#1f2a44]">
-                              Charles Richardson
-                            </h4>
-
-                            <p className="text-[12px] text-[#9ca3af]">
-                              Volunteer Engineer
-                            </p>
-                          </div>
-
-                          <div className="text-[#fbbf24] text-[12px]">
-                            ★★★★★
-                          </div>
-                        </div>
-
-                        <p className="text-[13px] leading-[24px] text-[#5b6478] mt-3">
-                          They approached each with professionalism and
-                          enthusiasm while supporting our community projects.
-                        </p>
+                      <div className="flex gap-1 mt-1">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <Star
+                            key={star}
+                            size={15}
+                            className="text-[#FFB400] fill-[#FFB400]"
+                          />
+                        ))}
                       </div>
                     </div>
+
+                    <p className="mt-5 text-[12px] leading-4 text-[#5B6475]">
+                      They approached each shift with professionalism and
+                      enthusiasm, often going above expectations to ensure
+                      projects were completed smoothly. Their attention to
+                      detail and willingness to assist wherever needed greatly
+                      contributed to the success of our programs.
+                    </p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Blogs */}
-            <div className="border border-[#e5e7eb] rounded-md overflow-hidden bg-[#fafbfc]">
-              <div className="px-5 py-4 border-b border-[#e5e7eb] bg-[#f5f7fa]">
-                <h3 className="text-[22px] font-semibold text-[#1f2a44]">
-                  Related Articles & Blogs
-                </h3>
-              </div>
+            {/* Related Articles */}
+            <div className=" rounded-[24px] border border-[#D9DCE7] bg-[#F7F8FA] p-6">
+              {/* Heading */}
+              <h2 className="text-[28px] leading-[42px] text-[#1F2432] mb-8">
+                Related Articles & Blogs
+              </h2>
 
-              <div className="divide-y divide-[#e5e7eb]">
-                {[1, 2, 3].map((item) => (
+              {/* Articles List */}
+              <div className="space-y-10">
+                {[
+                  {
+                    title: "How can we empower women in rural areas of nepal ?",
+                    image: "/hero.png",
+                  },
+                  {
+                    title: "How can we empower women in rural areas of nepal ?",
+                    image: "/hero.png",
+                  },
+                  {
+                    title: "How can we empower women in rural areas of nepal ?",
+                    image: "/hero.png",
+                  },
+                  {
+                    title: "How can we empower women in rural areas of nepal ?",
+                    image: "/hero.png",
+                  },
+                ].map((article, index) => (
                   <div
-                    key={item}
-                    className="flex gap-4 p-5 hover:bg-white transition-all cursor-pointer"
+                    key={index}
+                    className="flex items-center gap-5 group cursor-pointer"
                   >
-                    <div className="w-[72px] h-[72px] rounded-md overflow-hidden flex-shrink-0">
+                    {/* Image */}
+                    <div className="min-w-[120px] overflow-hidden rounded-[5px]">
                       <img
-                        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop"
-                        alt="Article"
-                        className="w-full h-full object-cover"
+                        src={article.image}
+                        alt={article.title}
+                        className="w-[120px] h-[100px] object-cover group-hover:scale-105 transition duration-500"
                       />
                     </div>
 
-                    <div className="flex-1">
-                      <h4 className="text-[14px] leading-[24px] font-medium text-[#1f2a44] hover:text-[#2A3495] transition-all">
-                        How can we empower women in rural areas of Nepal ?
-                      </h4>
-
-                      <p className="text-[12px] text-[#9ca3af] mt-2">
-                        12 Jan 2026
-                      </p>
+                    {/* Content */}
+                    <div>
+                      <h3 className="text-[14px] leading-[24px] font-medium text-[#64748B] group-hover:text-[#2D3192] transition">
+                        {article.title}
+                      </h3>
                     </div>
                   </div>
                 ))}

@@ -1,10 +1,16 @@
 "use client";
+import { useRef } from "react";
 
 import VolunteerProgram from "../components/Volunteer-program";
 import LatestNews from "../components/news";
 import Articles from "../components/articles";
 
 export default function ProgrammePage() {
+  const teamRef = useRef<HTMLDivElement>(null);
+  const impactRef = useRef<HTMLDivElement>(null);
+  const volunteerRef = useRef<HTMLDivElement>(null);
+  const trustRef = useRef<HTMLDivElement>(null);
+
   return (
     <main className="min-h-screen  bg-white">
       
@@ -121,16 +127,23 @@ export default function ProgrammePage() {
           </div>
 
           {/* Team Cards */}
-          <div className="relative mt-12">
+          <div className="relative mt-12 group">
             {/* Left Arrow */}
-            <button className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md">
+            <button 
+              onClick={() => teamRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
+              className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+            >
               &#10094;
             </button>
 
             {/* Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div 
+              ref={teamRef}
+              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
               {/* Card 1 */}
-              <div className="bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
+              <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
                 <div className="rounded-[10px] overflow-hidden">
                   <img
                     src="/images/member1.png"
@@ -245,7 +258,10 @@ export default function ProgrammePage() {
             </div>
 
             {/* Right Arrow */}
-            <button className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md">
+            <button 
+              onClick={() => teamRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
+              className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
+            >
               &#10095;
             </button>
           </div>
@@ -394,20 +410,30 @@ export default function ProgrammePage() {
         </div>
 
         {/* Cards */}
-        <div className="relative">
+        <div className="relative group/impact">
           {/* Left Arrow */}
-          <button className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition">
+          <button 
+            onClick={() => impactRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
+            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition opacity-0 group-hover/impact:opacity-100"
+          >
             ❮
           </button>
 
           {/* Right Arrow */}
-          <button className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition">
+          <button 
+            onClick={() => impactRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
+            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition opacity-0 group-hover/impact:opacity-100"
+          >
             ❯
           </button>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div 
+            ref={impactRef}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {/* Card 1 */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group hover:shadow-2xl transition duration-500">
+            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group hover:shadow-2xl transition duration-500">
               <div className="overflow-hidden">
                 <img
                   src="/images/volunteer.jpg"
@@ -578,9 +604,12 @@ export default function ProgrammePage() {
           </div>
 
           {/* Slider Area */}
-          <div className="relative">
+          <div className="relative group/vol">
             {/* Left Arrow */}
-            <button className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex">
+            <button 
+              onClick={() => volunteerRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
+              className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4 text-[#5f6b7a]"
@@ -598,9 +627,13 @@ export default function ProgrammePage() {
             </button>
 
             {/* Cards */}
-            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div 
+              ref={volunteerRef}
+              className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
               {/* Card 1 */}
-              <div className="rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 <p className="text-[14px] leading-7 text-[#5d6470]">
                   "Volunteering with VN completely transformed the way I see
                   community development. The staff were incredibly supportive,
@@ -625,7 +658,7 @@ export default function ProgrammePage() {
               </div>
 
               {/* Card 2 */}
-              <div className="rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 <p className="text-[14px] leading-7 text-[#5d6470]">
                   "Volunteering with VN completely transformed the way I see
                   community development. The staff were incredibly supportive,
@@ -650,7 +683,7 @@ export default function ProgrammePage() {
               </div>
 
               {/* Card 3 */}
-              <div className="rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+              <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
                 <p className="text-[14px] leading-7 text-[#5d6470]">
                   "Volunteering with VN completely transformed the way I see
                   community development. The staff were incredibly supportive,
@@ -676,7 +709,10 @@ export default function ProgrammePage() {
             </div>
 
             {/* Right Arrow */}
-            <button className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex">
+            <button 
+              onClick={() => volunteerRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
+              className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4 text-[#5f6b7a]"

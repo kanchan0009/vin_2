@@ -37,6 +37,20 @@ export default function OurApproachSection() {
         "We evaluate progress regularly and align our work with the UN Sustainable Development Goals (SDGs).",
     },
   ];
+  const programs = [
+    "Children’s Development Program",
+    "Youth Empowerment Program",
+    "Public Health & Medical Program",
+    "Environment Conservation Program",
+    "Disaster Risk Reduction (DRR) Program",
+    "Public health and medical care",
+    "Environment conservation",
+    "Teaching program",
+    "Management & Administration",
+    "Journalism",
+    "Public interest",
+    "WorkCamps",
+  ];
 
   return (
     <section className="w-full bg-white py-20 px-6 md:px-10">
