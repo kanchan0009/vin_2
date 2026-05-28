@@ -1,21 +1,50 @@
 "use client";
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+
+import { useState, useRef } from "react";
+import { BarChart3, X, Star, ChevronDown } from "lucide-react";
+import { TypicalDayAccordion } from "@/app/components/Typicalaccordian";
+import LatestNews from "@/app/components/news";
+import Articles from "@/app/components/articles";
 import Link from "next/link";
-import {
-  Heart,
-  MessageCircle,
-  Plus,
-  Star,
-  Users,
-  Building2,
-  Sprout,
-  Leaf,
-  Briefcase,
-  Landmark,
-  Clock3,
-} from "lucide-react";
-const programs = [
+
+export default function WomenEducationProgramPage() {
+  const [openIndex, setOpenIndex] = useState(0);
+
+  const toggleFAQ = (index: number) => {
+    setOpenIndex(openIndex === index ? -1 : index);
+  };
+
+  const [showStats, setShowStats] = useState(false);
+
+  const statsData = [
+    { label: "Location", value: "Outskirts of Kathmandu & Okhaldhunga" },
+    { label: "Start Dates", value: "Every 1st & 3rd Monday" },
+    { label: "Duration", value: "2 weeks to 10 months" },
+    { label: "Working Hours", value: "3–6 hrs/day, 5 days/week" },
+    {
+      label: "Who can apply",
+      value:
+        "University students, graduates, business professionals, entrepreneurs, educators, gap-year explorers, and youth workers",
+    },
+    {
+      label: "Accommodation & Food",
+      value: "Stay with a host family or at a volunteer hostel",
+    },
+    {
+      label: "Eligibility",
+      value: "Open to volunteers 18+, families, couples, & groups",
+    },
+    {
+      label: "Safety & Support",
+      value: "24/7 assistance & secure placements",
+    },
+    { label: "Orientation", value: "2–3 days on arrival training" },
+    {
+      label: "Weekend Travel",
+      value: "Explore festivals, temples, Himalayas, & immerse in culture",
+    },
+  ];
+  const programs = [
     "Children’s Development Program",
     "Youth Empowerment Program",
     "Public Health & Medical Program",
@@ -29,504 +58,894 @@ const programs = [
     "Public interest",
     "WorkCamps",
   ];
-const stories = [
-  {
-    name: "Peter Smith",
-    country: "United Kingdom",
-    role: "Legal Awareness Volunteer",
-    image: "/hero.png",
-    review:
-      "Working with ViN’s women’s rights program was transformative. I witnessed women who had never known their legal rights stand up and demand justice.",
-  },
-  {
-    name: "Sarah Johnson",
-    country: "Canada",
-    role: "Women Empowerment Volunteer",
-    image: "/hero2.png",
-    review:
-      "The community welcomed me like family. Teaching life skills and confidence-building workshops became one of the most rewarding experiences of my life.",
-  },
-  {
-    name: "Emily Carter",
-    country: "Australia",
-    role: "Education Volunteer",
-    image: "/hero3.png",
-    review:
-      "I learned as much from the women and children as they learned from me. The cultural exchange and personal growth were unforgettable.",
-  },
-];
-const faqs = [
-  {
-    question: "What does a women’s education volunteer do?",
-    answer:
-      "A woman’s education volunteer helps run literacy, numeracy, digital skills, and leadership sessions for women and girls, supporting local educators.",
-  },
-  {
-    question: "How to volunteer in women’s education with VIN?",
-    answer:
-      "You can apply through VIN’s volunteer application process and choose a suitable women empowerment or education program in Nepal.",
-  },
-  {
-    question:
-      "What makes this one of the best women’s education volunteer programs?",
-    answer:
-      "The program focuses on long-term community impact, women empowerment, and sustainable educational development.",
-  },
-  {
-    question: "Are there short-term women’s education volunteer opportunities?",
-    answer:
-      "Yes, VIN offers both short-term and long-term volunteering opportunities depending on your availability.",
-  },
-  {
-    question:
-      "Can I be a women’s education volunteer abroad without teaching experience?",
-    answer:
-      "Yes. Passion, commitment, and willingness to learn are more important than formal teaching experience.",
-  },
-  {
-    question:
-      "Are there leadership and life skills modules in volunteer programs for women’s education?",
-    answer:
-      "Yes, many programs include leadership, confidence-building, entrepreneurship, and life-skills training.",
-  },
-  {
-    question:
-      "Do you offer NGO volunteer roles in women’s education linked to enterprise?",
-    answer:
-      "Yes, some programs connect education initiatives with women-led enterprise and community development projects.",
-  },
-];
+  const faqs = [
+    {
+      question: "What does a women’s education volunteer do?",
+      answer:
+        "A woman’s education volunteer helps run literacy, numeracy, digital skills, and leadership sessions for women and girls, supporting local educators.",
+    },
+    {
+      question: "How to volunteer in women’s education with VIN?",
+      answer:
+        "You can apply through VIN’s volunteer application process and choose a suitable women empowerment or education program in Nepal.",
+    },
+    {
+      question:
+        "What makes this one of the best women’s education volunteer programs?",
+      answer:
+        "The program focuses on long-term community impact, women empowerment, and sustainable educational development.",
+    },
+    {
+      question:
+        "Are there short-term women’s education volunteer opportunities?",
+      answer:
+        "Yes, VIN offers both short-term and long-term volunteering opportunities depending on your availability.",
+    },
+    {
+      question:
+        "Can I be a women’s education volunteer abroad without teaching experience?",
+      answer:
+        "Yes. Passion, commitment, and willingness to learn are more important than formal teaching experience.",
+    },
+    {
+      question:
+        "Are there leadership and life skills modules in volunteer programs for women’s education?",
+      answer:
+        "Yes, many programs include leadership, confidence-building, entrepreneurship, and life-skills training.",
+    },
+    {
+      question:
+        "Do you offer NGO volunteer roles in women’s education linked to enterprise?",
+      answer:
+        "Yes, some programs connect education initiatives with women-led enterprise and community development projects.",
+    },
+  ];
 
-export default function WomenEmpowermentHero() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const menuItems = [
+    "Snap shot",
+    "Overview",
+    "Objectives",
+    "Roles & Responsibilities",
+    "Requirement",
+    "How to Apply",
+    "Benefits",
+    "Eligibility",
+    "Accommodation",
+    "Program Fees",
+    "Travel Guide",
+    "FAQs",
+    "Reviews",
+    "Gallery",
+    "Contact",
+  ];
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? -1 : index);
-  };
-  const [current, setCurrent] = useState(0);
+  const [activeTab, setActiveTab] = useState("Snap shot");
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const teamRef = useRef<HTMLDivElement>(null);
+  const impactRef = useRef<HTMLDivElement>(null);
+  const volunteerRef = useRef<HTMLDivElement>(null);
+  const [trustSlide, setTrustSlide] = useState(0);
 
-  const prevSlide = () => {
-    setCurrent((prev) => (prev === 0 ? stories.length - 1 : prev - 1));
-  };
+  const trustVideos = [
+    {
+      image: "/trust-video.jpg",
+      name: "Peter Smith",
+      description:
+        "Listen to heartfelt stories from people who choose to make a difference with us.",
+    },
+    {
+      image: "/images/volunteer.jpg",
+      name: "Sarah Johnson",
+      description:
+        "Our experience with VIN has been truly life-changing. Highly recommend joining.",
+    },
+  ];
 
-  const nextSlide = () => {
-    setCurrent((prev) => (prev === stories.length - 1 ? 0 : prev + 1));
-  };
+  const nextTrust = () =>
+    setTrustSlide((prev) => (prev + 1) % trustVideos.length);
+  const prevTrust = () =>
+    setTrustSlide((prev) => (prev === 0 ? trustVideos.length - 1 : prev - 1));
 
   return (
-    <main>
-      <section className="w-full bg-white">
-        {/* Top Content */}
-        <div className="w-full  pt-10 pb-6">
-          <h1 className="text-[30px] md:text-[36px] leading-[1.15] font-medium text-[#1F2A44] max-w-8xl">
-            Women Empowerment Volunteer Programsin Nepal–Empower
-            <br />
-            Her, Empower a Nation
-          </h1>
+    <main className="w-full bg-white">
+      {/* =========================================================
+          HERO SECTION
+      ========================================================= */}
+      <section className="relative w-full h-[620px] overflow-hidden">
+        {/* Background Image */}
+        <img
+          src="/women-education-banner.jpg"
+          alt="Women Education Volunteer"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
-          <p className="mt-4 text-[15px] md:text-[18px] leading-7 text-[#5B6475] max-w-[1000px]">
-            Volunteer with VIN to advance gender equality, uplift women’s
-            voices, and create lasting changefrom the heart of rural Nepal.
-          </p>
-        </div>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/60" />
 
-        {/* Full Width Hero Image */}
-        <div className="relative w-screen left-1/2 right-1/2 -translate-x-1/2 overflow-hidden">
-          {/* Image */}
-          <img
-            src="/hero.png"
-            alt="Women Empowerment"
-            className="w-full h-[320px] md:h-[430px] object-cover"
-          />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/25"></div>
+        {/* Content */}
+        <div className="relative z-10 flex items-end justify-center h-full pb-10 px-6">
+          <div className="max-w-[850px] text-center">
+            {/* Top Badge */}
+            <div className="inline-flex items-center gap-2 bg-black/10 backdrop-blur-sm border border-white/10 px-8 py-2 rounded-3xl mb-5">
+              <span className="text-gray-300 text-[16px] font-medium">
+                Impact Program
+              </span>
 
-          {/* Bottom Buttons */}
-          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex flex-wrap items-center justify-center gap-3 px-4">
-            {/* Apply Button */}
-            <button className="flex items-center gap-2 bg-[#2A3495] hover:bg-[#1f2875] text-white text-[14px] font-medium px-7 py-3 rounded-md shadow-lg transition">
-              <Plus size={16} />
-              Apply for Volunteer
-            </button>
+              <span className="w-1 h-1 rounded-full bg-white/70" />
 
-            {/* Donate Button */}
-            <button className="flex items-center gap-2 bg-[#F59E0B] hover:bg-[#d88906] text-white text-[14px] font-medium px-7 py-3 rounded-md shadow-lg transition">
-              <Heart size={16} />
-              Donate Now
-            </button>
-
-            {/* WhatsApp Button */}
-            <button className="flex items-center gap-2 bg-[#22C55E] hover:bg-[#16a34a] text-white text-[14px] font-medium px-7 py-3 rounded-md shadow-lg transition">
-              <MessageCircle size={16} />
-              Chat on Whatsapp
-            </button>
-          </div>
-        </div>
-      </section>
-      {/* ======================================
-          PROJECT AT A GLANCE
-      ====================================== */}
-      <section className="w-full bg-white py-14">
-        <div className=" mx-auto px-4 ">
-          {/* Heading */}
-          <h2 className="text-[34px] leading-tight font-medium text-[#1F2A44]">
-            Project at a Glance
-          </h2>
-
-          {/* Sub Heading */}
-          <h3 className="mt-4 text-[28px] font-medium text-[#1F2A44]">
-            Women Empowerment Volunteer Program in Nepal
-          </h3>
-
-          {/* Description */}
-          <p className="mt-5 text-[16px] leading-[34px] text-[#5B6475] ">
-            If you’re searching for women empowerment volunteer programs that do
-            more than scratch the surface, you’ll feel at home here. VIN’s
-            programs are not charity—they are partnerships. We work hand-in-hand
-            with local women and families. When you leave, your impact
-            remains,because Nepali women’s clubs and cooperativescontinue to run
-            every project, with or withoutoutside volunteers. If you’re
-            interested involunteer opportunities for women’s rights—fromteaching
-            girls to microfinance and legal awareness—you’ll find genuine,
-            community-drivenprojects here
-          </p>
-
-          {/* Bullet Points */}
-          <div className="mt-8 space-y-3">
-            <div className="flex items-start gap-3 text-[16px] text-[#5B6475]">
-              <span className="mt-[10px] w-[6px] h-[6px] rounded-full bg-[#2A3495]" />
-              <p>
-                Rural women’s literacy:{" "}
-                <span className="font-semibold text-[#2A3495]">53%</span>
-              </p>
+              <span className="text-white text-[16px] font-medium">
+                Children&apos;s Development
+              </span>
             </div>
 
-            <div className="flex items-start gap-3 text-[16px] text-[#5B6475]">
-              <span className="mt-[10px] w-[6px] h-[6px] rounded-full bg-[#2A3495]" />
-              <p>
-                Girls married before 18:{" "}
-                <span className="font-semibold text-[#2A3495]">34%</span>
-              </p>
-            </div>
+            {/* Heading */}
+            <h1 className="text-white text-[20px] md:text-[30px] leading-[32px] font-medium mb-4">
+              Children&apos;s Development Volunteer in Nepal:
+              <br />
+              Teach, Mentor, and Transform Lives
+            </h1>
 
-            <div className="flex items-start gap-3 text-[16px] text-[#5B6475]">
-              <span className="mt-[10px] w-[6px] h-[6px] rounded-full bg-[#2A3495]" />
-              <p>
-                Women with formal financial access:{" "}
-                <span className="font-semibold text-[#2A3495]">28%</span>
-              </p>
-            </div>
-
-            <div className="flex items-start gap-3 text-[16px] text-[#5B6475]">
-              <span className="mt-[10px] w-[6px] h-[6px] rounded-full bg-[#2A3495]" />
-              <p>
-                Maternal mortality:{" "}
-                <span className="font-semibold text-[#2A3495]">
-                  151 per 100,000 births
-                </span>
-              </p>
-            </div>
-          </div>
-
-          {/* Buttons */}
-          <div className="mt-10 flex flex-wrap items-center gap-0 overflow-hidden rounded-md border border-[#D9DFEA] w-fit">
-            <button className="bg-[#2A3495] text-white px-8 py-4 text-[16px] font-medium">
-              Need
-            </button>
-
-            <button className="bg-[#F5F7FB] text-[#5B6475] px-8 py-4 text-[16px] font-medium hover:bg-white transition">
-              Our Solution
-            </button>
-          </div>
-
-          {/* Why Section */}
-          <div className="mt-10">
-            <h2 className="text-[34px] leading-tight font-medium text-[#1F2A44]">
-              Why is Women Empowerment needed?
-            </h2>
-
-            <p className="mt-5 text-[20px] leading-[36px] text-[#394150] max-w-[1200px] font-medium">
-              Rural women face low literacy, early marriage, limited financial
-              access, and dangerous maternal risks — barriers that hold back
-              their potential and their families’ progress.
+            {/* Description */}
+            <p className="text-white/85 text-[14px] leading-[26px] max-w-[700px] mx-auto mb-8">
+              From literacy to leadership — empowering one woman, one village,
+              one future at a time.
             </p>
-          </div>
 
-          {/* Tabs */}
-          <div className="mt-12 overflow-hidden rounded-md border border-[#D9DFEA]">
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7">
-              {/* Active */}
-              <button className="bg-[#2A3495] text-white h-[58px] text-[16px] font-medium border-r border-[#D9DFEA]">
-                Overview
+            {/* Buttons */}
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <button className="h-[46px] px-10 rounded-md bg-[#202788] hover:bg-[#2f39be] transition-all duration-300 text-white text-[16px] font-medium shadow-lg">
+                Apply for Volunteer
               </button>
 
-              {/* Other Tabs */}
-              {[
-                "Our Approach",
-                "Projects",
-                "Requirement",
-                "How to Apply",
-                "Testimonials",
-                "Contact",
-              ].map((tab) => (
-                <button
-                  key={tab}
-                  className="bg-[#F5F7FB] text-[#5B6475] h-[58px] text-[16px] font-medium border-r border-[#D9DFEA] hover:bg-white transition"
-                >
-                  {tab}
-                </button>
-              ))}
+              <button className="h-[46px] px-10 rounded-md bg-white hover:bg-gray-100 transition-all duration-300 text-[#1f2a44] text-[16px] font-medium shadow-lg">
+                View Fees
+              </button>
             </div>
           </div>
         </div>
       </section>
-      {/* ======================================
-          PROGRAMS
-      ====================================== */}
-      <section className="w-full py-16 bg-white">
-        <div className=" mx-auto px-4 ">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 items-start">
-            {/* =========================================
-          LEFT COLUMN
-      ========================================= */}
-            <div className="space-y-20">
-              <div>
-                {/* Heading */}
-                <div>
-                  <h2 className="text-[34px] leading-tight font-mrdium text-[#1F2A44]">
-                    Real Impact, Measurable Results
-                  </h2>
 
-                  <p className="mt-3 text-[16px] leading-7 text-[#6B7280] max-w-[900px]">
-                    This isn’t feel-good volunteering. This is proven,
-                    sustainable change backed by data and driven by the women
-                    themselves.
-                  </p>
-                </div>
-
-                {/* Stats */}
-                <div className="mt-14 grid grid-cols-2 md:grid-cols-3 gap-y-16 gap-x-10">
-                  {/* Item */}
-                  <div className="text-center">
-                    <Heart
-                      size={38}
-                      className="mx-auto text-[#12A3E7] fill-[#12A3E7]"
-                    />
-
-                    <h3 className="mt-5 text-[42px] font-semibold text-[#12A3E7] leading-none">
-                      26,610
-                    </h3>
-
-                    <p className="mt-3 text-[22px] leading-[34px] font-medium text-[#1F2A44]">
-                      T.beneficiaries
-                    </p>
-                  </div>
-
-                  {/* Item */}
-                  <div className="text-center">
-                    <Users size={30} className="mx-auto text-[#12A3E7]" />
-
-                    <h3 className="mt-5 text-[30px] font-semibold text-[#12A3E7] leading-none">
-                      5,160
-                    </h3>
-
-                    <p className="mt-3 text-[22px] leading-[34px] font-medium text-[#1F2A44]">
-                      Micro credit co-
-                      <br />
-                      operative support
-                    </p>
-                  </div>
-
-                  {/* Item */}
-                  <div className="text-center">
-                    <Building2 size={30} className="mx-auto text-[#12A3E7]" />
-
-                    <h3 className="mt-5 text-[30px] font-semibold text-[#12A3E7] leading-none">
-                      6,238
-                    </h3>
-
-                    <p className="mt-3 text-[22px] leading-[34px] font-medium text-[#1F2A44]">
-                      Entrepreneurship
-                      <br />
-                      development
-                    </p>
-                  </div>
-
-                  {/* Item */}
-                  <div className="text-center">
-                    <Heart
-                      size={30}
-                      className="mx-auto text-[#12A3E7] fill-[#12A3E7]"
-                    />
-
-                    <h3 className="mt-5 text-[30px] font-semibold text-[#12A3E7] leading-none">
-                      12,128
-                    </h3>
-
-                    <p className="mt-3 text-[22px] leading-[34px] font-medium text-[#1F2A44]">
-                      Women education &
-                      <br />
-                      Life Skill
-                    </p>
-                  </div>
-
-                  {/* Item */}
-                  <div className="text-center">
-                    <Sprout size={30} className="mx-auto text-[#12A3E7]" />
-
-                    <h3 className="mt-5 text-[30px] font-semibold text-[#12A3E7] leading-none">
-                      3000+
-                    </h3>
-
-                    <p className="mt-3 text-[22px] leading-[34px] font-medium text-[#1F2A44]">
-                      Infrastructure
-                      <br />
-                      development
-                    </p>
-                  </div>
-                </div>
-
-                {/* Bottom Content */}
-                <div className="mt-16">
-                  <h2 className="text-[30px] leading-tight font-medium text-[#1F2A44]">
-                    Why Women’s Empowerment? Why Nepal?
-                  </h2>
-
-                  <p className="mt-3 text-[16px] leading-[24px] text-[#5B6475]">
-                    Spend just one day in a Nepali village and you’ll see women
-                    at the center of everything: fields, kitchens, schools, and
-                    local government meetings. Yet, many barriers hold them
-                    back. Only 59% of women here can read and write, and one in
-                    four has experienced violence in her life.
-                    Chhaupadi—banishing women during their periods—is illegal,
-                    but stories still continue in rural mountain districts.
-                  </p>
-                </div>
+      {/* =========================================================
+          SNAPSHOT / OVERVIEW SECTION
+      ========================================================= */}
+      <section className="relative w-full  py-10">
+        <div className="mx-auto  ">
+          {/* Top Tabs */}
+          <div className="flex  items-center gap-2  ">
+            <div className="overflow-x-auto border border-[#D9DDEA] bg-[#F1F2FB] mr-25 [-ms-overflow-style:none] [scrollbar-width:none]">
+              <div className="flex items-center gap-8 min-w-max">
+                {menuItems.map((item, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveTab(item)}
+                    className={`px-5 py-2 text-sm font-medium whitespace-nowrap transition-all ${
+                      activeTab === item
+                        ? "bg-[#2E3192] text-white"
+                        : "text-[#667085] hover:text-[#2E3192]"
+                    }`}
+                  >
+                    {item}
+                  </button>
+                ))}
               </div>
 
-              {/* =========================================
-            SECTION 2
-        ========================================= */}
-              <div>
-                {/* Heading */}
-                <div>
-                  <h2 className="text-[34px] leading-tight font-medium text-[#1F2A44]">
-                    VIN&apos;s Approach:
-                    <span className="text-gray-300">Our Story</span>
-                  </h2>
+              <style jsx>{`
+                div::-webkit-scrollbar {
+                  display: none;
+                }
+              `}</style>
+            </div>
 
-                  <p className="mt-3 text-[16px] leading-7 text-[#6B7280] max-w-[900px]">
-                    We don’t impose solutions. We partner with communities to
-                    build women-led, sustainable change.
+            {/* Statistics Button */}
+            <button
+              onClick={() => setShowStats(!showStats)}
+              className="ml-auto flex items-center gap-2 rounded-full bg-[#EEF2FF] px-4 py-2 text-sm font-medium text-[#2E3192]"
+            >
+              <BarChart3 size={16} />
+              Statistics
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full py-10 ">
+        {/* Main Content */}
+        <div className="relative mt-10">
+          <div className="grid gap-10 lg:grid-cols-[1fr_320px]">
+            {/* Left Content */}
+            <div>
+              <h2 className="mb-5 text-[38px] text-[#1D2939]">
+                Project Overview
+              </h2>
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="mb-3 text-xl font-semibold text-[#2E3192]">
+                    Introduction
+                  </h3>
+
+                  <p className="text-[15px] leading-8 text-[#667085]">
+                    When a woman learns, an entire community rises. As women’s
+                    education gains momentum in Nepal, women and girls build
+                    skills in literacy, numeracy, and confidence.
                   </p>
                 </div>
 
-                {/* Cards */}
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* Card */}
-                  <div className="rounded-2xl border border-[#D9DFEA] bg-white p-5">
-                    <div className="w-10 h-10 rounded-full bg-[#2A3495] flex items-center justify-center">
-                      <Users size={22} className="text-white" />
-                    </div>
+                <div>
+                  <h3 className="mb-3 text-xl font-semibold text-[#2E3192]">
+                    Background
+                  </h3>
 
-                    <h3 className="mt-6 text-[20px] font-medium text-[#1F2A44]">
-                      Women’s Club
-                    </h3>
-
-                    <p className=" text-[15px] leading-8 text-[#5B6475]">
-                      Small groups of 11–20 women meeting regularly to learn,
-                      save, and support each other.
-                    </p>
-                  </div>
-
-                  {/* Card */}
-                  <div className="rounded-2xl border border-[#D9DFEA] bg-white p-5">
-                    <div className="w-10 h-10 rounded-full bg-[#2A3495] flex items-center justify-center">
-                      <Landmark size={22} className="text-white" />
-                    </div>
-
-                    <h3 className="mt-6 text-[20px] font-medium text-[#1F2A44]">
-                      Women’s Cooperatives
-                    </h3>
-
-                    <p className=" text-[15px] leading-8 text-[#5B6475]">
-                      Four legally registered cooperatives serving hundreds of
-                      members with financial services and training.
-                    </p>
-                  </div>
-
-                  {/* Card */}
-                  <div className="rounded-2xl border border-[#D9DFEA] bg-white p-5">
-                    <div className="w-10 h-10 rounded-full bg-[#2A3495] flex items-center justify-center">
-                      <Briefcase size={22} className="text-white" />
-                    </div>
-
-                    <h3 className="mt-6 text-[20px] font-medium text-[#1F2A44]">
-                      Business Centres
-                    </h3>
-
-                    <p className=" text-[15px] leading-8 text-[#5B6475]">
-                      Women’s Business Centres and Community Learning Centres
-                      offering entrepreneurship support.
-                    </p>
-                  </div>
-
-                  {/* Card */}
-                  <div className="rounded-2xl border border-[#D9DFEA] bg-white p-5">
-                    <div className="w-10 h-10 rounded-full bg-[#2A3495] flex items-center justify-center">
-                      <Leaf size={22} className="text-white" />
-                    </div>
-
-                    <h3 className="mt-6 text-[20px] font-medium text-[#1F2A44]">
-                      Sustainable Growth
-                    </h3>
-
-                    <p className=" text-[15px] leading-8 text-[#5B6475]">
-                      Every initiative is designed for long-term independence
-                      and community ownership.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Volunteer Banner */}
-                <div className="relative overflow-hidden rounded-[10px] mt-10">
-                  {/* Background */}
-                  <img
-                    src="/hero.png"
-                    alt="Volunteer"
-                    className="w-full h-[420px] object-cover"
-                  />
-
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/65" />
-
-                  {/* Content */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-                    <h3 className="text-white text-[48px] leading-tight font-semibold max-w-[700px]">
-                      Your Role as a Volunteer
-                    </h3>
-
-                    <p className="mt-5 max-w-[760px] text-[17px] leading-8 text-gray-200">
-                      You’ll join as a respectful partner—not a savior, but a
-                      supporter. Your work alongside Nepali women will amplify
-                      their voices and accelerate their impact.
-                    </p>
-
-                    <button className="mt-8 bg-[#2A3495] hover:bg-[#1F2875] transition text-white px-10 py-4 rounded-lg text-[16px] font-medium">
-                      Join Now
-                    </button>
-                  </div>
+                  <p className="text-[15px] leading-8 text-[#667085]">
+                    Nepal has made progress, but the gender gap in literacy
+                    remains. In many remote regions, financial pressure and
+                    social norms still limit access to education.
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* =========================================
-          SINGLE RIGHT SIDEBAR
-      ========================================= */}
-            <aside className="space-y-8">
-              
-              {/* Programs Sidebar */}
+            {/* Right Image */}
+            <div className="relative">
+              <img
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop"
+                alt="Volunteer"
+                className="h-[300px] w-full rounded-md object-cover"
+              />
+            </div>
+          </div>
+
+          {/* OVERLAPPING STATISTICS CARD */}
+          {showStats && (
+            <div className="absolute right-10 top-2 z-50 w-full max-w-3xl overflow-hidden rounded-2xl border border-[#EAECF0] bg-white shadow-2xl">
+              {/* Header */}
+              <div className="flex items-center justify-between bg-[#2E3192] px-6 py-4">
+                <h3 className="text-sm font-medium text-white">
+                  From literacy to leadership—empowering one woman, one village,
+                  one future at a time.
+                </h3>
+
+                <button
+                  onClick={() => setShowStats(false)}
+                  className="text-white"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {/* Table */}
+              <div className="bg-white px-6 ">
+                {statsData.map((item, index) => (
+                  <div
+                    key={index}
+                    className="grid grid-cols-[180px_1fr] border-b border-[#EAECF0] py-2 text-sm"
+                  >
+                    <p className="font-medium text-[#344054]">{item.label}</p>
+
+                    <p className="text-[#667085] leading-7">{item.value}</p>
+                  </div>
+                ))}
+
+                {/* Footer */}
+                <div className="grid grid-cols-[180px_1fr] py-4 text-sm">
+                  <p className="font-medium text-[#344054]">Fees | Apply Now</p>
+
+                  <div className="space-y-1">
+                    <a href="#" className="block text-[#2E3192] underline">
+                      Click Here to learn more
+                    </a>
+
+                    <a href="#" className="block text-[#2E3192] underline">
+                      Click Here to learn more
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+          <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
+            {/* LEFT SIDE */}
+            <div className="space-y-12 mt-10">
+              {/* What We Aim to Achieve */}
+
+              <div className="mb-6">
+                <h2 className="text-[38px] leading-[56px] font-medium text-[#1D2433]">
+                  What We Aim to Achieve
+                </h2>
+
+                <p className="mt-2 text-[16px] leading-[24px] text-[#6E7485]">
+                  As women’s education volunteer, you’ll help ViN meet these
+                  goals:
+                </p>
+              </div>
+
+              {/* Content Box */}
+              <div className="rounded-[10px] bg-[#D9F0FB] px-6 py-2">
+                {[
+                  "Deliver practical literacy and numeracy classes—from reading signs and medicine labels to budgeting and basic math.",
+                  "Teach digital skills, including using a mobile phone, messaging, and searching for information online.",
+                  "Lead life skills sessions—from assertive communication and emotional intelligence to goal-setting and problem-solving.",
+                  "Guide leadership skills workshops",
+                  "Facilitate discussions on rights, gender equality, and legal awareness to promote understanding and awareness",
+                  "Introduce women-focused education initiatives, such as setting up mini-libraries, mentoring circles, or women-led clubs.",
+                  "Support community-based women’s education—with all lessons and resources designed to be sustainable, even after volunteers leave.",
+                  "Involve men and boys as allies in volunteer programs that promote true gender equality.",
+                  "Train peer educators to multiply the impact of every woman’s education through NGO volunteer efforts",
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className={`flex gap-2 py-2 ${
+                      index !== 8 ? "border-b border-white/60" : ""
+                    }`}
+                  >
+                    {/* Icon */}
+                    <div className="mt-[3px] flex h-9 w-9 min-w-[36px] items-center justify-center rounded-full bg-white">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                      >
+                        <path
+                          d="M16 11C17.6569 11 19 9.65685 19 8C19 6.34315 17.6569 5 16 5C14.3431 5 13 6.34315 13 8C13 9.65685 14.3431 11 16 11Z"
+                          fill="#2F3D9E"
+                        />
+                        <path
+                          d="M8 11C9.65685 11 11 9.65685 11 8C11 6.34315 9.65685 5 8 5C6.34315 5 5 6.34315 5 8C5 9.65685 6.34315 11 8 11Z"
+                          fill="#2F3D9E"
+                        />
+                        <path
+                          d="M8 13C5.79086 13 4 14.7909 4 17V18H12V17C12 14.7909 10.2091 13 8 13Z"
+                          fill="#2F3D9E"
+                        />
+                        <path
+                          d="M16 13C13.7909 13 12 14.7909 12 17V18H20V17C20 14.7909 18.2091 13 16 13Z"
+                          fill="#2F3D9E"
+                        />
+                      </svg>
+                    </div>
+
+                    {/* Text */}
+                    <div className="flex-1">
+                      <p className="text-[16px] leading-[22px] font-medium text-[#1F2937]">
+                        {item}
+                      </p>
+
+                      {/* Nested List */}
+                      {index === 3 && (
+                        <ul className="mt-1 ml-5 list-disc space-y-1 text-[15px] leading-[28px] text-[#475467]">
+                          <li>Strategic planning and visionary thinking</li>
+                          <li>Verbal and non-verbal communication</li>
+                          <li>Active listening and critical thinking</li>
+                          <li>Assertive decision-making</li>
+                          <li>
+                            Adaptability, resilience, and self-development
+                          </li>
+                          <li>Conflict resolution and negotiation</li>
+                          <li>Influence, motivation, and empowerment</li>
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Why Women’s Empowerment */}
+
+              <div className="mb-16 ">
+                <h2 className="text-4xl md:text-[38px]  text-[#1F2432] mb-6">
+                  Why Women’s Empowerment? Why Nepal?
+                </h2>
+
+                <h3 className="text-[25px] font-medium text-[#1F2432] mb-2">
+                  The Need
+                </h3>
+
+                <p className="text-gray-600 leading-6 ">
+                  Yet, change happens every day through women’s literacy
+                  volunteering and volunteer teaching, promoting women’s
+                  empowerment. When you join this movement, you tackle not only
+                  the education gap but also help break the cycles of poverty,
+                  exclusion, and silence.
+                </p>
+              </div>
+
+              {/* Skills Section */}
+              <div className="mb-6">
+                <h2 className="text-4xl md:text-[38px]  text-[#1F2432] mb-4">
+                  Skills, Requirements & Who Can Join
+                </h2>
+
+                <p className="text-gray-600 text-[16px] leading-7">
+                  We’re looking for passionate individuals ready to make a
+                  difference. Here’s what you need to know.
+                </p>
+              </div>
+
+              {/* Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                {[
+                  {
+                    title: "All Genders Welcome",
+                    desc: "We welcome volunteers of all gender identities who are passionate about women's empowerment.",
+                  },
+                  {
+                    title: "Ages 18+",
+                    desc: "Volunteers aged 16–17 can join with guardian consent and supervision.",
+                  },
+                  {
+                    title: "Intermediate English",
+                    desc: "Ability to communicate effectively in English for training and coordination.",
+                  },
+                  {
+                    title: "No Experience Required",
+                    desc: "We provide full training and orientation. Your enthusiasm and commitment matter most.",
+                  },
+                  {
+                    title: "Physical Ability",
+                    desc: "Able to travel to rural areas and participate in community activities.",
+                  },
+                  {
+                    title: "Cultural Respect",
+                    desc: "Open mind, respect for Nepali culture, and willingness to learn local customs.",
+                  },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="border border-gray-300 rounded-xl bg-white p-6 hover:shadow-md transition"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-[#2D3192] flex items-center justify-center mb-5">
+                      <span className="text-white text-xl">●</span>
+                    </div>
+
+                    <h3 className="text-[20px] font-[600] text-[#1F2432] ">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-gray-600 leading-7 text-[15px]">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Button */}
+              <div className="flex justify-center mt-6">
+                <button className="bg-[#2D3192] hover:bg-[#232777] text-white px-10 py-3 rounded-lg font-medium shadow-md transition">
+                  Join Today
+                </button>
+              </div>
+
+              {/* Program Fees */}
+
+              <div>
+                <h2 className="text-4xl md:text-[38px]  text-[#1F2432] mb-2">
+                  Program Fees & What’s Included
+                </h2>
+
+                <p className="text-gray-600 text-[16px] leading-7  mb-8">
+                  ViN is a nonprofit. Your program fees allocated directly to
+                  project costs, including your room, meals, and local staff
+                  salaries. Here’s what you get:
+                </p>
+
+                <div className="space-y-4">
+                  {[
+                    "🛡️ Secure placement and daily supervision",
+                    "🕘 Pre-departure info pack and training",
+                    "🚕 Airport pickup and all arrival logistics",
+                    "🏠 Homestay or shared house accommodation",
+                    "🍽️ Three healthy meals per day (with special diets respected)",
+                    "💁🏻 In-country support and language lessons",
+                    "🌍 A supportive community of staff, local leaders, and fellow volunteers",
+                  ].map((item, index) => (
+                    <div key={index} className="flex items-center gap-2">
+                      <span className="text-3xl">{item.split(" ")[0]}</span>
+
+                      <p className="text-[#374151] text-[18px] leading-7">
+                        {item.substring(item.indexOf(" ") + 1)}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <TypicalDayAccordion />
+
+              <div className=" mx-auto">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-10">
+                  <div>
+                    <h2 className="text-3xl md:text-[38px]  text-[#1F2432] mb-2">
+                      How to Apply
+                    </h2>
+
+                    <p className="text-gray-500 text-sm md:text-base">
+                      Starting your volunteer journey is simple. Follow these
+                      six easy steps to join us in Nepal.
+                    </p>
+                  </div>
+
+                  <button className="bg-[#2D3192] hover:bg-[#1F2B6C] text-white px-6 py-4 rounded-md text-sm font-medium transition">
+                    Apply Now
+                  </button>
+                </div>
+
+                {/* STEPS GRID */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-12">
+                  {[
+                    {
+                      number: "01",
+                      title: "Apply Online",
+                      desc: "Complete our simple online application form with your details and program preferences.",
+                    },
+                    {
+                      number: "02",
+                      title: "Submit your CV and two references",
+                      desc: "Send us your CV and two references (professional or academic).",
+                    },
+                    {
+                      number: "03",
+                      title: "Attend orientation",
+                      desc: "We’ll review your application and send confirmation within 3–5 business days.",
+                    },
+                    {
+                      number: "04",
+                      title: "Pay your €150 booking fee",
+                      desc: "Secure your placement with a €150 booking fee to reserve your spot.",
+                    },
+                    {
+                      number: "05",
+                      title: "Receive pre-departure materials",
+                      desc: "Receive comprehensive information about your program, packing list, and preparation tips.",
+                    },
+                    {
+                      number: "06",
+                      title:
+                        "Finalize fee payment (on arrival or via transfer)",
+                      desc: "Pay remaining balance before arrival. We’ll pick you up at the airport and your journey begins!",
+                    },
+                  ].map((item, index) => (
+                    <div key={index}>
+                      <h3 className="text-5xl font-light text-[#6EC1FF] mb-2">
+                        {item.number}
+                      </h3>
+
+                      <h3 className="text-lg font-semibold text-[#1F2432] ">
+                        {item.title}
+                      </h3>
+
+                      <p className="text-sm text-gray-500 leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* =========================
+        SPECIAL PROJECTS SECTION
+    ========================== */}
+                <div className="bg-[#F4F6FA] rounded-2xl p-6 md:p-8 mt-10">
+                  <div className="flex items-center justify-between mb-8">
+                    <h2 className="text-3xl  text-[#1F2432]">
+                      Special Projects
+                    </h2>
+
+                    <button className="text-[#1F2B6C] text-sm font-medium flex items-center gap-2 hover:gap-3 transition-all">
+                      Explore All Projects →
+                    </button>
+                  </div>
+
+                  {/* PROJECT GRID */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    {[
+                      {
+                        slug: "mini-libraries",
+                        title: "Mini-libraries and mobile book corners",
+                      },
+                      {
+                        slug: "festival-budgeting",
+                        title: "Festival budgeting workshops",
+                      },
+                      {
+                        slug: "leadership-story-circles",
+                        title: "Leadership storytelling circles",
+                      },
+                      {
+                        slug: "girls-empowerment-clubs",
+                        title: "Girls’ empowerment clubs",
+                      },
+                    ].map(({ slug, title }, index) => (
+                      <Link
+                        key={index}
+                        href={`/program/children-development/${slug}`}
+                        className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition block"
+                      >
+                        <img
+                          src="/hero.png"
+                          alt={title}
+                          className="w-full h-44 object-cover"
+                        />
+
+                        <div className="p-4">
+                          <h3 className="text-[16px] font-medium text-[#1F2432] leading-6">
+                            {title}
+                          </h3>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                {/* FAQ SECTION */}
+                <div className="mt-20">
+                  {/* Heading */}
+                  <div className="mb-10">
+                    <h2 className="text-[38px] font-medium text-[#1f2a44] leading-none mb-3">
+                      Frequently Asked Questions
+                    </h2>
+
+                    <p className="text-[16px] leading-[28px] text-[#6b7280]">
+                      Starting your volunteer journey is simple. Follow these
+                      easy answers to understand the program better.
+                    </p>
+                  </div>
+
+                  {/* FAQ ITEMS */}
+                  <div className="space-y-4">
+                    {faqs.map((faq, index) => {
+                      const isOpen = openIndex === index;
+
+                      return (
+                        <div
+                          key={index}
+                          className="border border-[#e5e7eb] rounded-xl overflow-hidden bg-white"
+                        >
+                          {/* Question */}
+                          <button
+                            onClick={() => toggleFAQ(index)}
+                            className="w-full flex items-center justify-between text-left px-6 py-5"
+                          >
+                            <span className="text-[17px] font-medium text-[#1f2a44] pr-5">
+                              {faq.question}
+                            </span>
+
+                            <ChevronDown
+                              className={`w-6 h-6 text-[#4b5563] transition-transform duration-300 ${
+                                isOpen ? "rotate-180" : ""
+                              }`}
+                            />
+                          </button>
+
+                          {/* Answer */}
+                          <div
+                            className={`grid transition-all duration-300 ease-in-out ${
+                              isOpen
+                                ? "grid-rows-[1fr] opacity-100"
+                                : "grid-rows-[0fr] opacity-0"
+                            }`}
+                          >
+                            <div className="overflow-hidden">
+                              <div className="px-6 pb-6">
+                                <p className="text-[16px] leading-[30px] text-[#6b7280]">
+                                  {faq.answer}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              <div className=" mx-auto">
+                {/* TOP BAR */}
+                <div className="flex items-center justify-between mb-4">
+                  {/* Tabs */}
+                  <div className="flex overflow-hidden rounded-md border border-[#D9DCE7] w-fit">
+                    {/* Photos Button */}
+                    <button
+                      onClick={() => setActiveTab("photos")}
+                      className={`px-8 py-3 text-[18px] font-medium transition-all duration-300 ${
+                        activeTab === "photos"
+                          ? "bg-[#2D3192] text-white"
+                          : "bg-[#F4F5F8] text-[#64748B] hover:bg-white"
+                      }`}
+                    >
+                      Photos
+                    </button>
+
+                    {/* Videos Button */}
+                    <button
+                      onClick={() => setActiveTab("videos")}
+                      className={`px-8 py-3 text-[18px] font-medium transition-all duration-300 ${
+                        activeTab === "videos"
+                          ? "bg-[#2D3192] text-white"
+                          : "bg-[#F4F5F8] text-[#64748B] hover:bg-white"
+                      }`}
+                    >
+                      Videos
+                    </button>
+                  </div>
+                  {/* Button */}
+                  <button className="bg-[#2D3192] hover:bg-[#232777] text-white px-8 py-3 rounded-md text-sm font-medium transition">
+                    View All
+                  </button>
+                </div>
+
+                {/* SUBTEXT */}
+                <p className="text-[#6B7280] text-[15px] mb-8">
+                  A glimpse into the moments that define our work and community
+                  impact.
+                </p>
+
+                {/* IMAGE GRID */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {[
+                    "/hero.png",
+                    "/hero.png",
+                    "/hero.png",
+                    "/hero.png",
+                    "/hero.png",
+                    "/hero.png",
+                  ].map((image, index) => (
+                    <div
+                      key={index}
+                      className="overflow-hidden rounded-xl bg-white shadow-sm"
+                    >
+                      <img
+                        src={image}
+                        alt={`Gallery ${index + 1}`}
+                        className="w-full h-[150px] object-cover hover:scale-105 transition duration-500"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Contact Section */}
+
+              <div className="grid grid-cols-1 bg-[#2E3192] md:grid-cols-2 gap-8 px-8 py-7 items-start">
+                {/* Left Content */}
+                <div className="text-white pt-2">
+                  <h2 className="text-[34px] leading-[48px] font-medium mb-4">
+                    Ready to Start Your Journey?
+                  </h2>
+
+                  <p className="text-[13px] leading-[22px] text-[#d9ddff]  mb-8">
+                    Have questions? Want to discuss which program is right for
+                    you? Our team is here to help. Reach out today and let’s
+                    start the conversation.
+                  </p>
+
+                  {/* Phone */}
+                  <div className="flex items-start gap-3 mb-5">
+                    <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center mt-0.5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-3.5 h-3.5 text-[#2A3495]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.129a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.209-.502l4.493 1.498A1 1 0 0121 15.72V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                        />
+                      </svg>
+                    </div>
+
+                    <div className="text-[12px] leading-[20px] text-[#e4e7ff]">
+                      <p>+977 (1) 01462560 (Office)</p>
+                      <p>+977 9851070477 (Mobile)</p>
+                    </div>
+                  </div>
+
+                  {/* Email */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-3.5 h-3.5 text-[#2A3495]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M16 12H8m8 0l-8 0m8 0l-8 0m14-5H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"
+                        />
+                      </svg>
+                    </div>
+
+                    <p className="text-[13px] text-[#e4e7ff]">
+                      Support@vin.org.np
+                    </p>
+                  </div>
+                </div>
+
+                {/* Inquiry Form */}
+                <div className="bg-white rounded-md p-5 shadow-md">
+                  <h3 className="text-[13px] font-semibold text-[#222] mb-4">
+                    Inquiry Form
+                  </h3>
+
+                  <form className="space-y-3">
+                    {/* Full Name */}
+                    <div>
+                      <label className="block text-[11px] text-[#555] mb-1">
+                        Full Name
+                      </label>
+
+                      <input
+                        type="text"
+                        placeholder="e.g. Snecker"
+                        className="w-full h-[38px] px-3 text-[12px] border border-gray-200 rounded-sm outline-none focus:border-[#2A3495]"
+                      />
+                    </div>
+
+                    {/* Email */}
+                    <div>
+                      <label className="block text-[11px] text-[#555] mb-1">
+                        Email
+                      </label>
+
+                      <input
+                        type="email"
+                        placeholder="e.g. example@example.com"
+                        className="w-full h-[38px] px-3 text-[12px] border border-gray-200 rounded-sm outline-none focus:border-[#2A3495]"
+                      />
+                    </div>
+
+                    {/* Program */}
+                    <div>
+                      <label className="block text-[11px] text-[#555] mb-1">
+                        Program
+                      </label>
+
+                      <select className="w-full h-[38px] px-3 text-[12px] border border-gray-200 rounded-sm outline-none focus:border-[#2A3495] text-[#777]">
+                        <option>Select a Program</option>
+                        <option>Teaching Program</option>
+                        <option>Volunteer Program</option>
+                        <option>Community Program</option>
+                      </select>
+                    </div>
+
+                    {/* Message */}
+                    <div>
+                      <label className="block text-[11px] text-[#555] mb-1">
+                        Message
+                      </label>
+
+                      <textarea
+                        rows={4}
+                        placeholder="Type your message here"
+                        className="w-full px-3 py-2 text-[12px] border border-gray-200 rounded-sm outline-none resize-none focus:border-[#2A3495]"
+                      />
+                    </div>
+
+                    {/* Button */}
+                    <button className="w-full h-[40px] bg-[#2A3495] hover:bg-[#1f2877] transition-all rounded-sm text-white text-[12px] font-medium mt-2">
+                      Send Inquiry
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT SIDE */}
+            <aside className="space-y-6">
+              {/* Programs */}
               <div className="border border-[#e5e7eb] rounded-md overflow-hidden bg-[#fafbfc]">
                 <div className="px-5 py-4 border-b border-[#e5e7eb] bg-[#f5f7fa]">
                   <h2 className="text-[20px] font-medium text-[#1f2a44]">
@@ -545,6 +964,7 @@ export default function WomenEmpowermentHero() {
                   ))}
                 </div>
               </div>
+
               {/* Testimonials */}
               <div className="rounded-[14px] border border-[#D9DFEA] bg-white p-5">
                 <div className="mb-5 flex items-center justify-between">
@@ -620,542 +1040,1166 @@ export default function WomenEmpowermentHero() {
                   ))}
                 </div>
               </div>
+              {/* Programs */}
+              <div className="border border-[#e5e7eb] rounded-md overflow-hidden bg-[#fafbfc]">
+                <div className="px-5 py-4 border-b border-[#e5e7eb] bg-[#f5f7fa]">
+                  <h2 className="text-[20px] font-medium text-[#1f2a44]">
+                    Other available Programs
+                  </h2>
+                </div>
+
+                <div className="divide-y divide-[#e5e7eb]">
+                  {programs.map((item, index) => (
+                    <div
+                      key={index}
+                      className="px-5 py-4 text-[15px] text-[#5b6478] hover:bg-white transition-all cursor-pointer"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Related Articles */}
+              <div className=" rounded-[24px] border border-[#D9DCE7] bg-[#F7F8FA] p-6">
+                {/* Heading */}
+                <h2 className="text-[28px] leading-[42px] text-[#1F2432] mb-8">
+                  Related Articles & Blogs
+                </h2>
+
+                {/* Articles List */}
+                <div className="space-y-10">
+                  {[
+                    {
+                      title:
+                        "How can we empower women in rural areas of nepal ?",
+                      image: "/hero.png",
+                    },
+                    {
+                      title:
+                        "How can we empower women in rural areas of nepal ?",
+                      image: "/hero.png",
+                    },
+                    {
+                      title:
+                        "How can we empower women in rural areas of nepal ?",
+                      image: "/hero.png",
+                    },
+                    {
+                      title:
+                        "How can we empower women in rural areas of nepal ?",
+                      image: "/hero.png",
+                    },
+                  ].map((article, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-5 group cursor-pointer"
+                    >
+                      {/* Image */}
+                      <div className="min-w-[120px] overflow-hidden rounded-[5px]">
+                        <img
+                          src={article.image}
+                          alt={article.title}
+                          className="w-[120px] h-[100px] object-cover group-hover:scale-105 transition duration-500"
+                        />
+                      </div>
+
+                      {/* Content */}
+                      <div>
+                        <h3 className="text-[14px] leading-[24px] font-medium text-[#64748B] group-hover:text-[#2D3192] transition">
+                          {article.title}
+                        </h3>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </aside>
           </div>
         </div>
       </section>
-      {/*What Will You Do? */}
-      <section className="w-full py-8 bg-white">
-        <div className=" mx-auto px-4 ">
-          {/* Heading */}
-          <div className="mb-10">
-            <h2 className="text-[38px] leading-tight font-medium text-[#1F2A44]">
-              What Will You Do?
-            </h2>
-
-            <p className="mt-2 text-[16px] leading-7 text-[#6B7280] max-w-[1000px]">
-              We offer engaging opportunities through Women Empowerment
-              Volunteer Programs. Each project is curated in partnership with
-              local women and community leaders. Here are some of the ways you
-              can help:
-            </p>
-          </div>
-
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Entrepreneurship Development Volunteer",
-                image:
-                  "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop",
-                desc: "Fuel ambition and innovation. As an entrepreneurship development volunteer, guide women business owners.",
-              },
-              {
-                title: "Women’s Education Volunteer",
-                image:
-                  "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&auto=format&fit=crop",
-                desc: "Empower future through women’s education programs. Lead literacy and life-skills sessions.",
-              },
-              {
-                title: "Women’s Education Volunteer",
-                image:
-                  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop",
-                desc: "Empower future through women’s education programs. Lead literacy and life-skills sessions.",
-              },
-              {
-                title: "Entrepreneurship Development Volunteer",
-                image:
-                  "https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=1200&auto=format&fit=crop",
-                desc: "Support local women by building confidence and business knowledge through workshops.",
-              },
-              {
-                title: "Women’s Education Volunteer",
-                image:
-                  "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?q=80&w=1200&auto=format&fit=crop",
-                desc: "Help young women gain education access and create stronger futures in local villages.",
-              },
-              {
-                title: "Women’s Education Volunteer",
-                image:
-                  "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200&auto=format&fit=crop",
-                desc: "Create meaningful impact through education, leadership training, and mentoring.",
-              },
-              {
-                title: "Entrepreneurship Development Volunteer",
-                image:
-                  "https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=1200&auto=format&fit=crop",
-                desc: "Guide aspiring entrepreneurs toward financial independence and sustainable growth.",
-              },
-              {
-                title: "Women’s Education Volunteer",
-                image:
-                  "https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop",
-                desc: "Promote literacy and confidence-building among women and girls in underserved communities.",
-              },
-              {
-                title: "Women’s Education Volunteer",
-                image:
-                  "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1200&auto=format&fit=crop",
-                desc: "Encourage lifelong learning and empower women through practical education support.",
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                className="rounded-2xl overflow-hidden border border-[#E2E8F0] bg-white hover:shadow-xl transition-all duration-300"
-              >
-                {/* Image */}
-                <div className="relative overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-[200px] object-cover hover:scale-105 transition duration-500"
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="p-3">
-                  {/* Meta */}
-                  <div className="flex items-center gap-5 text-[#6B7280] text-[14px]">
-                    <div className="flex items-center rounded-3xl shadow-md py-1 px-2 gap-2">
-                      <Clock3 size={15} />
-                      <span>3–24 hours/day</span>
-                    </div>
-
-                    <div className="flex items-center gap-2 rounded-3xl shadow-md px-2 py-1">
-                      <Users size={15} />
-                      <span>2-40 weeks </span>
-                    </div>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="mt-2 text-[18px] leading-[34px] font-medium text-[#1F2A44]">
-                    {item.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className=" text-[15px] leading-7 text-[#5B6475]">
-                    {item.desc}
-                  </p>
-
-                  {/* Buttons */}
-                  <div className="mt-2 flex gap-4">
-                    <button className="flex-1 h-[50px] rounded-[5px] bg-[#312E81] text-white text-[15px] font-medium hover:bg-[#1E1B63] transition">
-                      Apply Now
-                    </button>
-
-                    <button className="flex-1 h-[50px] rounded-[5px] border border-[#312E81] text-[#312E81] text-[15px] font-medium hover:bg-[#EEF2FF] transition">
-                      Read More
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="w-full py-16 bg-white">
-        {/* Skills Section */}
-        <div className="mb-6">
-          <h2 className="text-4xl md:text-[38px]  text-[#1F2432] mb-4">
-            Skills, Requirements & Who Can Join
-          </h2>
-
-          <p className="text-gray-600 text-[16px] leading-7">
-            We’re looking for passionate individuals ready to make a difference.
-            Here’s what you need to know.
-          </p>
-        </div>
-
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-          {[
-            {
-              title: "All Genders Welcome",
-              desc: "We welcome volunteers of all gender identities who are passionate about women's empowerment.",
-            },
-            {
-              title: "Ages 18+",
-              desc: "Volunteers aged 16–17 can join with guardian consent and supervision.",
-            },
-            {
-              title: "Intermediate English",
-              desc: "Ability to communicate effectively in English for training and coordination.",
-            },
-            {
-              title: "No Experience Required",
-              desc: "We provide full training and orientation. Your enthusiasm and commitment matter most.",
-            },
-            {
-              title: "Physical Ability",
-              desc: "Able to travel to rural areas and participate in community activities.",
-            },
-            {
-              title: "Cultural Respect",
-              desc: "Open mind, respect for Nepali culture, and willingness to learn local customs.",
-            },
-          ].map((item, index) => (
-            <div
-              key={index}
-              className="border border-gray-300 rounded-xl bg-white p-6 hover:shadow-md transition"
-            >
-              <div className="w-8 h-8 rounded-full bg-[#2D3192] flex items-center justify-center mb-5">
-                <span className="text-white text-xl">●</span>
-              </div>
-
-              <h3 className="text-[20px] font-[600] text-[#1F2432] ">
-                {item.title}
-              </h3>
-
-              <p className="text-gray-600 leading-7 text-[15px]">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Button */}
-        <div className="flex justify-center mt-6">
-          <button className="bg-[#2D3192] hover:bg-[#232777] text-white px-10 py-3 rounded-lg font-medium shadow-md transition">
-            Join Today
-          </button>
-        </div>
-      </section>
-      {/*volunteer section */}
-      <section className="w-full bg-[#283449] py-20 px-6 md:px-10">
-        <div className="max-w-6xl mx-auto">
-          {/* Heading */}
-          <div className="text-center mb-16">
-            <h2 className="text-white text-[42px] md:text-[38px] leading-[54px] ">
-              Life as a Volunteer: What to Expect
-            </h2>
-          </div>
-
-          {/* CONTENT GRID */}
-          <div className="space-y-14">
-            {/* ROW 1 */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-              {/* Image */}
-              <div className="overflow-hidden rounded-xl">
-                <img
-                  src="/hero.png"
-                  alt="Volunteer Life"
-                  className="w-full h-[230px] object-cover"
-                />
-              </div>
-
-              {/* Text */}
-              <div>
-                <h3 className="text-white text-[30px] leading-[42px] font-medium mb-2">
-                  Cultural Immersion
-                </h3>
-
-                <p className="text-[#D5DBE7] text-[16px] leading-[25px]">
-                  You’ll stay in a Nepali homestay or shared volunteer house.
-                  That means early mornings to market runs, festivals, and
-                  community life. Expect to eat dal-bhat, learn how to tie a
-                  sari, and greet elders with a “Namaste.” You’ll be invited to
-                  weddings, rice planting days, or local puja ceremonies— this
-                  is the heart of the experience.
-                </p>
-              </div>
-            </div>
-
-            {/* ROW 2 */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-              {/* Text */}
-              <div>
-                <h3 className="text-white text-[30px] leading-[42px] font-medium mb-2">
-                  Language & Learning
-                </h3>
-
-                <p className="text-[#D5DBE7] text-[16px] leading-[25px]">
-                  Don’t worry if you don’t speak Nepali. You’ll learn key
-                  phrases and local customs from the moment you arrive. Our team
-                  provides orientation, and your host family will teach you the
-                  rest.
-                </p>
-              </div>
-
-              {/* Image */}
-              <div className="overflow-hidden rounded-xl">
-                <img
-                  src="/hero.png"
-                  alt="Language and Learning"
-                  className="w-full h-[230px] object-cover"
-                />
-              </div>
-            </div>
-
-            {/* ROW 3 */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-              {/* Image */}
-              <div className="overflow-hidden rounded-xl">
-                <img
-                  src="/hero.png"
-                  alt="Support Every Step"
-                  className="w-full h-[230px] object-cover"
-                />
-              </div>
-
-              {/* Text */}
-              <div>
-                <h3 className="text-white text-[30px] leading-[42px] font-medium mb-2">
-                  Support Every Step
-                </h3>
-
-                <ul className="space-y-1 text-[#D5DBE7] text-[16px] leading-[25px]">
-                  <li>
-                    • Pre-departure orientation (WhatsApp, calls, or email)
-                  </li>
-                  <li>• Airport pickup and on-arrival training</li>
-                  <li>
-                    • Daily support from on-site staff and coordinators (24/7)
-                  </li>
-                  <li>
-                    • Weekly check-ins and biweekly group meetings with other
-                    volunteers
-                  </li>
-                  <li>• Health, safety, and emergency support</li>
-                  <li>• Mentorship from local leaders and ViN senior staff</li>
-                </ul>
-
-                <button className="mt-4 text-white underline underline-offset-4 hover:text-[#AFC8FF] transition">
-                  Explore Our Accommodation and Support
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* Fees Section */}
-      <section className="w-full bg-white py-20 ">
-        <div className=" mx-auto">
-          {/* Heading */}
-          <div className="text-center mb-10">
-            <h2 className="text-[40px] md:text-[38px] leading-[52px]  text-[#1F2432] mb-2">
-              Program Fees & What’s Included
-            </h2>
-
-            <p className="text-[#6B7280] text-[16px] leading-[28px]  mx-auto">
-              ViN is a nonprofit. Your program fees allocated directly to
-              project costs, including your room, meals, and local staff
-              salaries. Here’s what you get:
-            </p>
-          </div>
-
-          {/* Content Box */}
-          <div className="rounded-2xl border border-[#D9DEE8] bg-[#F7F8FA] p-8 md:p-10">
-            <div className="space-y-6">
-              {[
-                {
-                  icon: "🛡️",
-                  text: "Secure placement and daily supervision",
-                },
-                {
-                  icon: "🧭",
-                  text: "Pre-departure info pack and training",
-                },
-                {
-                  icon: "🚕",
-                  text: "Airport pickup and all arrival logistics",
-                },
-                {
-                  icon: "🏠",
-                  text: "Homestay or shared house accommodation",
-                },
-                {
-                  icon: "🍽️",
-                  text: "Three healthy meals per day",
-                  sub: "(with special diets respected)",
-                },
-                {
-                  icon: "🙋🏻",
-                  text: "In-country support and language lessons",
-                },
-                {
-                  icon: "🌍",
-                  text: "A supportive community of staff, local leaders, and fellow volunteers",
-                },
-              ].map((item, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  {/* Icon */}
-                  <div className="text-[22px] leading-none mt-[2px]">
-                    {item.icon}
-                  </div>
-
-                  {/* Text */}
-                  <p className="text-[18px] leading-[30px] text-[#374151]">
-                    {item.text}{" "}
-                    {item.sub && (
-                      <span className="text-[#6B7280] text-[15px]">
-                        {item.sub}
-                      </span>
-                    )}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-      {/*Trusted volunteeer section*/}
-      <section className="w-full bg-white py-5 px-6 md:px-10">
-        <div className=" mx-auto">
-          {/* =========================
-        HEADING
-    ========================== */}
-          <div className="mb-8">
-            <h2 className="text-[38px] md:text-[38px] leading-[42px]  text-[#1F2432] mb-2">
-              True Stories from Our Volunteers
-            </h2>
-
-            <p className="text-[#6B7280] text-[16px] leading-[28px]">
-              Hear from volunteers who’ve experienced the transformative power
-              of women’s empowerment work in Nepal.
-            </p>
-          </div>
-
-          {/* =========================
-        TESTIMONIAL SLIDER
-    ========================== */}
-          <div className="relative overflow-hidden rounded-xl group">
-            {/* Background Image */}
-            <img
-              src="/hero.png"
-              alt="Volunteer Story"
-              className="w-full h-[520px] object-cover"
-            />
-
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black/40" />
-
-            {/* Content */}
-            <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-10">
-              {/* Carousel Buttons */}
-              <div className="flex justify-end gap-3">
-                {/* Previous */}
-                <button
-                  onClick={prevSlide}
-                  className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition"
-                >
-                  ←
-                </button>
-
-                {/* Next */}
-                <button
-                  onClick={nextSlide}
-                  className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition"
-                >
-                  →
-                </button>
-              </div>
-
-              {/* Bottom Content */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-30 items-end">
-                {/* Left Side */}
-                <div>
-                  <h3 className="text-white text-[42px] font-semibold leading-none mb-2">
-                    {stories[current].name}
-                  </h3>
-
-                  <p className="text-white/80 text-[15px]">
-                    {stories[current].country}
-                  </p>
-                </div>
-
-                {/* Right Side */}
-                <div className="md:max-w-[700px]">
-                  {/* Stars */}
-                  <div className="flex items-center gap-40 mb-4">
-                    {/* Role */}
-                    <h4 className="text-white text-[20px] font-semibold">
-                      {stories[current].role}
-                    </h4>
-
-                    {/* Stars */}
-                    <div className="flex gap-1">
-                      {[...Array(5)].map((_, index) => (
-                        <span
-                          key={index}
-                          className="text-yellow-400 text-[18px]"
-                        >
-                          ★
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Review */}
-                  <p className="text-white/90 text-[15px] leading-[28px]">
-                    {stories[current].review}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="w-full bg-white py-20 px-6 md:px-10">
-        <div>
-          {/* FAQ SECTION */}
-          <div className="mt-20">
-            {/* Heading */}
-            <div className="mb-10">
-              <h2 className="text-[38px] font-medium text-[#1f2a44] leading-none mb-3">
-                Frequently Asked Questions
+      {/*Becoming part section*/}
+      <section className="w-full bg-[#f3f3f3] py-10 px-4">
+        <div
+          className=" mx-auto rounded-[20px] overflow-hidden relative"
+          style={{
+            background: "linear-gradient(90deg, #2A3495 0%, #000000 100%)",
+          }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center min-h-[260px]">
+            {/* Left Content */}
+            <div className="px-8 md:px-12 py-10 text-white z-10">
+              <h2 className="text-3xl md:text-[30px]  font-poppins font-[600] leading-tight max-w-3xl">
+                Become a part of VIN from anywhere around the world
               </h2>
 
-              <p className="text-[16px] leading-[28px] text-[#6b7280]">
-                Starting your volunteer journey is simple. Follow these easy
-                answers to understand the program better.
+              <p className="mt-5 text-sm md:text-base text-gray-300 max-w-lg leading-relaxed">
+                Wherever you are, you can be part of VIN. Our worldwide network
+                brings together diverse perspectives to spark ideas, ignite
+                collaboration, and build meaningful connections.
+              </p>
+
+              <button className="mt-8 bg-white text-[#2A3495] font-medium px-6 py-3 rounded-md hover:bg-gray-100 transition">
+                See Programs
+              </button>
+            </div>
+
+            {/* Right Image */}
+            <div className="relative h-full flex items-end justify-end">
+              <img
+                src="/images/kids.png"
+                alt="Children"
+                className="w-full max-w-[420px] object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      {/*our team section*/}
+      <section className="w-full  py-20 px-4 md:px-8">
+        <div className=" mx-auto">
+          {/* Header */}
+          <div className="flex items-start justify-between flex-wrap gap-4">
+            <div>
+              <h2 className="text-[38px] font-medium text-[#1F2A44] leading-tight">
+                Our Team Members
+              </h2>
+
+              <p className="mt-2 text-[#6B7280] text-[15px]">
+                Listen to heartfelt stories from people who choose to make a
+                difference with us.
               </p>
             </div>
 
-            {/* FAQ ITEMS */}
-            <div className="space-y-4">
-              {faqs.map((faq, index) => {
-                const isOpen = openIndex === index;
+            <button className="bg-[#2A3495] hover:bg-[#1f2875] transition text-white text-sm font-medium px-6 py-3 rounded-md shadow-md">
+              View all members
+            </button>
+          </div>
 
-                return (
-                  <div
-                    key={index}
-                    className="border border-[#e5e7eb] rounded-xl overflow-hidden bg-white"
-                  >
-                    {/* Question */}
-                    <button
-                      onClick={() => toggleFAQ(index)}
-                      className="w-full flex items-center justify-between text-left px-6 py-5"
-                    >
-                      <span className="text-[17px] font-medium text-[#1f2a44] pr-5">
-                        {faq.question}
-                      </span>
+          {/* Team Cards */}
+          <div className="relative mt-12 group">
+            {/* Left Arrow */}
+            <button
+              onClick={() =>
+                teamRef.current?.scrollBy({ left: -320, behavior: "smooth" })
+              }
+              className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md hover:bg-[#1f2875] transition-colors"
+            >
+              &#10094;
+            </button>
 
-                      <ChevronDown
-                        className={`w-6 h-6 text-[#4b5563] transition-transform duration-300 ${
-                          isOpen ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-
-                    {/* Answer */}
-                    <div
-                      className={`grid transition-all duration-300 ease-in-out ${
-                        isOpen
-                          ? "grid-rows-[1fr] opacity-100"
-                          : "grid-rows-[0fr] opacity-0"
-                      }`}
-                    >
-                      <div className="overflow-hidden">
-                        <div className="px-6 pb-6">
-                          <p className="text-[16px] leading-[30px] text-[#6b7280]">
-                            {faq.answer}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+            {/* Cards Slider */}
+            <div
+              ref={teamRef}
+              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              {[
+                {
+                  name: "Bhupendra Ghimire",
+                  role: "President",
+                  degree: "Master's In Education",
+                  image: "/images/member1.png",
+                },
+                {
+                  name: "Dinesh Khatiwada",
+                  role: "Volunteer Manager",
+                  degree: "Master's In Education",
+                  image: "/images/member2.png",
+                },
+                {
+                  name: "Tula Dhwoj Khatiwada",
+                  role: "Program Manager",
+                  degree: "Master's In Education",
+                  image: "/images/member3.png",
+                },
+                {
+                  name: "Surendra Joshi",
+                  role: "IT Consultant",
+                  degree: "Master's In Education",
+                  image: "/images/member4.png",
+                },
+                {
+                  name: "Anita Thapa",
+                  role: "Field Coordinator",
+                  degree: "Bachelor's In Social Work",
+                  image: "/hero.png",
+                },
+              ].map((member, idx) => (
+                <div
+                  key={idx}
+                  className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3"
+                >
+                  <div className="rounded-[10px] overflow-hidden">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-[200px] object-cover"
+                    />
                   </div>
-                );
-              })}
+
+                  <div className="mt-4">
+                    <h3 className="text-[18px] font-semibold text-[#1F2937]">
+                      {member.name}
+                    </h3>
+
+                    <p className="text-[14px] text-[#4B5563] mt-1">
+                      {member.role}
+                    </p>
+
+                    <p className="text-[13px] text-[#9CA3AF] mt-1">
+                      {member.degree}
+                    </p>
+
+                    <button className="mt-5 w-full border border-[#2A3495] text-[#2A3495] py-2 rounded-md text-sm font-medium hover:bg-[#2A3495] hover:text-white transition">
+                      View profile
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Right Arrow */}
+            <button
+              onClick={() =>
+                teamRef.current?.scrollBy({ left: 320, behavior: "smooth" })
+              }
+              className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md hover:bg-[#1f2875] transition-colors"
+            >
+              &#10095;
+            </button>
+          </div>
+        </div>
+      </section>
+      {/* Map and Cards Section */}
+      <section className="py-20 text-center">
+        {/* Top Content */}
+        <div>
+          <h2 className="text-[32px] md:text-[40px] font-medium text-[#222] mb-4">
+            Where we work
+          </h2>
+
+          <p className="max-w-[760px] mx-auto text-[14px] md:text-[15px] leading-7 text-[#666]">
+            We place volunteers in communities to support local effort,
+            empowering residents to evolve positive change and improve quality
+            of life through collaboration on meaningful projects.
+          </p>
+        </div>
+
+        {/* Map */}
+        <div className="pt-12 pb-16 flex justify-center">
+          <img
+            src="/images/nepal-map.png"
+            alt="Nepal Map"
+            className="object-contain"
+          />
+        </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
+          {/* Card 1 */}
+          <div className="text-center group">
+            <div className="overflow-hidden rounded-[8px]">
+              <img
+                src="/location.png"
+                alt="Kathmandu"
+                className="w-full block transition duration-500 group-hover:scale-105"
+              />
+            </div>
+
+            <div className="pt-5">
+              <h3 className="text-[22px] font-medium text-[#222] mb-3">
+                Kathmandu
+              </h3>
+
+              <p className="text-[14px] leading-7 text-[#666] mb-4">
+                Transform communities by providing access and care services and
+                improve quality of life through innovative projects for over two
+                years.
+              </p>
+
+              <Link
+                href="/"
+                className="text-[16px] text-black pb-[2px] hover:opacity-70 transition"
+              >
+                Read More..
+              </Link>
             </div>
           </div>
+
+          {/* Card 2 */}
+          <div className="text-center group">
+            <div className="overflow-hidden rounded-[8px]">
+              <img
+                src="/location.png"
+                alt="Okhaldhunga"
+                className="w-full block transition duration-500 group-hover:scale-105"
+              />
+            </div>
+
+            <div className="pt-5">
+              <h3 className="text-[22px] font-medium text-[#222] mb-3">
+                Okhaldhunga
+              </h3>
+
+              <p className="text-[14px] leading-7 text-[#666] mb-4">
+                Okhaldhunga district is located 250 km east from Kathmandu.
+                During project activities, more than 1500+ participants and
+                engaged with over 900 key workers helping improve livelihoods.
+              </p>
+
+              <Link
+                href="/"
+                className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
+              >
+                Read More..
+              </Link>
+            </div>
+          </div>
+
+          {/* Card 3 */}
+          <div className="text-center group">
+            <div className="overflow-hidden rounded-[8px]">
+              <img
+                src="/location.png"
+                alt="Nuwakot"
+                className="w-full block transition duration-500 group-hover:scale-105"
+              />
+            </div>
+
+            <div className="pt-5">
+              <h3 className="text-[22px] font-medium text-[#222] mb-3">
+                Nuwakot
+              </h3>
+
+              <p className="text-[14px] leading-7 text-[#666] mb-4">
+                Nuwakot is located 75 km northwest from Kathmandu and serves
+                through development and social initiatives to support local
+                communities.
+              </p>
+
+              <Link
+                href="/"
+                className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
+              >
+                Read More..
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Choose Impact Section */}
+      <section className="py-16">
+        {/* Top Heading */}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-10">
+          <div>
+            <h2 className="text-[32px] md:text-[42px] font-medium text-[#1e1e1e] mb-3">
+              Choose where your Impact Begins
+            </h2>
+
+            <p className="text-[14px] leading-7 text-[#666] max-w-[780px]">
+              Make a difference today! Choose to become a volunteer, sponsor a
+              child, join an internship, or donate now, and help create lasting
+              impact in lives and communities.
+            </p>
+          </div>
+
+          <div>
+            <Link
+              href="/work-with-us"
+              className="inline-flex items-center justify-center bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[14px] font-medium px-8 py-3 rounded-md shadow-md transition"
+            >
+              View all
+            </Link>
+          </div>
+        </div>
+
+        {/* Cards */}
+        <div className="relative group">
+          {/* Left Arrow */}
+          <button
+            onClick={() =>
+              impactRef.current?.scrollBy({ left: -320, behavior: "smooth" })
+            }
+            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition"
+          >
+            ❮
+          </button>
+
+          {/* Right Arrow */}
+          <button
+            onClick={() =>
+              impactRef.current?.scrollBy({ left: 320, behavior: "smooth" })
+            }
+            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition"
+          >
+            ❯
+          </button>
+
+          <div
+            ref={impactRef}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {/* Card 1 */}
+            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
+              <div className="overflow-hidden">
+                <img
+                  src="/images/volunteer.jpg"
+                  alt="Volunteer"
+                  className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
+                />
+              </div>
+
+              <div className="p-4">
+                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
+                  Apply for Volunteering →
+                </button>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
+              <div className="overflow-hidden">
+                <img
+                  src="/images/donate.jpg"
+                  alt="Donate"
+                  className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
+                />
+              </div>
+
+              <div className="p-4">
+                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
+                  Donate Now →
+                </button>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
+              <div className="overflow-hidden">
+                <img
+                  src="/images/internship.jpg"
+                  alt="Internship"
+                  className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
+                />
+              </div>
+
+              <div className="p-4">
+                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
+                  Apply for Internship →
+                </button>
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
+              <div className="overflow-hidden">
+                <img
+                  src="/images/sponsor.jpg"
+                  alt="Sponsor Child"
+                  className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
+                />
+              </div>
+
+              <div className="p-4">
+                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
+                  Sponsor a Child →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-20">
+        {/* Top Rating */}
+        <div className="flex items-center justify-center gap-3 mb-14">
+          <div className="flex text-yellow-400 text-[18px]">★ ★ ★ ★ ★</div>
+
+          <h3 className="text-[32px] font-semibold text-[#1F2B6C] leading-none">
+            4.4<span className="text-[18px]">/5</span>
+          </h3>
+
+          <span className="text-[14px] text-gray-500 border-l pl-3">
+            200+ Review
+          </span>
+        </div>
+
+        {/* Review Cards */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+          {/* Card 1 */}
+          <div className="flex flex-col items-center">
+            <h4 className="text-[34px] font-semibold text-[#1F2B6C]">
+              4.5<span className="text-[18px]">/5</span>
+            </h4>
+
+            <div className="flex items-center gap-1 mt-2 mb-2">
+              <span className="text-yellow-400 text-[14px]">★</span>
+              <span className="text-[12px] font-semibold text-[#F4A100] uppercase tracking-wide">
+                Great
+              </span>
+            </div>
+
+            <p className="text-[18px] text-[#444] font-medium">
+              Great Non-profit
+            </p>
+          </div>
+
+          {/* Card 2 */}
+          <div className="flex flex-col items-center">
+            <h4 className="text-[34px] font-semibold text-[#1F2B6C]">
+              4.2<span className="text-[18px]">/5</span>
+            </h4>
+
+            <h5 className="text-[28px] font-semibold text-[#1F2B6C] mt-2">
+              Google
+            </h5>
+
+            <p className="text-[18px] text-[#444] font-medium mt-1">
+              Google Reviews
+            </p>
+          </div>
+
+          {/* Card 3 */}
+          <div className="flex flex-col items-center">
+            <h4 className="text-[34px] font-semibold text-[#1F2B6C]">
+              4.2<span className="text-[18px]">/5</span>
+            </h4>
+
+            <h5 className="text-[32px] font-bold text-[#1F2B6C] mt-2">GO</h5>
+
+            <p className="text-[18px] text-[#444] font-medium mt-1">
+              go overseas
+            </p>
+          </div>
+
+          {/* Card 4 */}
+          <div className="flex flex-col items-center">
+            <h4 className="text-[34px] font-semibold text-[#1F2B6C]">
+              4.2<span className="text-[18px]">/5</span>
+            </h4>
+
+            <div className="flex text-yellow-400 text-[14px] mt-2">
+              ★ ★ ★ ★ ★
+            </div>
+
+            <p className="text-[18px] text-[#444] font-medium mt-2">
+              Review Center
+            </p>
+          </div>
+        </div>
+      </section>
+      {/* Volunteer Reviews Section */}
+      <section className="w-full  py-14 md:py-20">
+        <div className="mx-auto  px-4 sm:px-6 lg:px-8">
+          {/* Top Heading */}
+          <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl font-medium tracking-tight text-[#1b1b1b] md:text-[38px]">
+                What Our Volunteers Say
+              </h2>
+
+              <p className="mt-3 text-sm leading-7 text-[#7c7c7c] md:text-[15px]">
+                Real stories from our volunteers and community members. Discover
+                real-life experiences and feedback that highlight our
+                commitment, impact, and the trust we build every day.
+              </p>
+            </div>
+
+            {/* Button */}
+            <button className="w-fit rounded-md bg-[#1F2B6C] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#3340d0]">
+              View all
+            </button>
+          </div>
+
+          {/* Slider Area */}
+          <div className="relative group/vol">
+            {/* Left Arrow */}
+            <button
+              onClick={() =>
+                volunteerRef.current?.scrollBy({
+                  left: -320,
+                  behavior: "smooth",
+                })
+              }
+              className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex hover:bg-gray-100 transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4 text-[#5f6b7a]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+
+            {/* Cards */}
+            <div
+              ref={volunteerRef}
+              className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              {/* Card 1 */}
+              <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <p className="text-[14px] leading-7 text-[#5d6470]">
+                  &quot;Volunteering with VN completely transformed the way I
+                  see community development. The staff were incredibly
+                  supportive, and the projects truly made a real impact. I
+                  learned so much from fellow volunteers!&quot;
+                </p>
+
+                <div className="mt-6 flex items-center gap-3">
+                  <img
+                    src="/hero.png"
+                    alt="User"
+                    className="h-11 w-11 rounded-full object-cover"
+                  />
+
+                  <div>
+                    <h4 className="text-sm font-medium text-[#111827]">
+                      Baker Kumar Sah
+                    </h4>
+                    <p className="text-xs text-[#8b8b8b]">Nepal</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 2 */}
+              <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <p className="text-[14px] leading-7 text-[#5d6470]">
+                  &quot;Volunteering with VN completely transformed the way I
+                  see community development. The staff were incredibly
+                  supportive, and the projects truly made a real impact. I
+                  learned so much from fellow volunteers!&quot;
+                </p>
+
+                <div className="mt-6 flex items-center gap-3">
+                  <img
+                    src="/hero.png"
+                    alt="User"
+                    className="h-11 w-11 rounded-full object-cover"
+                  />
+
+                  <div>
+                    <h4 className="text-sm font-medium text-[#111827]">
+                      Baker Kumar Sah
+                    </h4>
+                    <p className="text-xs text-[#8b8b8b]">United States</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3 */}
+              <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+                <p className="text-[14px] leading-7 text-[#5d6470]">
+                  &quot;Volunteering with VN completely transformed the way I
+                  see community development. The staff were incredibly
+                  supportive, and the projects truly made a real impact. I
+                  learned so much from fellow volunteers!&quot;
+                </p>
+
+                <div className="mt-6 flex items-center gap-3">
+                  <img
+                    src="/hero.png"
+                    alt="User"
+                    className="h-11 w-11 rounded-full object-cover"
+                  />
+
+                  <div>
+                    <h4 className="text-sm font-medium text-[#111827]">
+                      Baker Kumar Sah
+                    </h4>
+                    <p className="text-xs text-[#8b8b8b]">Georgia</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Arrow */}
+            <button
+              onClick={() =>
+                volunteerRef.current?.scrollBy({
+                  left: 320,
+                  behavior: "smooth",
+                })
+              }
+              className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex hover:bg-gray-100 transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4 text-[#5f6b7a]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+      {/*Trust Us section*/}
+      <section className="w-full  py-14 md:py-20">
+        <div className="mx-auto  px-4 sm:px-6 lg:px-8">
+          {/* Top Heading */}
+          <div className="mb-8 flex items-start justify-between">
+            <div className="max-w-3xl">
+              <h2 className="text-3xl font-medium tracking-tight text-[#1b1b1b] md:text-[38px]">
+                Watch Why People Trust Us
+              </h2>
+
+              <p className="mt-3 text-sm leading-7 text-[#6f6f6f] md:text-[15px]">
+                Watch why people trust us and discover how our commitment,
+                transparency, and results have built lasting relationships. See
+                real stories and experiences that showcase our reliability and
+                impact.
+              </p>
+            </div>
+
+            {/* Navigation Arrows */}
+            <div className="hidden items-center gap-2 md:flex">
+              <button
+                onClick={prevTrust}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 text-[#5f6b7a]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              <button
+                onClick={nextTrust}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 text-[#5f6b7a]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          {/* Video Section */}
+          <div className="relative overflow-hidden rounded-2xl group transition-all duration-300">
+            {/* Background Image */}
+            <img
+              src={trustVideos[trustSlide].image}
+              alt="Trust Video"
+              className="h-[250px] w-full object-cover sm:h-[350px] md:h-[520px] transition-all duration-500"
+            />
+
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-black/35"></div>
+
+            {/* Center Play Button */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <button className="flex h-20 w-20 items-center justify-center rounded-full bg-white/20 backdrop-blur-md transition hover:scale-105">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="ml-1 h-6 w-6 fill-[#4b5563]"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </button>
+            </div>
+
+            {/* Bottom Left Text */}
+            <div className="absolute bottom-6 left-6 z-10 max-w-sm text-white md:bottom-10 md:left-10">
+              <h3 className="text-2xl font-semibold md:text-[34px] transition-all duration-300">
+                {trustVideos[trustSlide].name}
+              </h3>
+
+              <p className="mt-2 text-sm leading-6 text-white/85 md:text-[15px] transition-all duration-300">
+                {trustVideos[trustSlide].description}
+              </p>
+            </div>
+
+            {/* Bottom Sound Icon */}
+            <button className="absolute bottom-6 left-1/2 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full bg-white/20 backdrop-blur-md md:bottom-10">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M11 5L6 9H3v6h3l5 4V5z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.54 8.46a5 5 0 010 7.07"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+      {/*Explore Nepal section*/}
+      <section className="relative overflow-hidden bg-[#00B1F333] mb-10 py-16 md:py-24">
+        {/* Top Wave */}
+        <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
+          <svg
+            className="relative block h-[60px] w-full"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#ffffff"
+              d="M0,32L60,37.3C120,43,240,53,360,48C480,43,600,21,720,21.3C840,21,960,43,1080,48C1200,53,1320,43,1380,37.3L1440,32L1440,0L0,0Z"
+            ></path>
+          </svg>
+        </div>
+
+        {/* Bottom Wave */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180">
+          <svg
+            className="relative block h-[60px] w-full"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#ffffff"
+              d="M0,32L60,37.3C120,43,240,53,360,48C480,43,600,21,720,21.3C840,21,960,43,1080,48C1200,53,1320,43,1380,37.3L1440,32L1440,0L0,0Z"
+            ></path>
+          </svg>
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Top Content */}
+          <div className="grid gap-20 md:grid-cols-2 md:items-start">
+            {/* Left */}
+            <div>
+              <p className="text-[18px] text-[#5b6770]">Explore Nepal</p>
+
+              <h2 className="mt-3 max-w-md text-[36px] font-medium leading-tight text-[#374151] md:text-[38px]">
+                Where Every Journey
+                <br />
+                Has a Purpose
+              </h2>
+            </div>
+
+            {/* Right */}
+            <div className="max-w-xl pt-8">
+              <p className="text-[15px]  font-[400] leading-7 text-[#374151]">
+                Explore Nepal — a land where snow-capped mountains meet ancient
+                temples, and kindness flows through every village path. This is
+                a country of simple living, deep spirituality, and warm
+                community bonds.
+              </p>
+            </div>
+          </div>
+
+          {/* Image Grid */}
+          <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {/* Image 1 */}
+            <div className="overflow-hidden rounded-[22px]">
+              <img
+                src="/hero.png"
+                alt="Nepal Trekking"
+                className="h-[220px] w-full object-cover md:h-[420px]"
+              />
+            </div>
+
+            {/* Image 2 */}
+            <div className="overflow-hidden rounded-[22px]">
+              <img
+                src="/hero.png"
+                alt="River Rafting"
+                className="h-[220px] w-full object-cover md:h-[420px]"
+              />
+            </div>
+
+            {/* Image 3 */}
+            <div className="overflow-hidden rounded-[22px]">
+              <img
+                src="/hero.png"
+                alt="Temple"
+                className="h-[220px] w-full object-cover md:h-[420px]"
+              />
+            </div>
+
+            {/* Image 4 */}
+            <div className="overflow-hidden rounded-[22px]">
+              <img
+                src="/hero.png"
+                alt="Wildlife"
+                className="h-[220px] w-full object-cover md:h-[420px]"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <LatestNews />
+      <Articles />
+      {/* Volunteer Program Section */}
+      <section className="relative w-full overflow-hidden rounded-sm  pt-10 pb-16 md:pb-24 pt-16">
+        {/* Background Image */}
+        <img
+          src="/hero.png"
+          alt="Sponsor a Child"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/75" />
+
+        {/* Left Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+
+        {/* Content */}
+        <div className="relative z-10 flex items-center h-full px-10">
+          <div className=" text-white">
+            {/* Heading */}
+            <h2 className="text-[38px] leading-[60px] font-medium mb-4">
+              Sponsor a Child, Change a Life
+            </h2>
+
+            {/* Description */}
+            <p className="text-[14px] leading-[24px] text-gray-200 mb-6 max-w-[470px]">
+              Your sponsorship provides education, healthcare, and essential
+              support to children in Nepal who need it most. Give a child the
+              opportunity to learn, grow, and build a brighter future.
+            </p>
+
+            {/* List */}
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-center gap-3 text-[17px] font-medium">
+                <span className="w-2 h-2 rounded-full bg-white" />
+                Education & Learning
+              </li>
+
+              <li className="flex items-center gap-3 text-[17px] font-medium">
+                <span className="w-2 h-2 rounded-full bg-white" />
+                Health & Wellbeing
+              </li>
+
+              <li className="flex items-center gap-3 text-[17px] font-medium">
+                <span className="w-2 h-2 rounded-full bg-white" />
+                Empowerment & Opportunity
+              </li>
+            </ul>
+
+            {/* Button */}
+            <button className="bg-[#1F2B6C] hover:bg-[#1F2B6C] transition-all duration-300 text-white text-[14px] font-medium px-6 py-3 rounded-md shadow-lg">
+              Help a child today!
+            </button>
+          </div>
+        </div>
+      </section>
+      {/*Gallery section*/}
+      <section className="w-full bg-[#f7f7f7] py-20 px-4 md:px-6">
+        {/* Header */}
+        <div className="flex items-start justify-between mb-5">
+          <div>
+            <h2 className="text-[38px] font-medium text-[#1f1f1f] leading-none mb-2">
+              Gallery
+            </h2>
+
+            <p className="text-[16px] text-[#8b8b8b] leading-[18px] max-w-4xl">
+              A glimpse into the moments that define our work and community
+              impact.
+            </p>
+          </div>
+
+          <button className="bg-[#2E3192] hover:bg-[#26287d] transition-all text-white text-[16px] font-medium px-10 py-2 rounded-sm">
+            View all
+          </button>
+        </div>
+
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-3 gap-3">
+          {/* Image 1 */}
+          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
+            <img
+              src="/hero.png"
+              alt="gallery"
+              className="w-full h-[200px] object-cover"
+            />
+          </div>
+
+          {/* Image 2 */}
+          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
+            <img
+              src="/hero.png"
+              alt="gallery"
+              className="w-full h-[200px] object-cover"
+            />
+          </div>
+
+          {/* Image 3 */}
+          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
+            <img
+              src="/hero.png"
+              alt="gallery"
+              className="w-full h-[200px] object-cover"
+            />
+          </div>
+
+          {/* Image 4 */}
+          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
+            <img
+              src="/hero.png"
+              alt="gallery"
+              className="w-full h-[200px] object-cover"
+            />
+          </div>
+
+          {/* Image 5 */}
+          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
+            <img
+              src="/hero.png"
+              alt="gallery"
+              className="w-full h-[200px] object-cover"
+            />
+          </div>
+
+          {/* Image 6 */}
+          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
+            <img
+              src="/hero.png"
+              alt="gallery"
+              className="w-full h-[200px] object-cover"
+            />
+          </div>
+
+          {/* Image 7 */}
+          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
+            <img
+              src="/hero.png"
+              alt="gallery"
+              className="w-full h-[200px] object-cover"
+            />
+          </div>
+
+          {/* Image 8 */}
+          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
+            <img
+              src="/hero.png"
+              alt="gallery"
+              className="w-full h-[200px] object-cover"
+            />
+          </div>
+
+          {/* Image 9 */}
+          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
+            <img
+              src="/hero.png"
+              alt="gallery"
+              className="w-full h-[200px] object-cover"
+            />
+          </div>
+        </div>
+      </section>
+      {/* Volunteers Section */}
+      <section className="w-full bg-gradient-to-b from-[#FFFFFF] to-[#CCEFFD] py-10 px-6 md:px-10">
+        {/* Header */}
+        <div className="flex items-start justify-between mb-8">
+          <div>
+            <h2 className="text-[38px] font-medium text-[#1d1d1d] leading-none mb-3">
+              Our Volunteers
+            </h2>
+
+            <p className="text-[16px] text-[#7b7b7b]">
+              Our current volunteers working with us
+            </p>
+          </div>
+
+          <Link
+            href="/volunteering"
+            className="bg-[#2E3192] hover:bg-[#26287d] transition-all text-white text-[16px] font-medium px-6 py-3 rounded-md shadow-sm inline-flex items-center justify-center"
+          >
+            View Volunteers
+          </Link>
+        </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12  mx-auto">
+          {[1, 2, 3].map((item) => (
+            <div key={item} className="flex flex-col items-center text-center">
+              {/* Image Card */}
+              <div className="w-[350px] overflow-hidden rounded-md shadow-md border border-gray-200 bg-white">
+                <img
+                  src="/hero.png"
+                  alt="Volunteer"
+                  className="w-full h-[200px] object-cover"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="mt-4">
+                <h3 className="text-[15px] font-semibold text-[#222]">
+                  Kelly Anne Lister
+                </h3>
+
+                <p className="text-[12px] text-[#8a8a8a] mt-1">Australia</p>
+
+                <p className="text-[11px] text-[#9a9a9a] mt-2 leading-[18px]">
+                  Teaching English at Monastery
+                </p>
+
+                {/* Dates */}
+                <div className="flex items-center justify-center gap-8 mt-4 text-[10px] text-[#8d8d8d]">
+                  <div>
+                    <p>F To</p>
+                    <p className="mt-1 text-[#666]">12/01/2026</p>
+                  </div>
+
+                  <div>
+                    <p>T To</p>
+                    <p className="mt-1 text-[#666]">12/01/2026</p>
+                  </div>
+                </div>
+
+                {/* Button */}
+                <button className="mt-5 w-[350px] border border-[#4c53c7] text-[#2E3192] hover:bg-[#2E3192] hover:text-white transition-all text-[14px] font-medium py-3 rounded-md bg-white shadow-sm">
+                  Learn More
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </main>
