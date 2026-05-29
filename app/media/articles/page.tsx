@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function VolunteerStoriesPage() {
   const stories = [1, 2, 3, 4, 5, 6];
 
@@ -72,9 +74,11 @@ export default function VolunteerStoriesPage() {
                 </button>
 
                 {/* Volunteer Now */}
-                <button className="w-[150px] h-[40px] rounded-[4px] border border-[#cfd5e3] bg-white text-[#2A3495] text-[13px] font-medium hover:bg-[#f8f9fc] transition-all">
-                  Volunteer Now
-                </button>
+                <Link href="/volunteering">
+                  <button className="w-[150px] h-[40px] rounded-[4px] border border-[#cfd5e3] bg-white text-[#2A3495] text-[13px] font-medium hover:bg-[#f8f9fc] transition-all">
+                    Volunteer Now
+                  </button>
+                </Link>
               </div>
             </div>
           ))}

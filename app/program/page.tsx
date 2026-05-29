@@ -1,4 +1,7 @@
 "use client";
+import ChooseImpact from "@/app/components/ChooseImpact";
+import OurTeam from "@/app/components/OurTeam";
+
 import Link from "next/link";
 import { useRef } from "react";
 
@@ -7,8 +10,8 @@ import LatestNews from "../components/news";
 import Articles from "../components/articles";
 
 export default function ProgrammePage() {
-  const teamRef = useRef<HTMLDivElement>(null);
-  const impactRef = useRef<HTMLDivElement>(null);
+  
+  
   const volunteerRef = useRef<HTMLDivElement>(null);
   const trustRef = useRef<HTMLDivElement>(null);
 
@@ -107,167 +110,7 @@ export default function ProgrammePage() {
         </div>
       </section>
       {/*our team section*/}
-      <section className="w-full  py-20 px-4 md:px-8">
-        <div className=" mx-auto">
-          {/* Header */}
-          <div className="flex items-start justify-between flex-wrap gap-4">
-            <div>
-              <h2 className="text-[38px] font-medium text-[#1F2A44] leading-tight">
-                Our Team Members
-              </h2>
-
-              <p className="mt-2 text-[#6B7280] text-[15px]">
-                Listen to heartfelt stories from people who choose to make a
-                difference with us.
-              </p>
-            </div>
-
-            <button className="bg-[#2A3495] hover:bg-[#1f2875] transition text-white text-sm font-medium px-6 py-3 rounded-md shadow-md">
-              View all members
-            </button>
-          </div>
-
-          {/* Team Cards */}
-          <div className="relative mt-12 group">
-            {/* Left Arrow */}
-            <button 
-              onClick={() => teamRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
-              className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              &#10094;
-            </button>
-
-            {/* Cards Grid */}
-            <div 
-              ref={teamRef}
-              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-            >
-              {/* Card 1 */}
-              <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
-                <div className="rounded-[10px] overflow-hidden">
-                  <img
-                    src="/images/member1.png"
-                    alt="Bhupendra Ghimire"
-                    className="w-full h-[200px] object-cover"
-                  />
-                </div>
-
-                <div className="mt-4">
-                  <h3 className="text-[18px] font-[400] text-[#1F2937]">
-                    Bhupendra Ghimire
-                  </h3>
-
-                  <p className="text-[14px] text-[#4B5563] mt-1">President</p>
-
-                  <p className="text-[13px] text-[#9CA3AF] mt-1">
-                    Master's In Education
-                  </p>
-
-                  <button className="mt-5 w-full border border-[#2A3495] text-[#2A3495] py-2 rounded-md text-sm font-medium hover:bg-[#2A3495] hover:text-white transition">
-                    View profile
-                  </button>
-                </div>
-              </div>
-
-              {/* Card 2 */}
-              <div className="bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
-                <div className="rounded-[10px] overflow-hidden">
-                  <img
-                    src="/images/member2.png"
-                    alt="Dinesh Khatiwada"
-                    className="w-full h-[200px] object-cover"
-                  />
-                </div>
-
-                <div className="mt-4">
-                  <h3 className="text-[18px] font-semibold text-[#1F2937]">
-                    Dinesh Khatiwada
-                  </h3>
-
-                  <p className="text-[14px] text-[#4B5563] mt-1">
-                    Volunteer Manager
-                  </p>
-
-                  <p className="text-[13px] text-[#9CA3AF] mt-1">
-                    Master's In Education
-                  </p>
-
-                  <button className="mt-5 w-full border border-[#2A3495] text-[#2A3495] py-2 rounded-md text-sm font-medium hover:bg-[#2A3495] hover:text-white transition">
-                    View profile
-                  </button>
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
-                <div className="rounded-[10px] overflow-hidden">
-                  <img
-                    src="/images/member3.png"
-                    alt="Tula Dhwoj Khatiwada"
-                    className="w-full h-[200px] object-cover"
-                  />
-                </div>
-
-                <div className="mt-4">
-                  <h3 className="text-[18px] font-semibold text-[#1F2937]">
-                    Tula Dhwoj Khatiwada
-                  </h3>
-
-                  <p className="text-[14px] text-[#4B5563] mt-1">
-                    Program Manager
-                  </p>
-
-                  <p className="text-[13px] text-[#9CA3AF] mt-1">
-                    Master's In Education
-                  </p>
-
-                  <button className="mt-5 w-full border border-[#2A3495] text-[#2A3495] py-2 rounded-md text-sm font-medium hover:bg-[#2A3495] hover:text-white transition">
-                    View profile
-                  </button>
-                </div>
-              </div>
-
-              {/* Card 4 */}
-              <div className="bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3">
-                <div className="rounded-[10px] overflow-hidden">
-                  <img
-                    src="/images/member4.png"
-                    alt="Surendra Joshi"
-                    className="w-full h-[200px] object-cover"
-                  />
-                </div>
-
-                <div className="mt-4">
-                  <h3 className="text-[18px] font-semibold text-[#1F2937]">
-                    Surendra Joshi
-                  </h3>
-
-                  <p className="text-[14px] text-[#4B5563] mt-1">
-                    IT Consultant
-                  </p>
-
-                  <p className="text-[13px] text-[#9CA3AF] mt-1">
-                    Master's In Education
-                  </p>
-
-                  <button className="mt-5 w-full border border-[#2A3495] text-[#2A3495] py-2 rounded-md text-sm font-medium hover:bg-[#2A3495] hover:text-white transition">
-                    View profile
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Arrow */}
-            <button 
-              onClick={() => teamRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
-              className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              &#10095;
-            </button>
-          </div>
-        </div>
-      </section>
+      <OurTeam />
       {/* Map and Cards Section */}
       <section className="py-20 text-center">
         {/* Top Content */}
@@ -388,121 +231,7 @@ export default function ProgrammePage() {
       <LatestNews/>
       <Articles/>
       {/* Choose Impact Section */}
-      <section className="py-16">
-        {/* Top Heading */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-10">
-          <div>
-            <h2 className="text-[32px] md:text-[42px] font-medium text-[#1e1e1e] mb-3">
-              Choose where your Impact Begins
-            </h2>
-
-            <p className="text-[14px] leading-7 text-[#666] max-w-[780px]">
-              Make a difference today! Choose to become a volunteer, sponsor a
-              child, join an internship, or donate now, and help create lasting
-              impact in lives and communities.
-            </p>
-          </div>
-
-          <div>
-            <button className="bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[14px] font-medium px-8 py-3 rounded-md shadow-md transition">
-              View all
-            </button>
-          </div>
-        </div>
-
-        {/* Cards */}
-        <div className="relative group/impact">
-          {/* Left Arrow */}
-          <button 
-            onClick={() => impactRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition opacity-0 group-hover/impact:opacity-100"
-          >
-            ❮
-          </button>
-
-          {/* Right Arrow */}
-          <button 
-            onClick={() => impactRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition opacity-0 group-hover/impact:opacity-100"
-          >
-            ❯
-          </button>
-
-          <div 
-            ref={impactRef}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {/* Card 1 */}
-            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group hover:shadow-2xl transition duration-500">
-              <div className="overflow-hidden">
-                <img
-                  src="/images/volunteer.jpg"
-                  alt="Volunteer"
-                  className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
-                />
-              </div>
-
-              <div className="p-4">
-                <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
-                  Apply for Volunteering →
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group hover:shadow-2xl transition duration-500">
-              <div className="overflow-hidden">
-                <img
-                  src="/images/donate.jpg"
-                  alt="Donate"
-                  className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
-                />
-              </div>
-
-              <div className="p-4">
-                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
-                  Donate Now →
-                </button>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group hover:shadow-2xl transition duration-500">
-              <div className="overflow-hidden">
-                <img
-                  src="/images/internship.jpg"
-                  alt="Internship"
-                  className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
-                />
-              </div>
-
-              <div className="p-4">
-                <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
-                  Apply for Internship →
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 4 */}
-            <div className="bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group hover:shadow-2xl transition duration-500">
-              <div className="overflow-hidden">
-                <img
-                  src="/images/sponsor.jpg"
-                  alt="Sponsor Child"
-                  className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
-                />
-              </div>
-
-              <div className="p-4">
-                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
-                  Sponsor a Child →
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ChooseImpact />
       <section className="py-20 bg-white">
         {/* Top Rating */}
         <div className="flex items-center justify-center gap-3 mb-14">

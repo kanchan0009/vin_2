@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 const programs = [
   {
@@ -94,9 +95,11 @@ export default function GetInvolvedSection() {
 
                 {/* BUTTONS */}
                 <div className="flex gap-3 w-full">
-                  <button className="w-1/2 py-3 bg-[#2A3495] text-white text-[13px] font-medium rounded-md hover:bg-[#1f2875] transition">
-                    Become Volunteer
-                  </button>
+                  <Link href="/applyNow" className="w-1/2">
+                    <button className="w-full py-3 bg-[#2A3495] text-white text-[13px] font-medium rounded-md hover:bg-[#1f2875] transition">
+                      Become Volunteer
+                    </button>
+                  </Link>
 
                   <button className="w-1/2 py-3 border border-[#2A3495] text-[#2A3495] text-[13px] font-medium rounded-md hover:bg-[#f5f7ff] transition">
                     Read More

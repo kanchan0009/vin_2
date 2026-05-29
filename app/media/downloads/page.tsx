@@ -102,7 +102,7 @@ export default function DownloadPage() {
           <div key={index} className="mb-12">
             
             {/* Title */}
-            <h2 className="text-[24px] font-semibold text-[#1f2a44] mb-4">
+            <h2 className="text-[30px] font-medium text-[#1f2a44] mb-4">
               {section.title}
             </h2>
 

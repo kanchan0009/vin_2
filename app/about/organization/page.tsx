@@ -1,4 +1,6 @@
 "use client";
+import ChooseImpact from "@/app/components/ChooseImpact";
+
 import Link from "next/link";
 import { useRef } from "react";
 
@@ -7,7 +9,7 @@ import Articles from "@/app/components/articles";
 import {Star} from "lucide-react";
 
 export default function OrganizationalStructurePage() {
-  const impactRef = useRef<HTMLDivElement>(null);
+  
   const volunteerRef = useRef<HTMLDivElement>(null);
   const trustRef = useRef<HTMLDivElement>(null);
   const testimonialsRef = useRef<HTMLDivElement>(null);
@@ -604,119 +606,7 @@ export default function OrganizationalStructurePage() {
         </div>
       </section>
       {/* Choose Impact Section */}
-      <section className="py-16">
-        {/* Top Heading */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-10">
-          <div>
-            <h2 className="text-[32px] md:text-[42px] font-medium text-[#1e1e1e] mb-3">
-              Choose where your Impact Begins
-            </h2>
-
-            <p className="text-[14px] leading-7 text-[#666] max-w-[780px]">
-              Make a difference today! Choose to become a volunteer, sponsor a
-              child, join an internship, or donate now, and help create lasting
-              impact in lives and communities.
-            </p>
-          </div>
-
-          <div>
-            <button className="bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[14px] font-medium px-8 py-3 rounded-md shadow-md transition">
-              View all
-            </button>
-          </div>
-        </div>
-
-        {/* Cards */}
-        <div className="relative group/impact">
-          {/* Left Arrow */}
-          <button 
-            onClick={() => impactRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition opacity-0 group-hover/impact:opacity-100">
-            ❮
-          </button>
-
-          {/* Right Arrow */}
-          <button 
-            onClick={() => impactRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition opacity-0 group-hover/impact:opacity-100">
-            ❯
-          </button>
-
-          <div 
-            ref={impactRef}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {/* Card 1 */}
-            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group hover:shadow-2xl transition duration-500">
-              <div className="overflow-hidden">
-                <img
-                  src="/images/volunteer.jpg"
-                  alt="Volunteer"
-                  className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
-                />
-              </div>
-
-              <div className="p-4">
-                <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
-                  Apply for Volunteering →
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group hover:shadow-2xl transition duration-500">
-              <div className="overflow-hidden">
-                <img
-                  src="/images/donate.jpg"
-                  alt="Donate"
-                  className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
-                />
-              </div>
-
-              <div className="p-4">
-                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
-                  Donate Now →
-                </button>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group hover:shadow-2xl transition duration-500">
-              <div className="overflow-hidden">
-                <img
-                  src="/images/internship.jpg"
-                  alt="Internship"
-                  className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
-                />
-              </div>
-
-              <div className="p-4">
-                <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
-                  Apply for Internship →
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 4 */}
-            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group hover:shadow-2xl transition duration-500">
-              <div className="overflow-hidden">
-                <img
-                  src="/images/sponsor.jpg"
-                  alt="Sponsor Child"
-                  className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
-                />
-              </div>
-
-              <div className="p-4">
-                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
-                  Sponsor a Child →
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ChooseImpact />
       <section className="py-20">
         {/* Top Rating */}
         <div className="flex items-center justify-center gap-3 mb-14">
@@ -746,7 +636,7 @@ export default function OrganizationalStructurePage() {
               </span>
             </div>
 
-            <p className="text-[18px] text-[#444] font-medium">
+            <p className="text-[18px] text-[#444] font-medium font-lora">
               Great Non-profit
             </p>
           </div>
@@ -761,7 +651,7 @@ export default function OrganizationalStructurePage() {
               Google
             </h5>
 
-            <p className="text-[18px] text-[#444] font-medium mt-1">
+            <p className="text-[18px] text-[#444] font-medium font-lora mt-1">
               Google Reviews
             </p>
           </div>
@@ -774,7 +664,7 @@ export default function OrganizationalStructurePage() {
 
             <h5 className="text-[32px] font-bold text-[#1F2B6C] mt-2">GO</h5>
 
-            <p className="text-[18px] text-[#444] font-medium mt-1">
+            <p className="text-[18px] text-[#444] font-medium font-lora mt-1">
               go overseas
             </p>
           </div>
@@ -789,7 +679,7 @@ export default function OrganizationalStructurePage() {
               ★ ★ ★ ★ ★
             </div>
 
-            <p className="text-[18px] text-[#444] font-medium mt-2">
+            <p className="text-[18px] text-[#444] font-medium font-lora mt-2">
               Review Center
             </p>
           </div>
@@ -1339,9 +1229,11 @@ export default function OrganizationalStructurePage() {
             </p>
           </div>
 
-          <button className="bg-[#2E3192] hover:bg-[#26287d] transition-all text-white text-[16px] font-medium px-6 py-3 rounded-md shadow-sm">
-            View Volunteers
-          </button>
+          <Link href="/volunteers">
+            <button className="bg-[#2E3192] hover:bg-[#26287d] transition-all text-white text-[16px] font-medium px-6 py-3 rounded-md shadow-sm">
+              View Volunteers
+            </button>
+          </Link>
         </div>
 
         {/* Cards */}

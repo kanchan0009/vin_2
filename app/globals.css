@@ -45,6 +45,7 @@ html {
 
   --font-sans: var(--font-poppins);
   --font-mono: var(--font-poppins);
+  --font-lora: var(--font-lora);
 }
 
 /* =========================================================

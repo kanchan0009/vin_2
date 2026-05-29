@@ -1,4 +1,7 @@
 "use client";
+import ChooseImpact from "@/app/components/ChooseImpact";
+import OurTeam from "@/app/components/OurTeam";
+
 
 import { useState, useRef } from "react";
 import { BarChart3, X, Star, ChevronDown } from "lucide-react";
@@ -120,9 +123,10 @@ export default function WomenEducationProgramPage() {
   ];
 
   const [activeTab, setActiveTab] = useState("Snap shot");
+  const [activeMediaTab, setActiveMediaTab] = useState("photos");
   const [currentSlide, setCurrentSlide] = useState(0);
-  const teamRef = useRef<HTMLDivElement>(null);
-  const impactRef = useRef<HTMLDivElement>(null);
+  
+  
   const volunteerRef = useRef<HTMLDivElement>(null);
   const [trustSlide, setTrustSlide] = useState(0);
 
@@ -151,7 +155,7 @@ export default function WomenEducationProgramPage() {
       {/* =========================================================
           HERO SECTION
       ========================================================= */}
-      <section className="relative w-full h-[620px] overflow-hidden">
+      <section id="snapshot" className="relative w-full h-[620px] overflow-hidden scroll-mt-24">
         {/* Background Image */}
         <img
           src="/women-education-banner.jpg"
@@ -251,7 +255,7 @@ export default function WomenEducationProgramPage() {
         </div>
       </section>
 
-      <section className="w-full py-10 ">
+      <section id="overview" className="w-full py-10 scroll-mt-24">
         {/* Main Content */}
         <div className="relative mt-10">
           <div className="grid gap-10 lg:grid-cols-[1fr_320px]">
@@ -363,7 +367,7 @@ export default function WomenEducationProgramPage() {
               </div>
 
               {/* Content Box */}
-              <div className="rounded-[10px] bg-[#D9F0FB] px-6 py-2">
+              <div id="roles" className="rounded-[10px] bg-[#D9F0FB] px-6 py-2 scroll-mt-24">
                 {[
                   "Deliver practical literacy and numeracy classes—from reading signs and medicine labels to budgeting and basic math.",
                   "Teach digital skills, including using a mobile phone, messaging, and searching for information online.",
@@ -467,7 +471,7 @@ export default function WomenEducationProgramPage() {
               </div>
 
               {/* Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div id="eligibility" className="grid grid-cols-1 md:grid-cols-2 gap-2 scroll-mt-24">
                 {[
                   {
                     title: "All Genders Welcome",
@@ -554,7 +558,7 @@ export default function WomenEducationProgramPage() {
                 </div>
               </div>
 
-              <TypicalDayAccordion />
+              <div id="travel" className="scroll-mt-24"><TypicalDayAccordion /></div>
 
               <div className=" mx-auto">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-10">
@@ -811,7 +815,7 @@ export default function WomenEducationProgramPage() {
               </div>
               {/* Contact Section */}
 
-              <div className="grid grid-cols-1 bg-[#2E3192] md:grid-cols-2 gap-8 px-8 py-7 items-start">
+              <div id="contact" className="grid grid-cols-1 bg-[#2E3192] md:grid-cols-2 gap-8 px-8 py-7 items-start scroll-mt-24">
                 {/* Left Content */}
                 <div className="text-white pt-2">
                   <h2 className="text-[34px] leading-[48px] font-medium mb-4">
@@ -966,7 +970,7 @@ export default function WomenEducationProgramPage() {
               </div>
 
               {/* Testimonials */}
-              <div className="rounded-[14px] border border-[#D9DFEA] bg-white p-5">
+              <div id="reviews" className="rounded-[14px] border border-[#D9DFEA] bg-white p-5 scroll-mt-24">
                 <div className="mb-5 flex items-center justify-between">
                   <h3 className="text-[28px] font-medium text-[#1D2433] font-serif">
                     Testimonials
@@ -1155,121 +1159,7 @@ export default function WomenEducationProgramPage() {
         </div>
       </section>
       {/*our team section*/}
-      <section className="w-full  py-20 px-4 md:px-8">
-        <div className=" mx-auto">
-          {/* Header */}
-          <div className="flex items-start justify-between flex-wrap gap-4">
-            <div>
-              <h2 className="text-[38px] font-medium text-[#1F2A44] leading-tight">
-                Our Team Members
-              </h2>
-
-              <p className="mt-2 text-[#6B7280] text-[15px]">
-                Listen to heartfelt stories from people who choose to make a
-                difference with us.
-              </p>
-            </div>
-
-            <button className="bg-[#2A3495] hover:bg-[#1f2875] transition text-white text-sm font-medium px-6 py-3 rounded-md shadow-md">
-              View all members
-            </button>
-          </div>
-
-          {/* Team Cards */}
-          <div className="relative mt-12 group">
-            {/* Left Arrow */}
-            <button
-              onClick={() =>
-                teamRef.current?.scrollBy({ left: -320, behavior: "smooth" })
-              }
-              className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md hover:bg-[#1f2875] transition-colors"
-            >
-              &#10094;
-            </button>
-
-            {/* Cards Slider */}
-            <div
-              ref={teamRef}
-              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-            >
-              {[
-                {
-                  name: "Bhupendra Ghimire",
-                  role: "President",
-                  degree: "Master's In Education",
-                  image: "/images/member1.png",
-                },
-                {
-                  name: "Dinesh Khatiwada",
-                  role: "Volunteer Manager",
-                  degree: "Master's In Education",
-                  image: "/images/member2.png",
-                },
-                {
-                  name: "Tula Dhwoj Khatiwada",
-                  role: "Program Manager",
-                  degree: "Master's In Education",
-                  image: "/images/member3.png",
-                },
-                {
-                  name: "Surendra Joshi",
-                  role: "IT Consultant",
-                  degree: "Master's In Education",
-                  image: "/images/member4.png",
-                },
-                {
-                  name: "Anita Thapa",
-                  role: "Field Coordinator",
-                  degree: "Bachelor's In Social Work",
-                  image: "/hero.png",
-                },
-              ].map((member, idx) => (
-                <div
-                  key={idx}
-                  className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-[12px] border border-[#E5E7EB] shadow-sm p-3"
-                >
-                  <div className="rounded-[10px] overflow-hidden">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-[200px] object-cover"
-                    />
-                  </div>
-
-                  <div className="mt-4">
-                    <h3 className="text-[18px] font-semibold text-[#1F2937]">
-                      {member.name}
-                    </h3>
-
-                    <p className="text-[14px] text-[#4B5563] mt-1">
-                      {member.role}
-                    </p>
-
-                    <p className="text-[13px] text-[#9CA3AF] mt-1">
-                      {member.degree}
-                    </p>
-
-                    <button className="mt-5 w-full border border-[#2A3495] text-[#2A3495] py-2 rounded-md text-sm font-medium hover:bg-[#2A3495] hover:text-white transition">
-                      View profile
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Right Arrow */}
-            <button
-              onClick={() =>
-                teamRef.current?.scrollBy({ left: 320, behavior: "smooth" })
-              }
-              className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md hover:bg-[#1f2875] transition-colors"
-            >
-              &#10095;
-            </button>
-          </div>
-        </div>
-      </section>
+      <OurTeam />
       {/* Map and Cards Section */}
       <section className="py-20 text-center">
         {/* Top Content */}
@@ -1388,128 +1278,7 @@ export default function WomenEducationProgramPage() {
         </div>
       </section>
       {/* Choose Impact Section */}
-      <section className="py-16">
-        {/* Top Heading */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-10">
-          <div>
-            <h2 className="text-[32px] md:text-[42px] font-medium text-[#1e1e1e] mb-3">
-              Choose where your Impact Begins
-            </h2>
-
-            <p className="text-[14px] leading-7 text-[#666] max-w-[780px]">
-              Make a difference today! Choose to become a volunteer, sponsor a
-              child, join an internship, or donate now, and help create lasting
-              impact in lives and communities.
-            </p>
-          </div>
-
-          <div>
-            <Link
-              href="/work-with-us"
-              className="inline-flex items-center justify-center bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[14px] font-medium px-8 py-3 rounded-md shadow-md transition"
-            >
-              View all
-            </Link>
-          </div>
-        </div>
-
-        {/* Cards */}
-        <div className="relative group">
-          {/* Left Arrow */}
-          <button
-            onClick={() =>
-              impactRef.current?.scrollBy({ left: -320, behavior: "smooth" })
-            }
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition"
-          >
-            ❮
-          </button>
-
-          {/* Right Arrow */}
-          <button
-            onClick={() =>
-              impactRef.current?.scrollBy({ left: 320, behavior: "smooth" })
-            }
-            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition"
-          >
-            ❯
-          </button>
-
-          <div
-            ref={impactRef}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {/* Card 1 */}
-            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
-              <div className="overflow-hidden">
-                <img
-                  src="/images/volunteer.jpg"
-                  alt="Volunteer"
-                  className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
-                />
-              </div>
-
-              <div className="p-4">
-                <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
-                  Apply for Volunteering →
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
-              <div className="overflow-hidden">
-                <img
-                  src="/images/donate.jpg"
-                  alt="Donate"
-                  className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
-                />
-              </div>
-
-              <div className="p-4">
-                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
-                  Donate Now →
-                </button>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
-              <div className="overflow-hidden">
-                <img
-                  src="/images/internship.jpg"
-                  alt="Internship"
-                  className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
-                />
-              </div>
-
-              <div className="p-4">
-                <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
-                  Apply for Internship →
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 4 */}
-            <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
-              <div className="overflow-hidden">
-                <img
-                  src="/images/sponsor.jpg"
-                  alt="Sponsor Child"
-                  className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
-                />
-              </div>
-
-              <div className="p-4">
-                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
-                  Sponsor a Child →
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ChooseImpact />
       <section className="py-20">
         {/* Top Rating */}
         <div className="flex items-center justify-center gap-3 mb-14">
@@ -1539,7 +1308,7 @@ export default function WomenEducationProgramPage() {
               </span>
             </div>
 
-            <p className="text-[18px] text-[#444] font-medium">
+            <p className="text-[18px] text-[#444] font-medium font-lora">
               Great Non-profit
             </p>
           </div>
@@ -1554,7 +1323,7 @@ export default function WomenEducationProgramPage() {
               Google
             </h5>
 
-            <p className="text-[18px] text-[#444] font-medium mt-1">
+            <p className="text-[18px] text-[#444] font-medium font-lora mt-1">
               Google Reviews
             </p>
           </div>
@@ -1567,7 +1336,7 @@ export default function WomenEducationProgramPage() {
 
             <h5 className="text-[32px] font-bold text-[#1F2B6C] mt-2">GO</h5>
 
-            <p className="text-[18px] text-[#444] font-medium mt-1">
+            <p className="text-[18px] text-[#444] font-medium font-lora mt-1">
               go overseas
             </p>
           </div>
@@ -1582,7 +1351,7 @@ export default function WomenEducationProgramPage() {
               ★ ★ ★ ★ ★
             </div>
 
-            <p className="text-[18px] text-[#444] font-medium mt-2">
+            <p className="text-[18px] text-[#444] font-medium font-lora mt-2">
               Review Center
             </p>
           </div>
@@ -2147,12 +1916,7 @@ export default function WomenEducationProgramPage() {
             </p>
           </div>
 
-          <Link
-            href="/volunteering"
-            className="bg-[#2E3192] hover:bg-[#26287d] transition-all text-white text-[16px] font-medium px-6 py-3 rounded-md shadow-sm inline-flex items-center justify-center"
-          >
-            View Volunteers
-          </Link>
+          <Link href="/volunteers" className="bg-[#2E3192] hover:bg-[#26287d] transition-all text-white text-[16px] font-medium px-6 py-3 rounded-md shadow-sm inline-flex items-center justify-center">View Volunteers</Link>
         </div>
 
         {/* Cards */}

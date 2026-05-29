@@ -16,7 +16,247 @@ const programs = [
   "Public interest",
   "WorkCamps",
 ];
+interface Volunteer {
+  name: string;
+  country: string;
+  project: string;
+  from: string;
+  to: string;
+  image: string;
+  slug: string;
+}
+
+const volunteerData: Record<'current' | 'upcoming' | 'past', { international: Volunteer[], national: Volunteer[] }> = {
+  current: {
+    international: [
+      {
+        name: "Kelly Anne Lister",
+        country: "Australia",
+        project: "Teaching English at Monastery",
+        from: "12/01/2026",
+        to: "19/01/2026",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop",
+        slug: "kelly-anne-lister"
+      },
+      {
+        name: "John Smith",
+        country: "USA",
+        project: "SEO Internship",
+        from: "05/01/2026",
+        to: "05/02/2026",
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop",
+        slug: "john-smith"
+      },
+      {
+        name: "Clara Dupont",
+        country: "France",
+        project: "Women's Empowerment Program",
+        from: "15/01/2026",
+        to: "15/02/2026",
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop",
+        slug: "clara-dupont"
+      },
+      {
+        name: "Hans Becker",
+        country: "Germany",
+        project: "Environment Conservation",
+        from: "20/01/2026",
+        to: "20/02/2026",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop",
+        slug: "hans-becker"
+      },
+      {
+        name: "Sarah Jenkins",
+        country: "UK",
+        project: "Children's Development Program",
+        from: "10/01/2026",
+        to: "10/03/2026",
+        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1200&auto=format&fit=crop",
+        slug: "sarah-jenkins"
+      },
+      {
+        name: "Michael Chang",
+        country: "Canada",
+        project: "Disaster Risk Reduction",
+        from: "01/02/2026",
+        to: "15/02/2026",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop",
+        slug: "michael-chang"
+      }
+    ],
+    national: [
+      {
+        name: "Baker Kumar Sah",
+        country: "Nepal",
+        project: "Teaching English at Monastery",
+        from: "12/01/2026",
+        to: "19/01/2026",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop",
+        slug: "baker-kumar-sah"
+      },
+      {
+        name: "Sujata Shrestha",
+        country: "Nepal",
+        project: "Women's Empowerment Program",
+        from: "05/01/2026",
+        to: "05/03/2026",
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop",
+        slug: "sujata-shrestha"
+      },
+      {
+        name: "Ram Bahadur",
+        country: "Nepal",
+        project: "Environment Conservation",
+        from: "10/01/2026",
+        to: "10/02/2026",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop",
+        slug: "ram-bahadur"
+      }
+    ]
+  },
+  upcoming: {
+    international: [
+      {
+        name: "Lucas Müller",
+        country: "Germany",
+        project: "Children's Development Program",
+        from: "01/06/2026",
+        to: "01/08/2026",
+        image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=1200&auto=format&fit=crop",
+        slug: "lucas-muller"
+      },
+      {
+        name: "Chloe Dubois",
+        country: "France",
+        project: "Teaching English at Monastery",
+        from: "15/06/2026",
+        to: "15/07/2026",
+        image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200&auto=format&fit=crop",
+        slug: "chloe-dubois"
+      },
+      {
+        name: "Olivia Hansen",
+        country: "Denmark",
+        project: "Public Health & Medical Care",
+        from: "10/07/2026",
+        to: "10/08/2026",
+        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop",
+        slug: "olivia-hansen"
+      },
+      {
+        name: "Ethan Wilson",
+        country: "Canada",
+        project: "Disaster Risk Reduction",
+        from: "01/08/2026",
+        to: "31/08/2026",
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop",
+        slug: "ethan-wilson"
+      }
+    ],
+    national: [
+      {
+        name: "Anjali Thapa",
+        country: "Nepal",
+        project: "Youth Empowerment Program",
+        from: "01/06/2026",
+        to: "30/06/2026",
+        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop",
+        slug: "anjali-thapa"
+      },
+      {
+        name: "Niranjan Adhikari",
+        country: "Nepal",
+        project: "Public Health & Medical Care",
+        from: "15/06/2026",
+        to: "15/08/2026",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop",
+        slug: "niranjan-adhikari"
+      }
+    ]
+  },
+  past: {
+    international: [
+      {
+        name: "Sophia Martinez",
+        country: "Spain",
+        project: "Women's Empowerment Program",
+        from: "10/09/2025",
+        to: "10/11/2025",
+        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop",
+        slug: "sophia-martinez"
+      },
+      {
+        name: "Liam O'Connor",
+        country: "Ireland",
+        project: "Environment Conservation",
+        from: "01/10/2025",
+        to: "01/11/2025",
+        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop",
+        slug: "liam-oconnor"
+      },
+      {
+        name: "Yuki Tanaka",
+        country: "Japan",
+        project: "Teaching English at Monastery",
+        from: "05/11/2025",
+        to: "05/12/2025",
+        image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1200&auto=format&fit=crop",
+        slug: "yuki-tanaka"
+      },
+      {
+        name: "Alexander Petrov",
+        country: "Russia",
+        project: "Disaster Risk Reduction",
+        from: "12/09/2025",
+        to: "28/10/2025",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop",
+        slug: "alexander-petrov"
+      },
+      {
+        name: "Isabella Silva",
+        country: "Brazil",
+        project: "Children's Development Program",
+        from: "15/10/2025",
+        to: "15/12/2025",
+        image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200&auto=format&fit=crop",
+        slug: "isabella-silva"
+      }
+    ],
+    national: [
+      {
+        name: "Hari Devkota",
+        country: "Nepal",
+        project: "Children's Development Program",
+        from: "01/10/2025",
+        to: "31/12/2025",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop",
+        slug: "hari-devkota"
+      },
+      {
+        name: "Pooja Bhandari",
+        country: "Nepal",
+        project: "Women's Empowerment Program",
+        from: "15/09/2025",
+        to: "15/11/2025",
+        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1200&auto=format&fit=crop",
+        slug: "pooja-bhandari"
+      },
+      {
+        name: "Siddharth Gautam",
+        country: "Nepal",
+        project: "Youth Empowerment Program",
+        from: "01/11/2025",
+        to: "30/11/2025",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop",
+        slug: "siddharth-gautam"
+      }
+    ]
+  }
+};
+
 export default function VolunteersPage() {
+  const [activeTab, setActiveTab] = useState<'current' | 'upcoming' | 'past'>('current');
+
   return (
     <main>
       {/* =========================================
@@ -67,16 +307,37 @@ export default function VolunteersPage() {
             </div>
 
             {/* Tabs */}
-            <div className="flex flex-wrap  mt-10 mb-16">
-              <button className="px-8 h-[48px]  bg-[#2A3495] text-white text-[15px] font-medium">
+            <div className="flex flex-wrap mt-10 mb-16 gap-2">
+              <button
+                onClick={() => setActiveTab('current')}
+                className={`px-8 h-[48px] text-[15px] font-medium transition-all cursor-pointer ${
+                  activeTab === 'current'
+                    ? "bg-[#2A3495] text-white"
+                    : "bg-[#f5f7fa] border border-[#e5e7eb] text-[#5b6478] hover:bg-white"
+                }`}
+              >
                 Current Volunteers
               </button>
 
-              <button className="px-8 h-[48px]  bg-[#f5f7fa] border border-[#e5e7eb] text-[#5b6478] text-[15px] font-medium hover:bg-white transition-all">
+              <button
+                onClick={() => setActiveTab('upcoming')}
+                className={`px-8 h-[48px] text-[15px] font-medium transition-all cursor-pointer ${
+                  activeTab === 'upcoming'
+                    ? "bg-[#2A3495] text-white"
+                    : "bg-[#f5f7fa] border border-[#e5e7eb] text-[#5b6478] hover:bg-white"
+                }`}
+              >
                 Upcoming Volunteers
               </button>
 
-              <button className="px-8 h-[48px]  bg-[#f5f7fa] border border-[#e5e7eb] text-[#5b6478] text-[15px] font-medium hover:bg-white transition-all">
+              <button
+                onClick={() => setActiveTab('past')}
+                className={`px-8 h-[48px] text-[15px] font-medium transition-all cursor-pointer ${
+                  activeTab === 'past'
+                    ? "bg-[#2A3495] text-white"
+                    : "bg-[#f5f7fa] border border-[#e5e7eb] text-[#5b6478] hover:bg-white"
+                }`}
+              >
                 Past Volunteers
               </button>
             </div>
@@ -90,13 +351,13 @@ export default function VolunteersPage() {
                 </h3>
 
                 <span className="text-[22px] font-medium text-[#6b7280]">
-                  29
+                  {volunteerData[activeTab].international.length}
                 </span>
               </div>
 
               {/* Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
-                {Array.from({ length: 6 }).map((_, index) => (
+                {volunteerData[activeTab].international.map((volunteer, index) => (
                   <div
                     key={index}
                     className="bg-white border border-[#e5e7eb] rounded-[8px] overflow-hidden shadow-sm hover:shadow-md transition-all"
@@ -104,8 +365,8 @@ export default function VolunteersPage() {
                     {/* Image */}
                     <div className="h-[260px] overflow-hidden">
                       <img
-                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop"
-                        alt="Volunteer"
+                        src={volunteer.image}
+                        alt={volunteer.name}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -113,15 +374,15 @@ export default function VolunteersPage() {
                     {/* Content */}
                     <div className="px-5 py-5 text-center">
                       <h3 className="text-[18px] font-semibold text-[#1f2a44] mb-1">
-                        Kelly Anne Lister
+                        {volunteer.name}
                       </h3>
 
                       <p className="text-[14px] text-[#6b7280] mb-1">
-                        Australia
+                        {volunteer.country}
                       </p>
 
                       <p className="text-[13px] text-[#9ca3af] leading-[22px] mb-5">
-                        Teaching English at Monastery
+                        {volunteer.project}
                       </p>
 
                       {/* Dates */}
@@ -132,7 +393,7 @@ export default function VolunteersPage() {
                           </p>
 
                           <p className="text-[13px] font-medium text-[#1f2a44]">
-                            12/01/2026
+                            {volunteer.from}
                           </p>
                         </div>
 
@@ -140,13 +401,13 @@ export default function VolunteersPage() {
                           <p className="text-[12px] text-[#9ca3af] mb-1">To</p>
 
                           <p className="text-[13px] font-medium text-[#1f2a44]">
-                            19/01/2026
+                            {volunteer.to}
                           </p>
                         </div>
                       </div>
 
-                      <Link href={`/volunteers/kelly-anne-lister`}>
-                        <button className="w-full h-[38px] rounded-[5px] border border-[#2A3495] text-[#2A3495] text-[13px] font-medium hover:bg-[#2A3495] hover:text-white transition-all">
+                      <Link href={`/volunteers/${volunteer.slug}`}>
+                        <button className="w-full h-[38px] rounded-[5px] border border-[#2A3495] text-[#2A3495] text-[13px] font-medium hover:bg-[#2A3495] hover:text-white transition-all cursor-pointer">
                           Learn More
                         </button>
                       </Link>
@@ -165,13 +426,13 @@ export default function VolunteersPage() {
                 </h3>
 
                 <span className="text-[22px] font-medium text-[#6b7280]">
-                  29
+                  {volunteerData[activeTab].national.length}
                 </span>
               </div>
 
               {/* Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
-                {Array.from({ length: 3 }).map((_, index) => (
+                {volunteerData[activeTab].national.map((volunteer, index) => (
                   <div
                     key={index}
                     className="bg-white border border-[#e5e7eb] rounded-[8px] overflow-hidden shadow-sm hover:shadow-md transition-all"
@@ -179,8 +440,8 @@ export default function VolunteersPage() {
                     {/* Image */}
                     <div className="h-[260px] overflow-hidden">
                       <img
-                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop"
-                        alt="Volunteer"
+                        src={volunteer.image}
+                        alt={volunteer.name}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -188,15 +449,15 @@ export default function VolunteersPage() {
                     {/* Content */}
                     <div className="px-5 py-5 text-center">
                       <h3 className="text-[18px] font-semibold text-[#1f2a44] mb-1">
-                        Kelly Anne Lister
+                        {volunteer.name}
                       </h3>
 
                       <p className="text-[14px] text-[#6b7280] mb-1">
-                        Australia
+                        {volunteer.country}
                       </p>
 
                       <p className="text-[13px] text-[#9ca3af] leading-[22px] mb-5">
-                        Teaching English at Monastery
+                        {volunteer.project}
                       </p>
 
                       {/* Dates */}
@@ -207,7 +468,7 @@ export default function VolunteersPage() {
                           </p>
 
                           <p className="text-[13px] font-medium text-[#1f2a44]">
-                            12/01/2026
+                            {volunteer.from}
                           </p>
                         </div>
 
@@ -215,13 +476,12 @@ export default function VolunteersPage() {
                           <p className="text-[12px] text-[#9ca3af] mb-1">To</p>
 
                           <p className="text-[13px] font-medium text-[#1f2a44]">
-                            19/01/2026
+                            {volunteer.to}
                           </p>
                         </div>
                       </div>
 
-                      {/* Button */}
-                      <button className="w-full h-[38px] rounded-[5px] border border-[#2A3495] text-[#2A3495] text-[13px] font-medium hover:bg-[#2A3495] hover:text-white transition-all">
+                      <button className="w-full h-[38px] rounded-[5px] border border-[#2A3495] text-[#2A3495] text-[13px] font-medium hover:bg-[#2A3495] hover:text-white transition-all cursor-pointer">
                         Learn More
                       </button>
                     </div>

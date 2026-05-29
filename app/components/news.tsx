@@ -52,9 +52,9 @@ export default function LatestNews() {
           </p>
         </div>
 
-        <button className="w-fit rounded-md bg-[#1F2B6C] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#3340d0]">
-              View all
-            </button>
+        <button className="w-fit whitespace-nowrap shrink-0 rounded-md bg-[#1F2B6C] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#3340d0]">
+          View all
+        </button>
       </div>
 
       {/* Slider */}

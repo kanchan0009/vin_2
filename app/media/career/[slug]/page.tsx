@@ -344,9 +344,11 @@ export default function JobDetailsPage() {
 
                   {/* BUTTONS */}
                   <div className="mt-5 flex items-center gap-3">
-                    <button className="flex-1 h-[40px] bg-[#2E3192] hover:bg-[#23267a] transition-all duration-300 rounded-[3px] text-white text-[12px] font-medium">
-                      Become Volunteer
-                    </button>
+                    <Link href="/applyNow" className="flex-1">
+                      <button className="w-full h-[40px] bg-[#2E3192] hover:bg-[#23267a] transition-all duration-300 rounded-[3px] text-white text-[12px] font-medium">
+                        Become Volunteer
+                      </button>
+                    </Link>
 
                     <Link
                       href={`/career/${job.slug}`}
