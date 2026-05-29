@@ -141,7 +141,7 @@ const ProgramSlider = ({ title, description, cardsData }: { title: string, descr
 
                 {/* Buttons */}
                 <div className="mt-5 flex items-center gap-3">
-                  <Link href="/applyNow" className="flex-1 bg-[#2F3C97] hover:bg-[#25307D] transition-all duration-300 text-white text-[14px] font-medium py-3 rounded-[4px] justify-center items-center">
+                  <Link href="/applyNow" className="flex-1 flex bg-[#2F3C97] hover:bg-[#25307D] transition-all duration-300 text-white text-[14px] font-medium py-3 rounded-[4px] justify-center items-center">
                     Apply Now
                   </Link>
 
