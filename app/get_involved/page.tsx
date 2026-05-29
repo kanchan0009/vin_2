@@ -105,9 +105,9 @@ export default function GetInvolvedPage() {
                   {/* BUTTONS */}
                   <div className="mt-5 flex flex-col sm:flex-row gap-3">
                     
-                    <button className="flex-1 h-[42px] bg-[#2E3192] hover:bg-[#23267a] transition-all duration-300 rounded-[4px] text-white text-[13px] font-medium">
+                    <Link href="/applyNow" className="flex-1 h-[42px] bg-[#2E3192] hover:bg-[#23267a] transition-all duration-300 rounded-[4px] text-white text-[13px] font-medium justify-center items-center">
                       Become Volunteer
-                    </button>
+                    </Link>
 
                     <Link
                       href={`/program/${program.slug}`}
@@ -148,9 +148,9 @@ export default function GetInvolvedPage() {
           {/* BUTTONS */}
           <div className="flex flex-wrap items-center justify-center gap-5">
             
-            <button className="h-[54px] px-10 rounded-[6px] bg-[#2D348E] hover:bg-[#222977] transition-all duration-300 text-white text-[16px] font-medium shadow-md">
+            <Link href="/applyNow" className="h-[54px] px-10 rounded-[6px] bg-[#2D348E] hover:bg-[#222977] transition-all duration-300 text-white text-[16px] font-medium shadow-md inline-flex items-center justify-center text-center">
               Apply for Volunteer
-            </button>
+            </Link>
 
             <button className="h-[54px] px-10 rounded-[6px] bg-[#F5A300] hover:bg-[#dd9400] transition-all duration-300 text-white text-[16px] font-medium shadow-md flex items-center gap-2">
               <span>◎</span>

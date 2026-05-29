@@ -56,9 +56,9 @@ export default function WomenEducationProgramPage() {
       <div className="flex flex-wrap items-center justify-center gap-4">
         
         {/* Apply Button */}
-        <button className="h-[46px] px-10 rounded-md bg-[#202788] hover:bg-[#2f39be] transition-all duration-300 text-white text-[16px] font-medium shadow-lg">
+        <Link href="/applyNow" className="h-[46px] px-10 rounded-md bg-[#202788] hover:bg-[#2f39be] transition-all duration-300 text-white text-[16px] font-medium shadow-lg inline-flex items-center justify-center text-center">
           Apply for Volunteer
-        </button>
+        </Link>
 
         {/* Fees Button */}
         <button className="h-[46px] px-10 rounded-md bg-white hover:bg-gray-100 transition-all duration-300 text-[#1f2a44] text-[16px] font-medium shadow-lg">

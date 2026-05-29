@@ -96,15 +96,15 @@ export default function AffiliationPage() {
 
         {/* Content */}
         <div className="relative z-10 py-16 px-4 md:px-8">
-          <div className="max-w-5xl mx-auto text-center">
+          <div className=" mx-auto text-center">
             {/* Heading */}
-            <h2 className="text-white text-[34px] md:text-[52px] font-semibold mb-4">
+            <h2 className="text-white text-[34px] md:text-[38px] font-medium mb-4">
               Affiliation & Partner
             </h2>
 
             {/* Search Box */}
             <div className="max-w-3xl mx-auto bg-white/20 backdrop-blur-xl border border-white/20 rounded-[6px] p-4 shadow-2xl">
-              <p className="text-white/90 text-[15px] md:text-[17px] mb-10">
+              <p className="text-white/90 text-[15px] md:text-[17px] mb-8">
                 12 Affiliation partners
               </p>
 
@@ -157,10 +157,10 @@ export default function AffiliationPage() {
           PARTNERS SECTION
       ========================================= */}
       <section className="w-full py-20 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto">
+        <div className=" mx-auto">
           {/* Section Heading */}
           <div className="mb-3">
-            <h2 className="text-[26px] font-medium text-[#1f2a44] mb-3">
+            <h2 className="text-[30px] font-medium text-[#1f2a44] mb-3">
               Certified by
             </h2>
           </div>
@@ -237,9 +237,9 @@ export default function AffiliationPage() {
       </section>
       {/*Contact Section */}
       <section className="w-full py-20 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto ">
+        <div className=" mx-auto ">
           {/* Heading */}
-          <h2 className="text-[38px] font-semibold text-[#1f2a44] mb-8">
+          <h2 className="text-[38px] font-medium text-[#1f2a44] mb-8">
             Contact us to partner
           </h2>
 
@@ -313,7 +313,7 @@ export default function AffiliationPage() {
         {/* Header */}
         <div className="flex items-start justify-between mb-12">
           <div>
-            <h2 className="text-[42px] leading-none font-semibold text-[#1F2A44] mb-4">
+            <h2 className="text-[38px] leading-none font-medium text-[#1F2A44] mb-4">
               What Our Volunteers Say
             </h2>
 
@@ -398,7 +398,7 @@ export default function AffiliationPage() {
           <div className="flex items-start justify-between mb-10">
             {/* Left Content */}
             <div>
-              <h2 className="text-[32px] font-semibold text-[#1f2a44] leading-none mb-3">
+              <h2 className="text-[38px] font-medium text-[#1f2a44] leading-none mb-3">
                 Programs you May Like
               </h2>
 

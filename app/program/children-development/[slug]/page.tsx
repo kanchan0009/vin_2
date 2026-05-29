@@ -299,10 +299,10 @@ export default function WomenEmpowermentHero() {
           {/* Bottom Buttons */}
           <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex flex-wrap items-center justify-center gap-3 px-4">
             {/* Apply Button */}
-            <button className="flex items-center gap-2 bg-[#2A3495] hover:bg-[#1f2875] text-white text-[14px] font-medium px-7 py-3 rounded-md shadow-lg transition">
+            <Link href="/applyNow" className="flex items-center gap-2 bg-[#2A3495] hover:bg-[#1f2875] text-white text-[14px] font-medium px-7 py-3 rounded-md shadow-lg transition justify-center items-center">
               <Plus size={16} />
               Apply for Volunteer
-            </button>
+            </Link>
 
             {/* Donate Button */}
             <button className="flex items-center gap-2 bg-[#F59E0B] hover:bg-[#d88906] text-white text-[14px] font-medium px-7 py-3 rounded-md shadow-lg transition">
@@ -521,9 +521,9 @@ export default function WomenEmpowermentHero() {
 
                   {/* Buttons */}
                   <div className="flex gap-4 w-full">
-                    <button className="w-1/2 bg-[#001955] text-white py-3 rounded-xm text-sm font-medium hover:bg-[#162f87] transition">
+                    <Link href="/applyNow" className="w-1/2 bg-[#001955] text-white py-3 rounded-xm text-sm font-medium hover:bg-[#162f87] transition inline-flex items-center justify-center text-center">
                       Apply Now
-                    </button>
+                    </Link>
 
                     <button className="w-1/2 border border-[#001955] text-[#001955] py-3 rounded-xm text-sm font-medium hover:bg-[#001955] hover:text-white transition">
                       Read More
@@ -1391,9 +1391,9 @@ export default function WomenEmpowermentHero() {
               </div>
 
               <div className="p-4">
-                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
+                <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
                   Apply for Volunteering →
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -1425,9 +1425,9 @@ export default function WomenEmpowermentHero() {
               </div>
 
               <div className="p-4">
-                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
+                <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
                   Apply for Internship →
-                </button>
+                </Link>
               </div>
             </div>
 

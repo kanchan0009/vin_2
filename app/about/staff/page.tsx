@@ -254,9 +254,9 @@ export default function TeamMembersPage() {
           {/* Buttons */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
             {/* Apply Button */}
-            <button className="h-[56px] px-10 rounded-xl bg-[#242B82] hover:bg-[#1B2168] transition-all duration-300 text-white text-[16px] font-medium shadow-xl hover:scale-[1.03]">
+            <Link href="/applyNow" className="h-[56px] px-10 rounded-xl bg-[#242B82] hover:bg-[#1B2168] transition-all duration-300 text-white text-[16px] font-medium shadow-xl hover:scale-[1.03] inline-flex items-center justify-center text-center">
               Apply for Volunteer
-            </button>
+            </Link>
 
             {/* Donate Button */}
             <button className="h-[56px] px-10 rounded-xl bg-[#F5A300] hover:bg-[#E19300] transition-all duration-300 text-white text-[16px] font-medium shadow-xl hover:scale-[1.03] flex items-center gap-3">
@@ -538,9 +538,9 @@ export default function TeamMembersPage() {
               </div>
 
               <div className="p-4">
-                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
+                <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
                   Apply for Volunteering →
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -572,9 +572,9 @@ export default function TeamMembersPage() {
               </div>
 
               <div className="p-4">
-                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
+                <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
                   Apply for Internship →
-                </button>
+                </Link>
               </div>
             </div>
 

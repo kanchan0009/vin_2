@@ -196,9 +196,9 @@ export default function WomenEducationProgramPage() {
 
             {/* Buttons */}
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <button className="h-[46px] px-10 rounded-md bg-[#202788] hover:bg-[#2f39be] transition-all duration-300 text-white text-[16px] font-medium shadow-lg">
+              <Link href="/applyNow" className="h-[46px] px-10 rounded-md bg-[#202788] hover:bg-[#2f39be] transition-all duration-300 text-white text-[16px] font-medium shadow-lg inline-flex items-center justify-center text-center">
                 Apply for Volunteer
-              </button>
+              </Link>
 
               <button className="h-[46px] px-10 rounded-md bg-white hover:bg-gray-100 transition-all duration-300 text-[#1f2a44] text-[16px] font-medium shadow-lg">
                 View Fees
@@ -515,9 +515,9 @@ export default function WomenEducationProgramPage() {
 
               {/* Button */}
               <div className="flex justify-center mt-6">
-                <button className="bg-[#2D3192] hover:bg-[#232777] text-white px-10 py-3 rounded-lg font-medium shadow-md transition">
+                <Link href="/applyNow" className="bg-[#2D3192] hover:bg-[#232777] text-white px-10 py-3 rounded-lg font-medium shadow-md transition inline-flex items-center justify-center text-center">
                   Join Today
-                </button>
+                </Link>
               </div>
 
               {/* Program Fees */}
@@ -569,9 +569,9 @@ export default function WomenEducationProgramPage() {
                     </p>
                   </div>
 
-                  <button className="bg-[#2D3192] hover:bg-[#1F2B6C] text-white px-6 py-4 rounded-md text-sm font-medium transition">
+                  <Link href="/applyNow" className="bg-[#2D3192] hover:bg-[#1F2B6C] text-white px-6 py-4 rounded-md text-sm font-medium transition inline-flex items-center justify-center text-center">
                     Apply Now
-                  </button>
+                  </Link>
                 </div>
 
                 {/* STEPS GRID */}
@@ -1451,9 +1451,9 @@ export default function WomenEducationProgramPage() {
               </div>
 
               <div className="p-4">
-                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
+                <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
                   Apply for Volunteering →
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -1485,9 +1485,9 @@ export default function WomenEducationProgramPage() {
               </div>
 
               <div className="p-4">
-                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
+                <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
                   Apply for Internship →
-                </button>
+                </Link>
               </div>
             </div>
 

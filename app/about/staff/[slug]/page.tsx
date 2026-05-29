@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { use, useRef } from "react";
 import { Heading3, Star } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -507,9 +508,9 @@ export default function StaffSlugPage({
               </div>
 
               <div className="p-4">
-                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
+                <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
                   Apply for Volunteering →
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -541,9 +542,9 @@ export default function StaffSlugPage({
               </div>
 
               <div className="p-4">
-                <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition">
+                <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
                   Apply for Internship →
-                </button>
+                </Link>
               </div>
             </div>
 
