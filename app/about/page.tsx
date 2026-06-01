@@ -31,8 +31,7 @@ export default function AboutPage() {
       {/* Volunteering Program Section */}
 
       <section className="w-full py-16 bg-white overflow-x-auto">
-        <div className="min-w-[1250px] flex flex-col items-center">
-          
+        <div className="min-w-0 flex flex-col items-center">
           <div className="text-center relative">
             <h2 className="text-[38px] font-medium text-[#1F2A44] leading-none">
               Our Volunteering Program:
@@ -42,67 +41,61 @@ export default function AboutPage() {
               There are four pillars in our developmental approach:
             </p>
 
-            {/* TOP CENTER CONNECTOR */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-[62px] w-[2px] h-[65px] bg-[#CBD5E1]" />
+            {/* TOP CENTER CONNECTOR (hidden on small) */}
+            <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-[62px] w-[2px] h-[65px] bg-[#CBD5E1]" />
           </div>
 
-          
-          <div className="relative w-[980px] h-[180px] mt-8">
-           
-
+          <div className="relative w-full md:w-[980px] h-[180px] mt-8">
             {/* TOP HORIZONTAL */}
-            <div className="absolute top-0 left-[105px] w-[770px] h-[2px] bg-[#CBD5E1]" />
+            <div className="hidden md:block absolute top-0 left-[105px] w-[770px] h-[2px] bg-[#CBD5E1]" />
 
             {/* LEFT */}
-            <div className="absolute top-0 left-[105px] w-[2px] h-[60px] bg-[#CBD5E1]" />
+            <div className="hidden md:block absolute top-0 left-[105px] w-[2px] h-[60px] bg-[#CBD5E1]" />
 
             {/* RIGHT */}
-            <div className="absolute top-0 right-[105px] w-[2px] h-[60px] bg-[#CBD5E1]" />
+            <div className="hidden md:block absolute top-0 right-[105px] w-[2px] h-[60px] bg-[#CBD5E1]" />
 
             {/* CENTER 1 */}
-            <div className="absolute top-0 left-[327px] w-[2px] h-[60px] bg-[#CBD5E1]" />
+            <div className="hidden md:block absolute top-0 left-[327px] w-[2px] h-[60px] bg-[#CBD5E1]" />
 
             {/* CENTER 2 */}
-            <div className="absolute top-0 right-[327px] w-[2px] h-[60px] bg-[#CBD5E1]" />
-
-            
+            <div className="hidden md:block absolute top-0 right-[327px] w-[2px] h-[60px] bg-[#CBD5E1]" />
 
             {/* BOTTOM HORIZONTAL */}
-            <div className="absolute bottom-0 left-[105px] w-[770px] h-[2px] bg-[#CBD5E1]" />
+            <div className="hidden md:block absolute bottom-0 left-[105px] w-[770px] h-[2px] bg-[#CBD5E1]" />
 
             {/* LEFT */}
-            <div className="absolute bottom-0 left-[105px] w-[2px] h-[65px] bg-[#CBD5E1]" />
+            <div className="hidden md:block absolute bottom-0 left-[105px] w-[2px] h-[65px] bg-[#CBD5E1]" />
 
             {/* RIGHT */}
-            <div className="absolute bottom-0 right-[105px] w-[2px] h-[65px] bg-[#CBD5E1]" />
+            <div className="hidden md:block absolute bottom-0 right-[105px] w-[2px] h-[65px] bg-[#CBD5E1]" />
 
             {/* CENTER 1 */}
-            <div className="absolute bottom-0 left-[327px] w-[2px] h-[65px] bg-[#CBD5E1]" />
+            <div className="hidden md:block absolute bottom-0 left-[327px] w-[2px] h-[65px] bg-[#CBD5E1]" />
 
             {/* CENTER 2 */}
-            <div className="absolute bottom-0 right-[327px] w-[2px] h-[65px] bg-[#CBD5E1]" />
+            <div className="hidden md:block absolute bottom-0 right-[327px] w-[2px] h-[65px] bg-[#CBD5E1]" />
 
-            
             <div className="absolute top-[35px] left-0 grid grid-cols-4 gap-6 w-full">
-              <div className="w-[215px] h-[68px] rounded-[6px] bg-[#F1F5F9] flex items-center justify-center text-center px-4">
+              <div className="w-full md:w-[215px] h-[68px] rounded-[6px] bg-[#F1F5F9] flex items-center justify-center text-center px-4">
                 <p className="text-[15px] font-medium leading-[20px] text-[#1F2A44] underline">
                   Education
                 </p>
               </div>
 
-              <div className="w-[215px] h-[68px] rounded-[6px] bg-[#F1F5F9] flex items-center justify-center text-center px-4">
+              <div className="w-full md:w-[215px] h-[68px] rounded-[6px] bg-[#F1F5F9] flex items-center justify-center text-center px-4">
                 <p className="text-[15px] font-medium leading-[20px] text-[#1F2A44] underline">
                   Health and <br /> Environment
                 </p>
               </div>
 
-              <div className="w-[215px] h-[68px] rounded-[6px] bg-[#F1F5F9] flex items-center justify-center text-center px-4">
+              <div className="w-full md:w-[215px] h-[68px] rounded-[6px] bg-[#F1F5F9] flex items-center justify-center text-center px-4">
                 <p className="text-[15px] font-medium leading-[20px] text-[#1F2A44] underline">
                   Economy
                 </p>
               </div>
 
-              <div className="w-[215px] h-[68px] rounded-[6px] bg-[#F1F5F9] flex items-center justify-center text-center px-4">
+              <div className="w-full md:w-[215px] h-[68px] rounded-[6px] bg-[#F1F5F9] flex items-center justify-center text-center px-4">
                 <p className="text-[15px] font-medium leading-[20px] text-[#1F2A44] underline">
                   Basic infrastructure <br /> development
                 </p>
@@ -111,31 +104,31 @@ export default function AboutPage() {
           </div>
 
           <div className="mt-20 flex items-center gap-6">
-            <div className="w-[215px] h-[68px] bg-[#F1F5F9] rounded-[6px] flex items-center justify-center text-center px-4">
+            <div className="w-full md:w-[215px] h-[68px] bg-[#F1F5F9] rounded-[6px] flex items-center justify-center text-center px-4">
               <p className="text-[14px] leading-[19px] text-[#1F2A44] underline font-medium">
                 Women’s <br /> Empowerment
               </p>
             </div>
 
-            <div className="w-[215px] h-[68px] bg-[#F1F5F9] rounded-[6px] flex items-center justify-center text-center px-4">
+            <div className="w-full md:w-[215px] h-[68px] bg-[#F1F5F9] rounded-[6px] flex items-center justify-center text-center px-4">
               <p className="text-[14px] leading-[19px] text-[#1F2A44] underline font-medium">
                 Children <br /> Development
               </p>
             </div>
 
-            <div className="w-[215px] h-[68px] bg-[#F1F5F9] rounded-[6px] flex items-center justify-center text-center px-4">
+            <div className="w-full md:w-[215px] h-[68px] bg-[#F1F5F9] rounded-[6px] flex items-center justify-center text-center px-4">
               <p className="text-[14px] leading-[19px] text-[#1F2A44] underline font-medium">
                 Youth <br /> Empowerment
               </p>
             </div>
 
-            <div className="w-[215px] h-[68px] bg-[#F1F5F9] rounded-[6px] flex items-center justify-center text-center px-4">
+            <div className="w-full md:w-[215px] h-[68px] bg-[#F1F5F9] rounded-[6px] flex items-center justify-center text-center px-4">
               <p className="text-[14px] leading-[19px] text-[#1F2A44] underline font-medium">
                 Public & Medical <br /> Health
               </p>
             </div>
 
-            <div className="w-[215px] h-[68px] bg-[#F1F5F9] rounded-[6px] flex items-center justify-center text-center px-4">
+            <div className="w-full md:w-[215px] h-[68px] bg-[#F1F5F9] rounded-[6px] flex items-center justify-center text-center px-4">
               <p className="text-[14px] leading-[19px] text-[#1F2A44] underline font-medium">
                 Environment <br /> Conservation
               </p>

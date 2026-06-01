@@ -49,7 +49,6 @@ export default function GetInvolvedPage() {
       ====================================== */}
       <section className="w-full bg-white py-10 px-4 sm:px-6 lg:px-10">
         <div className="max-w-6xl mx-auto">
-          
           {/* HEADER */}
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-[24px] sm:text-[30px] lg:text-[36px] font-medium text-[#1F2A44] leading-[1.3]">
@@ -71,19 +70,15 @@ export default function GetInvolvedPage() {
 
           {/* PROGRAM TITLE */}
           <div className="mt-10">
-            <h2 className="text-[18px] font-medium text-[#1F2A44]">
-              Programs
-            </h2>
+            <h2 className="text-[18px] font-medium text-[#1F2A44]">Programs</h2>
           </div>
 
           {/* PROGRAM GRID */}
           <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
-            
             {programs.map((program) => (
               <div key={program.id}>
-                
                 {/* IMAGE */}
-                <div className="h-[180px] sm:h-[220px] rounded-[6px] overflow-hidden bg-[#EEF2F7]">
+                <div className="h-[180px] md:h-[220px] rounded-[6px] overflow-hidden bg-[#EEF2F7]">
                   <img
                     src={program.image}
                     alt={program.title}
@@ -93,7 +88,6 @@ export default function GetInvolvedPage() {
 
                 {/* CONTENT */}
                 <div className="pt-4">
-                  
                   <h3 className="text-[18px] sm:text-[20px] font-medium text-[#1F2A44]">
                     {program.title}
                   </h3>
@@ -104,8 +98,10 @@ export default function GetInvolvedPage() {
 
                   {/* BUTTONS */}
                   <div className="mt-5 flex flex-col sm:flex-row gap-3">
-                    
-                    <Link href="/applyNow" className="flex-1 h-[42px] bg-[#2E3192] hover:bg-[#23267a] transition-all duration-300 rounded-[4px] text-white text-[13px] font-medium justify-center items-center">
+                    <Link
+                      href="/applyNow"
+                      className="flex-1 h-[42px] bg-[#2E3192] hover:bg-[#23267a] transition-all duration-300 rounded-[4px] text-white text-[13px] font-medium justify-center items-center"
+                    >
                       Become Volunteer
                     </Link>
 
@@ -127,7 +123,6 @@ export default function GetInvolvedPage() {
           CTA SECTION
       ====================================== */}
       <section className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden bg-gradient-to-r from-[#3B45D1] via-[#3A49DC] to-[#25339B] py-14 mt-20 text-center">
-        
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-[0.08]">
           <div className="absolute inset-0 bg-[radial-gradient(circle,_white_1px,_transparent_1px)] bg-[length:80px_80px]" />
@@ -135,7 +130,6 @@ export default function GetInvolvedPage() {
 
         {/* CONTENT */}
         <div className="relative z-10 px-4">
-          
           <h2 className="text-white text-[38px] md:text-[52px] font-medium leading-[1.2] mb-5">
             Become a part of the Change
           </h2>
@@ -147,8 +141,10 @@ export default function GetInvolvedPage() {
 
           {/* BUTTONS */}
           <div className="flex flex-wrap items-center justify-center gap-5">
-            
-            <Link href="/applyNow" className="h-[54px] px-10 rounded-[6px] bg-[#2D348E] hover:bg-[#222977] transition-all duration-300 text-white text-[16px] font-medium shadow-md inline-flex items-center justify-center text-center">
+            <Link
+              href="/applyNow"
+              className="h-[54px] px-10 rounded-[6px] bg-[#2D348E] hover:bg-[#222977] transition-all duration-300 text-white text-[16px] font-medium shadow-md inline-flex items-center justify-center text-center"
+            >
               Apply for Volunteer
             </Link>
 

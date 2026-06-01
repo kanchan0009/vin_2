@@ -336,8 +336,8 @@ export default function ApplyNowPage() {
           ========================= */}
           <div className="bg-white border border-[#e5e7eb] rounded-[10px] overflow-hidden">
             {/* TITLE */}
-            <div className="px-6 py-5 border-b border-[#e5e7eb]">
-              <h2 className="text-[30px] font-medium text-[#1f2a44]">
+            <div className="px-6 py-4 border-b border-[#e5e7eb]">
+              <h2 className="text-[20px] font-medium text-[#1f2a44]">
                 Our Available Programs
               </h2>
             </div>

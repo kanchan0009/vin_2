@@ -33,7 +33,9 @@ export default function ChooseImpact() {
       <div className="relative group/impact">
         {/* Left Arrow */}
         <button
-          onClick={() => impactRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
+          onClick={() =>
+            impactRef.current?.scrollBy({ left: -320, behavior: "smooth" })
+          }
           className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition opacity-0 group-hover/impact:opacity-100"
         >
           ❮
@@ -41,7 +43,9 @@ export default function ChooseImpact() {
 
         {/* Right Arrow */}
         <button
-          onClick={() => impactRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
+          onClick={() =>
+            impactRef.current?.scrollBy({ left: 320, behavior: "smooth" })
+          }
           className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-white shadow-md border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition opacity-0 group-hover/impact:opacity-100"
         >
           ❯
@@ -50,7 +54,7 @@ export default function ChooseImpact() {
         <div
           ref={impactRef}
           className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {/* Card 1 */}
           <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
@@ -58,11 +62,14 @@ export default function ChooseImpact() {
               <img
                 src="/images/volunteer.jpg"
                 alt="Volunteer"
-                className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
+                className="w-full h-[180px] md:h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
               />
             </div>
             <div className="p-4">
-              <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
+              <Link
+                href="/applyNow"
+                className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center"
+              >
                 Apply for Volunteering →
               </Link>
             </div>
@@ -74,7 +81,7 @@ export default function ChooseImpact() {
               <img
                 src="/images/donate.jpg"
                 alt="Donate"
-                className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
+                className="w-full h-[180px] md:h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
               />
             </div>
             <div className="p-4">
@@ -92,11 +99,14 @@ export default function ChooseImpact() {
               <img
                 src="/images/internship.jpg"
                 alt="Internship"
-                className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
+                className="w-full h-[180px] md:h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
               />
             </div>
             <div className="p-4">
-              <Link href="/applyNow" className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center">
+              <Link
+                href="/applyNow"
+                className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center"
+              >
                 Apply for Internship →
               </Link>
             </div>
@@ -108,7 +118,7 @@ export default function ChooseImpact() {
               <img
                 src="/images/sponsor.jpg"
                 alt="Sponsor Child"
-                className="w-full h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
+                className="w-full h-[180px] md:h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
               />
             </div>
             <div className="p-4">

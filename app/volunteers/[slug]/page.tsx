@@ -1,38 +1,39 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { Play } from "lucide-react";
 
 const tabContents: Record<string, string[]> = {
-  "Overview": [
+  Overview: [
     "Ashley Patterson is an SEO Intern at Volunteers Initiative Nepal (VIN), helping the organization enhance its online presence and reach a wider audience. Passionate about digital marketing, website optimization, and data-driven strategies, Ashley focuses on ensuring that VIN’s volunteer and internship programs are easily discoverable online, connecting many people to the organization’s mission.",
     "In her role as SEO Intern, Ashley reviews VIN’s website to identify areas for improvement, conducts keyword research, keeps track of website performance, and implements search engine optimization techniques. She also works on improving digital communication and making sure important information about volunteer opportunities, internships, and community initiatives is easy to find.",
     "Ashley’s responsibilities include content optimization, improving website loading speed, refining metadata, and helping VIN build a stronger online presence. She is passionate about using digital tools to support social organizations and make information more accessible to people worldwide.",
     "Through her internship, Ashley gains valuable hands-on experience in SEO and digital marketing while contributing to meaningful social impact projects. Her role supports VIN’s mission of empowering communities through education, volunteerism, and sustainable development initiatives.",
-    "Ashley’s work also contributes to VIN’s long-term vision of strengthening communication and connecting more people to important causes through improved digital visibility and outreach."
+    "Ashley’s work also contributes to VIN’s long-term vision of strengthening communication and connecting more people to important causes through improved digital visibility and outreach.",
   ],
   "Background & Skills": [
     "Ashley holds a Bachelor's degree in Computer Science and has a strong foundation in modern web development technologies and digital marketing strategies.",
     "She has extensive skills in on-page and off-page SEO optimization, keywords research tools (Google Keyword Planner, Ahrefs, Semrush), Google Analytics, and Search Console.",
     "Her technical skillset includes HTML, CSS, JavaScript, React, Next.js, and content management systems (WordPress, Webflow), allowing her to implement technical SEO fixes directly.",
-    "Additionally, she has a proven ability to analyze web traffic data, identify bottlenecks, and suggest actionable recommendations to improve page rankings and organic reach."
+    "Additionally, she has a proven ability to analyze web traffic data, identify bottlenecks, and suggest actionable recommendations to improve page rankings and organic reach.",
   ],
   "Work with VIN": [
     "During her volunteer internship with VIN, Ashley successfully conducted a comprehensive audit of the core website and fixed meta-tags, image alt attributes, and structured data markup.",
     "She created and optimized content for new program pages, improving organic keyword visibility by 25% within the first month.",
     "She also collaborated with local content teams to write SEO-friendly articles and blogs that highlight VIN's impact on Nepalese communities.",
-    "Additionally, she conducted training sessions for local staff on basic SEO practices, Google Analytics tracking, and digital outreach strategies to ensure long-term sustainability of digital efforts."
+    "Additionally, she conducted training sessions for local staff on basic SEO practices, Google Analytics tracking, and digital outreach strategies to ensure long-term sustainability of digital efforts.",
   ],
   "What to Expect": [
     "Volunteering with VIN is an immersive and rewarding experience where you work alongside a dedicated team of national and international volunteers.",
     "You can expect hands-on project involvement, regular feedback sessions, and opportunities to visit local project sites in Kathmandu, Okhaldhunga, and surrounding villages.",
     "The daily schedule typically includes morning planning sessions, project development, collaboration with different departments, and occasional community meetings.",
-    "VIN provides a supportive working environment with cultural exchange activities, basic language learning, and mentorship from experienced development professionals."
+    "VIN provides a supportive working environment with cultural exchange activities, basic language learning, and mentorship from experienced development professionals.",
   ],
-  "Testimonial": [
-    "\"My time as an SEO Intern with Volunteers Initiative Nepal has been nothing short of transformative. Not only did I get to apply my digital marketing skills to a real-world cause, but I also felt like a valued part of the community.\"",
-    "\"The VIN team was incredibly welcoming and supportive throughout my journey. Seeing the real-world impact of the programs I helped promote online was incredibly fulfilling.\"",
-    "\"I highly recommend VIN to anyone looking to make a meaningful difference while gaining valuable professional experience. It's an opportunity of a lifetime!\""
-  ]
+  Testimonial: [
+    '"My time as an SEO Intern with Volunteers Initiative Nepal has been nothing short of transformative. Not only did I get to apply my digital marketing skills to a real-world cause, but I also felt like a valued part of the community."',
+    '"The VIN team was incredibly welcoming and supportive throughout my journey. Seeing the real-world impact of the programs I helped promote online was incredibly fulfilling."',
+    '"I highly recommend VIN to anyone looking to make a meaningful difference while gaining valuable professional experience. It\'s an opportunity of a lifetime!"',
+  ],
 };
 
 export default function VolunteerProfilePage() {
@@ -109,7 +110,13 @@ export default function VolunteerProfilePage() {
             TABS
         ========================================= */}
         <div className="flex flex-wrap gap-2 mb-10 border-b border-[#e5e7eb] pb-4">
-          {["Overview", "Background & Skills", "Work with VIN", "What to Expect", "Testimonial"].map((tab) => (
+          {[
+            "Overview",
+            "Background & Skills",
+            "Work with VIN",
+            "What to Expect",
+            "Testimonial",
+          ].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -126,7 +133,10 @@ export default function VolunteerProfilePage() {
 
         <div className="max-w-4xl space-y-4">
           {tabContents[activeTab].map((paragraph, index) => (
-            <p key={index} className="text-[16px] leading-[34px] text-[#5b6478]">
+            <p
+              key={index}
+              className="text-[16px] leading-[34px] text-[#5b6478]"
+            >
               {paragraph}
             </p>
           ))}
@@ -167,14 +177,7 @@ export default function VolunteerProfilePage() {
                   {/* Play Button */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-[52px] h-[52px] rounded-full bg-white/90 flex items-center justify-center shadow-lg">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-6 h-6 text-[#2A3495] ml-1"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
+                      <Play className="w-6 h-6 text-[#2A3495] ml-1" />
                     </div>
                   </div>
                 </div>
@@ -288,7 +291,6 @@ export default function VolunteerProfilePage() {
           </div>
         </div>
       </section>
-      
     </main>
   );
 }

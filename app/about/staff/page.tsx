@@ -2,13 +2,19 @@
 import ChooseImpact from "@/app/components/ChooseImpact";
 
 import { useRef } from "react";
-import { HeartHandshake, MessageCircleMore } from "lucide-react";
+import {
+  HeartHandshake,
+  MessageCircleMore,
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  Volume2,
+} from "lucide-react";
 import Articles from "@/app/components/articles";
 import LatestNews from "@/app/components/news";
 import Link from "next/link";
 
 export default function TeamMembersPage() {
-  
   const volunteerRef = useRef<HTMLDivElement>(null);
   const trustRef = useRef<HTMLDivElement>(null);
   const testimonialsRef = useRef<HTMLDivElement>(null);
@@ -236,9 +242,9 @@ export default function TeamMembersPage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle,_white_1px,_transparent_1px)] bg-[length:80px_80px]" />
         </div>
 
-        {/* Glow Effects */}
-        <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-white/10 blur-3xl rounded-full" />
-        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#6C7BFF]/20 blur-3xl rounded-full" />
+        {/* Glow Effects (hidden on small screens) */}
+        <div className="hidden md:block absolute top-0 left-0 w-[300px] h-[300px] bg-white/10 blur-3xl rounded-full" />
+        <div className="hidden md:block absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#6C7BFF]/20 blur-3xl rounded-full" />
 
         {/* Content */}
         <div className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-8 text-center">
@@ -256,7 +262,10 @@ export default function TeamMembersPage() {
           {/* Buttons */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
             {/* Apply Button */}
-            <Link href="/applyNow" className="h-[56px] px-10 rounded-xl bg-[#242B82] hover:bg-[#1B2168] transition-all duration-300 text-white text-[16px] font-medium shadow-xl hover:scale-[1.03] inline-flex items-center justify-center text-center">
+            <Link
+              href="/applyNow"
+              className="h-[56px] px-10 rounded-xl bg-[#242B82] hover:bg-[#1B2168] transition-all duration-300 text-white text-[16px] font-medium shadow-xl hover:scale-[1.03] inline-flex items-center justify-center text-center"
+            >
               Apply for Volunteer
             </Link>
 
@@ -415,12 +424,12 @@ export default function TeamMembersPage() {
                 years.
               </p>
 
-              <a
-                href="/"
+              <Link
+                href="/about/location/kathmandu"
                 className="text-[16px] text-black pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -445,12 +454,12 @@ export default function TeamMembersPage() {
                 engaged with over 900 key workers helping improve livelihoods.
               </p>
 
-              <a
-                href="/"
+              <Link
+                href="/about/location/okhaldhunga"
                 className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -475,12 +484,12 @@ export default function TeamMembersPage() {
                 communities.
               </p>
 
-              <a
-                href="/"
+              <Link
+                href="/about/location/nuwakot"
                 className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -590,30 +599,23 @@ export default function TeamMembersPage() {
           {/* Slider Area */}
           <div className="relative group/vol">
             {/* Left Arrow */}
-            <button 
-              onClick={() => volunteerRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
-              className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-[#5f6b7a]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
+            <button
+              onClick={() =>
+                volunteerRef.current?.scrollBy({
+                  left: -320,
+                  behavior: "smooth",
+                })
+              }
+              className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition"
+            >
+              <ChevronLeft className="h-4 w-4 text-[#5f6b7a]" />
             </button>
 
             {/* Cards */}
-            <div 
+            <div
               ref={volunteerRef}
               className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {/* Card 1 */}
               <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
@@ -692,23 +694,16 @@ export default function TeamMembersPage() {
             </div>
 
             {/* Right Arrow */}
-            <button 
-              onClick={() => volunteerRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
-              className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-[#5f6b7a]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+            <button
+              onClick={() =>
+                volunteerRef.current?.scrollBy({
+                  left: 320,
+                  behavior: "smooth",
+                })
+              }
+              className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition"
+            >
+              <ChevronRight className="h-4 w-4 text-[#5f6b7a]" />
             </button>
           </div>
         </div>
@@ -733,9 +728,12 @@ export default function TeamMembersPage() {
 
             {/* Navigation Arrows */}
             <div className="hidden items-center gap-2 md:flex">
-              <button 
-                onClick={() => trustRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50">
+              <button
+                onClick={() =>
+                  trustRef.current?.scrollBy({ left: -320, behavior: "smooth" })
+                }
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 text-[#5f6b7a]"
@@ -752,9 +750,12 @@ export default function TeamMembersPage() {
                 </svg>
               </button>
 
-              <button 
-                onClick={() => trustRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50">
+              <button
+                onClick={() =>
+                  trustRef.current?.scrollBy({ left: 320, behavior: "smooth" })
+                }
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 text-[#5f6b7a]"
@@ -789,13 +790,7 @@ export default function TeamMembersPage() {
             <div className="absolute inset-0 flex items-center justify-center">
               <button className="flex h-20 w-20 items-center justify-center rounded-full bg-white/20 backdrop-blur-md transition hover:scale-105">
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="ml-1 h-6 w-6 fill-[#4b5563]"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
+                  <Play className="ml-1 h-6 w-6 text-[#4b5563]" />
                 </div>
               </button>
             </div>
@@ -814,25 +809,7 @@ export default function TeamMembersPage() {
 
             {/* Bottom Sound Icon */}
             <button className="absolute bottom-6 left-1/2 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full bg-white/20 backdrop-blur-md md:bottom-10">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M11 5L6 9H3v6h3l5 4V5z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.54 8.46a5 5 0 010 7.07"
-                />
-              </svg>
+              <Volume2 className="h-5 w-5 text-white" />
             </button>
           </div>
         </div>
@@ -1017,7 +994,7 @@ export default function TeamMembersPage() {
           {[1, 2, 3].map((item) => (
             <div key={item} className="flex flex-col items-center text-center">
               {/* Image Card */}
-              <div className="w-[350px] overflow-hidden rounded-md shadow-md border border-gray-200 bg-white">
+              <div className="w-full md:w-[350px] overflow-hidden rounded-md shadow-md border border-gray-200 bg-white">
                 <img
                   src="/volunteer.jpg"
                   alt="Volunteer"
@@ -1051,7 +1028,7 @@ export default function TeamMembersPage() {
                 </div>
 
                 {/* Button */}
-                <button className="mt-5 w-[350px] border border-[#4c53c7] text-[#2E3192] hover:bg-[#2E3192] hover:text-white transition-all text-[14px] font-medium py-3 rounded-md bg-white shadow-sm">
+                <button className="mt-5 w-full md:w-[350px] border border-[#4c53c7] text-[#2E3192] hover:bg-[#2E3192] hover:text-white transition-all text-[14px] font-medium py-3 rounded-md bg-white shadow-sm">
                   Learn More
                 </button>
               </div>

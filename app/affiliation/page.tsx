@@ -74,6 +74,24 @@ export default function AffiliationPage() {
       image:
         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop",
     },
+    {
+      name: "Asha Gurung",
+      country: "Nepal",
+      image:
+        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop",
+    },
+    {
+      name: "Peter Smith",
+      country: "United Kingdom",
+      image:
+        "https://images.unsplash.com/photo-1545996124-1f9a0d2d5c27?q=80&w=200&auto=format&fit=crop",
+    },
+    {
+      name: "Sara Johnson",
+      country: "United States",
+      image:
+        "https://images.unsplash.com/photo-1545996124-1f9a0d2d5c27?q=80&w=200&auto=format&fit=crop",
+    },
   ];
 
   return (
@@ -309,88 +327,98 @@ export default function AffiliationPage() {
       </section>
       {/* Testimonials Section */}
       <section className="w-full bg-[#f5f5f5] py-16 px-6 md:px-10">
-      <div className=" mx-auto relative">
-        {/* Header */}
-        <div className="flex items-start justify-between mb-12">
-          <div>
-            <h2 className="text-[38px] leading-none font-medium text-[#1F2A44] mb-4">
-              What Our Volunteers Say
-            </h2>
+        <div className=" mx-auto relative">
+          {/* Header */}
+          <div className="flex items-start justify-between mb-12">
+            <div>
+              <h2 className="text-[38px] leading-none font-medium text-[#1F2A44] mb-4">
+                What Our Volunteers Say
+              </h2>
 
-            <p className="max-w-[700px] text-[15px] leading-[28px] text-[#5f6777]">
-              Read testimonials from our clients and community members.
-              Discover real stories, experiences, and feedback that highlight
-              our commitment, impact, and the trust we build every day.
-            </p>
+              <p className="max-w-[700px] text-[15px] leading-[28px] text-[#5f6777]">
+                Read testimonials from our clients and community members.
+                Discover real stories, experiences, and feedback that highlight
+                our commitment, impact, and the trust we build every day.
+              </p>
+            </div>
+
+            {/* Button */}
+            <button className="w-[110px] h-[44px] rounded-[6px] bg-[#2A3495] text-white text-[14px] font-medium shadow-md hover:bg-[#1f2878] transition-all">
+              View all
+            </button>
           </div>
 
-          {/* Button */}
-          <button className="w-[110px] h-[44px] rounded-[6px] bg-[#2A3495] text-white text-[14px] font-medium shadow-md hover:bg-[#1f2878] transition-all">
-            View all
-          </button>
-        </div>
+          {/* Slider Section */}
+          <div className="relative group/test">
+            {/* Left Arrow */}
+            <button
+              onClick={() =>
+                testimonialsRef.current?.scrollBy({
+                  left: -320,
+                  behavior: "smooth",
+                })
+              }
+              className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-[38px] h-[38px] rounded-full bg-white shadow-md flex items-center justify-center text-[#2A3495] hover:bg-[#2A3495] hover:text-white transition-all opacity-0 group-hover/test:opacity-100 duration-300"
+            >
+              ❮
+            </button>
 
-        {/* Slider Section */}
-        <div className="relative group/test">
-          {/* Left Arrow */}
-          <button 
-            onClick={() => testimonialsRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
-            className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-[38px] h-[38px] rounded-full bg-white shadow-md flex items-center justify-center text-[#2A3495] hover:bg-[#2A3495] hover:text-white transition-all opacity-0 group-hover/test:opacity-100 duration-300"
-          >
-            ❮
-          </button>
+            {/* Cards */}
+            <div
+              ref={testimonialsRef}
+              className="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              {testimonials.map((item, index) => (
+                <div
+                  key={index}
+                  className="w-full md:w-[calc(33.333%-21.33px)] shrink-0 snap-start bg-[#ECEFF3] rounded-[10px] px-8 py-7 shadow-sm border border-[#e4e7ec]"
+                >
+                  {/* Quote */}
+                  <p className="text-[14px] leading-[28px] text-[#5f6777] mb-8">
+                    “Volunteering with VIN completely transformed the way I see
+                    community development. The staff were incredibly supportive,
+                    and the projects truly make a real impact. I learned more in
+                    a few weeks than I ever expected.”
+                  </p>
 
-          {/* Cards */}
-          <div 
-            ref={testimonialsRef}
-            className="flex gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {testimonials.map((item, index) => (
-              <div
-                key={index}
-                className="w-full md:w-[calc(33.333%-21.33px)] shrink-0 snap-start bg-[#ECEFF3] rounded-[10px] px-8 py-7 shadow-sm border border-[#e4e7ec]"
-              >
-                {/* Quote */}
-                <p className="text-[14px] leading-[28px] text-[#5f6777] mb-8">
-                  “Volunteering with VIN completely transformed the way I see
-                  community development. The staff were incredibly supportive,
-                  and the projects truly make a real impact. I learned more in a
-                  few weeks than I ever expected.”
-                </p>
+                  {/* User */}
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-[46px] h-[46px] rounded-full object-cover"
+                    />
 
-                {/* User */}
-                <div className="flex items-center gap-3">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-[46px] h-[46px] rounded-full object-cover"
-                  />
+                    <div>
+                      <h4 className="text-[15px] font-semibold text-[#1F2A44] leading-none mb-1">
+                        {item.name}
+                      </h4>
 
-                  <div>
-                    <h4 className="text-[15px] font-semibold text-[#1F2A44] leading-none mb-1">
-                      {item.name}
-                    </h4>
-
-                    <p className="text-[13px] text-[#7a8394]">
-                      {item.country}
-                    </p>
+                      <p className="text-[13px] text-[#7a8394]">
+                        {item.country}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          {/* Right Arrow */}
-          <button 
-            onClick={() => testimonialsRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
-            className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-[38px] h-[38px] rounded-full bg-white shadow-md flex items-center justify-center text-[#2A3495] hover:bg-[#2A3495] hover:text-white transition-all opacity-0 group-hover/test:opacity-100 duration-300"
-          >
-            ❯
-          </button>
+            {/* Right Arrow */}
+            <button
+              onClick={() =>
+                testimonialsRef.current?.scrollBy({
+                  left: 320,
+                  behavior: "smooth",
+                })
+              }
+              className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-[38px] h-[38px] rounded-full bg-white shadow-md flex items-center justify-center text-[#2A3495] hover:bg-[#2A3495] hover:text-white transition-all opacity-0 group-hover/test:opacity-100 duration-300"
+            >
+              ❯
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
       {/* Programs Section */}
       <section className="w-full bg-[#F1F5F9] py-16 px-6 md:px-10">
         <div className=" mx-auto">

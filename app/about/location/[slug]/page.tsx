@@ -5,6 +5,7 @@ import OurTeam from "@/app/components/OurTeam";
 import Link from "next/link";
 import { use, useRef } from "react";
 import { notFound } from "next/navigation";
+import { ChevronLeft, ChevronRight, Play, Volume2 } from "lucide-react";
 import VolunteerProgram from "@/app/components/Volunteer-program";
 import LatestNews from "@/app/components/news";
 import Aricles from "@/app/components/articles";
@@ -46,11 +47,9 @@ export default function LocationSlugPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = use(params);
-  
-  
+
   const volunteerRef = useRef<HTMLDivElement>(null);
   const trustRef = useRef<HTMLDivElement>(null);
-
 
   const location = LOCATIONS.find((item) => item.slug === slug);
 
@@ -444,12 +443,12 @@ export default function LocationSlugPage({
                 years.
               </p>
 
-              <a
-                href="/"
+              <Link
+                href="/about/location/kathmandu"
                 className="text-[16px] text-black pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -474,12 +473,12 @@ export default function LocationSlugPage({
                 engaged with over 900 key workers helping improve livelihoods.
               </p>
 
-              <a
-                href="/"
+              <Link
+                href="/about/location/okhaldhunga"
                 className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -504,12 +503,12 @@ export default function LocationSlugPage({
                 communities.
               </p>
 
-              <a
-                href="/"
+              <Link
+                href="/about/location/nuwakot"
                 className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -620,30 +619,23 @@ export default function LocationSlugPage({
           {/* Slider Area */}
           <div className="relative group/vol">
             {/* Left Arrow */}
-            <button 
-              onClick={() => volunteerRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
-              className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-[#5f6b7a]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
+            <button
+              onClick={() =>
+                volunteerRef.current?.scrollBy({
+                  left: -320,
+                  behavior: "smooth",
+                })
+              }
+              className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition"
+            >
+              <ChevronLeft className="h-4 w-4 text-[#5f6b7a]" />
             </button>
 
             {/* Cards */}
-            <div 
+            <div
               ref={volunteerRef}
               className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {/* Card 1 */}
               <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
@@ -722,23 +714,16 @@ export default function LocationSlugPage({
             </div>
 
             {/* Right Arrow */}
-            <button 
-              onClick={() => volunteerRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
-              className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-[#5f6b7a]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+            <button
+              onClick={() =>
+                volunteerRef.current?.scrollBy({
+                  left: 320,
+                  behavior: "smooth",
+                })
+              }
+              className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition"
+            >
+              <ChevronRight className="h-4 w-4 text-[#5f6b7a]" />
             </button>
           </div>
         </div>
@@ -763,9 +748,12 @@ export default function LocationSlugPage({
 
             {/* Navigation Arrows */}
             <div className="hidden items-center gap-2 md:flex">
-              <button 
-                onClick={() => trustRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50">
+              <button
+                onClick={() =>
+                  trustRef.current?.scrollBy({ left: -320, behavior: "smooth" })
+                }
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 text-[#5f6b7a]"
@@ -782,9 +770,12 @@ export default function LocationSlugPage({
                 </svg>
               </button>
 
-              <button 
-                onClick={() => trustRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50">
+              <button
+                onClick={() =>
+                  trustRef.current?.scrollBy({ left: 320, behavior: "smooth" })
+                }
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 text-[#5f6b7a]"
@@ -819,13 +810,7 @@ export default function LocationSlugPage({
             <div className="absolute inset-0 flex items-center justify-center">
               <button className="flex h-20 w-20 items-center justify-center rounded-full bg-white/20 backdrop-blur-md transition hover:scale-105">
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="ml-1 h-6 w-6 fill-[#4b5563]"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
+                  <Play className="ml-1 h-6 w-6 text-[#4b5563]" />
                 </div>
               </button>
             </div>
@@ -844,25 +829,7 @@ export default function LocationSlugPage({
 
             {/* Bottom Sound Icon */}
             <button className="absolute bottom-6 left-1/2 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full bg-white/20 backdrop-blur-md md:bottom-10">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M11 5L6 9H3v6h3l5 4V5z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.54 8.46a5 5 0 010 7.07"
-                />
-              </svg>
+              <Volume2 className="h-5 w-5 text-white" />
             </button>
           </div>
         </div>

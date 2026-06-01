@@ -6,23 +6,19 @@ export default function VolunteerStoriesPage() {
   return (
     <main className="w-full bg-white py-14 px-6 md:px-10">
       <div className=" mx-auto mb-20">
-        
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
-          
           {stories.map((item, index) => (
             <div key={index} className="group">
-              
               {/* =========================================
                   IMAGE CARD
               ========================================= */}
               <div className="relative overflow-hidden rounded-[6px]">
-                
                 {/* Image */}
                 <img
                   src="https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?q=80&w=1400&auto=format&fit=crop"
                   alt="Volunteer Story"
-                  className="w-full h-[220px] object-cover group-hover:scale-105 transition-all duration-500"
+                  className="w-full h-[180px] sm:h-[200px] object-cover group-hover:scale-105 transition-all duration-500"
                 />
 
                 {/* Overlay */}
@@ -67,7 +63,6 @@ export default function VolunteerStoriesPage() {
                   BUTTONS
               ========================================= */}
               <div className="flex items-center gap-4">
-                
                 {/* Read More */}
                 <button className="w-[150px] h-[40px] rounded-[4px] bg-[#2A3495] text-white text-[13px] font-medium hover:opacity-90 transition-all">
                   Read More
@@ -117,7 +112,7 @@ export default function VolunteerStoriesPage() {
                 className="relative overflow-hidden rounded-md border border-[#e5e7eb] shadow-sm hover:shadow-md transition-all bg-white"
               >
                 {/* Full Image */}
-                <div className="relative h-[260px]">
+                <div className="relative h-[220px] sm:h-[240px]">
                   <img
                     src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
                     alt="Program"

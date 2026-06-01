@@ -1,15 +1,16 @@
 // components/Footer.tsx
 
+import { Phone, Mail } from "lucide-react";
+
 export default function Footer() {
   return (
     <footer className="w-full bg-[#2A3495] text-white pt-10">
       {/* Top Section */}
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
-        
         {/* Left Info */}
         <div>
           {/* Logo */}
-          <div className="bg-white rounded-md p-2 w-[180px] mb-5">
+          <div className="bg-white rounded-md p-2 w-full md:w-[180px] mb-5">
             <img
               src="/vin-logo.png"
               alt="VIN Logo"
@@ -18,7 +19,7 @@ export default function Footer() {
           </div>
 
           {/* Description */}
-          <p className="text-[11px] leading-[20px] text-[#d7dcff] max-w-[240px] mb-5">
+          <p className="text-[11px] leading-[20px] text-[#d7dcff] max-w-full md:max-w-[240px] mb-5">
             VIN is a non-profit organization dedicated to empowering
             marginalized communities in Nepal.
           </p>
@@ -28,20 +29,7 @@ export default function Footer() {
             {/* Phone */}
             <div className="flex items-start gap-3">
               <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center mt-0.5">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-3 h-3 text-[#2A3495]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.129a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.209-.502l4.493 1.498A1 1 0 0121 15.72V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
+                <Phone className="w-3 h-3 text-[#2A3495]" />
               </div>
 
               <div className="text-[11px] leading-[18px] text-[#d7dcff]">
@@ -53,35 +41,18 @@ export default function Footer() {
             {/* Email */}
             <div className="flex items-center gap-3">
               <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-3 h-3 text-[#2A3495]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M16 12H8m8 0l-8 0m8 0l-8 0m14-5H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"
-                  />
-                </svg>
+                <Mail className="w-3 h-3 text-[#2A3495]" />
               </div>
 
-              <p className="text-[11px] text-[#d7dcff]">
-                Support@vin.org.np
-              </p>
+              <p className="text-[11px] text-[#d7dcff]">Support@vin.org.np</p>
             </div>
           </div>
 
           {/* Address */}
           <div>
-            <h3 className="text-[16px] font-semibold mb-3">
-              Address
-            </h3>
+            <h3 className="text-[16px] font-semibold mb-3">Address</h3>
 
-            <div className="overflow-hidden rounded-md border border-white/20 w-[220px]">
+            <div className="overflow-hidden rounded-md border border-white/20 w-full md:w-[220px]">
               <img
                 src="/map.jpg"
                 alt="Map"
@@ -93,9 +64,7 @@ export default function Footer() {
 
         {/* Useful Links */}
         <div>
-          <h3 className="text-[18px] font-semibold mb-5">
-            Useful Links
-          </h3>
+          <h3 className="text-[18px] font-semibold mb-5">Useful Links</h3>
 
           <ul className="space-y-3 text-[12px] text-[#d7dcff]">
             <li>Program Fees</li>
@@ -116,9 +85,7 @@ export default function Footer() {
 
         {/* Programs */}
         <div>
-          <h3 className="text-[18px] font-semibold mb-5">
-            Our Programs
-          </h3>
+          <h3 className="text-[18px] font-semibold mb-5">Our Programs</h3>
 
           <ul className="space-y-3 text-[12px] text-[#d7dcff]">
             <li>Women’s Empowerment Programme</li>
@@ -138,9 +105,7 @@ export default function Footer() {
 
         {/* Internship */}
         <div>
-          <h3 className="text-[18px] font-semibold mb-5">
-            Internship Program
-          </h3>
+          <h3 className="text-[18px] font-semibold mb-5">Internship Program</h3>
 
           <ul className="space-y-3 text-[12px] text-[#d7dcff]">
             <li>Medical Internship in Nepal</li>
@@ -159,7 +124,6 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
-        
         {/* Copyright */}
         <p className="text-[12px] text-[#d7dcff]">
           Copyright © 2024. All rights reserved.
@@ -172,7 +136,11 @@ export default function Footer() {
           </a>
 
           <a href="#" className="hover:opacity-80">
-            <img src="/icons/instagram.svg" alt="instagram" className="w-5 h-5" />
+            <img
+              src="/icons/instagram.svg"
+              alt="instagram"
+              className="w-5 h-5"
+            />
           </a>
 
           <a href="#" className="hover:opacity-80">

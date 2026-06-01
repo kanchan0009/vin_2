@@ -36,6 +36,18 @@ export default function OurTeam() {
       degree: "Bachelor's In Social Work",
       image: "/hero.png",
     },
+    {
+      name: "Rita Rai",
+      role: "Community Liaison",
+      degree: "Bachelor's In Sociology",
+      image: "/hero.png",
+    },
+    {
+      name: "Sujan Karki",
+      role: "Monitoring Officer",
+      degree: "Bachelor's In Management",
+      image: "/hero.png",
+    },
   ];
 
   return (
@@ -48,7 +60,8 @@ export default function OurTeam() {
               Our Team Members
             </h2>
             <p className="mt-2 text-[#6B7280] text-[15px]">
-              Listen to heartfelt stories from people who choose to make a difference with us.
+              Listen to heartfelt stories from people who choose to make a
+              difference with us.
             </p>
           </div>
 
@@ -63,7 +76,9 @@ export default function OurTeam() {
         <div className="relative mt-12 group">
           {/* Left Arrow */}
           <button
-            onClick={() => teamRef.current?.scrollBy({ left: -320, behavior: "smooth" })}
+            onClick={() =>
+              teamRef.current?.scrollBy({ left: -320, behavior: "smooth" })
+            }
             className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md hover:bg-[#1f2875] transition-colors"
           >
             &#10094;
@@ -110,7 +125,9 @@ export default function OurTeam() {
 
           {/* Right Arrow */}
           <button
-            onClick={() => teamRef.current?.scrollBy({ left: 320, behavior: "smooth" })}
+            onClick={() =>
+              teamRef.current?.scrollBy({ left: 320, behavior: "smooth" })
+            }
             className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#2A3495] text-white flex items-center justify-center shadow-md hover:bg-[#1f2875] transition-colors"
           >
             &#10095;

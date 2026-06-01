@@ -43,8 +43,8 @@ const Section = ({ title }: { title: string }) => {
         </h2>
 
         <p className="text-sm text-gray-500 mt-1">
-          Listen to heartfelt stories from people who chose to make a
-          difference with us.
+          Listen to heartfelt stories from people who chose to make a difference
+          with us.
         </p>
       </div>
 
@@ -53,7 +53,7 @@ const Section = ({ title }: { title: string }) => {
         {cards.map((card) => (
           <div
             key={card.id}
-            className="min-w-[220px] md:min-w-[250px] bg-white rounded-xl overflow-hidden shadow-sm flex-shrink-0 hover:shadow-md transition"
+            className="w-[85%] sm:w-[220px] md:w-[250px] bg-white rounded-xl overflow-hidden shadow-sm flex-shrink-0 hover:shadow-md transition"
           >
             <div className="relative w-full h-[130px] md:h-[150px]">
               <Image
@@ -69,9 +69,7 @@ const Section = ({ title }: { title: string }) => {
                 {card.title}
               </h3>
 
-              <p className="text-xs text-gray-500 mt-1">
-                {card.subtitle}
-              </p>
+              <p className="text-xs text-gray-500 mt-1">{card.subtitle}</p>
             </div>
           </div>
         ))}

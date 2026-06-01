@@ -21,8 +21,7 @@ const faqs = [
       "The program focuses on long-term community impact, women empowerment, and sustainable educational development.",
   },
   {
-    question:
-      "Are there short-term women’s education volunteer opportunities?",
+    question: "Are there short-term women’s education volunteer opportunities?",
     answer:
       "Yes, VIN offers both short-term and long-term volunteering opportunities depending on your availability.",
   },
@@ -46,19 +45,19 @@ const faqs = [
   },
 ];
 const programs = [
-    "Children’s Development Program",
-    "Youth Empowerment Program",
-    "Public Health & Medical Program",
-    "Environment Conservation Program",
-    "Disaster Risk Reduction (DRR) Program",
-    "Public health and medical care",
-    "Environment conservation",
-    "Teaching program",
-    "Management & Administration",
-    "Journalism",
-    "Public interest",
-    "WorkCamps",
-  ];
+  "Children’s Development Program",
+  "Youth Empowerment Program",
+  "Public Health & Medical Program",
+  "Environment Conservation Program",
+  "Disaster Risk Reduction (DRR) Program",
+  "Public health and medical care",
+  "Environment conservation",
+  "Teaching program",
+  "Management & Administration",
+  "Journalism",
+  "Public interest",
+  "WorkCamps",
+];
 export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState(0);
 
@@ -71,10 +70,8 @@ export default function FAQPage() {
       {/* Question Categories Section */}
       <section className="w-full bg-white py-16 px-6 md:px-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10">
-          
           {/* Left Content */}
           <div>
-            
             {/* Heading */}
             <h2 className="text-[38px] font-medium text-[#1f2a44] mb-6">
               Question Categories
@@ -82,7 +79,6 @@ export default function FAQPage() {
 
             {/* Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12">
-              
               {[
                 {
                   title: "Volunteering Requirement",
@@ -131,7 +127,7 @@ export default function FAQPage() {
                 },
               ].map((card, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-[235px] h-[235px] mx-auto overflow-hidden rounded-md shadow-sm border border-[#eceff5] bg-white">
+                  <div className="w-[85%] max-w-[235px] sm:w-[235px] sm:h-[235px] h-auto mx-auto overflow-hidden rounded-md shadow-sm border border-[#eceff5] bg-white">
                     <img
                       src={card.image}
                       alt={card.title}
@@ -150,12 +146,11 @@ export default function FAQPage() {
           {/* Right Sidebar */}
           <div>
             <div className="border border-[#e5e7eb] rounded-md overflow-hidden bg-[#fafbfc]">
-              
               {/* Sidebar Header */}
               <div className="px-5 py-4 border-b border-[#e5e7eb] bg-[#f5f7fa]">
-                <h3 className="text-[22px] font-semibold text-[#1f2a44]">
+                <h2 className="text-[20px] font-medium text-[#1f2a44]">
                   Our Available Programs
-                </h3>
+                </h2>
               </div>
 
               {/* Program List */}
@@ -190,10 +185,8 @@ export default function FAQPage() {
       {/* FAQ Section */}
       <section className="w-full bg-white pb-20 px-6 md:px-10">
         <div className="max-w-7xl mx-auto">
-          
           {/* Align with left content */}
-          <div className="max-w-[calc(100%-340px)]">
-            
+          <div className="max-w-full md:max-w-[calc(100%-340px)]">
             {/* Heading */}
             <h2 className="text-[38px] font-medium text-[#1f2a44] leading-none mb-3">
               Frequently Asked Questions
@@ -201,8 +194,8 @@ export default function FAQPage() {
 
             {/* Subheading */}
             <p className="text-[16px] leading-[28px] text-[#6b7280] mb-10">
-              Starting your volunteer journey is simple. Follow these six
-              easy steps to join us in Nepal.
+              Starting your volunteer journey is simple. Follow these six easy
+              steps to join us in Nepal.
             </p>
 
             {/* FAQ Items */}
@@ -251,7 +244,6 @@ export default function FAQPage() {
                 );
               })}
             </div>
-
           </div>
         </div>
       </section>

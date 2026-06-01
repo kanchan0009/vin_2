@@ -98,7 +98,7 @@ export default function JobDetailsPage() {
           {/* BUTTON */}
 
           <Link href="/applyNow">
-            <button className="mt-4 w-[190px] h-[32px] bg-[#2E3192] hover:bg-[#23267a] transition-all duration-300 rounded-[3px] text-white text-[16px] font-medium">
+            <button className="mt-4 w-full md:w-[190px] h-[32px] bg-[#2E3192] hover:bg-[#23267a] transition-all duration-300 rounded-[3px] text-white text-[16px] font-medium">
               Become Volunteer
             </button>
           </Link>

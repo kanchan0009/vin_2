@@ -130,7 +130,10 @@ export default function CareersPage() {
 
                 {/* BUTTONS */}
                 <div className="mt-5 flex items-center gap-3">
-                  <Link href="/applyNow" className="flex-1 h-[42px] bg-[#2E3192] hover:bg-[#23267a] transition-all duration-300 rounded-[4px] text-white text-[13px] font-medium justify-center items-center">
+                  <Link
+                    href="/applyNow"
+                    className="flex-1 inline-flex h-[42px] bg-[#2E3192] hover:bg-[#23267a] transition-all duration-300 rounded-[4px] text-white text-[13px] font-medium items-center justify-center text-center"
+                  >
                     Become Volunteer
                   </Link>
 

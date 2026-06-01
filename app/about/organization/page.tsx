@@ -6,10 +6,9 @@ import { useRef } from "react";
 
 import LatestNews from "@/app/components/news";
 import Articles from "@/app/components/articles";
-import {Star} from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, Play, Volume2 } from "lucide-react";
 
 export default function OrganizationalStructurePage() {
-  
   const volunteerRef = useRef<HTMLDivElement>(null);
   const trustRef = useRef<HTMLDivElement>(null);
   const testimonialsRef = useRef<HTMLDivElement>(null);
@@ -64,7 +63,7 @@ export default function OrganizationalStructurePage() {
               </div>
 
               <div className="flex justify-center">
-                <div className="bg-white border border-[#dfe4ee] rounded-[8px] px-5 py-4 w-[220px] shadow-sm">
+                <div className="bg-white border border-[#dfe4ee] rounded-[8px] px-5 py-4 w-full md:w-[220px] shadow-sm">
                   <p className="text-[15px] font-medium text-[#1f2a44] mb-3">
                     General Assembly Member
                   </p>
@@ -93,7 +92,7 @@ export default function OrganizationalStructurePage() {
                 <span className="text-[16px] text-[#7b8498]">L1</span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[520px] mx-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-full md:max-w-[520px] mx-auto">
                 {["Board Of Directors", "Executive Directors"].map(
                   (title, index) => (
                     <div
@@ -273,99 +272,99 @@ export default function OrganizationalStructurePage() {
         ========================================= */}
         <div className="space-y-8">
           <div className="rounded-[14px] border border-[#D9DFEA] bg-white p-5">
-                <div className="mb-5 flex items-center justify-between">
-                  <h3 className="text-[30px] font-medium text-[#1D2433] font-serif">
-                    Testimonials
-                  </h3>
-                </div>
+            <div className="mb-5 flex items-center justify-between">
+              <h3 className="text-[30px] font-medium text-[#1D2433] font-serif">
+                Testimonials
+              </h3>
+            </div>
 
-                <div className="space-y-5">
-                  {[
-                    {
-                      name: "Charles Richardson",
-                      role: "Product Designer",
-                      image:
-                        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop",
-                    },
-                    {
-                      name: "Sophia Miller",
-                      role: "Volunteer Mentor",
-                      image:
-                        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop",
-                    },
-                    {
-                      name: "James Anderson",
-                      role: "Community Leader",
-                      image:
-                        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop",
-                    },
-                  ].map((item, index) => (
-                    <div
-                      key={index}
-                      className="rounded-2xl border border-[#E2E8F0] bg-[#ffffff] p-6 transition-all duration-300 hover:shadow-lg hover:border-[#CBD5E1]"
-                    >
-                      {/* Top */}
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex gap-4">
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            className="w-14 h-10 rounded-full object-cover border-2 border-white shadow-sm"
-                          />
+            <div className="space-y-5">
+              {[
+                {
+                  name: "Charles Richardson",
+                  role: "Product Designer",
+                  image:
+                    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop",
+                },
+                {
+                  name: "Sophia Miller",
+                  role: "Volunteer Mentor",
+                  image:
+                    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop",
+                },
+                {
+                  name: "James Anderson",
+                  role: "Community Leader",
+                  image:
+                    "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400&auto=format&fit=crop",
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="rounded-2xl border border-[#E2E8F0] bg-[#ffffff] p-6 transition-all duration-300 hover:shadow-lg hover:border-[#CBD5E1]"
+                >
+                  {/* Top */}
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex gap-4">
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-14 h-10 rounded-full object-cover border-2 border-white shadow-sm"
+                      />
 
-                          <div>
-                            <h3 className="text-[16px] font-medium text-[#1F2A44] leading-none">
-                              {item.name}
-                            </h3>
+                      <div>
+                        <h3 className="text-[16px] font-medium text-[#1F2A44] leading-none">
+                          {item.name}
+                        </h3>
 
-                            <p className=" text-[12px] text-[#6B7280]">
-                              {item.role}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="flex gap-1 mt-1">
-                          {[1, 2, 3, 4, 5].map((star) => (
-                            <Star
-                              key={star}
-                              size={15}
-                              className="text-[#FFB400] fill-[#FFB400]"
-                            />
-                          ))}
-                        </div>
+                        <p className=" text-[12px] text-[#6B7280]">
+                          {item.role}
+                        </p>
                       </div>
-
-                      <p className="mt-5 text-[12px] leading-4 text-[#5B6475]">
-                        They approached each shift with professionalism and
-                        enthusiasm, often going above expectations to ensure
-                        projects were completed smoothly. Their attention to
-                        detail and willingness to assist wherever needed greatly
-                        contributed to the success of our programs.
-                      </p>
                     </div>
-                  ))}
+
+                    <div className="flex gap-1 mt-1">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star
+                          key={star}
+                          size={15}
+                          className="text-[#FFB400] fill-[#FFB400]"
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  <p className="mt-5 text-[12px] leading-4 text-[#5B6475]">
+                    They approached each shift with professionalism and
+                    enthusiasm, often going above expectations to ensure
+                    projects were completed smoothly. Their attention to detail
+                    and willingness to assist wherever needed greatly
+                    contributed to the success of our programs.
+                  </p>
                 </div>
-              </div>
+              ))}
+            </div>
+          </div>
 
           {/* Programs */}
           <div className="border border-[#e5e7eb] rounded-md overflow-hidden bg-[#fafbfc]">
-                <div className="px-5 py-4 border-b border-[#e5e7eb] bg-[#f5f7fa]">
-                  <h2 className="text-[20px] font-medium text-[#1f2a44]">
-                    Other available Programs
-                  </h2>
-                </div>
+            <div className="px-5 py-4 border-b border-[#e5e7eb] bg-[#f5f7fa]">
+              <h2 className="text-[20px] font-medium text-[#1f2a44]">
+                Other available Programs
+              </h2>
+            </div>
 
-                <div className="divide-y divide-[#e5e7eb]">
-                  {programs.map((item, index) => (
-                    <div
-                      key={index}
-                      className="px-5 py-4 text-[15px] text-[#5b6478] hover:bg-white transition-all cursor-pointer"
-                    >
-                      {item}
-                    </div>
-                  ))}
+            <div className="divide-y divide-[#e5e7eb]">
+              {programs.map((item, index) => (
+                <div
+                  key={index}
+                  className="px-5 py-4 text-[15px] text-[#5b6478] hover:bg-white transition-all cursor-pointer"
+                >
+                  {item}
                 </div>
-              </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
       {/* =========================================
@@ -457,7 +456,7 @@ export default function OrganizationalStructurePage() {
               <img
                 src="/images/kids.png"
                 alt="Children"
-                className="w-full max-w-[420px] object-contain"
+                className="w-full max-w-full md:max-w-[420px] object-contain"
               />
             </div>
           </div>
@@ -487,7 +486,6 @@ export default function OrganizationalStructurePage() {
         </div>
       </section>
 
-      
       {/* Map and Cards Section */}
       <section className="py-20 text-center">
         {/* Top Content */}
@@ -496,7 +494,7 @@ export default function OrganizationalStructurePage() {
             Where we work
           </h2>
 
-          <p className="max-w-[760px] mx-auto text-[14px] md:text-[15px] leading-7 text-[#666]">
+          <p className="max-w-full md:max-w-[760px] mx-auto text-[14px] md:text-[15px] leading-7 text-[#666]">
             We place volunteers in communities to support local effort,
             empowering residents to evolve positive change and improve quality
             of life through collaboration on meaningful projects.
@@ -535,12 +533,12 @@ export default function OrganizationalStructurePage() {
                 years.
               </p>
 
-              <a
-                href="/"
+              <Link
+                href="/about/location/kathmandu"
                 className="text-[16px] text-black pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -565,12 +563,12 @@ export default function OrganizationalStructurePage() {
                 engaged with over 900 key workers helping improve livelihoods.
               </p>
 
-              <a
-                href="/"
+              <Link
+                href="/about/location/okhaldhunga"
                 className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -595,12 +593,12 @@ export default function OrganizationalStructurePage() {
                 communities.
               </p>
 
-              <a
-                href="/"
+              <Link
+                href="/about/location/nuwakot"
                 className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -710,30 +708,23 @@ export default function OrganizationalStructurePage() {
           {/* Slider Area */}
           <div className="relative group/vol">
             {/* Left Arrow */}
-            <button 
-              onClick={() => volunteerRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
-              className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-[#5f6b7a]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
+            <button
+              onClick={() =>
+                volunteerRef.current?.scrollBy({
+                  left: -320,
+                  behavior: "smooth",
+                })
+              }
+              className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition"
+            >
+              <ChevronLeft className="h-4 w-4 text-[#5f6b7a]" />
             </button>
 
             {/* Cards */}
-            <div 
+            <div
               ref={volunteerRef}
               className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {/* Card 1 */}
               <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
@@ -812,23 +803,16 @@ export default function OrganizationalStructurePage() {
             </div>
 
             {/* Right Arrow */}
-            <button 
-              onClick={() => volunteerRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
-              className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-[#5f6b7a]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+            <button
+              onClick={() =>
+                volunteerRef.current?.scrollBy({
+                  left: 320,
+                  behavior: "smooth",
+                })
+              }
+              className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition"
+            >
+              <ChevronRight className="h-4 w-4 text-[#5f6b7a]" />
             </button>
           </div>
         </div>
@@ -853,42 +837,22 @@ export default function OrganizationalStructurePage() {
 
             {/* Navigation Arrows */}
             <div className="hidden items-center gap-2 md:flex">
-              <button 
-                onClick={() => trustRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 text-[#5f6b7a]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
+              <button
+                onClick={() =>
+                  trustRef.current?.scrollBy({ left: -320, behavior: "smooth" })
+                }
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50"
+              >
+                <ChevronLeft className="h-4 w-4 text-[#5f6b7a]" />
               </button>
 
-              <button 
-                onClick={() => trustRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 text-[#5f6b7a]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
+              <button
+                onClick={() =>
+                  trustRef.current?.scrollBy({ left: 320, behavior: "smooth" })
+                }
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50"
+              >
+                <ChevronRight className="h-4 w-4 text-[#5f6b7a]" />
               </button>
             </div>
           </div>
@@ -909,13 +873,7 @@ export default function OrganizationalStructurePage() {
             <div className="absolute inset-0 flex items-center justify-center">
               <button className="flex h-20 w-20 items-center justify-center rounded-full bg-white/20 backdrop-blur-md transition hover:scale-105">
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="ml-1 h-6 w-6 fill-[#4b5563]"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
+                  <Play className="ml-1 h-6 w-6 text-[#4b5563]" />
                 </div>
               </button>
             </div>
@@ -934,25 +892,7 @@ export default function OrganizationalStructurePage() {
 
             {/* Bottom Sound Icon */}
             <button className="absolute bottom-6 left-1/2 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full bg-white/20 backdrop-blur-md md:bottom-10">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M11 5L6 9H3v6h3l5 4V5z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.54 8.46a5 5 0 010 7.07"
-                />
-              </svg>
+              <Volume2 className="h-5 w-5 text-white" />
             </button>
           </div>
         </div>
@@ -1241,7 +1181,7 @@ export default function OrganizationalStructurePage() {
           {[1, 2, 3].map((item) => (
             <div key={item} className="flex flex-col items-center text-center">
               {/* Image Card */}
-              <div className="w-[350px] overflow-hidden rounded-md shadow-md border border-gray-200 bg-white">
+              <div className="w-full md:w-[350px] overflow-hidden rounded-md shadow-md border border-gray-200 bg-white">
                 <img
                   src="/volunteer.jpg"
                   alt="Volunteer"
@@ -1275,7 +1215,7 @@ export default function OrganizationalStructurePage() {
                 </div>
 
                 {/* Button */}
-                <button className="mt-5 w-[350px] border border-[#4c53c7] text-[#2E3192] hover:bg-[#2E3192] hover:text-white transition-all text-[14px] font-medium py-3 rounded-md bg-white shadow-sm">
+                <button className="mt-5 w-full md:w-[350px] border border-[#4c53c7] text-[#2E3192] hover:bg-[#2E3192] hover:text-white transition-all text-[14px] font-medium py-3 rounded-md bg-white shadow-sm">
                   Learn More
                 </button>
               </div>

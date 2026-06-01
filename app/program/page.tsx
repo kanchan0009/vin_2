@@ -10,22 +10,19 @@ import LatestNews from "../components/news";
 import Articles from "../components/articles";
 
 export default function ProgrammePage() {
-  
-  
   const volunteerRef = useRef<HTMLDivElement>(null);
   const trustRef = useRef<HTMLDivElement>(null);
 
   return (
     <main className="min-h-screen  bg-white">
-      
       {/* Top Image */}
-        <div className="w-full relative left-1/2 right-1/2 w-full -translate-x-1/2 overflow-hidden">
-          <img
-            src="/hero.png"
-            alt="Women's Empowerment"
-            className="w-full h-[220px] sm:h-[320px] md:h-[420px] object-cover"
-          />
-        </div>
+      <div className="w-full relative left-1/2 right-1/2 w-full -translate-x-1/2 overflow-hidden">
+        <img
+          src="/hero.png"
+          alt="Women's Empowerment"
+          className="w-full h-[220px] sm:h-[260px] md:h-[280px] lg:h-[400px] object-cover"
+        />
+      </div>
 
       {/* Programs Section */}
       <section className="w-full px-6 md:px-12 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
@@ -93,9 +90,11 @@ export default function ProgrammePage() {
                 collaboration, and build meaningful connections.
               </p>
 
-              <button className="mt-8 bg-white text-[#2A3495] font-medium px-6 py-3 rounded-md hover:bg-gray-100 transition">
-                See Programs
-              </button>
+              <Link href="/program" className="inline-block">
+                <button className="mt-8 bg-white text-[#2A3495] font-medium px-6 py-3 rounded-md hover:bg-gray-100 transition">
+                  See Programs
+                </button>
+              </Link>
             </div>
 
             {/* Right Image */}
@@ -158,12 +157,12 @@ export default function ProgrammePage() {
                 years.
               </p>
 
-              <a
-                href="/"
+              <Link
+                href="/about/location/kathmandu"
                 className="text-[16px] text-black pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -188,12 +187,12 @@ export default function ProgrammePage() {
                 engaged with over 900 key workers helping improve livelihoods.
               </p>
 
-              <a
-                href="/"
+              <Link
+                href="/about/location/okhaldhunga"
                 className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -218,18 +217,18 @@ export default function ProgrammePage() {
                 communities.
               </p>
 
-              <a
-                href="/"
+              <Link
+                href="/about/location/nuwakot"
                 className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </section>
-      <LatestNews/>
-      <Articles/>
+      <LatestNews />
+      <Articles />
       {/* Choose Impact Section */}
       <ChooseImpact />
       <section className="py-20 bg-white">
@@ -336,8 +335,13 @@ export default function ProgrammePage() {
           {/* Slider Area */}
           <div className="relative group/vol">
             {/* Left Arrow */}
-            <button 
-              onClick={() => volunteerRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
+            <button
+              onClick={() =>
+                volunteerRef.current?.scrollBy({
+                  left: -320,
+                  behavior: "smooth",
+                })
+              }
               className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition"
             >
               <svg
@@ -357,10 +361,10 @@ export default function ProgrammePage() {
             </button>
 
             {/* Cards */}
-            <div 
+            <div
               ref={volunteerRef}
               className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {/* Card 1 */}
               <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
@@ -439,8 +443,13 @@ export default function ProgrammePage() {
             </div>
 
             {/* Right Arrow */}
-            <button 
-              onClick={() => volunteerRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
+            <button
+              onClick={() =>
+                volunteerRef.current?.scrollBy({
+                  left: 320,
+                  behavior: "smooth",
+                })
+              }
               className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition"
             >
               <svg

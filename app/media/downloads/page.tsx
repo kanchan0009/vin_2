@@ -84,14 +84,13 @@ export default function DownloadPage() {
   return (
     <main className="w-full min-h-screen bg-[#F5F6F8] py-14 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
-        
         {/* Header */}
         <div className="mb-14">
           <h1 className="text-[40px] font-medium text-[#1f2a44] mb-4">
             Download
           </h1>
 
-          <p className="max-w-[850px] text-[18px] leading-[26px] text-[#6B7280]">
+          <p className="max-w-full md:max-w-[850px] text-[18px] leading-[26px] text-[#6B7280]">
             Download the important and required information and files you need
             to read and know about us before collaborating with us.
           </p>
@@ -100,7 +99,6 @@ export default function DownloadPage() {
         {/* Sections */}
         {sections.map((section, index) => (
           <div key={index} className="mb-12">
-            
             {/* Title */}
             <h2 className="text-[30px] font-medium text-[#1f2a44] mb-4">
               {section.title}
@@ -109,7 +107,6 @@ export default function DownloadPage() {
             {/* Table */}
             <div className="overflow-hidden rounded-[8px] border border-[#E5E7EB] bg-white">
               <table className="w-full">
-                
                 {/* Table Head */}
                 <thead className="bg-[#2F3C97]">
                   <tr>
@@ -138,10 +135,7 @@ export default function DownloadPage() {
                 {/* Table Body */}
                 <tbody>
                   {section.files.map((file) => (
-                    <tr
-                      key={file.id}
-                      className="border-t border-[#EEF1F4]"
-                    >
+                    <tr key={file.id} className="border-t border-[#EEF1F4]">
                       <td className="px-5 py-4 text-[14px] text-[#4B5563]">
                         {file.id}
                       </td>
@@ -169,7 +163,6 @@ export default function DownloadPage() {
                     </tr>
                   ))}
                 </tbody>
-
               </table>
             </div>
           </div>

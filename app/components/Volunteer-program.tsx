@@ -24,6 +24,24 @@ const cards = [
     description:
       "Are you seeking volunteer opportunities in domestic violence prevention that empower you to create lasting change ...",
   },
+  {
+    image: "/hero.png",
+    title: "Community Health Volunteer Program",
+    description:
+      "Support local health camps, awareness drives and basic screenings.",
+  },
+  {
+    image: "/hero.png",
+    title: "Teaching & Education Volunteer Program",
+    description:
+      "Teach children English, math, and life skills in rural classrooms.",
+  },
+  {
+    image: "/hero.png",
+    title: "Environment Conservation Volunteer Program",
+    description:
+      "Participate in tree planting, river cleanups and sustainability workshops.",
+  },
 ];
 
 const programTopics = [

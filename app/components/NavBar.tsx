@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -84,12 +84,12 @@ export default function NavBar() {
     <header className="sticky top-0 z-50 shadow-sm">
       {/* Top Bar */}
       <div className="bg-[#223a8f] text-white">
-        <div className="mx-auto flex flex-col gap-2 px-4 py-2 text-xs font-medium sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p className="whitespace-nowrap">
+        <div className="mx-auto flex flex-col gap-2 px-4 py-3 text-[11px] font-medium sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <p className="whitespace-normal text-center sm:text-left">
             #1 rated volunteering Organization in Nepal
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm">
+          <div className="flex items-center justify-center gap-3 flex-wrap sm:justify-end sm:items-center text-[11px] sm:text-sm">
             <a
               href="tel:+97714962560"
               className="inline-flex items-center gap-2 text-white/90 hover:text-white"
@@ -112,7 +112,6 @@ export default function NavBar() {
       {/* Main Navbar */}
       <div className="bg-white">
         <div className="mx-auto flex items-center justify-between px-4 py-4 sm:px-6">
-          
           {/* Logo */}
           <Link href="/" className="flex items-center text-slate-900">
             <div className="relative h-14 w-48 sm:h-16 sm:w-60 overflow-hidden">
@@ -207,7 +206,6 @@ export default function NavBar() {
           }`}
         >
           <div className="border-t border-slate-200 bg-white px-4 py-5 space-y-3">
-            
             {navItems.map((item) => {
               if (!item.dropdown) {
                 return (

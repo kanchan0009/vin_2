@@ -1,7 +1,7 @@
 export default function OurStoryPage() {
   return (
     <main className="w-full bg-white py-16 px-6 md:px-10">
-      <div className="max-w-[900px] mx-auto">
+      <div className="max-w-full md:max-w-[900px] mx-auto px-4 md:px-0">
         {/* =========================================
             PAGE TITLE
         ========================================= */}
@@ -127,7 +127,7 @@ export default function OurStoryPage() {
         ========================================= */}
         <div className="mt-16 rounded-[10px] overflow-hidden bg-gradient-to-r from-[#2A3495] to-[#3b49d1] px-10 py-8 relative">
           {/* Decorative Circles */}
-          <div className="absolute right-0 top-0 w-[220px] h-full opacity-20">
+          <div className="hidden md:block absolute right-0 top-0 w-[220px] h-full opacity-20">
             <div className="absolute top-6 right-10 w-24 h-24 border border-white rounded-full" />
             <div className="absolute top-20 right-0 w-32 h-32 border border-white rounded-full" />
             <div className="absolute bottom-0 right-16 w-20 h-20 border border-white rounded-full" />
@@ -138,7 +138,7 @@ export default function OurStoryPage() {
               Become a part of the change
             </h2>
 
-            <p className="text-[15px] leading-[28px] text-white/80 max-w-[520px] mb-8">
+            <p className="text-[15px] leading-[28px] text-white/80 max-w-full md:max-w-[520px] mb-8">
               Help communities grow through meaningful volunteering,
               collaboration, and sustainable social impact initiatives.
             </p>

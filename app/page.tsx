@@ -4,7 +4,20 @@ import OurTeam from "@/app/components/OurTeam";
 
 import { useState, useRef } from "react";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  Volume2,
+  Users,
+  PlusCircle,
+  UserPlus,
+  Building,
+  UserCheck,
+  Leaf,
+  User,
+  ShieldCheck,
+} from "lucide-react";
 import VolunteerProgram from "./components/Volunteer-program";
 import LatestNews from "./components/news";
 import Aricles from "./components/articles";
@@ -13,46 +26,165 @@ const heroSlides = [
   {
     image: "/hero.png",
     title: "Women’s Empowerment",
-    description: "We equip rural women with non-formal education, life skills, entrepreneurship support, microcredit access, and leadership training — helping them rise, earn, and live with confidence and dignity.",
+    description:
+      "We equip rural women with non-formal education, life skills, entrepreneurship support, microcredit access, and leadership training — helping them rise, earn, and live with confidence and dignity.",
   },
   {
     image: "/trust-video.jpg",
     title: "Children Development",
-    description: "Providing quality education and healthcare to children, ensuring they grow up in a safe, nurturing environment with equal opportunities for a brighter future.",
+    description:
+      "Providing quality education and healthcare to children, ensuring they grow up in a safe, nurturing environment with equal opportunities for a brighter future.",
   },
   {
     image: "/images/volunteer.jpg",
     title: "Youth Empowerment",
-    description: "Empowering young people through skill development, vocational training, and leadership programs to become independent and active members of society.",
+    description:
+      "Empowering young people through skill development, vocational training, and leadership programs to become independent and active members of society.",
   },
   {
     image: "/images/kids.png",
     title: "Public Health",
-    description: "Enhancing community health through medical camps, hygiene education, and sustainable sanitation projects for a healthier tomorrow.",
+    description:
+      "Enhancing community health through medical camps, hygiene education, and sustainable sanitation projects for a healthier tomorrow.",
   },
   {
     image: "/images/donate.jpg",
     title: "Community Development",
-    description: "Working hands-on with local communities to build infrastructure, support agriculture, and create sustainable livelihoods for everyone.",
-  }
+    description:
+      "Working hands-on with local communities to build infrastructure, support agriculture, and create sustainable livelihoods for everyone.",
+  },
 ];
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
-  
+
   const volunteerRef = useRef<HTMLDivElement>(null);
   const [trustSlide, setTrustSlide] = useState(0);
 
   const trustVideos = [
-    { image: "/trust-video.jpg", name: "Peter Smith", description: "Listen to heartfelt stories from people who choose to make a difference with us." },
-    { image: "/images/volunteer.jpg", name: "Sarah Johnson", description: "Our experience with VIN has been truly life-changing. Highly recommend joining." }
+    {
+      image: "/trust-video.jpg",
+      name: "Peter Smith",
+      description:
+        "Listen to heartfelt stories from people who choose to make a difference with us.",
+    },
+    {
+      image: "/images/volunteer.jpg",
+      name: "Sarah Johnson",
+      description:
+        "Our experience with VIN has been truly life-changing. Highly recommend joining.",
+    },
+    {
+      image: "/images/kids.png",
+      name: "Asha Gurung",
+      description:
+        "From classroom volunteer to community leader — a story of lasting change.",
+    },
+    {
+      image: "/images/donate.jpg",
+      name: "Ramesh Tamang",
+      description:
+        "How small infrastructure projects transformed village life.",
+    },
   ];
 
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
-  const nextTrust = () => setTrustSlide((prev) => (prev + 1) % trustVideos.length);
-  const prevTrust = () => setTrustSlide((prev) => (prev === 0 ? trustVideos.length - 1 : prev - 1));
+  const volunteers = [
+    {
+      name: "Kelly Anne Lister",
+      country: "Australia",
+      role: "Teacher",
+      image: "/hero.png",
+      from: "01/02/2025",
+      to: "01/03/2025",
+    },
+    {
+      name: "Baker Kumar Sah",
+      country: "Nepal",
+      role: "Coordinator",
+      image: "/hero.png",
+      from: "03/04/2025",
+      to: "03/06/2025",
+    },
+    {
+      name: "Maya Shrestha",
+      country: "Nepal",
+      role: "Health Volunteer",
+      image: "/hero.png",
+      from: "05/06/2025",
+      to: "05/08/2025",
+    },
+    {
+      name: "James Miller",
+      country: "United Kingdom",
+      role: "Youth Mentor",
+      image: "/hero.png",
+      from: "07/09/2025",
+      to: "07/11/2025",
+    },
+    {
+      name: "Sara Lopez",
+      country: "Spain",
+      role: "Environment Lead",
+      image: "/hero.png",
+      from: "09/10/2025",
+      to: "09/12/2025",
+    },
+    {
+      name: "Liu Wei",
+      country: "China",
+      role: "Program Volunteer",
+      image: "/hero.png",
+      from: "11/01/2026",
+      to: "11/03/2026",
+    },
+  ];
+
+  const volunteerTestimonials = [
+    {
+      quote:
+        "Volunteering with VIN completely transformed the way I see community development. The staff were incredibly supportive, and the projects truly made a real impact.",
+      name: "Baker Kumar Sah",
+      country: "Nepal",
+      image: "/hero.png",
+    },
+    {
+      quote:
+        "I learned more in a few weeks than I ever expected. The hands-on experience was invaluable.",
+      name: "Kelly Anne Lister",
+      country: "Australia",
+      image: "/hero.png",
+    },
+    {
+      quote:
+        "Working with local communities taught me how meaningful small actions can be when coordinated well.",
+      name: "Maya Shrestha",
+      country: "Nepal",
+      image: "/hero.png",
+    },
+    {
+      quote:
+        "The program helped me grow as a leader and allowed me to contribute to real improvements in village life.",
+      name: "James Miller",
+      country: "United Kingdom",
+      image: "/hero.png",
+    },
+    {
+      quote:
+        "An unforgettable experience — I made friends, learned skills, and helped deliver projects that matter.",
+      name: "Sara Lopez",
+      country: "Spain",
+      image: "/hero.png",
+    },
+  ];
+
+  const nextSlide = () =>
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+  const prevSlide = () =>
+    setCurrentSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+  const nextTrust = () =>
+    setTrustSlide((prev) => (prev + 1) % trustVideos.length);
+  const prevTrust = () =>
+    setTrustSlide((prev) => (prev === 0 ? trustVideos.length - 1 : prev - 1));
 
   return (
     <main className="min-h-screen bg-[#ffffff] text-zinc-950">
@@ -63,17 +195,17 @@ export default function HomePage() {
           <img
             src={heroSlides[currentSlide].image}
             alt={heroSlides[currentSlide].title}
-            className="w-full h-[220px] sm:h-[320px] md:h-[420px] object-cover transition-all duration-500"
+            className="w-full h-[220px] sm:h-[260px] md:h-[280px] lg:h-[400px] object-cover transition-all duration-500"
           />
-          
+
           {/* Navigation Arrows */}
-          <button 
+          <button
             onClick={prevSlide}
             className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-[#2F3C97] p-2 rounded-full shadow-md transition-opacity duration-300 z-10"
           >
             <ChevronLeft size={24} />
           </button>
-          <button 
+          <button
             onClick={nextSlide}
             className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-[#2F3C97] p-2 rounded-full shadow-md transition-opacity duration-300 z-10"
           >
@@ -111,12 +243,17 @@ export default function HomePage() {
             <p className="text-[#4A5568] text-[15px] md:text-[18px] leading-[1.8] font-normal transition-all duration-300">
               {heroSlides[currentSlide].description}
             </p>
-            <Link 
+            <Link
               href={
-                heroSlides[currentSlide].title === "Women’s Empowerment" ? "/program/women-empowerment" :
-                heroSlides[currentSlide].title === "Children Development" ? "/program/children-development" :
-                heroSlides[currentSlide].title === "Youth Empowerment" ? "/program/youth-empowerment" :
-                heroSlides[currentSlide].title === "Public Health" ? "/program/health" : "/program"
+                heroSlides[currentSlide].title === "Women’s Empowerment"
+                  ? "/program/women-empowerment"
+                  : heroSlides[currentSlide].title === "Children Development"
+                    ? "/program/children-development"
+                    : heroSlides[currentSlide].title === "Youth Empowerment"
+                      ? "/program/youth-empowerment"
+                      : heroSlides[currentSlide].title === "Public Health"
+                        ? "/program/health"
+                        : "/program"
               }
               className="inline-flex items-center gap-2 bg-[#2F3C97] hover:bg-[#25307d] transition-all duration-300 text-white text-[14px] font-medium px-6 py-2.5 rounded-[4px] shadow-sm mt-2"
             >
@@ -311,7 +448,9 @@ export default function HomePage() {
         <div className="mt-8  px-4 md:px-10 py-8">
           {/* Top Center Stat */}
           <div className="flex flex-col items-center justify-center text-center">
-            <div className="text-[#09B0EE] text-[24px]">👥</div>
+            <div className="text-[#09B0EE] text-[24px]">
+              <Users className="w-6 h-6 text-[#09B0EE]" />
+            </div>
 
             <h3 className="mt-2 text-[#09B0EE] text-[28px] md:text-[44px] font-medium tracking-wide">
               3,70,000+
@@ -326,7 +465,9 @@ export default function HomePage() {
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 text-center">
             {/* Item */}
             <div className="flex flex-col items-center">
-              <div className="text-[#09B0EE] text-[24px]">➕</div>
+              <div className="text-[#09B0EE] text-[24px]">
+                <PlusCircle className="w-6 h-6 text-[#09B0EE]" />
+              </div>
               <h4 className="mt-3 text-[#09B0EE] text-[24px] md:text-[38px] font-medium">
                 150,008+
               </h4>
@@ -337,7 +478,9 @@ export default function HomePage() {
 
             {/* Item */}
             <div className="flex flex-col items-center">
-              <div className="text-[#09B0EE] text-[24px]">👫</div>
+              <div className="text-[#09B0EE] text-[24px]">
+                <UserPlus className="w-6 h-6 text-[#09B0EE]" />
+              </div>
               <h4 className="mt-3 text-[#09B0EE] text-[24px] md:text-[38px] font-medium">
                 65,513+
               </h4>
@@ -348,7 +491,9 @@ export default function HomePage() {
 
             {/* Item */}
             <div className="flex flex-col items-center">
-              <div className="text-[#09B0EE] text-[24px]">🏢</div>
+              <div className="text-[#09B0EE] text-[24px]">
+                <Building className="w-6 h-6 text-[#09B0EE]" />
+              </div>
               <h4 className="mt-3 text-[#09B0EE] text-[24px] md:text-[38px] font-medium">
                 3,000+
               </h4>
@@ -370,7 +515,9 @@ export default function HomePage() {
 
             {/* Item */}
             <div className="flex flex-col items-center">
-              <div className="text-[#09B0EE] text-[24px]">👨‍⚕️</div>
+              <div className="text-[#09B0EE] text-[24px]">
+                <UserCheck className="w-6 h-6 text-[#09B0EE]" />
+              </div>
               <h4 className="mt-3 text-[#09B0EE] text-[24px] md:text-[38px] font-medium">
                 6,000+
               </h4>
@@ -381,7 +528,9 @@ export default function HomePage() {
 
             {/* Item */}
             <div className="flex flex-col items-center">
-              <div className="text-[#09B0EE] text-[24px]">🍃</div>
+              <div className="text-[#09B0EE] text-[24px]">
+                <Leaf className="w-6 h-6 text-[#09B0EE]" />
+              </div>
               <h4 className="mt-3 text-[#09B0EE] text-[24px] md:text-[38px] font-medium">
                 63,287+
               </h4>
@@ -392,7 +541,9 @@ export default function HomePage() {
 
             {/* Item */}
             <div className="flex flex-col items-center">
-              <div className="text-[#09B0EE] text-[24px]">🧍</div>
+              <div className="text-[#09B0EE] text-[24px]">
+                <User className="w-6 h-6 text-[#09B0EE]" />
+              </div>
               <h4 className="mt-3 text-[#09B0EE] text-[24px] md:text-[38px] font-medium">
                 4,126+
               </h4>
@@ -403,7 +554,9 @@ export default function HomePage() {
 
             {/* Item */}
             <div className="flex flex-col items-center">
-              <div className="text-[#09B0EE] text-[24px]">🛡️</div>
+              <div className="text-[#09B0EE] text-[24px]">
+                <ShieldCheck className="w-6 h-6 text-[#09B0EE]" />
+              </div>
               <h4 className="mt-3 text-[#09B0EE] text-[24px] md:text-[38px] font-medium">
                 3,000+
               </h4>
@@ -560,7 +713,7 @@ export default function HomePage() {
               </p>
 
               <Link
-                href="/"
+                href="/about/location/okhaldhunga"
                 className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
@@ -590,7 +743,7 @@ export default function HomePage() {
               </p>
 
               <Link
-                href="/"
+                href="/about/location/nuwakot"
                 className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
               >
                 Read More..
@@ -707,127 +860,63 @@ export default function HomePage() {
           {/* Slider Area */}
           <div className="relative group/vol">
             {/* Left Arrow */}
-            <button 
-              onClick={() => volunteerRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
+            <button
+              onClick={() =>
+                volunteerRef.current?.scrollBy({
+                  left: -320,
+                  behavior: "smooth",
+                })
+              }
               className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex hover:bg-gray-100 transition"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-[#5f6b7a]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
+              <ChevronLeft className="h-4 w-4 text-[#5f6b7a]" />
             </button>
 
             {/* Cards */}
-            <div 
+            <div
               ref={volunteerRef}
               className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {/* Card 1 */}
-              <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                <p className="text-[14px] leading-7 text-[#5d6470]">
-                  &quot;Volunteering with VN completely transformed the way I see
-                  community development. The staff were incredibly supportive,
-                  and the projects truly made a real impact. I learned so much
-                  from fellow volunteers!&quot;
-                </p>
+              {volunteerTestimonials.map((t, i) => (
+                <div
+                  key={i}
+                  className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]"
+                >
+                  <p className="text-[14px] leading-7 text-[#5d6470]">
+                    {t.quote}
+                  </p>
 
-                <div className="mt-6 flex items-center gap-3">
-                  <img
-                    src="/hero.png"
-                    alt="User"
-                    className="h-11 w-11 rounded-full object-cover"
-                  />
+                  <div className="mt-6 flex items-center gap-3">
+                    <img
+                      src={t.image}
+                      alt={t.name}
+                      className="h-11 w-11 rounded-full object-cover"
+                    />
 
-                  <div>
-                    <h4 className="text-sm font-medium text-[#111827]">
-                      Baker Kumar Sah
-                    </h4>
-                    <p className="text-xs text-[#8b8b8b]">Nepal</p>
+                    <div>
+                      <h4 className="text-sm font-medium text-[#111827]">
+                        {t.name}
+                      </h4>
+                      <p className="text-xs text-[#8b8b8b]">{t.country}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Card 2 */}
-              <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                <p className="text-[14px] leading-7 text-[#5d6470]">
-                  &quot;Volunteering with VN completely transformed the way I see
-                  community development. The staff were incredibly supportive,
-                  and the projects truly made a real impact. I learned so much
-                  from fellow volunteers!&quot;
-                </p>
-
-                <div className="mt-6 flex items-center gap-3">
-                  <img
-                    src="/hero.png"
-                    alt="User"
-                    className="h-11 w-11 rounded-full object-cover"
-                  />
-
-                  <div>
-                    <h4 className="text-sm font-medium text-[#111827]">
-                      Baker Kumar Sah
-                    </h4>
-                    <p className="text-xs text-[#8b8b8b]">United States</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-                <p className="text-[14px] leading-7 text-[#5d6470]">
-                  &quot;Volunteering with VN completely transformed the way I see
-                  community development. The staff were incredibly supportive,
-                  and the projects truly made a real impact. I learned so much
-                  from fellow volunteers!&quot;
-                </p>
-
-                <div className="mt-6 flex items-center gap-3">
-                  <img
-                    src="/hero.png"
-                    alt="User"
-                    className="h-11 w-11 rounded-full object-cover"
-                  />
-
-                  <div>
-                    <h4 className="text-sm font-medium text-[#111827]">
-                      Baker Kumar Sah
-                    </h4>
-                    <p className="text-xs text-[#8b8b8b]">Georgia</p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* Right Arrow */}
-            <button 
-              onClick={() => volunteerRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
+            <button
+              onClick={() =>
+                volunteerRef.current?.scrollBy({
+                  left: 320,
+                  behavior: "smooth",
+                })
+              }
               className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex hover:bg-gray-100 transition"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-[#5f6b7a]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+              <ChevronRight className="h-4 w-4 text-[#5f6b7a]" />
             </button>
           </div>
         </div>
@@ -852,7 +941,7 @@ export default function HomePage() {
 
             {/* Navigation Arrows */}
             <div className="hidden items-center gap-2 md:flex">
-              <button 
+              <button
                 onClick={prevTrust}
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50"
               >
@@ -872,7 +961,7 @@ export default function HomePage() {
                 </svg>
               </button>
 
-              <button 
+              <button
                 onClick={nextTrust}
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50"
               >
@@ -910,13 +999,7 @@ export default function HomePage() {
             <div className="absolute inset-0 flex items-center justify-center">
               <button className="flex h-20 w-20 items-center justify-center rounded-full bg-white/20 backdrop-blur-md transition hover:scale-105">
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="ml-1 h-6 w-6 fill-[#4b5563]"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
+                  <Play className="ml-1 h-6 w-6 text-[#4b5563]" />
                 </div>
               </button>
             </div>
@@ -934,25 +1017,7 @@ export default function HomePage() {
 
             {/* Bottom Sound Icon */}
             <button className="absolute bottom-6 left-1/2 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full bg-white/20 backdrop-blur-md md:bottom-10">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M11 5L6 9H3v6h3l5 4V5z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.54 8.46a5 5 0 010 7.07"
-                />
-              </svg>
+              <Volume2 className="h-5 w-5 text-white" />
             </button>
           </div>
         </div>
@@ -1234,18 +1299,23 @@ export default function HomePage() {
             </p>
           </div>
 
-          <Link href="/volunteers" className="bg-[#2E3192] hover:bg-[#26287d] transition-all text-white text-[16px] font-medium px-6 py-3 rounded-md shadow-sm inline-flex items-center justify-center">View Volunteers</Link>
+          <Link
+            href="/volunteers"
+            className="bg-[#2E3192] hover:bg-[#26287d] transition-all text-white text-[16px] font-medium px-6 py-3 rounded-md shadow-sm inline-flex items-center justify-center"
+          >
+            View Volunteers
+          </Link>
         </div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12  mx-auto">
-          {[1, 2, 3].map((item) => (
-            <div key={item} className="flex flex-col items-center text-center">
+          {volunteers.map((v, idx) => (
+            <div key={idx} className="flex flex-col items-center text-center">
               {/* Image Card */}
-              <div className="w-[350px] overflow-hidden rounded-md shadow-md border border-gray-200 bg-white">
+              <div className="w-full md:w-[350px] overflow-hidden rounded-md shadow-md border border-gray-200 bg-white">
                 <img
-                  src="/hero.png"
-                  alt="Volunteer"
+                  src={v.image}
+                  alt={v.name}
                   className="w-full h-[200px] object-cover"
                 />
               </div>
@@ -1253,30 +1323,30 @@ export default function HomePage() {
               {/* Content */}
               <div className="mt-4">
                 <h3 className="text-[15px] font-semibold text-[#222]">
-                  Kelly Anne Lister
+                  {v.name}
                 </h3>
 
-                <p className="text-[12px] text-[#8a8a8a] mt-1">Australia</p>
+                <p className="text-[12px] text-[#8a8a8a] mt-1">{v.country}</p>
 
                 <p className="text-[11px] text-[#9a9a9a] mt-2 leading-[18px]">
-                  Teaching English at Monastery
+                  {v.role}
                 </p>
 
                 {/* Dates */}
                 <div className="flex items-center justify-center gap-8 mt-4 text-[10px] text-[#8d8d8d]">
                   <div>
-                    <p>F To</p>
-                    <p className="mt-1 text-[#666]">12/01/2026</p>
+                    <p>From</p>
+                    <p className="mt-1 text-[#666]">{v.from}</p>
                   </div>
 
                   <div>
-                    <p>T To</p>
-                    <p className="mt-1 text-[#666]">12/01/2026</p>
+                    <p>To</p>
+                    <p className="mt-1 text-[#666]">{v.to}</p>
                   </div>
                 </div>
 
                 {/* Button */}
-                <button className="mt-5 w-[350px] border border-[#4c53c7] text-[#2E3192] hover:bg-[#2E3192] hover:text-white transition-all text-[14px] font-medium py-3 rounded-md bg-white shadow-sm">
+                <button className="mt-5 w-full md:w-[350px] border border-[#4c53c7] text-[#2E3192] hover:bg-[#2E3192] hover:text-white transition-all text-[14px] font-medium py-3 rounded-md bg-white shadow-sm">
                   Learn More
                 </button>
               </div>

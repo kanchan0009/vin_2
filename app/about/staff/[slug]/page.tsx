@@ -2,7 +2,7 @@
 import ChooseImpact from "@/app/components/ChooseImpact";
 
 import Link from "next/link";
-import { use, useRef } from "react";
+import { use, useState, useRef } from "react";
 import { Heading3, Star } from "lucide-react";
 import { notFound } from "next/navigation";
 import VolunteerProgram from "@/app/components/Volunteer-program";
@@ -66,16 +66,43 @@ export default function StaffSlugPage({
 
   const { slug } = use(params);
   const teamRef = useRef<HTMLDivElement>(null);
-  
+
   const volunteerRef = useRef<HTMLDivElement>(null);
   const trustRef = useRef<HTMLDivElement>(null);
-
 
   /* =========================================
      FIND STAFF
   ========================================= */
 
   const staff = STAFF.find((item) => item.slug === slug);
+  const [activeTab, setActiveTab] = useState("Background");
+
+  const staffTabContents: Record<string, string[]> = {
+    Background: [
+      `${staff?.name} brings years of leadership experience to VIN, managing volunteer placements, community programs, and partnerships across Nepal.`,
+      "Their background includes education, volunteer coordination, and strategic planning for nonprofit impact.",
+    ],
+    Responsibilities: [
+      "Oversees volunteer recruitment and placement, ensuring each program has the right skill mix and support.",
+      "Coordinates local teams and partner organizations for more effective project delivery and impact tracking.",
+    ],
+    Experiences: [
+      "Managed community development initiatives across multiple districts, including education, health, and environmental programs.",
+      "Facilitated volunteer training sessions, cultural introductions, and safety briefings for international participants.",
+    ],
+    Education: [
+      `${staff?.name} holds a ${staff?.education} and combines this academic background with hands-on program experience.`,
+      "Continuously learns new community engagement and monitoring techniques to improve program outcomes.",
+    ],
+    Skills: [
+      "Volunteer management, project coordination, and stakeholder communication.",
+      "Program design, monitoring, evaluation, and sustainable community engagement.",
+    ],
+    "Professional Affiliations": [
+      "Member of local community development networks and volunteer coordination forums.",
+      "Works with partner organizations and donors to align programs with community needs and development goals.",
+    ],
+  };
 
   if (!staff) {
     notFound();
@@ -127,21 +154,57 @@ export default function StaffSlugPage({
                 </h3>
 
                 <div className="flex items-center gap-4">
-                  <button className="w-10 h-10 rounded-full bg-[#25D366] text-white">
-                    W
-                  </button>
+                  <a
+                    className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center"
+                    href="https://wa.me/9779851070477"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      src="/icons/whatsapp.svg"
+                      alt="whatsapp"
+                      className="w-5 h-5"
+                    />
+                  </a>
 
-                  <button className="w-10 h-10 rounded-full bg-[#1877F2] text-white">
-                    F
-                  </button>
+                  <a
+                    className="w-10 h-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center"
+                    href="https://www.facebook.com"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      src="/icons/facebook.svg"
+                      alt="facebook"
+                      className="w-5 h-5"
+                    />
+                  </a>
 
-                  <button className="w-10 h-10 rounded-full bg-black text-white">
-                    X
-                  </button>
+                  <a
+                    className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center"
+                    href="https://www.twitter.com"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      src="/icons/twitter.svg"
+                      alt="twitter"
+                      className="w-5 h-5"
+                    />
+                  </a>
 
-                  <button className="w-10 h-10 rounded-full bg-pink-500 text-white">
-                    I
-                  </button>
+                  <a
+                    className="w-10 h-10 rounded-full bg-pink-500 text-white flex items-center justify-center"
+                    href="https://www.instagram.com"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img
+                      src="/icons/instagram.svg"
+                      alt="instagram"
+                      className="w-5 h-5"
+                    />
+                  </a>
                 </div>
               </div>
             </div>
@@ -152,11 +215,8 @@ export default function StaffSlugPage({
           ===================================================== */}
 
           <div className="flex flex-wrap gap-3 border-b border-gray-200 pb-5 mb-10">
-            <button className="px-6 h-11 rounded-md bg-[#2A3495] text-white text-sm">
-              Background
-            </button>
-
             {[
+              "Background",
               "Responsibilities",
               "Experiences",
               "Education",
@@ -165,7 +225,12 @@ export default function StaffSlugPage({
             ].map((tab) => (
               <button
                 key={tab}
-                className="px-6 h-11 rounded-md border border-gray-200 bg-gray-50 text-sm text-gray-600 hover:bg-white transition"
+                onClick={() => setActiveTab(tab)}
+                className={`px-6 h-11 rounded-md text-sm font-medium transition-all ${
+                  activeTab === tab
+                    ? "bg-[#2A3495] text-white"
+                    : "border border-gray-200 bg-gray-50 text-gray-600 hover:bg-white"
+                }`}
               >
                 {tab}
               </button>
@@ -179,29 +244,17 @@ export default function StaffSlugPage({
           <div className="space-y-6">
             <div>
               <h3 className="text-[20px] font-medium text-[#1f2a44] mb-4">
-                About
+                {activeTab}
               </h3>
 
-              <p className="text-[15px] leading-8 text-gray-600">{staff.bio}</p>
+              {staffTabContents[activeTab].map((paragraph, index) => (
+                <p key={index} className="text-[15px] leading-8 text-gray-600">
+                  {paragraph}
+                </p>
+              ))}
             </div>
 
             <div>
-              <h3 className="text-[20px] font-medium text-[#1f2a44] mb-4">
-                Experience and Expertise
-              </h3>
-
-              <p className="text-[15px] leading-8 text-gray-600">
-                {staff.name} has extensive experience working with community
-                development initiatives, leadership programs, and volunteer
-                management activities across different regions.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-[20px] font-medium text-[#1f2a44] mb-4">
-                Contribution to VIN
-              </h3>
-
               <p className="text-[15px] leading-8 text-gray-600">
                 Through dedication and leadership, {staff.name} continues to
                 contribute significantly toward VIN’s mission of empowering
@@ -220,7 +273,7 @@ export default function StaffSlugPage({
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-[19px] font-medium text-[#1F2A44]">
               What People say about
-              <br/> {staff.name.split(" ")[0]}
+              <br /> {staff.name.split(" ")[0]}
             </h2>
           </div>
 
@@ -560,9 +613,15 @@ export default function StaffSlugPage({
           {/* Slider Area */}
           <div className="relative group/vol">
             {/* Left Arrow */}
-            <button 
-              onClick={() => volunteerRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
-              className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition">
+            <button
+              onClick={() =>
+                volunteerRef.current?.scrollBy({
+                  left: -320,
+                  behavior: "smooth",
+                })
+              }
+              className="absolute left-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4 text-[#5f6b7a]"
@@ -580,10 +639,10 @@ export default function StaffSlugPage({
             </button>
 
             {/* Cards */}
-            <div 
+            <div
               ref={volunteerRef}
               className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {/* Card 1 */}
               <div className="w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.33px)] shrink-0 snap-start rounded-2xl border border-[#ececec] bg-[#E2E8F0] p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
@@ -662,9 +721,15 @@ export default function StaffSlugPage({
             </div>
 
             {/* Right Arrow */}
-            <button 
-              onClick={() => volunteerRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
-              className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition">
+            <button
+              onClick={() =>
+                volunteerRef.current?.scrollBy({
+                  left: 320,
+                  behavior: "smooth",
+                })
+              }
+              className="absolute right-[-20px] top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-[#e5e7eb] bg-white shadow-sm md:flex opacity-0 group-hover/vol:opacity-100 transition"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4 text-[#5f6b7a]"
@@ -703,9 +768,12 @@ export default function StaffSlugPage({
 
             {/* Navigation Arrows */}
             <div className="hidden items-center gap-2 md:flex">
-              <button 
-                onClick={() => trustRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50">
+              <button
+                onClick={() =>
+                  trustRef.current?.scrollBy({ left: -320, behavior: "smooth" })
+                }
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 text-[#5f6b7a]"
@@ -722,9 +790,12 @@ export default function StaffSlugPage({
                 </svg>
               </button>
 
-              <button 
-                onClick={() => trustRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50">
+              <button
+                onClick={() =>
+                  trustRef.current?.scrollBy({ left: 320, behavior: "smooth" })
+                }
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#dcdcdc] bg-white shadow-sm transition hover:bg-gray-50"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 text-[#5f6b7a]"

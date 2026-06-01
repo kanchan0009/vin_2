@@ -59,13 +59,11 @@ export function TypicalDayAccordion() {
       {/* Heading */}
       <div className="flex items-start justify-between mb-8">
         <div>
-          <h2 className="text-[38px]  text-[#1F2432] mb-3">
-            A Typical Day
-          </h2>
+          <h2 className="text-[38px]  text-[#1F2432] mb-3">A Typical Day</h2>
 
           <p className="text-gray-500">
-            We’re looking for passionate individuals ready to make a
-            difference. Here’s what you need to know.
+            We’re looking for passionate individuals ready to make a difference.
+            Here’s what you need to know.
           </p>
         </div>
 
@@ -79,8 +77,8 @@ export function TypicalDayAccordion() {
 
       {/* Timeline */}
       <div className="relative">
-        {/* Vertical Line */}
-        <div className="absolute left-5 top-0 bottom-0 w-[2px] bg-[#2D3192]" />
+        {/* Vertical Line (hidden on small) */}
+        <div className="hidden md:block absolute left-5 top-0 bottom-0 w-[2px] bg-[#2D3192]" />
 
         <div className="space-y-6">
           {schedule.map((item, index) => {
