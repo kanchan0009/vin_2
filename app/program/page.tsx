@@ -1,17 +1,85 @@
 "use client";
 import ChooseImpact from "@/app/components/ChooseImpact";
 import OurTeam from "@/app/components/OurTeam";
+import { Search, ArrowRight } from "lucide-react";
 
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
-import VolunteerProgram from "../components/Volunteer-program";
 import LatestNews from "../components/news";
 import Articles from "../components/articles";
+
+const programs = [
+  {
+    id: 1,
+    title: "Women's Rights Advocacy",
+    description:
+      "Working towards gender equality by educating women on their legal rights.",
+    category: "Women's Empowerment",
+    tag: "Gender",
+  },
+  {
+    id: 2,
+    title: "Microfinance & Cooperatives",
+    description:
+      "Providing financial literacy and small business loans to rural women.",
+    category: "Women's Empowerment",
+    tag: "Finance",
+  },
+  {
+    id: 3,
+    title: "Education & Literacy",
+    description:
+      "Ensuring women have access to fundamental skills to navigate life.",
+    category: "Women's Empowerment",
+    tag: "Education",
+  },
+  {
+    id: 4,
+    title: "Health & Sanitation",
+    description:
+      "Improving community hygiene through infrastructure development.",
+    category: "Public Health",
+    tag: "Health",
+  },
+  {
+    id: 5,
+    title: "WASH Initiatives",
+    description:
+      "Water, sanitation and hygiene programs focused on providing clean water.",
+    category: "Public Health",
+    tag: "Health",
+  },
+];
+
+// Filter pills (must match the filtering logic below)
+const filters = ["All Programs", "Gender", "Finance", "Education", "Health"];
 
 export default function ProgrammePage() {
   const volunteerRef = useRef<HTMLDivElement>(null);
   const trustRef = useRef<HTMLDivElement>(null);
+  const [search, setSearch] = useState("");
+  const [activeFilter, setActiveFilter] = useState("All Programs");
+
+  const filteredPrograms = programs.filter((program) => {
+    const matchesSearch =
+      program.title.toLowerCase().includes(search.toLowerCase()) ||
+      program.description.toLowerCase().includes(search.toLowerCase());
+
+    const matchesFilter =
+      activeFilter === "All Programs" ||
+      program.tag.toLowerCase() === activeFilter.toLowerCase();
+
+    return matchesSearch && matchesFilter;
+  });
+
+  const groupedPrograms = filteredPrograms.reduce((acc: any, program) => {
+    if (!acc[program.category]) {
+      acc[program.category] = [];
+    }
+    acc[program.category].push(program);
+    return acc;
+  }, {});
 
   return (
     <main className="min-h-screen  bg-white">
@@ -66,8 +134,115 @@ export default function ProgrammePage() {
       </section>
 
       {/* Volunteer Programs */}
-      <section className="px-6 md:px-12 pb-12">
-        <VolunteerProgram />
+      <section className="w-full py-10">
+        <div className=" mx-auto px-6">
+          {/* Search & Filters */}
+          <div className="bg-[#ECECEC] rounded-md p-5 mb-20">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+              {/* Search */}
+              <div className="relative w-full max-w-sm">
+                <Search
+                  size={16}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-black/50"
+                />
+                <input
+                  type="text"
+                  placeholder="Search programs..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="w-full h-9 pl-10 pr-4 rounded  text-black/60 border border-gray-200 bg-white text-sm outline-none"
+                />
+              </div>
+
+              {/* Filter Pills */}
+              <div className="flex flex-wrap gap-2">
+                {filters.map((filter) => (
+                  <button
+                    key={filter}
+                    onClick={() => setActiveFilter(filter)}
+                    className={`px-4 py-3 rounded-full text-xs transition-all
+                    ${
+                      activeFilter === filter
+                        ? "bg-[#102A84] text-white"
+                        : "bg-white text-gray-600 border border-gray-200"
+                    }
+                  `}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Sections */}
+          <div className="bg-[#ECECEC] p-8 rounded-lg">
+            {Object.entries(groupedPrograms).map(
+              ([category, items]: any, index) => (
+                <div key={index} className="mb-16 last:mb-0">
+                  {/* Heading */}
+                  <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-[30px] font-bold text-[#0D2467]">
+                      {category}
+                    </h2>
+
+                    <button className="flex items-center gap-1 text-[16px] font-medium text-[#0D2467] hover:gap-2 transition-all">
+                      View Category
+                      <ArrowRight size={14} />
+                    </button>
+                  </div>
+
+                  {/* Cards */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                    {items.map((program: any) => (
+                      <div
+                        key={program.id}
+                        className="bg-white border border-[#E5E7EB] shadow-sm hover:shadow-md transition-all"
+                      >
+                        {/* Image */}
+                        <div className="relative">
+                          <div className="absolute top-2 left-2 z-10">
+                            <span className="bg-[#F8C93A] px-2 py-[2px] text-[10px] font-medium">
+                              Popular
+                            </span>
+                          </div>
+
+                          <img
+                            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800"
+                            alt=""
+                            className="w-full h-[130px] object-cover"
+                          />
+                        </div>
+
+                        {/* Content */}
+                        <div className="p-4">
+                          <h3 className="text-[#0D2467] text-[20px] font-semibold mb-2 leading-tight">
+                            {program.title}
+                          </h3>
+
+                          <p className="text-[#666] text-sm leading-6 mb-5">
+                            {program.description}
+                          </p>
+
+                          {/* Buttons */}
+                          <div className="flex gap-3">
+                            <button className="flex-1 bg-[#102A84] text-white text-sm font-medium py-2">
+                              Apply Now
+                            </button>
+
+                            <button className="flex-1 border border-[#102A84] text-[#102A84] text-sm font-medium py-2">
+                              Read More
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ),
+            )}
+          </div>
+        </div>
       </section>
       {/*Becoming part section*/}
       <section className="w-full bg-[#f3f3f3] py-10 px-4">

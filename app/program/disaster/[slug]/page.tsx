@@ -324,111 +324,144 @@ export default function WomenEmpowermentHero() {
       {/* ======================================
           PROJECT AT A GLANCE
       ====================================== */}
-      <section className="w-full bg-[#FFFFFF] py-16">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Card */}
-          <div className="rounded-[12px] p-4 w-full">
-            <h3 className="text-[38px] font-medium text-[#0B1F5C] leading-[40px]">
-              Project at a Glance
+      {/* ==========================================
+    Project at a Glance
+========================================== */}
+<section className="w-full bg-[#FFFFFF] py-16">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+    {/* Left Content */}
+    <div className="w-full">
+      <h3 className="text-[38px] font-medium text-[#0B1F5C] leading-[40px]">
+        Project at a Glance
+      </h3>
+
+      <p className="mt-5 text-[15px] leading-[28px] text-[#6B7280]">
+        It volunteers are children of women’s empowerment volunteer
+        programmes that do more than scratch the surface; you’ve found the
+        answers here. VHN’s programs are not charity—they are partnerships.
+        We work hand-in-hand with local women and families. When you leave,
+        your impact remains, because Nepal’s women’s clubs and cooperatives
+        continue to run every project, with or without outside volunteers.
+      </p>
+
+      {/* Stats Card */}
+      <div className="mt-10 bg-[#F3F4F5] border border-[#C5C6D2] rounded-[14px] p-8">
+        <div className="grid grid-cols-2 gap-y-8 gap-x-10">
+          <div>
+            <h3 className="text-[16px] font-semibold text-[#785900]">
+              Rural women’s literacy:
             </h3>
-
-            <p className="mt-5 text-[15px] leading-[28px] text-[#6B7280]">
-              It volunteers are children of women’s empowerment volunteer
-              programmes that do more than scratch the surface; you’ve found the
-              answers here. VHN’s programs are not charity—they are
-              partnerships. We work hand-in-hand with local women and families.
-              When you leave, your impact remains, because Nepal’s women’s clubs
-              and cooperatives continue to run every project, with or without
-              outside volunteers.
+            <p className="text-[28px] font-bold text-[#0B1F5C] mt-1">
+              52%
             </p>
-
-            {/* Stats */}
-            <section className="w-full py-10 px-6 bg-[#F3F4F5] border border-[#C5C6D2] rounded-[12px] mt-10">
-              <div className="grid grid-cols-2 gap-y-6 gap-x-10">
-                <div>
-                  <h3 className="text-[16px] font-semibold text-[#785900]">
-                    Rural women’s literacy:
-                  </h3>
-                  <p className="text-[28px] font-bold text-[#0B1F5C] mt-1">
-                    52%
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-[16px] font-semibold text-[#785900]">
-                    Girls married before 18:
-                  </h3>
-                  <p className="text-[28px] font-bold text-[#0B1F5C] mt-1">
-                    34%
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-[16px] font-semibold text-[#785900]">
-                    Women with financial access:
-                  </h3>
-                  <p className="text-[28px] font-bold text-[#0B1F5C] mt-1">
-                    26%
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-[16px] font-semibold text-[#785900]">
-                    Maternal mortality:
-                  </h3>
-                  <p className="text-[28px] font-bold text-[#0B1F5C] mt-1">
-                    151/100,000
-                  </p>
-                </div>
-              </div>
-            </section>
           </div>
 
-          {/* Right Card */}
-          <div className="bg-[#001955] rounded-[16px] p-6 w-full text-white shadow-xl">
-            <h3 className="text-[28px] leading-[36px] font-bold">
-              Why is Women’s Empowerment needed?
+          <div>
+            <h3 className="text-[16px] font-semibold text-[#785900]">
+              Girls married before 18:
             </h3>
-
-            <p className="mt-5 text-[15px] leading-[28px] text-[#D1D5DB]">
-              “Rural women face low literacy, early marriage, limited financial
-              access, and dangerous maternal risks—barriers that hold back their
-              potential and their families’ progress.”
+            <p className="text-[28px] font-bold text-[#0B1F5C] mt-1">
+              34%
             </p>
+          </div>
 
-            {/* Features */}
-            <div className="mt-8 space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#FACC15] flex items-center justify-center text-[#001B68] font-bold">
-                  ◎
-                </div>
+          <div>
+            <h3 className="text-[16px] font-semibold text-[#785900]">
+              Women with financial access:
+            </h3>
+            <p className="text-[28px] font-bold text-[#0B1F5C] mt-1">
+              26%
+            </p>
+          </div>
 
-                <div>
-                  <h4 className="font-semibold text-[16px]">Our Approach</h4>
-                  <p className="text-[14px] text-[#D1D5DB] mt-1">
-                    Hands-on support through education, health, and finance.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#FACC15] flex items-center justify-center text-[#001B68] font-bold">
-                  ▲
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-[16px]">
-                    Impactful Projects
-                  </h4>
-                  <p className="text-[14px] text-[#D1D5DB] mt-1">
-                    Locally led initiatives using long-term sustainability.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div>
+            <h3 className="text-[16px] font-semibold text-[#785900]">
+              Maternal mortality:
+            </h3>
+            <p className="text-[28px] font-bold text-[#0B1F5C] mt-1">
+              151/100,000
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+
+    {/* Right Card */}
+    <div className="bg-[#001955] rounded-[20px] p-8 text-white shadow-[0_12px_35px_rgba(0,0,0,0.18)] h-fit self-start">
+      <h3 className="text-[28px] leading-[36px] font-bold max-w-[350px]">
+        Why is Women’s Empowerment needed?
+      </h3>
+
+      {/* Quote */}
+      <div className="mt-6 border-l-4 border-[#FACC15] pl-5">
+        <p className="text-[15px] leading-[28px] text-[#D1D5DB]">
+          “Rural women face low literacy, early marriage, limited financial
+          access, and dangerous maternal risks—barriers that hold back their
+          potential and their families’ progress.”
+        </p>
+      </div>
+
+      {/* Features */}
+      <div className="mt-8 space-y-6">
+        {/* Feature 1 */}
+        <div className="flex items-start gap-4">
+          <div className="w-10 h-10 rounded-md bg-[#FACC15] flex items-center justify-center shrink-0">
+            <svg
+              className="w-5 h-5 text-[#001955]"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              viewBox="0 0 24 24"
+            >
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="9" />
+            </svg>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-[16px]">
+              Our Approach
+            </h4>
+
+            <p className="text-[14px] text-[#D1D5DB] mt-1">
+              Holistic support focusing on education, health,
+              and finance.
+            </p>
+          </div>
+        </div>
+
+        {/* Feature 2 */}
+        <div className="flex items-start gap-4">
+          <div className="w-10 h-10 rounded-md bg-[#FACC15] flex items-center justify-center shrink-0">
+            <svg
+              className="w-5 h-5 text-[#001955]"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              viewBox="0 0 24 24"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-[16px]">
+              Impactful Projects
+            </h4>
+
+            <p className="text-[14px] text-[#D1D5DB] mt-1">
+              Locally led initiatives ensuring long-term
+              sustainability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       {/* ======================================
           PROGRAMS
       ====================================== */}

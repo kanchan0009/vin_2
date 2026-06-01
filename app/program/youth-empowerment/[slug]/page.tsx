@@ -250,28 +250,40 @@ export default function WomenEmpowermentHero() {
   const [openIndex, setOpenIndex] = useState(0);
 
   const [currentSlide, setCurrentSlide] = useState(0);
-    
-    
-    const volunteerRef = useRef<HTMLDivElement>(null);
-    const [trustSlide, setTrustSlide] = useState(0);
-  
-    const trustVideos = [
-      { image: "/trust-video.jpg", name: "Peter Smith", description: "Listen to heartfelt stories from people who choose to make a difference with us." },
-      { image: "/images/volunteer.jpg", name: "Sarah Johnson", description: "Our experience with VIN has been truly life-changing. Highly recommend joining." }
-    ];
+
+  const volunteerRef = useRef<HTMLDivElement>(null);
+  const [trustSlide, setTrustSlide] = useState(0);
+
+  const trustVideos = [
+    {
+      image: "/trust-video.jpg",
+      name: "Peter Smith",
+      description:
+        "Listen to heartfelt stories from people who choose to make a difference with us.",
+    },
+    {
+      image: "/images/volunteer.jpg",
+      name: "Sarah Johnson",
+      description:
+        "Our experience with VIN has been truly life-changing. Highly recommend joining.",
+    },
+  ];
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? -1 : index);
   };
   const [current, setCurrent] = useState(0);
   const nextSlide = () => setCurrent((prev) => (prev + 1) % stories.length);
-  const prevSlide = () => setCurrent((prev) => (prev === 0 ? stories.length - 1 : prev - 1));
-  
-  const nextTrust = () => setTrustSlide((prev) => (prev + 1) % trustVideos.length);
-  const prevTrust = () => setTrustSlide((prev) => (prev === 0 ? trustVideos.length - 1 : prev - 1));
+  const prevSlide = () =>
+    setCurrent((prev) => (prev === 0 ? stories.length - 1 : prev - 1));
+
+  const nextTrust = () =>
+    setTrustSlide((prev) => (prev + 1) % trustVideos.length);
+  const prevTrust = () =>
+    setTrustSlide((prev) => (prev === 0 ? trustVideos.length - 1 : prev - 1));
 
   return (
-    <main className= "bg-white">
+    <main className="bg-white">
       <section className="w-full bg-white">
         {/* Top Content */}
         <div className="w-full  pt-10 pb-6">
@@ -302,7 +314,10 @@ export default function WomenEmpowermentHero() {
           {/* Bottom Buttons */}
           <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex flex-wrap items-center justify-center gap-3 px-4">
             {/* Apply Button */}
-            <Link href="/applyNow" className="flex items-center gap-2 bg-[#2A3495] hover:bg-[#1f2875] text-white text-[14px] font-medium px-7 py-3 rounded-md shadow-lg transition justify-center items-center">
+            <Link
+              href="/applyNow"
+              className="flex items-center gap-2 bg-[#2A3495] hover:bg-[#1f2875] text-white text-[14px] font-medium px-7 py-3 rounded-md shadow-lg transition justify-center items-center"
+            >
               <Plus size={16} />
               Apply for Volunteer
             </Link>
@@ -324,10 +339,13 @@ export default function WomenEmpowermentHero() {
       {/* ======================================
           PROJECT AT A GLANCE
       ====================================== */}
+      {/* ==========================================
+    Project at a Glance
+========================================== */}
       <section className="w-full bg-[#FFFFFF] py-16">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Card */}
-          <div className="rounded-[12px] p-4 w-full">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Left Content */}
+          <div className="w-full">
             <h3 className="text-[38px] font-medium text-[#0B1F5C] leading-[40px]">
               Project at a Glance
             </h3>
@@ -342,9 +360,9 @@ export default function WomenEmpowermentHero() {
               outside volunteers.
             </p>
 
-            {/* Stats */}
-            <section className="w-full py-10 px-6 bg-[#F3F4F5] border border-[#C5C6D2] rounded-[12px] mt-10">
-              <div className="grid grid-cols-2 gap-y-6 gap-x-10">
+            {/* Stats Card */}
+            <div className="mt-10 bg-[#F3F4F5] border border-[#C5C6D2] rounded-[14px] p-8">
+              <div className="grid grid-cols-2 gap-y-8 gap-x-10">
                 <div>
                   <h3 className="text-[16px] font-semibold text-[#785900]">
                     Rural women’s literacy:
@@ -381,47 +399,74 @@ export default function WomenEmpowermentHero() {
                   </p>
                 </div>
               </div>
-            </section>
+            </div>
           </div>
 
           {/* Right Card */}
-          <div className="bg-[#001955] rounded-[16px] p-6 w-full text-white shadow-xl">
-            <h3 className="text-[28px] leading-[36px] font-bold">
+          <div className="bg-[#001955] rounded-[20px] p-8 text-white shadow-[0_12px_35px_rgba(0,0,0,0.18)] h-fit self-start">
+            <h3 className="text-[28px] leading-[36px] font-bold max-w-[350px]">
               Why is Women’s Empowerment needed?
             </h3>
 
-            <p className="mt-5 text-[15px] leading-[28px] text-[#D1D5DB]">
-              “Rural women face low literacy, early marriage, limited financial
-              access, and dangerous maternal risks—barriers that hold back their
-              potential and their families’ progress.”
-            </p>
+            {/* Quote */}
+            <div className="mt-6 border-l-4 border-[#FACC15] pl-5">
+              <p className="text-[15px] leading-[28px] text-[#D1D5DB]">
+                “Rural women face low literacy, early marriage, limited
+                financial access, and dangerous maternal risks—barriers that
+                hold back their potential and their families’ progress.”
+              </p>
+            </div>
 
             {/* Features */}
             <div className="mt-8 space-y-6">
+              {/* Feature 1 */}
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#FACC15] flex items-center justify-center text-[#001B68] font-bold">
-                  ◎
+                <div className="w-10 h-10 rounded-md bg-[#FACC15] flex items-center justify-center shrink-0">
+                  <svg
+                    className="w-5 h-5 text-[#001955]"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M9 12l2 2 4-4" />
+                    <circle cx="12" cy="12" r="9" />
+                  </svg>
                 </div>
 
                 <div>
                   <h4 className="font-semibold text-[16px]">Our Approach</h4>
+
                   <p className="text-[14px] text-[#D1D5DB] mt-1">
-                    Hands-on support through education, health, and finance.
+                    Holistic support focusing on education, health, and finance.
                   </p>
                 </div>
               </div>
 
+              {/* Feature 2 */}
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#FACC15] flex items-center justify-center text-[#001B68] font-bold">
-                  ▲
+                <div className="w-10 h-10 rounded-md bg-[#FACC15] flex items-center justify-center shrink-0">
+                  <svg
+                    className="w-5 h-5 text-[#001955]"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
                 </div>
 
                 <div>
                   <h4 className="font-semibold text-[16px]">
                     Impactful Projects
                   </h4>
+
                   <p className="text-[14px] text-[#D1D5DB] mt-1">
-                    Locally led initiatives using long-term sustainability.
+                    Locally led initiatives ensuring long-term sustainability.
                   </p>
                 </div>
               </div>
@@ -524,7 +569,10 @@ export default function WomenEmpowermentHero() {
 
                   {/* Buttons */}
                   <div className="flex gap-4 w-full">
-                    <Link href="/applyNow" className="w-1/2 bg-[#001955] text-white py-3 rounded-xm text-sm font-medium hover:bg-[#162f87] transition inline-flex items-center justify-center text-center">
+                    <Link
+                      href="/applyNow"
+                      className="w-1/2 bg-[#001955] text-white py-3 rounded-xm text-sm font-medium hover:bg-[#162f87] transition inline-flex items-center justify-center text-center"
+                    >
                       Apply Now
                     </Link>
 
@@ -1583,106 +1631,106 @@ export default function WomenEmpowermentHero() {
         </div>
       </section>
       {/*Explore Nepal section*/}
-            <section className="relative overflow-hidden bg-[#00B1F333] mb-10 py-16 md:py-24">
-              {/* Top Wave */}
-              <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
-                <svg
-                  className="relative block h-[60px] w-full"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 1440 120"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    fill="#ffffff"
-                    d="M0,32L60,37.3C120,43,240,53,360,48C480,43,600,21,720,21.3C840,21,960,43,1080,48C1200,53,1320,43,1380,37.3L1440,32L1440,0L0,0Z"
-                  ></path>
-                </svg>
-              </div>
-      
-              {/* Bottom Wave */}
-              <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180">
-                <svg
-                  className="relative block h-[60px] w-full"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 1440 120"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    fill="#ffffff"
-                    d="M0,32L60,37.3C120,43,240,53,360,48C480,43,600,21,720,21.3C840,21,960,43,1080,48C1200,53,1320,43,1380,37.3L1440,32L1440,0L0,0Z"
-                  ></path>
-                </svg>
-              </div>
-      
-              <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                {/* Top Content */}
-                <div className="grid gap-20 md:grid-cols-2 md:items-start">
-                  {/* Left */}
-                  <div>
-                    <p className="text-[18px] text-[#5b6770]">Explore Nepal</p>
-      
-                    <h2 className="mt-3 max-w-md text-[36px] font-medium leading-tight text-[#374151] md:text-[38px]">
-                      Where Every Journey
-                      <br />
-                      Has a Purpose
-                    </h2>
-                  </div>
-      
-                  {/* Right */}
-                  <div className="max-w-xl pt-8">
-                    <p className="text-[15px]  font-[400] leading-7 text-[#374151]">
-                      Explore Nepal — a land where snow-capped mountains meet ancient
-                      temples, and kindness flows through every village path. This is
-                      a country of simple living, deep spirituality, and warm
-                      community bonds.
-                    </p>
-                  </div>
-                </div>
-      
-                {/* Image Grid */}
-                <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-4">
-                  {/* Image 1 */}
-                  <div className="overflow-hidden rounded-[22px]">
-                    <img
-                      src="/hero.png"
-                      alt="Nepal Trekking"
-                      className="h-[220px] w-full object-cover md:h-[420px]"
-                    />
-                  </div>
-      
-                  {/* Image 2 */}
-                  <div className="overflow-hidden rounded-[22px]">
-                    <img
-                      src="/hero.png"
-                      alt="River Rafting"
-                      className="h-[220px] w-full object-cover md:h-[420px]"
-                    />
-                  </div>
-      
-                  {/* Image 3 */}
-                  <div className="overflow-hidden rounded-[22px]">
-                    <img
-                      src="/hero.png"
-                      alt="Temple"
-                      className="h-[220px] w-full object-cover md:h-[420px]"
-                    />
-                  </div>
-      
-                  {/* Image 4 */}
-                  <div className="overflow-hidden rounded-[22px]">
-                    <img
-                      src="/hero.png"
-                      alt="Wildlife"
-                      className="h-[220px] w-full object-cover md:h-[420px]"
-                    />
-                  </div>
-                </div>
-              </div>
-            </section>
-      
-            <LatestNews />
-            <Articles />
-            {/* Volunteer Program Section */}
+      <section className="relative overflow-hidden bg-[#00B1F333] mb-10 py-16 md:py-24">
+        {/* Top Wave */}
+        <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
+          <svg
+            className="relative block h-[60px] w-full"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#ffffff"
+              d="M0,32L60,37.3C120,43,240,53,360,48C480,43,600,21,720,21.3C840,21,960,43,1080,48C1200,53,1320,43,1380,37.3L1440,32L1440,0L0,0Z"
+            ></path>
+          </svg>
+        </div>
+
+        {/* Bottom Wave */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180">
+          <svg
+            className="relative block h-[60px] w-full"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="#ffffff"
+              d="M0,32L60,37.3C120,43,240,53,360,48C480,43,600,21,720,21.3C840,21,960,43,1080,48C1200,53,1320,43,1380,37.3L1440,32L1440,0L0,0Z"
+            ></path>
+          </svg>
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Top Content */}
+          <div className="grid gap-20 md:grid-cols-2 md:items-start">
+            {/* Left */}
+            <div>
+              <p className="text-[18px] text-[#5b6770]">Explore Nepal</p>
+
+              <h2 className="mt-3 max-w-md text-[36px] font-medium leading-tight text-[#374151] md:text-[38px]">
+                Where Every Journey
+                <br />
+                Has a Purpose
+              </h2>
+            </div>
+
+            {/* Right */}
+            <div className="max-w-xl pt-8">
+              <p className="text-[15px]  font-[400] leading-7 text-[#374151]">
+                Explore Nepal — a land where snow-capped mountains meet ancient
+                temples, and kindness flows through every village path. This is
+                a country of simple living, deep spirituality, and warm
+                community bonds.
+              </p>
+            </div>
+          </div>
+
+          {/* Image Grid */}
+          <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {/* Image 1 */}
+            <div className="overflow-hidden rounded-[22px]">
+              <img
+                src="/hero.png"
+                alt="Nepal Trekking"
+                className="h-[220px] w-full object-cover md:h-[420px]"
+              />
+            </div>
+
+            {/* Image 2 */}
+            <div className="overflow-hidden rounded-[22px]">
+              <img
+                src="/hero.png"
+                alt="River Rafting"
+                className="h-[220px] w-full object-cover md:h-[420px]"
+              />
+            </div>
+
+            {/* Image 3 */}
+            <div className="overflow-hidden rounded-[22px]">
+              <img
+                src="/hero.png"
+                alt="Temple"
+                className="h-[220px] w-full object-cover md:h-[420px]"
+              />
+            </div>
+
+            {/* Image 4 */}
+            <div className="overflow-hidden rounded-[22px]">
+              <img
+                src="/hero.png"
+                alt="Wildlife"
+                className="h-[220px] w-full object-cover md:h-[420px]"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <LatestNews />
+      <Articles />
+      {/* Volunteer Program Section */}
       <section className="relative w-full overflow-hidden rounded-sm  pt-10 pb-16 md:pb-24 pt-16">
         {/* Background Image */}
         <img
@@ -1737,7 +1785,7 @@ export default function WomenEmpowermentHero() {
           </div>
         </div>
       </section>
-            <section className="w-full flex justify-center py-12 px-4 bg-white">
+      <section className="w-full flex justify-center py-12 px-4 bg-white">
         <div className="w-full max-w-4xl bg-[#2E3192] rounded-md overflow-hidden px-8 py-7">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             {/* Left Content */}
