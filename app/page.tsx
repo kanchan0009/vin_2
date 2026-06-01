@@ -318,49 +318,49 @@ export default function HomePage() {
         <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 items-center gap-y-10 gap-x-8">
           <div className="flex items-center justify-center">
             <img
-              src="/images/logo1.png"
+              src="/crtified.png"
               alt="European Commission"
-              className="h-[42px] object-contain"
+              className="h-[70px] object-contain"
             />
           </div>
 
           <div className="flex items-center justify-center">
             <img
-              src="/images/logo2.png"
+              src="/crtified.png"
               alt="Logo"
-              className="h-[58px] object-contain"
+              className="h-[70px] object-contain"
             />
           </div>
 
           <div className="flex items-center justify-center">
             <img
-              src="/images/logo3.png"
+              src="/crtified.png"
               alt="Logo"
-              className="h-[48px] object-contain"
+              className="h-[70px] object-contain"
             />
           </div>
 
           <div className="flex items-center justify-center">
             <img
-              src="/images/logo4.png"
+              src="/crtified.png"
               alt="Forum"
-              className="h-[40px] object-contain"
+              className="h-[70px] object-contain"
             />
           </div>
 
           <div className="flex items-center justify-center">
             <img
-              src="/images/logo5.png"
+              src="/crtified.png"
               alt="CCIVS"
-              className="h-[34px] object-contain"
+              className="h-[70px] object-contain"
             />
           </div>
 
           <div className="flex items-center justify-center">
             <img
-              src="/images/logo6.png"
+              src="/crtified.png"
               alt="NVDA"
-              className="h-[34px] object-contain"
+              className="h-[70px] object-contain"
             />
           </div>
         </div>
@@ -596,11 +596,11 @@ export default function HomePage() {
             </div>
 
             {/* Right Image */}
-            <div className="relative h-full flex items-end justify-end">
+            <div className="relative h-[330px] overflow-hidden flex justify-end">
               <img
-                src="/images/kids.png"
+                src="/cta.png"
                 alt="Children"
-                className="w-full max-w-[420px] object-contain"
+                className="w-full max-w-[420px] object-cover object-top"
               />
             </div>
           </div>

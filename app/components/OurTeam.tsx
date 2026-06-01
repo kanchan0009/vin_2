@@ -10,43 +10,43 @@ export default function OurTeam() {
       name: "Bhupendra Ghimire",
       role: "President",
       degree: "Master's In Education",
-      image: "/images/member1.png",
+      image: "/team.png",
     },
     {
       name: "Dinesh Khatiwada",
       role: "Volunteer Manager",
       degree: "Master's In Education",
-      image: "/images/member2.png",
+      image: "/team.png",
     },
     {
       name: "Tula Dhwoj Khatiwada",
       role: "Program Manager",
       degree: "Master's In Education",
-      image: "/images/member3.png",
+      image: "/team.png",
     },
     {
       name: "Surendra Joshi",
       role: "IT Consultant",
       degree: "Master's In Education",
-      image: "/images/member4.png",
+      image: "/team.png",
     },
     {
       name: "Anita Thapa",
       role: "Field Coordinator",
       degree: "Bachelor's In Social Work",
-      image: "/hero.png",
+      image: "/team.png",
     },
     {
       name: "Rita Rai",
       role: "Community Liaison",
       degree: "Bachelor's In Sociology",
-      image: "/hero.png",
+      image: "/team.png",
     },
     {
       name: "Sujan Karki",
       role: "Monitoring Officer",
       degree: "Bachelor's In Management",
-      image: "/hero.png",
+      image: "/team.png",
     },
   ];
 
@@ -99,7 +99,7 @@ export default function OurTeam() {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-[200px] object-cover"
+                    className="w-full h-[250px] object-cover"
                   />
                 </div>
 

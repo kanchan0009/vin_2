@@ -57,15 +57,15 @@ export default function ChooseImpact() {
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {/* Card 1 */}
-          <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
-            <div className="overflow-hidden">
+          <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start ">
+            <div className="overflow-hidden  bg-white rounded-xl  shadow-md border border-gray-200 group/card hover:shadow-2xl">
               <img
-                src="/images/volunteer.jpg"
+                src="/hero.png"
                 alt="Volunteer"
-                className="w-full h-[180px] md:h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
+                className="w-full h-[180px] md:h-[290px] object-cover group-hover/card:scale-105 transition duration-500"
               />
             </div>
-            <div className="p-4">
+            <div className="py-4">
               <Link
                 href="/applyNow"
                 className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center"
@@ -76,15 +76,15 @@ export default function ChooseImpact() {
           </div>
 
           {/* Card 2 */}
-          <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
-            <div className="overflow-hidden">
+          <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start">
+            <div className="overflow-hidden  bg-white rounded-xl  shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
               <img
-                src="/images/donate.jpg"
+                src="/hero.png"
                 alt="Donate"
-                className="w-full h-[180px] md:h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
+                className="w-full h-[180px] md:h-[290px] object-cover group-hover/card:scale-105 transition duration-500"
               />
             </div>
-            <div className="p-4">
+            <div className="py-4">
               <Link href="/donate" className="w-full">
                 <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition cursor-pointer">
                   Donate Now →
@@ -94,15 +94,15 @@ export default function ChooseImpact() {
           </div>
 
           {/* Card 3 */}
-          <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
-            <div className="overflow-hidden">
+          <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start">
+            <div className="overflow-hidden  bg-white rounded-xl  shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
               <img
-                src="/images/internship.jpg"
+                src="/hero.png"
                 alt="Internship"
-                className="w-full h-[180px] md:h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
+                className="w-full h-[180px] md:h-[290px] object-cover group-hover/card:scale-105 transition duration-500"
               />
             </div>
-            <div className="p-4">
+            <div className="py-4">
               <Link
                 href="/applyNow"
                 className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition inline-flex items-center justify-center text-center"
@@ -113,15 +113,15 @@ export default function ChooseImpact() {
           </div>
 
           {/* Card 4 */}
-          <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
-            <div className="overflow-hidden">
+          <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 snap-start">
+            <div className=" bg-white rounded-xl overflow-hidden shadow-md border border-gray-200 group/card hover:shadow-2xl transition duration-500">
               <img
-                src="/images/sponsor.jpg"
+                src="/hero.png"
                 alt="Sponsor Child"
-                className="w-full h-[180px] md:h-[260px] object-cover group-hover/card:scale-105 transition duration-500"
+                className="w-full h-[180px] md:h-[290px] object-cover group-hover/card:scale-105 transition duration-500"
               />
             </div>
-            <div className="p-4">
+            <div className="py-4">
               <Link href="/sponsor-child" className="w-full">
                 <button className="w-full bg-[#2f3ea8] hover:bg-[#24328d] text-white text-[13px] font-medium py-3 rounded-md transition cursor-pointer">
                   Sponsor a Child →

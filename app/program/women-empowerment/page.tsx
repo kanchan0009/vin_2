@@ -1393,13 +1393,13 @@ export default function WomenEducationProgramPage() {
               </button>
             </div>
 
-            {/* Right Image */}
-
-            <div className="relative h-full flex items-end justify-end">
+           
+{/* Right Image */}
+            <div className="relative h-[330px] overflow-hidden flex justify-end">
               <img
-                src="/images/kids.png"
+                src="/cta.png"
                 alt="Children"
-                className="w-full max-w-[420px] object-contain"
+                className="w-full max-w-[420px] object-cover object-top"
               />
             </div>
           </div>
