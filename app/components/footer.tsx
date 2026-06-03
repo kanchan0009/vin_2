@@ -1,6 +1,7 @@
 // components/Footer.tsx
 
 import { Phone, Mail } from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -67,19 +68,19 @@ export default function Footer() {
           <h3 className="text-[18px] font-semibold mb-5">Useful Links</h3>
 
           <ul className="space-y-3 text-[12px] text-[#d7dcff]">
-            <li>Program Fees</li>
-            <li>Vision, Mission & Goals</li>
-            <li>News Updates</li>
-            <li>Career with VIN</li>
-            <li>Downloads</li>
-            <li>FAQ</li>
-            <li>Link One</li>
-            <li>Asian Voluntary Services</li>
-            <li>Recognition & Award</li>
-            <li>Festivals in Nepal</li>
-            <li>Volunteer in Nepal</li>
-            <li>Internship in Nepal</li>
-            <li>Complaint Registration</li>
+            <li><Link href="/fees" className="hover:text-white transition">Program Fees</Link></li>
+            <li><Link href="/about/organization" className="hover:text-white transition">Vision, Mission & Goals</Link></li>
+            <li><Link href="/media/blogs" className="hover:text-white transition">News Updates</Link></li>
+            <li><Link href="/media/career" className="hover:text-white transition">Career with VIN</Link></li>
+            <li><Link href="/media/downloads" className="hover:text-white transition">Downloads</Link></li>
+            <li><Link href="/faq" className="hover:text-white transition">FAQ</Link></li>
+            <li><Link href="/" className="hover:text-white transition">Link One</Link></li>
+            <li><Link href="/" className="hover:text-white transition">Asian Voluntary Services</Link></li>
+            <li><Link href="/" className="hover:text-white transition">Recognition & Award</Link></li>
+            <li><Link href="/" className="hover:text-white transition">Festivals in Nepal</Link></li>
+            <li><Link href="/volunteers" className="hover:text-white transition">Volunteer in Nepal</Link></li>
+            <li><Link href="/internship" className="hover:text-white transition">Internship in Nepal</Link></li>
+            <li><Link href="/" className="hover:text-white transition">Complaint Registration</Link></li>
           </ul>
         </div>
 
@@ -88,18 +89,18 @@ export default function Footer() {
           <h3 className="text-[18px] font-semibold mb-5">Our Programs</h3>
 
           <ul className="space-y-3 text-[12px] text-[#d7dcff]">
-            <li>Women’s Empowerment Programme</li>
-            <li>Children’s Development Program</li>
-            <li>Youth Empowerment Programme</li>
-            <li>Public Health & Medical Care Program</li>
-            <li>Environment Conservation Program</li>
-            <li>Disaster Risk Reduction</li>
-            <li>Teaching Program</li>
-            <li>Public Interest Program</li>
-            <li>Management and Administration Program</li>
-            <li>Journalism Program</li>
-            <li>Adventure and Volunteer Program</li>
-            <li>Featured volunteer programs</li>
+            <li><Link href="/program/women-empowerment" className="hover:text-white transition">Women’s Empowerment Programme</Link></li>
+            <li><Link href="/program/children-development" className="hover:text-white transition">Children’s Development Program</Link></li>
+            <li><Link href="/program/youth-empowerment" className="hover:text-white transition">Youth Empowerment Programme</Link></li>
+            <li><Link href="/program/health" className="hover:text-white transition">Public Health & Medical Care Program</Link></li>
+            <li><Link href="/program/environment" className="hover:text-white transition">Environment Conservation Program</Link></li>
+            <li><Link href="/program/disaster" className="hover:text-white transition">Disaster Risk Reduction</Link></li>
+            <li><Link href="/program/teaching" className="hover:text-white transition">Teaching Program</Link></li>
+            <li><Link href="/program/public-interest" className="hover:text-white transition">Public Interest Program</Link></li>
+            <li><Link href="/program/management" className="hover:text-white transition">Management and Administration Program</Link></li>
+            <li><Link href="/program/journalism" className="hover:text-white transition">Journalism Program</Link></li>
+            <li><Link href="/program/adventure" className="hover:text-white transition">Adventure and Volunteer Program</Link></li>
+            <li><Link href="/program/featured" className="hover:text-white transition">Featured volunteer programs</Link></li>
           </ul>
         </div>
 
@@ -108,13 +109,13 @@ export default function Footer() {
           <h3 className="text-[18px] font-semibold mb-5">Internship Program</h3>
 
           <ul className="space-y-3 text-[12px] text-[#d7dcff]">
-            <li>Medical Internship in Nepal</li>
-            <li>Physiotherapy Internship in Nepal</li>
-            <li>Osteopathy Internship in Nepal</li>
-            <li>Medical Elective internship in Nepal</li>
-            <li>Gender Equality Internship in Nepal</li>
-            <li>Youth Empowerment Internship in Nepal</li>
-            <li>Child Protection Internship in Nepal</li>
+            <li><Link href="/internship/medical" className="hover:text-white transition">Medical Internship in Nepal</Link></li>
+            <li><Link href="/internship/physiotherapy" className="hover:text-white transition">Physiotherapy Internship in Nepal</Link></li>
+            <li><Link href="/internship/osteopathy" className="hover:text-white transition">Osteopathy Internship in Nepal</Link></li>
+            <li><Link href="/internship/medical-elective" className="hover:text-white transition">Medical Elective internship in Nepal</Link></li>
+            <li><Link href="/internship/gender-equality" className="hover:text-white transition">Gender Equality Internship in Nepal</Link></li>
+            <li><Link href="/internship/youth-empowerment" className="hover:text-white transition">Youth Empowerment Internship in Nepal</Link></li>
+            <li><Link href="/internship/child-protection" className="hover:text-white transition">Child Protection Internship in Nepal</Link></li>
           </ul>
         </div>
       </div>
@@ -131,11 +132,11 @@ export default function Footer() {
 
         {/* Social Icons */}
         <div className="flex items-center gap-4">
-          <a href="#" className="hover:opacity-80">
+          <a href="https://facebook.com/vin" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
             <img src="/icons/facebook.svg" alt="facebook" className="w-5 h-5" />
           </a>
 
-          <a href="#" className="hover:opacity-80">
+          <a href="https://instagram.com/vin" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
             <img
               src="/icons/instagram.svg"
               alt="instagram"
@@ -143,15 +144,15 @@ export default function Footer() {
             />
           </a>
 
-          <a href="#" className="hover:opacity-80">
+          <a href="https://twitter.com/vin" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
             <img src="/icons/twitter.svg" alt="twitter" className="w-5 h-5" />
           </a>
 
-          <a href="#" className="hover:opacity-80">
+          <a href="https://linkedin.com/company/vin" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
             <img src="/icons/linkedin.svg" alt="linkedin" className="w-5 h-5" />
           </a>
 
-          <a href="#" className="hover:opacity-80">
+          <a href="https://youtube.com/vin" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
             <img src="/icons/youtube.svg" alt="youtube" className="w-5 h-5" />
           </a>
         </div>

@@ -1,4 +1,6 @@
 "use client";
+import AvailableProgramsSidebar from "@/app/components/AvailableProgramsSidebar";
+
 
 export default function ApplyNowPage() {
   const programs = [
@@ -334,27 +336,7 @@ export default function ApplyNowPage() {
           {/* =========================
               RIGHT SIDEBAR
           ========================= */}
-          <div className="bg-white border border-[#e5e7eb] rounded-[10px] overflow-hidden">
-            {/* TITLE */}
-            <div className="px-6 py-4 border-b border-[#e5e7eb]">
-              <h2 className="text-[20px] font-medium text-[#1f2a44]">
-                Our Available Programs
-              </h2>
-            </div>
-
-            {/* PROGRAM LIST */}
-            <div>
-              {programs.map((program, index) => (
-                <div
-                  key={index}
-                  className="px-6 py-5 border-b border-[#e5e7eb] text-[15px] text-[#4b5563] hover:bg-[#f8f9fc] transition cursor-pointer"
-                >
-                  {program}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+          <AvailableProgramsSidebar /></div>
       </div>
     </section>
   );

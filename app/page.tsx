@@ -1,6 +1,8 @@
 "use client";
 import ChooseImpact from "@/app/components/ChooseImpact";
 import OurTeam from "@/app/components/OurTeam";
+import DonateSection from "./components/DonateSection";
+import FaqSection from "@/app/components/FaqSection";
 
 import { useState, useRef } from "react";
 import Link from "next/link";
@@ -17,10 +19,12 @@ import {
   Leaf,
   User,
   ShieldCheck,
+  ArrowRight,
 } from "lucide-react";
-import VolunteerProgram from "./components/Volunteer-program";
 import LatestNews from "./components/news";
 import Aricles from "./components/articles";
+import VolunteerPathways from "./components/VolunteerPathways";
+import FeaturedProjects from "./components/FeaturedProjects";
 
 const heroSlides = [
   {
@@ -59,6 +63,18 @@ export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const volunteerRef = useRef<HTMLDivElement>(null);
+  const impactRef = useRef<HTMLDivElement>(null);
+
+  const scrollImpact = (dir: "left" | "right") => {
+    if (impactRef.current) {
+      const scrollAmount = impactRef.current.clientWidth;
+      impactRef.current.scrollBy({
+        left: dir === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const [trustSlide, setTrustSlide] = useState(0);
 
   const trustVideos = [
@@ -227,11 +243,10 @@ export default function HomePage() {
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`transition-all duration-300 rounded-full ${
-                    currentSlide === index
-                      ? "w-8 h-[5px] bg-[#2F3C97]"
-                      : "w-[6px] h-[6px] bg-[#CFCFD4]"
-                  }`}
+                  className={`transition-all duration-300 rounded-full ${currentSlide === index
+                    ? "w-8 h-[5px] bg-[#2F3C97]"
+                    : "w-[6px] h-[6px] bg-[#CFCFD4]"
+                    }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
@@ -263,41 +278,32 @@ export default function HomePage() {
         </div>
       </section>
       {/* our-story our-approach section */}
-      <section className="w-full   py-20  md:py-24 px-6">
-        <div className="  text-center">
+      <section className="w-full bg-[#F1F2FB] py-20 md:py-24 px-6">
+        <div className=" mx-auto text-center">
           {/* Heading */}
-          <h2 className="text-[#2D3448] text-[28px] sm:text-[20px] md:text-[38px] leading-[1.2]  font-normal max-w-7xl mx-auto space-y-4">
+          <h2 className="text-[#2D3448] text-[28px] sm:text-[32px] md:text-[36px] leading-[1.3] font-serif font-medium">
             A leader in implementing a complete holistic and integrated
             <br className="hidden md:block" />
             Approach to Community Development in Nepal
           </h2>
 
           {/* Description */}
-          <p className="mt-6 text-[#4B5563] text-[14px] md:text-[17px] leading-[1.8] max-w-3xl mx-auto">
-            At our core, we strive to foster holistic, inclusive and equitable
-            development in Nepal. Together, we envision a future where every
-            community thrives through collaboration and empowerment.
+          <p className="mt-6 text-[#6B7280] text-[15px] md:text-[16px] leading-[1.8] max-w-4xl mx-auto">
+            At our core, we strive to foster holistic, inclusive and equitable development in Nepal. Together, we envision a<br className="hidden md:block" /> future where every community thrives through collaboration and empowerment.
           </p>
 
           {/* Buttons */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            {/* Primary Button */}
+          <div className="mt-8 flex justify-center">
             <Link href="/about/our-story">
-              <button className="bg-[#2F3C97] hover:bg-[#25307d] transition-all duration-300 text-white text-[14px] font-medium px-10 py-3 rounded-[4px] shadow-md">
+              <button className="bg-[#5C6BC0] hover:bg-[#4e5caa] transition-all duration-300 text-white text-[15px] font-medium px-8 py-2.5 rounded-[6px]">
                 Our Story
-              </button>
-            </Link>
-            {/* Secondary Button */}
-            <Link href="/donate">
-              <button className="border border-[#2F3C97] text-[#2F3C97] hover:bg-[#2F3C97] hover:text-white transition-all duration-300 text-[14px] font-medium px-10 py-3 rounded-[4px] cursor-pointer">
-                Donate Now
               </button>
             </Link>
           </div>
         </div>
       </section>
       {/*Certifiations and Affiliations*/}
-      <section className="w-full   px-8 md:px-10 py-10 md:py-12">
+      <section className="w-full py-10 md:py-12">
         {/* Top Row */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           {/* Heading */}
@@ -414,6 +420,14 @@ export default function HomePage() {
               volunteer in Nepal energy into lasting change that endures after
               VIN exits a community.
             </p>
+            {/* Button */}
+            <div className="flex justify-start">
+              <Link href="/about/our-approach">
+                <button className="mt-8 bg-[#2F3C97] hover:bg-[#25307d] transition-all duration-300 text-white text-[14px] font-medium px-8 py-3 rounded-[4px] shadow-md">
+                  Read More
+                </button>
+              </Link>
+            </div>
           </div>
 
           {/* Right Image */}
@@ -426,145 +440,127 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Button */}
-        <div className="flex justify-center">
-          <Link href="/about/our-approach">
-            <button className="mt-8 bg-[#2F3C97] hover:bg-[#25307d] transition-all duration-300 text-white text-[14px] font-medium px-8 py-3 rounded-[4px] shadow-md">
-              Read More
-            </button>
-          </Link>
-        </div>
+
       </section>
-      {/* Our impact section */}
-      <section className="w-full  bg-[#F7F7F7] bg-img px-6 md:px-8 py-8 md:py-10">
-        {/* Heading */}
-        <div className="  px-3 py-2">
-          <h2 className="text-[#2D3448] text-[28px] md:text-[38px] leading-tight  font-normal">
-            Our Impacts by Number
-          </h2>
+      {/* Our Impact section */}
+      <section className="w-full bg-[#FAFAFA] px-6 md:px-10 py-16 md:py-20 text-center relative overflow-hidden">
+        {/* Badge */}
+        <div className="flex justify-center mb-4">
+          <span className="bg-[#EEF2FF] text-[#2F3C97] text-[13px] font-medium px-4 py-1.5 rounded-full inline-block">
+            Make a Difference
+          </span>
         </div>
 
-        {/* Stats Container */}
-        <div className="mt-8  px-4 md:px-10 py-8">
-          {/* Top Center Stat */}
-          <div className="flex flex-col items-center justify-center text-center">
-            <div className="text-[#09B0EE] text-[24px]">
-              <Users className="w-6 h-6 text-[#09B0EE]" />
-            </div>
+        {/* Heading */}
+        <h2 className="text-[#1F2937] text-[32px] md:text-[40px] leading-tight font-serif font-bold">
+          Our Impact in Numbers
+        </h2>
+        <p className="mt-3 text-[#6B7280] text-[15px] md:text-[16px] max-w-2xl mx-auto mb-12">
+          Every number represents a life changed, a community strengthened, and hope restored.
+        </p>
 
-            <h3 className="mt-2 text-[#09B0EE] text-[28px] md:text-[44px] font-medium tracking-wide">
-              3,70,000+
+        {/* Big Center Card */}
+        <div className="flex justify-center mb-16 relative z-10">
+          <div className="bg-white rounded-[16px] shadow-[0px_10px_40px_rgba(0,0,0,0.06)] border border-[#F3F4F6] flex flex-col items-center justify-center p-8 w-full max-w-[340px]">
+            <div className="bg-[#EEF2FF] p-4 rounded-xl mb-6">
+              <Users className="w-8 h-8 text-[#2F3C97]" />
+            </div>
+            <h3 className="text-[#2F3C97] text-[36px] md:text-[44px] font-bold tracking-tight">
+              3,70,000 +
             </h3>
+            <p className="text-[#1F2937] text-[16px] font-bold mt-2">People Impacted</p>
+            <p className="text-[#6B7280] text-[13px] mt-1">Lives transformed through our programs</p>
+          </div>
+        </div>
 
-            <p className="text-[#2D3448] text-[13px] md:text-[15px] mt-1">
-              Peoples Impacted
-            </p>
+        {/* Carousel Container */}
+        <div className="relative  mx-auto group">
+          {/* Left Button */}
+          <button
+            onClick={() => scrollImpact("left")}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 w-10 h-10 bg-white rounded-full shadow-[0px_4px_12px_rgba(0,0,0,0.1)] border border-[#F3F4F6] flex items-center justify-center z-10 text-[#6B7280] hover:text-[#2F3C97] transition-all focus:outline-none"
+            aria-label="Previous impact"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+
+          {/* Cards Scrollable Area */}
+          <div
+            ref={impactRef}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] px-4"
+          >
+            {[
+              {
+                icon: <PlusCircle className="w-6 h-6 text-[#2F3C97]" />,
+                number: "150,008+",
+                title: "Health Supported",
+                desc: "Communities with healthcare access",
+              },
+              {
+                icon: <UserPlus className="w-6 h-6 text-[#2F3C97]" />,
+                number: "65,513+",
+                title: "Children Supported",
+                desc: "Young lives nurtured and educated",
+              },
+              {
+                icon: <Building className="w-6 h-6 text-[#2F3C97]" />,
+                number: "3,000+",
+                title: "Infrastructure Built",
+                desc: "Schools, clinics & community centers",
+              },
+              {
+                icon: <UserCheck className="w-6 h-6 text-[#2F3C97]" />,
+                number: "6,000+",
+                title: "Volunteers Deployed",
+                desc: "Dedicated individuals making change",
+              },
+              {
+                icon: <Leaf className="w-6 h-6 text-[#2F3C97]" />,
+                number: "63,287+",
+                title: "Environmental Benefits",
+                desc: "Trees planted & areas conserved",
+              },
+              {
+                icon: <User className="w-6 h-6 text-[#2F3C97]" />,
+                number: "4,126+",
+                title: "Youth Benefited",
+                desc: "Skills and opportunities provided",
+              },
+              {
+                icon: <ShieldCheck className="w-6 h-6 text-[#2F3C97]" />,
+                number: "3,000+",
+                title: "Disaster Risk Reduced",
+                desc: "Communities prepared and safe",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="min-w-[260px] md:min-w-[280px] lg:min-w-[300px] flex-1 bg-white rounded-[6px] shadow-[0px_4px_24px_rgba(0,0,0,0.06)] hover:shadow-[0px_12px_40px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300 border border-[#F9FAFB] flex flex-col items-center justify-center p-6 snap-center"
+              >
+                <div className="bg-[#EEF2FF] p-3 rounded-lg mb-5">
+                  {item.icon}
+                </div>
+                <h4 className="text-[#2F3C97] text-[28px] md:text-[32px] font-bold">
+                  {item.number}
+                </h4>
+                <p className="text-[#1F2937] text-[14px] font-bold mt-1">
+                  {item.title}
+                </p>
+                <p className="text-[#6B7280] text-[12px] mt-1 text-center">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
           </div>
 
-          {/* Stats Grid */}
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 text-center">
-            {/* Item */}
-            <div className="flex flex-col items-center">
-              <div className="text-[#09B0EE] text-[24px]">
-                <PlusCircle className="w-6 h-6 text-[#09B0EE]" />
-              </div>
-              <h4 className="mt-3 text-[#09B0EE] text-[24px] md:text-[38px] font-medium">
-                150,008+
-              </h4>
-              <p className="mt-1 text-[#2D3448] text-[13px] md:text-[14px]">
-                Health supported peoples
-              </p>
-            </div>
-
-            {/* Item */}
-            <div className="flex flex-col items-center">
-              <div className="text-[#09B0EE] text-[24px]">
-                <UserPlus className="w-6 h-6 text-[#09B0EE]" />
-              </div>
-              <h4 className="mt-3 text-[#09B0EE] text-[24px] md:text-[38px] font-medium">
-                65,513+
-              </h4>
-              <p className="mt-1 text-[#2D3448] text-[13px] md:text-[14px]">
-                Children Supported
-              </p>
-            </div>
-
-            {/* Item */}
-            <div className="flex flex-col items-center">
-              <div className="text-[#09B0EE] text-[24px]">
-                <Building className="w-6 h-6 text-[#09B0EE]" />
-              </div>
-              <h4 className="mt-3 text-[#09B0EE] text-[24px] md:text-[38px] font-medium">
-                3,000+
-              </h4>
-              <p className="mt-1 text-[#2D3448] text-[13px] md:text-[14px]">
-                Infrastructure Build
-              </p>
-            </div>
-
-            {/* Item */}
-            <div className="flex flex-col items-center">
-              <div className="text-[#09B0EE] text-[24px]">🏢</div>
-              <h4 className="mt-3 text-[#09B0EE] text-[24px] md:text-[38px] font-medium">
-                3,000+
-              </h4>
-              <p className="mt-1 text-[#2D3448] text-[13px] md:text-[14px]">
-                Infrastructure Build
-              </p>
-            </div>
-
-            {/* Item */}
-            <div className="flex flex-col items-center">
-              <div className="text-[#09B0EE] text-[24px]">
-                <UserCheck className="w-6 h-6 text-[#09B0EE]" />
-              </div>
-              <h4 className="mt-3 text-[#09B0EE] text-[24px] md:text-[38px] font-medium">
-                6,000+
-              </h4>
-              <p className="mt-1 text-[#2D3448] text-[13px] md:text-[14px]">
-                Volunteers Deployed
-              </p>
-            </div>
-
-            {/* Item */}
-            <div className="flex flex-col items-center">
-              <div className="text-[#09B0EE] text-[24px]">
-                <Leaf className="w-6 h-6 text-[#09B0EE]" />
-              </div>
-              <h4 className="mt-3 text-[#09B0EE] text-[24px] md:text-[38px] font-medium">
-                63,287+
-              </h4>
-              <p className="mt-1 text-[#2D3448] text-[13px] md:text-[14px]">
-                Environmental Benifits
-              </p>
-            </div>
-
-            {/* Item */}
-            <div className="flex flex-col items-center">
-              <div className="text-[#09B0EE] text-[24px]">
-                <User className="w-6 h-6 text-[#09B0EE]" />
-              </div>
-              <h4 className="mt-3 text-[#09B0EE] text-[24px] md:text-[38px] font-medium">
-                4,126+
-              </h4>
-              <p className="mt-1 text-[#2D3448] text-[13px] md:text-[14px]">
-                Youth Benifited
-              </p>
-            </div>
-
-            {/* Item */}
-            <div className="flex flex-col items-center">
-              <div className="text-[#09B0EE] text-[24px]">
-                <ShieldCheck className="w-6 h-6 text-[#09B0EE]" />
-              </div>
-              <h4 className="mt-3 text-[#09B0EE] text-[24px] md:text-[38px] font-medium">
-                3,000+
-              </h4>
-              <p className="mt-1 text-[#2D3448] text-[13px] md:text-[14px]">
-                Disaster Risk Reduced
-              </p>
-            </div>
-          </div>
+          {/* Right Button */}
+          <button
+            onClick={() => scrollImpact("right")}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 w-10 h-10 bg-white rounded-full shadow-[0px_4px_12px_rgba(0,0,0,0.1)] border border-[#F3F4F6] flex items-center justify-center z-10 text-[#6B7280] hover:text-[#2F3C97] transition-all focus:outline-none"
+            aria-label="Next impact"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
         </div>
       </section>
       {/*Becoming part section*/}
@@ -606,229 +602,280 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      {/*Volunteer program section*/}
-      <section className="w-full  py-12 px-4 md:px-8">
-        <div className=" mx-auto flex items-center justify-between gap-6 flex-wrap">
-          {/* Left Content */}
-          <div>
-            <h2 className="text-[38px] leading-tight font-medium text-[#1F2A44]">
-              Our Volunteering programs
-            </h2>
 
-            <p className="mt-4 max-w-3xl text-[18px] leading-[32px] text-[#4B5563]">
-              Our programs are designed to empower communities through
-              education, skill development, and inclusive support, creating
-              opportunities that help individuals grow, thrive, and lead
-              meaningful change.
-            </p>
-          </div>
+      {/* Volunteer Pathways Section */}
+      <VolunteerPathways />
 
-          {/* Button */}
-          <Link href="/program">
-            <button className="bg-[#2A3495] text-white px-8 py-3 rounded-md text-sm font-medium shadow-md hover:bg-[#1f2875] transition cursor-pointer">
-              View All
-            </button>
-          </Link>
-        </div>
-      </section>
+      {/* Featured Projects Section */}
+      <FeaturedProjects />
 
-      <VolunteerProgram />
-      {/*our team section*/}
       <OurTeam />
       {/* Map and Cards Section */}
-      <section className="py-20 text-center">
-        {/* Top Content */}
-        <div>
-          <h2 className="text-[32px] md:text-[40px] font-medium text-[#222] mb-4">
-            Where we work
-          </h2>
-
-          <p className="max-w-[760px] mx-auto text-[14px] md:text-[15px] leading-7 text-[#666]">
-            We place volunteers in communities to support local effort,
-            empowering residents to evolve positive change and improve quality
-            of life through collaboration on meaningful projects.
-          </p>
-        </div>
-
-        {/* Map */}
-        <div className="pt-12 pb-16 flex justify-center">
-          <img
-            src="/images/nepal-map.png"
-            alt="Nepal Map"
-            className="object-contain"
-          />
-        </div>
-
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
-          {/* Card 1 */}
-          <div className="text-center group">
-            <div className="overflow-hidden rounded-[8px]">
-              <img
-                src="/location.png"
-                alt="Kathmandu"
-                className="w-full block transition duration-500 group-hover:scale-105"
-              />
+      <section className="w-full bg-[#FAFAFA] py-16 md:py-20 px-6 md:px-10 overflow-hidden">
+        <div className=" mx-auto">
+          {/* Top Row: Info and Map */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+            {/* Left Content */}
+            <div className="text-left">
+              <span className="bg-[#EEF2FF] text-[#2F3C97] text-[13px] font-medium px-4 py-1.5 rounded-full inline-block mb-4">
+                Our Impact Areas
+              </span>
+              <h2 className="text-[#1F2937] text-[32px] md:text-[40px] leading-tight font-serif font-bold mb-4">
+                Where we work
+              </h2>
+              <p className="text-[#4B5563] text-[15px] md:text-[16px] leading-relaxed max-w-lg">
+                We place volunteers in communities to support local efforts,
+                empowering residents to create positive change and improve quality
+                of life through collaboration and meaningful service.
+              </p>
             </div>
 
-            <div className="pt-5">
-              <h3 className="text-[22px] font-medium text-[#222] mb-3">
-                Kathmandu
-              </h3>
-
-              <p className="text-[14px] leading-7 text-[#666] mb-4">
-                Transform communities by providing access and care services and
-                improve quality of life through innovative projects for over two
-                years.
-              </p>
-
-              <Link
-                href="/about/location/kathmandu"
-                className="text-[16px] text-black pb-[2px] hover:opacity-70 transition"
-              >
-                Read More..
-              </Link>
+            {/* Right Map */}
+            <div className="flex justify-center lg:justify-end">
+              <img
+                src="/images/nepal-map.png"
+                alt="Nepal Map"
+                className="w-full max-w-[500px] object-contain"
+              />
             </div>
           </div>
 
-          {/* Card 2 */}
-          <div className="text-center group">
-            <div className="overflow-hidden rounded-[8px]">
-              <img
-                src="/location.png"
-                alt="Okhaldhunga"
-                className="w-full block transition duration-500 group-hover:scale-105"
-              />
+          {/* Cards Carousel Container */}
+          <div className="relative w-full group">
+            {/* Left Arrow */}
+            <button
+              onClick={() => {
+                const el = document.getElementById("location-carousel");
+                if (el) el.scrollBy({ left: -350, behavior: "smooth" });
+              }}
+              className="absolute left-0 top-[40%] -translate-x-4 md:-translate-x-6 z-20 w-10 h-10 rounded-full bg-white shadow-[0px_4px_12px_rgba(0,0,0,0.1)] border border-[#F3F4F6] flex items-center justify-center text-[#6B7280] hover:text-[#2F3C97] transition-all focus:outline-none"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {/* Cards Scrollable Area */}
+            <div
+              id="location-carousel"
+              className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-6 px-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] text-left"
+            >
+              {[
+                {
+                  title: "Kathmandu Valley",
+                  location: "Kathmandu Metropolitan City",
+                  description: "Urban development programs focusing on education and healthcare access for underserved communities.",
+                  image: "/location.png",
+                  link: "/about/location/kathmandu"
+                },
+                {
+                  title: "Chitwan District",
+                  location: "Bharatpur Metropolitan City",
+                  description: "Rural empowerment initiatives supporting women entrepreneurs and sustainable agriculture.",
+                  image: "/location.png",
+                  link: "/about/location/okhaldhunga"
+                },
+                {
+                  title: "Pokhara Region",
+                  location: "Pokhara Metropolitan City",
+                  description: "Youth skill development and environmental conservation programs in the Annapurna region.",
+                  image: "/location.png",
+                  link: "/about/location/nuwakot"
+                }
+              ].map((loc, idx) => (
+                <div
+                  key={idx}
+                  className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 snap-start bg-white rounded-[12px] shadow-[0px_4px_24px_rgba(0,0,0,0.06)] border border-[#F9FAFB] flex flex-col overflow-hidden hover:shadow-[0px_12px_40px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="relative w-full h-[200px]">
+                    <img
+                      src={loc.image}
+                      alt={loc.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-5 flex flex-col flex-1">
+                    <h3 className="text-[#1F2937] text-[20px] font-serif font-semibold mb-1">
+                      {loc.title}
+                    </h3>
+                    <div className="flex items-center gap-1.5 text-[#6B7280] text-[13px] mb-4">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
+                      {loc.location}
+                    </div>
+                    <p className="text-[#6B7280] text-[14px] leading-relaxed mb-6 flex-1">
+                      {loc.description}
+                    </p>
+                    <div>
+                      <Link
+                        href={loc.link}
+                        className="flex items-center gap-2 text-[#5C6BC0] text-[14px] font-medium hover:text-[#4e5caa] transition-colors"
+                      >
+                        <h4 className="text-[14px] font-medium hover:text-[#4e5caa] transition-colors text-blue">Learn more</h4><ArrowRight size={14} />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            <div className="pt-5">
-              <h3 className="text-[22px] font-medium text-[#222] mb-3">
-                Okhaldhunga
-              </h3>
-
-              <p className="text-[14px] leading-7 text-[#666] mb-4">
-                Okhaldhunga district is located 250 km east from Kathmandu.
-                During project activities, more than 1500+ participants and
-                engaged with over 900 key workers helping improve livelihoods.
-              </p>
-
-              <Link
-                href="/about/location/okhaldhunga"
-                className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
-              >
-                Read More..
-              </Link>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="text-center group">
-            <div className="overflow-hidden rounded-[8px]">
-              <img
-                src="/location.png"
-                alt="Nuwakot"
-                className="w-full block transition duration-500 group-hover:scale-105"
-              />
-            </div>
-
-            <div className="pt-5">
-              <h3 className="text-[22px] font-medium text-[#222] mb-3">
-                Nuwakot
-              </h3>
-
-              <p className="text-[14px] leading-7 text-[#666] mb-4">
-                Nuwakot is located 75 km northwest from Kathmandu and serves
-                through development and social initiatives to support local
-                communities.
-              </p>
-
-              <Link
-                href="/about/location/nuwakot"
-                className="text-[16px] text-black  pb-[2px] hover:opacity-70 transition"
-              >
-                Read More..
-              </Link>
-            </div>
+            {/* Right Arrow */}
+            <button
+              onClick={() => {
+                const el = document.getElementById("location-carousel");
+                if (el) el.scrollBy({ left: 350, behavior: "smooth" });
+              }}
+              className="absolute right-0 top-[40%] translate-x-4 md:translate-x-6 z-20 w-10 h-10 rounded-full bg-white shadow-[0px_4px_12px_rgba(0,0,0,0.1)] border border-[#F3F4F6] flex items-center justify-center text-[#6B7280] hover:text-[#2F3C97] transition-all focus:outline-none"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>
       {/* Choose Impact Section */}
       <ChooseImpact />
-      <section className="py-20">
-        {/* Top Rating */}
-        <div className="flex items-center justify-center gap-3 mb-14">
-          <div className="flex text-yellow-400 text-[18px]">★ ★ ★ ★ ★</div>
+     
+      {/* Review Section */}
+      <section className="py-20 bg-[#F1F2FB] bg-opacity-50 px-6 md:px-10 text-center">
+        <div className=" mx-auto">
+          {/* Top Info */}
+          <div className="mb-10 flex flex-col items-center">
+            <span className="bg-[#EEF2FF] text-[#2F3C97] text-[13px] font-medium px-4 py-1.5 rounded-full inline-block mb-4">
+              Trusted & Verified
+            </span>
+            <h2 className="text-[#1F2937] text-[32px] md:text-[40px] leading-tight font-serif font-bold mb-4">
+              Rated by Those We've Helped
+            </h2>
+            <p className="text-[#6B7280] text-[15px] md:text-[16px] max-w-2xl mx-auto">
+              Our commitment to transparency and impact is reflected in reviews from trusted platforms worldwide.
+            </p>
+          </div>
 
-          <h3 className="text-[32px] font-semibold text-[#1F2B6C] leading-none">
-            4.4<span className="text-[18px]">/5</span>
-          </h3>
+          {/* Main Card */}
+          <div className="bg-white rounded-[16px] shadow-[0_8px_30px_rgb(0,0,0,0.06)] p-6 max-w-[280px] mx-auto mb-8 flex flex-col items-center border border-gray-50">
+            <div className="w-12 h-12 bg-[#F3F4F6] rounded-xl flex items-center justify-center mb-4">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#FBBF24" stroke="#FBBF24" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div className="flex items-end gap-1 mb-2">
+              <span className="text-[36px] font-bold text-[#1F2937] leading-none">4.4</span>
+              <span className="text-[18px] text-[#9CA3AF] font-medium mb-1">/ 5</span>
+            </div>
+            <div className="flex gap-1 text-[#FBBF24] mb-3">
+              {[...Array(4)].map((_, i) => (
+                <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#FBBF24" stroke="#FBBF24" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              ))}
+              {/* Hollow star */}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p className="text-[13px] text-[#6B7280] font-medium mb-4">
+              <span className="font-bold text-[#1F2937]">208+</span> verified reviews
+            </p>
+            <div className="bg-[#D1FAE5] text-[#059669] text-[11px] font-semibold px-4 py-2 rounded-full flex items-center gap-1.5 w-full justify-center">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Trusted by 200+ verified reviewers
+            </div>
+          </div>
 
-          <span className="text-[14px] text-gray-500 border-l pl-3">
-            200+ Review
-          </span>
-        </div>
-
-        {/* Review Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
-          {/* Card 1 */}
-          <div className="flex flex-col items-center">
-            <h4 className="text-[34px] font-semibold text-[#1F2B6C]">
-              4.5<span className="text-[18px]">/5</span>
-            </h4>
-
-            <div className="flex items-center gap-1 mt-2 mb-2">
-              <span className="text-yellow-400 text-[14px]">★</span>
-              <span className="text-[12px] font-semibold text-[#F4A100] uppercase tracking-wide">
-                Great
-              </span>
+          {/* Sub Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Sub Card 1: Great Nonprofits */}
+            <div className="bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.04)] p-6 text-left flex flex-col justify-between h-[150px] border border-gray-50">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-6 h-6 bg-orange-400 rounded-bl-xl rounded-tr-xl flex items-center justify-center">
+                  <div className="w-2.5 h-2.5 bg-white rounded-full"></div>
+                </div>
+                <span className="font-bold text-gray-500 text-[14px] uppercase tracking-wide">Great <span className="font-normal text-[11px]">Nonprofits</span></span>
+              </div>
+              <div>
+                <div className="flex items-center gap-2.5 mb-1.5">
+                  <span className="text-[28px] font-bold text-[#1F2937] leading-none">4.6</span>
+                  <div className="flex gap-0.5 text-[#FBBF24]">
+                    {[...Array(4)].map((_, i) => (
+                      <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#FBBF24" stroke="#FBBF24" strokeWidth="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    ))}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </div>
+                </div>
+                <p className="text-[12px] text-[#9CA3AF]">Based on <span className="font-bold text-[#4B5563]">58</span> reviews</p>
+              </div>
             </div>
 
-            <p className="text-[18px] text-[#444] font-medium font-lora">
-              Great Non-profit
-            </p>
-          </div>
-
-          {/* Card 2 */}
-          <div className="flex flex-col items-center">
-            <h4 className="text-[34px] font-semibold text-[#1F2B6C]">
-              4.2<span className="text-[18px]">/5</span>
-            </h4>
-
-            <h5 className="text-[28px] font-semibold text-[#1F2B6C] mt-2">
-              Google
-            </h5>
-
-            <p className="text-[18px] text-[#444] font-medium font-lora mt-1">
-              Google Reviews
-            </p>
-          </div>
-
-          {/* Card 3 */}
-          <div className="flex flex-col items-center">
-            <h4 className="text-[34px] font-semibold text-[#1F2B6C]">
-              4.2<span className="text-[18px]">/5</span>
-            </h4>
-
-            <h5 className="text-[32px] font-bold text-[#1F2B6C] mt-2">GO</h5>
-
-            <p className="text-[18px] text-[#444] font-medium font-lora mt-1">
-              go overseas
-            </p>
-          </div>
-
-          {/* Card 4 */}
-          <div className="flex flex-col items-center">
-            <h4 className="text-[34px] font-semibold text-[#1F2B6C]">
-              4.2<span className="text-[18px]">/5</span>
-            </h4>
-
-            <div className="flex text-yellow-400 text-[14px] mt-2">
-              ★ ★ ★ ★ ★
+            {/* Sub Card 2: Google Reviews */}
+            <div className="bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.04)] p-6 text-left flex flex-col justify-between h-[150px] border border-gray-50">
+              <div className="flex items-center gap-1 mb-2 font-medium text-[12px] text-gray-500">
+                <span className="text-blue-500 font-bold text-lg">G</span>
+                <span className="text-red-500 font-bold text-lg">o</span>
+                <span className="text-yellow-500 font-bold text-lg">o</span>
+                <span className="text-blue-500 font-bold text-lg">g</span>
+                <span className="text-green-500 font-bold text-lg">l</span>
+                <span className="text-red-500 font-bold text-lg">e</span>
+                <span className="ml-1 pt-0.5">Reviews</span>
+              </div>
+              <div>
+                <div className="flex items-center gap-2.5 mb-1.5">
+                  <span className="text-[28px] font-bold text-[#1F2937] leading-none">4.5</span>
+                  <div className="flex gap-0.5 text-[#FBBF24]">
+                    {[...Array(4)].map((_, i) => (
+                      <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#FBBF24" stroke="#FBBF24" strokeWidth="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    ))}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </div>
+                </div>
+                <p className="text-[12px] text-[#9CA3AF]">Based on <span className="font-bold text-[#4B5563]">89</span> review</p>
+              </div>
             </div>
 
-            <p className="text-[18px] text-[#444] font-medium font-lora mt-2">
-              Review Center
-            </p>
+            {/* Sub Card 3: Go Overseas */}
+            <div className="bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.04)] p-6 text-left flex flex-col justify-between h-[150px] border border-gray-50">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="flex flex-col text-blue-500 leading-none">
+                  <span className="font-bold text-2xl">GO</span>
+                </div>
+                <div className="flex flex-col">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  <span className="text-[9px] uppercase tracking-wider font-semibold text-blue-400 mt-1">overseas</span>
+                </div>
+              </div>
+              <div>
+                <div className="flex items-center gap-2.5 mb-1.5">
+                  <span className="text-[28px] font-bold text-[#1F2937] leading-none">4.3</span>
+                  <div className="flex gap-0.5 text-[#FBBF24]">
+                    {[...Array(4)].map((_, i) => (
+                      <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#FBBF24" stroke="#FBBF24" strokeWidth="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    ))}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </div>
+                </div>
+                <p className="text-[12px] text-[#9CA3AF]">Based on <span className="font-bold text-[#4B5563]">34</span> review</p>
+              </div>
+            </div>
+
+            {/* Sub Card 4: Review Centre */}
+            <div className="bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.04)] p-6 text-left flex flex-col justify-between h-[150px] border border-gray-50">
+              <div className="flex flex-col items-start gap-1.5 mb-2">
+                <div className="flex gap-1 text-[#FBBF24]">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} width="10" height="10" viewBox="0 0 24 24" fill="#FBBF24" stroke="#FBBF24" strokeWidth="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  ))}
+                </div>
+                <div className="bg-purple-500 text-white text-[12px] font-bold px-2 py-1 rounded-sm flex relative">
+                  review centre
+                  <div className="absolute -bottom-1 left-2 w-2 h-2 bg-purple-500 rotate-45"></div>
+                </div>
+              </div>
+              <div>
+                <div className="flex items-center gap-2.5 mb-1.5">
+                  <span className="text-[28px] font-bold text-[#1F2937] leading-none">4.2</span>
+                  <div className="flex gap-0.5 text-[#FBBF24]">
+                    {[...Array(4)].map((_, i) => (
+                      <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#FBBF24" stroke="#FBBF24" strokeWidth="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    ))}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </div>
+                </div>
+                <p className="text-[12px] text-[#9CA3AF]">Based on <span className="font-bold text-[#4B5563]">27</span> review</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1122,166 +1169,91 @@ export default function HomePage() {
 
       <LatestNews />
       <Aricles />
-      {/* Volunteer Program Section */}
-      <section className="relative w-full overflow-hidden rounded-sm  pt-10 pb-16 md:pb-24 pt-16">
-        {/* Background Image */}
-        <img
-          src="/hero.png"
-          alt="Sponsor a Child"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/75" />
-
-        {/* Left Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
-
-        {/* Content */}
-        <div className="relative z-10 flex items-center h-full px-10">
-          <div className=" text-white">
-            {/* Heading */}
-            <h2 className="text-[38px] leading-[60px] font-medium mb-4">
-              Sponsor a Child, Change a Life
-            </h2>
-
-            {/* Description */}
-            <p className="text-[14px] leading-[24px] text-gray-200 mb-6 max-w-[470px]">
-              Your sponsorship provides education, healthcare, and essential
-              support to children in Nepal who need it most. Give a child the
-              opportunity to learn, grow, and build a brighter future.
-            </p>
-
-            {/* List */}
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-center gap-3 text-[17px] font-medium">
-                <span className="w-2 h-2 rounded-full bg-white" />
-                Education & Learning
-              </li>
-
-              <li className="flex items-center gap-3 text-[17px] font-medium">
-                <span className="w-2 h-2 rounded-full bg-white" />
-                Health & Wellbeing
-              </li>
-
-              <li className="flex items-center gap-3 text-[17px] font-medium">
-                <span className="w-2 h-2 rounded-full bg-white" />
-                Empowerment & Opportunity
-              </li>
-            </ul>
-
-            {/* Button */}
-            <Link href="/sponsor-child">
-              <button className="bg-[#1F2B6C] hover:bg-[#1F2B6C] transition-all duration-300 text-white text-[14px] font-medium px-6 py-3 rounded-md shadow-lg cursor-pointer">
-                Help a child today!
-              </button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Volunteer Program / Donate Section */}
+      <DonateSection />
       {/*Gallery section*/}
-      <section className="w-full bg-[#f7f7f7] py-20 px-4 md:px-6">
-        {/* Header */}
-        <div className="flex items-start justify-between mb-5">
-          <div>
-            <h2 className="text-[38px] font-medium text-[#1f1f1f] leading-none mb-2">
+      <section className="w-full bg-white py-20 px-6 md:px-10">
+        <div className=" mx-auto">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <span className="bg-[#EEF2FF] text-[#2F3C97] text-[12px] font-semibold px-4 py-1.5 rounded-full inline-block mb-4">
+              Media Library
+            </span>
+            <h2 className="text-[32px] md:text-[40px] font-bold text-[#1F2937] font-serif mb-4">
               Gallery
             </h2>
-
-            <p className="text-[16px] text-[#8b8b8b] leading-[18px] max-w-4xl">
-              A glimpse into the moments that define our work and community
-              impact.
+            <p className="text-[15px] md:text-[16px] text-[#6B7280] max-w-2xl mx-auto">
+              Explore our collection of downloads, videos, and photos from our events and activities.
             </p>
           </div>
 
-          <Link href="/media/photos">
-            <button className="bg-[#2E3192] hover:bg-[#26287d] transition-all text-white text-[16px] font-medium px-10 py-2 rounded-sm cursor-pointer">
-              View all
-            </button>
-          </Link>
-        </div>
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Downloads Card */}
+            <Link href="/media/downloads" className="group block bg-white rounded-[16px] shadow-[0_4px_25px_rgb(0,0,0,0.06)] overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+              <div className="flex h-[220px] w-full">
+                <div className="w-1/2 border-r-[3px] border-white overflow-hidden">
+                  <img src="/hero.png" alt="Downloads" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="w-1/2 overflow-hidden">
+                  <img src="/hero.png" alt="Downloads" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+              </div>
+              <div className="p-6 md:p-8 flex items-center justify-between">
+                <div>
+                  <h3 className="text-[20px] font-bold text-[#1F2937] mb-1 font-serif">Downloads</h3>
+                  <p className="text-[#6B7280] text-[13px]">Access reports, brochures, and resources</p>
+                </div>
+                <div className="text-gray-400 group-hover:text-[#2F3C97] group-hover:translate-x-1 transition-all">
+                  <ArrowRight size={20} />
+                </div>
+              </div>
+            </Link>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-3 gap-3">
-          {/* Image 1 */}
-          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
-            <img
-              src="/hero.png"
-              alt="gallery"
-              className="w-full h-[200px] object-cover"
-            />
-          </div>
+            {/* Videos Card */}
+            <Link href="/media/videos" className="group block bg-white rounded-[16px] shadow-[0_4px_25px_rgb(0,0,0,0.06)] overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+              <div className="flex h-[220px] w-full">
+                <div className="w-[60%] border-r-[3px] border-white overflow-hidden">
+                  <img src="/hero.png" alt="Videos" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="w-[40%] overflow-hidden">
+                  <img src="/hero.png" alt="Videos" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+              </div>
+              <div className="p-6 md:p-8 flex items-center justify-between">
+                <div>
+                  <h3 className="text-[20px] font-bold text-[#1F2937] mb-1 font-serif">Videos</h3>
+                  <p className="text-[#6B7280] text-[13px]">Watch our latest stories and updates</p>
+                </div>
+                <div className="text-gray-400 group-hover:text-[#2F3C97] group-hover:translate-x-1 transition-all">
+                  <ArrowRight size={20} />
+                </div>
+              </div>
+            </Link>
 
-          {/* Image 2 */}
-          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
-            <img
-              src="/hero.png"
-              alt="gallery"
-              className="w-full h-[200px] object-cover"
-            />
-          </div>
-
-          {/* Image 3 */}
-          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
-            <img
-              src="/hero.png"
-              alt="gallery"
-              className="w-full h-[200px] object-cover"
-            />
-          </div>
-
-          {/* Image 4 */}
-          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
-            <img
-              src="/hero.png"
-              alt="gallery"
-              className="w-full h-[200px] object-cover"
-            />
-          </div>
-
-          {/* Image 5 */}
-          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
-            <img
-              src="/hero.png"
-              alt="gallery"
-              className="w-full h-[200px] object-cover"
-            />
-          </div>
-
-          {/* Image 6 */}
-          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
-            <img
-              src="/hero.png"
-              alt="gallery"
-              className="w-full h-[200px] object-cover"
-            />
-          </div>
-
-          {/* Image 7 */}
-          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
-            <img
-              src="/hero.png"
-              alt="gallery"
-              className="w-full h-[200px] object-cover"
-            />
-          </div>
-
-          {/* Image 8 */}
-          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
-            <img
-              src="/hero.png"
-              alt="gallery"
-              className="w-full h-[200px] object-cover"
-            />
-          </div>
-
-          {/* Image 9 */}
-          <div className="overflow-hidden rounded-md border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white">
-            <img
-              src="/hero.png"
-              alt="gallery"
-              className="w-full h-[200px] object-cover"
-            />
+            {/* Photos Card */}
+            <Link href="/media/photos" className="group block bg-white rounded-[16px] shadow-[0_4px_25px_rgb(0,0,0,0.06)] overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+              <div className="flex h-[220px] w-full">
+                <div className="w-1/3 border-r-[3px] border-white overflow-hidden">
+                  <img src="/hero.png" alt="Photos" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="w-1/3 border-r-[3px] border-white overflow-hidden">
+                  <img src="/hero.png" alt="Photos" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="w-1/3 overflow-hidden">
+                  <img src="/hero.png" alt="Photos" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+              </div>
+              <div className="p-6 md:p-8 flex items-center justify-between">
+                <div>
+                  <h3 className="text-[20px] font-bold text-[#1F2937] mb-1 font-serif">Photos</h3>
+                  <p className="text-[#6B7280] text-[13px]">Browse our photo gallery and memories</p>
+                </div>
+                <div className="text-gray-400 group-hover:text-[#2F3C97] group-hover:translate-x-1 transition-all">
+                  <ArrowRight size={20} />
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -1354,6 +1326,10 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FaqSection />
+
       {/* Contact Section */}
       <section className="w-full flex justify-center py-12 px-4 bg-white">
         <div className="w-full max-w-4xl bg-[#2E3192] rounded-md overflow-hidden px-8 py-7">

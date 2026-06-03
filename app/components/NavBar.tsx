@@ -80,6 +80,16 @@ export default function NavBar() {
     setOpenDropdown(openDropdown === label ? null : label);
   };
 
+  const handleDonateClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const donateSection = document.getElementById("donate-section");
+    if (donateSection) {
+      donateSection.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.href = "/#donate-section";
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50 shadow-sm">
       {/* Top Bar */}
@@ -178,12 +188,13 @@ export default function NavBar() {
               Sponsor Child
             </Link>
 
-            <Link
-              href="/donate"
+            <a
+              href="/#donate-section"
+              onClick={handleDonateClick}
               className="rounded-[10px] border border-[#223a8f] bg-white px-5 py-4 text-sm font-semibold text-[#223a8f] transition hover:bg-[#152f72] hover:text-white"
             >
               Donate Now
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Hamburger */}
@@ -269,12 +280,16 @@ export default function NavBar() {
                 Sponsor Child
               </Link>
 
-              <Link
-                href="/donate"
+              <a
+                href="/#donate-section"
+                onClick={(e) => {
+                  setMobileMenu(false);
+                  handleDonateClick(e);
+                }}
                 className="rounded-[10px] border border-[#223a8f] px-5 py-4 text-center text-sm font-semibold text-[#223a8f]"
               >
                 Donate Now
-              </Link>
+              </a>
             </div>
           </div>
         </div>

@@ -64,9 +64,11 @@ export default function VolunteerStoriesPage() {
               ========================================= */}
               <div className="flex items-center gap-4">
                 {/* Read More */}
-                <button className="w-[150px] h-[40px] rounded-[4px] bg-[#2A3495] text-white text-[13px] font-medium hover:opacity-90 transition-all">
-                  Read More
-                </button>
+                <Link href={`/media/blogs/${item}`}>
+                  <button className="w-[150px] h-[40px] rounded-[4px] bg-[#2A3495] text-white text-[13px] font-medium hover:opacity-90 transition-all">
+                    Read More
+                  </button>
+                </Link>
 
                 {/* Volunteer Now */}
                 <Link href="/volunteering">

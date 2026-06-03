@@ -1,4 +1,6 @@
 "use client";
+import AvailableProgramsSidebar from "@/app/components/AvailableProgramsSidebar";
+
 
 import Link from "next/link";
 import { useState } from "react";
@@ -187,35 +189,9 @@ export default function TestimonialsPage() {
             </div>
           </div>
 
-          {/* ======================================================
-              RIGHT SIDEBAR
-          ====================================================== */}
+          {/* Right Sidebar */}
           <div>
-            <div className="bg-white border border-[#E5E7EB] rounded-[10px] overflow-hidden">
-              {/* Header */}
-              <div className="px-5 py-4 border-b border-[#E5E7EB]">
-                <h2 className="text-[18px] font-medium text-[#1F2A44]">
-                  Our Available Programs
-                </h2>
-              </div>
-
-              {/* Programs */}
-              <div>
-                {programs.map((program, index) => (
-                  <button
-                    key={index}
-                    className={`w-full text-left px-5 py-4 text-[13px] border-b border-[#EEF1F4] transition-all ${
-                      index === 0
-                        ? "bg-[#F8FAFC] text-[#2F3C97] font-medium"
-                        : "text-[#6B7280] hover:bg-[#F9FAFB]"
-                    }`}
-                  >
-                    {program}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+            <AvailableProgramsSidebar /></div>
         </div>
       </div>
     </main>

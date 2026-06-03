@@ -1,4 +1,6 @@
 "use client";
+import DonateSection from "@/app/components/DonateSection";
+
 import ChooseImpact from "@/app/components/ChooseImpact";
 import OurTeam from "@/app/components/OurTeam";
 
@@ -714,61 +716,8 @@ export default function Location() {
       </section>
       <LatestNews />
       <Articles />
-      {/* Volunteer Program Section */}
-      <section className="relative w-full overflow-hidden rounded-sm  pt-10 pb-16 md:pb-24 pt-16">
-        {/* Background Image */}
-        <img
-          src="/hero.png"
-          alt="Sponsor a Child"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/75" />
-
-        {/* Left Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
-
-        {/* Content */}
-        <div className="relative z-10 flex items-center h-full px-10">
-          <div className=" text-white">
-            {/* Heading */}
-            <h2 className="text-[38px] leading-[60px] font-medium mb-4">
-              Sponsor a Child, Change a Life
-            </h2>
-
-            {/* Description */}
-            <p className="text-[14px] leading-[24px] text-gray-200 mb-6 max-w-[470px]">
-              Your sponsorship provides education, healthcare, and essential
-              support to children in Nepal who need it most. Give a child the
-              opportunity to learn, grow, and build a brighter future.
-            </p>
-
-            {/* List */}
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-center gap-3 text-[17px] font-medium">
-                <span className="w-2 h-2 rounded-full bg-white" />
-                Education & Learning
-              </li>
-
-              <li className="flex items-center gap-3 text-[17px] font-medium">
-                <span className="w-2 h-2 rounded-full bg-white" />
-                Health & Wellbeing
-              </li>
-
-              <li className="flex items-center gap-3 text-[17px] font-medium">
-                <span className="w-2 h-2 rounded-full bg-white" />
-                Empowerment & Opportunity
-              </li>
-            </ul>
-
-            {/* Button */}
-            <button className="bg-[#1F2B6C] hover:bg-[#1F2B6C] transition-all duration-300 text-white text-[14px] font-medium px-6 py-3 rounded-md shadow-lg">
-              Help a child today!
-            </button>
-          </div>
-        </div>
-      </section>
+      {/* Volunteer Program / Donate Section */}
+      <DonateSection />
     </main>
   );
 }

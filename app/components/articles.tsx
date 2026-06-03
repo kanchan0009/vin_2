@@ -69,7 +69,7 @@ export default function LatestNews() {
             keep you informed and connected with our community and initiatives.
           </p>
         </div>
-        <Link href="/festivals" className="shrink-0">
+        <Link href="/media/articles" className="shrink-0">
           <button className="w-fit whitespace-nowrap rounded-md bg-[#1F2B6C] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#3340d0]">
             View all
           </button>

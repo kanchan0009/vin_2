@@ -1,3 +1,5 @@
+import AvailableProgramsSidebar from "@/app/components/AvailableProgramsSidebar";
+
 export default function OurApproachSection() {
   const steps = [
     {
@@ -300,39 +302,7 @@ export default function OurApproachSection() {
 
           {/* RIGHT SIDEBAR */}
           <div>
-            <div className="border border-[#e5e7eb] rounded-md overflow-hidden bg-[#fafbfc]">
-              {/* Sidebar Header */}
-              <div className="px-5 py-4 border-b border-[#e5e7eb] bg-[#f5f7fa]">
-                <h3 className="text-[25px] font-medium text-[#1f2a44]">
-                  Our Available Programs
-                </h3>
-              </div>
-
-              {/* Program List */}
-              <div className="divide-y divide-[#e5e7eb]">
-                {[
-                  "Children’s Development Program",
-                  "Youth Empowerment Program",
-                  "Public Health & Medical Program",
-                  "Environment Conservation Program",
-                  "Disaster Risk Reduction (DRR) Program",
-                  "Public health and medical care",
-                  "Environment conservation",
-                  "Teaching program",
-                  "Management & Administration",
-                  "Journalism",
-                  "Public interest",
-                  "WorkCamps",
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="px-5 py-4 text-[15px] text-[#5b6478] hover:bg-white transition-all cursor-pointer"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
+            <AvailableProgramsSidebar />
           </div>
         </div>
       </div>
